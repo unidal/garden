@@ -1,0 +1,18 @@
+.trend {
+	color: #333;
+	margin: 10px;
+}
+
+.trend h1 {
+	color: #1d2432;
+	font: 1.4em Arial, Helvetica, sans-serif;
+	vertical-align: baseline;
+}
+
+.trend .meta {
+	font: 0.8em/1.4em "Lucida Grande", "Lucida Sans Unicode", sans-serif;
+}
+
+.trend p {
+	font: 1em Arial, Helvetica, sans-serif;
+}

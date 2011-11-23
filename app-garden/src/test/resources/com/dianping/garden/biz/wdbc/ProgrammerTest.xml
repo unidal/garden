@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<plexus>
+   <components>
+      <component>
+         <role>com.site.wdbc.WdbcQuery</role>
+         <role-hint>Programmer-mock</role-hint>
+         <implementation>com.site.wdbc.FindQuery</implementation>
+         <configuration>
+            <words>
+               <word name="title">【书摘】Windows Phone Mango开发实践</word>
+               <word name="title">淘宝商城事件的影响</word>
+               <word name="text">本书深入浅出地讲解了微软的Windows Phone Mango开发技术</word>
+               <word name="text">淘宝商城事件让人惊觉电子商务由来已久的弊病，电子商务该怎么做，本文详细解说。</word>
+               <word name="link"><![CDATA[http://www.programmer.com.cn/8897/@href]]></word>
+               <word name="link"><![CDATA[http://www.programmer.com.cn/8875/@href]]></word>
+            </words>
+         </configuration>
+      </component>
+   </components>
+</plexus>

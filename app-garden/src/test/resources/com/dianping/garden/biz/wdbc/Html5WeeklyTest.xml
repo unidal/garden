@@ -1,0 +1,21 @@
+<plexus>
+   <components>
+      <component>
+         <role>com.site.wdbc.WdbcQuery</role>
+         <role-hint>Html5Weekly-mock</role-hint>
+         <implementation>com.site.wdbc.FindQuery</implementation>
+         <configuration>
+            <words>
+               <word name="date">August 24, 2011</word>
+               <word name="title">Firefox 6 Is Here: What's New For Developers?</word>
+               <word name="title">HTML5 Boilerplate 2.0: One Year Old, Many New Improvements</word>
+               <word name="title">Making the Transition to HTML5: An Overview</word>
+               <word name="text">Highlights include more HTML 5 compatibility and CSS and DOM functionality.</word>
+               <word name="text">HTML5 Boilerplate is a popular site featuring some 'boilerplate' code you can use to start building a fully featured HTML5 page.</word>
+               <word name="link"><![CDATA[http://hacks.mozilla.org/2011/08/firefox6/?utm_source=html5weekly&utm_medium=email@href]]></word>
+               <word name="link"><![CDATA[http://html5boilerplate.com/#v2?utm_source=html5weekly&utm_medium=email@href]]></word>
+            </words>
+         </configuration>
+      </component>
+   </components>
+</plexus>

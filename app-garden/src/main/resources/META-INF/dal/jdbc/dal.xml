@@ -1,0 +1,68 @@
+<entities do-package="com.dianping.garden.dal" gen="true">
+	<entity name="article">
+		<member name="creation-date" insert-expr="NOW()" />
+		<var name="start-id" value-type="int" />
+		<var name="num" value-type="int" />
+		<query-defs>
+			<query name="find-page-before-id" type="SELECT" multiple="true">
+				<param name="start-id" />
+				<param name="num" />
+				<statement><![CDATA[
+					SELECT <FIELDS/>
+					FROM <TABLE/>
+					WHERE <FIELD name='id'/> < ${start-id}
+					ORDER BY <FIELD name='id'/> DESC
+					LIMIT ${num}
+				]]></statement>
+			</query>
+			<query name="insert" type="INSERT" batch="true">
+				<statement><![CDATA[
+        			INSERT 
+        			IGNORE
+        			INTO <TABLE/>(<FIELDS/>) 
+        			VALUES(<VALUES/>) 
+				]]></statement>
+			</query>
+		</query-defs>
+	</entity>
+	<entity name="trend">
+		<member name="creation-date" insert-expr="NOW()" />
+		<member name="last-modified-date" insert-expr="NOW()" update-expr="NOW()" />
+		<updatesets>
+			<updateset name="LAST_REFRESH_DATE">
+				<member name="last-refresh-date" />
+			</updateset>
+		</updatesets>
+		<query-defs>
+			<query name="find-all-active" type="SELECT" multiple="true">
+				<statement><![CDATA[
+					SELECT <FIELDS/> 
+					FROM <TABLE/>
+					WHERE <FIELD name='status'/> = 1 
+				]]></statement>
+			</query>
+		</query-defs>
+	</entity>
+	<entity name="trend-detail">
+		<member name="creation-date" insert-expr="NOW()" />
+		<member name="last-modified-date" insert-expr="NOW()" update-expr="NOW()" />
+		<query-defs>
+			<query name="find-by-origin-url" type="SELECT">
+				<param name="origin-url" />
+				<statement><![CDATA[
+					SELECT <FIELDS/> 
+					FROM <TABLE/>
+					WHERE <FIELD name='origin-url'/> = ${origin-url} 
+				]]></statement>
+			</query>
+			<query name="insert" type="INSERT">
+				<statement><![CDATA[
+        			INSERT 
+        			IGNORE
+        			INTO <TABLE/>(<FIELDS/>) 
+        			VALUES(<VALUES/>) 
+				]]></statement>
+			</query>
+		</query-defs>
+	</entity>
+</entities>

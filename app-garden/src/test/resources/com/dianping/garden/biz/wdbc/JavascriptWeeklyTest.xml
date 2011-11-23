@@ -1,0 +1,21 @@
+<plexus>
+   <components>
+      <component>
+         <role>com.site.wdbc.WdbcQuery</role>
+         <role-hint>JavascriptWeekly-mock</role-hint>
+         <implementation>com.site.wdbc.FindQuery</implementation>
+         <configuration>
+            <words>
+               <word name="date">November 12, 2010</word>
+               <word name="title">jQuery Mobile Alpha 2 Released</word>
+               <word name="title">jQuery 1.4.4 Released</word>
+               <word name="title">Building a Simple Node.js Web Service [Video]</word>
+               <word name="text">jQuery Mobile is a touch-optimized framework</word>
+               <word name="text">jQuery 1.4.4 has been released and focuses on basic tweaks and bugfixes.</word>
+               <word name="link"><![CDATA[http://jquerymobile.com/2010/11/jquery-mobile-alpha-2-released/@href]]></word>
+               <word name="link"><![CDATA[http://blog.jquery.com/2010/11/11/jquery-1-4-4-release-notes/@href]]></word>
+            </words>
+         </configuration>
+      </component>
+   </components>
+</plexus>
