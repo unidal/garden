@@ -47,10 +47,16 @@ public class JavascriptWeekly extends AbstractWdbc {
 
       @Override
       public void doFilter(WdbcResult result) {
+         m_date = null;
+         m_lastText = null;
+
          super.doFilter(result);
 
          if (m_date != null && result.getRowSize() > 0) {
-            result.setValue(0, "date", m_date);
+            for (int i = 0; i < result.getRowSize(); i++) {
+               result.setValue(i, "date", m_date);
+
+            }
          }
       }
 

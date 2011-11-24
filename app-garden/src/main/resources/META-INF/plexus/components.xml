@@ -215,9 +215,11 @@
 			<implementation>com.site.wdbc.SelectQuery</implementation>
 			<configuration>
 				<paths>
+					<path name="day">html.body.div.div.div[3].div.div.div[*].div</path>
 					<path name="title">html.body.div.div.div[3].div.div.div[*].div[2].h2.a</path>
 					<path name="link">html.body.div.div.div[3].div.div.div[*].div[2].h2.a.@href</path>
 					<path name="text">html.body.div.div.div[3].div.div.div[*].div[3].*text</path>
+					<path name="nextPageLink">html.body.div.div.div[3].div.div.div[11].span.a.@href</path>
 				</paths>
 			</configuration>
 			<requirements>

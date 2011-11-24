@@ -34,11 +34,10 @@ public class JavascriptWeeklyFetcher implements ArticleFetcher {
    }
 
    @Override
-   public List<Article> getArticles(Trend trend, WdbcSource source) throws Exception {
+   public List<Article> getArticles(Trend trend, String url, WdbcSource source) throws Exception {
       List<Article> articles = new ArrayList<Article>();
 
       List<JavascriptWeekly> result = m_wdbcMapping.apply(JavascriptWeekly.class, source);
-      Date publishDate = null;
 
       for (JavascriptWeekly item : result) {
          Article article = new Article();
@@ -49,7 +48,7 @@ public class JavascriptWeeklyFetcher implements ArticleFetcher {
          article.setOriginLink(item.getLink());
          article.setAbstraction(item.getText());
          article.setTags("javascript");
-         article.setPublishDate(publishDate);
+         article.setPublishDate(item.getDate());
          articles.add(article);
       }
 
@@ -62,8 +61,8 @@ public class JavascriptWeeklyFetcher implements ArticleFetcher {
    }
 
    @Override
-   public List<URL> getIssueList(String baseUrl, Date lastFetchDate) throws Exception {
-      return Scanners.forUrl().scan(new URL(baseUrl), new ApacheDirectoryProvider(), new UrlMatcher() {
+   public List<URL> getIssueList(URL baseUrl, Date lastFetchDate) throws Exception {
+      return Scanners.forUrl().scan(baseUrl, new ApacheDirectoryProvider(), new UrlMatcher() {
          @Override
          public Direction matches(URL base, String path) {
             return Direction.MATCHED;

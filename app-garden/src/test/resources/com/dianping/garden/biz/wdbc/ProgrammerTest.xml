@@ -8,12 +8,15 @@
          <implementation>com.site.wdbc.FindQuery</implementation>
          <configuration>
             <words>
-               <word name="title">【书摘】Windows Phone Mango开发实践</word>
-               <word name="title">淘宝商城事件的影响</word>
-               <word name="text">本书深入浅出地讲解了微软的Windows Phone Mango开发技术</word>
-               <word name="text">淘宝商城事件让人惊觉电子商务由来已久的弊病，电子商务该怎么做，本文详细解说。</word>
-               <word name="link"><![CDATA[http://www.programmer.com.cn/8897/@href]]></word>
-               <word name="link"><![CDATA[http://www.programmer.com.cn/8875/@href]]></word>
+               <word name="day">31</word>
+               <word name="day">28</word>
+               <word name="title">产品管理的前世今生—今天</word>
+               <word name="title">阿泡的产品管理工具包之产品经理的34个感想</word>
+               <word name="text">在《产品管理的前世今生——昨天》一文中</word>
+               <word name="text">产品经理在工作中遇到的最现实问题就是缺乏合手工具和实用方法的支持。</word>
+               <word name="link"><![CDATA[http://www.programmer.com.cn/8437/@href]]></word>
+               <word name="link"><![CDATA[http://www.programmer.com.cn/8773/@href]]></word>
+               <word name="next-link"><![CDATA[http://www.programmer.com.cn/date/2011/10/page/2/@href]]></word>
             </words>
          </configuration>
       </component>

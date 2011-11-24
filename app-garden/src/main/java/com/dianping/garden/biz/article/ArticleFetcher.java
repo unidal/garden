@@ -12,9 +12,9 @@ import com.site.wdbc.WdbcSource;
 public interface ArticleFetcher {
    public List<Component> defineComponents();
 
-   public List<Article> getArticles(Trend trend, WdbcSource source) throws Exception;
+   public List<Article> getArticles(Trend trend, String url, WdbcSource source) throws Exception;
 
    public String getId();
 
-   public List<URL> getIssueList(String baseUrl, Date lastFetchDate) throws Exception;
+   public List<URL> getIssueList(URL baseUrl, Date lastFetchDate) throws Exception;
 }

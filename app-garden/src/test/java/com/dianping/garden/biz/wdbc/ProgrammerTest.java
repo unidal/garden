@@ -27,31 +27,34 @@ public class ProgrammerTest extends ComponentTestCase {
    @Before
    public void before() throws Exception {
       m_fetcher = lookup(ArticleFetcher.class, "programmer");
+
+      // we don't want any external HTTP calls happening within a test case
+      ((ProgrammerFetcher) m_fetcher).setFetchNextPages(false);
    }
 
    @Test
+   @SuppressWarnings("deprecation")
    public void testFetchArticles() throws Exception {
       Trend trend = new Trend();
 
       trend.setId(123);
 
       WdbcSource source = new ResourceSource(WdbcSourceType.HTML, "programmer.html");
-      List<Article> articles = m_fetcher.getArticles(trend, source);
+      List<Article> articles = m_fetcher.getArticles(trend, "http://www.programmer.com.cn/date/2011/10/", source);
 
-      assertEquals(9, articles.size());
+      assertEquals(10, articles.size());
 
       Article first = articles.get(0);
 
-      // assertEquals("12 Nov 2010 06:00:00 GMT",
-      // first.getPublishDate().toGMTString());
-      assertEquals("【书摘】Windows Phone Mango开发实践", first.getTitle());
-      assertEquals("http://www.programmer.com.cn/8897/", first.getOriginLink());
-      assertEquals("本书深入浅出地讲解了微软的Windows Phone Mango开发技术，每章均以实例的形式讲解，注重动手实践能力的培养。" + //
-               "全书共分为3篇：基础篇、Silverlight交互篇和XNA游戏篇。基础篇重点讲解了Silverlight和XNA的基本技术、多点触控、" + //
-               "传感器和服务等。Silverlight交互篇包含Windows Phone Mango的新技术、新功能，涵盖Silverlight开发的应用程序栏、" + //
-               "数据存储、必应地图、数据绑定、计划操作、全景和枢轴控件、启动器和选择器、应用程序生命周期，以及MVVM模式的应用等开发技术。XNA" + //
-               "游戏篇以Mango游戏开发新功能为重点，讲解集成Silverlight和XNA框架的3D应用，介绍了XNA二维游戏开发和3D模型展示的应用，" + //
-               "以动手实践为核心贯穿整篇。", first.getAbstraction());
+      assertEquals("31 Oct 2011 00:00:00 GMT", first.getPublishDate().toGMTString());
+      assertEquals("产品管理的前世今生—今天", first.getTitle());
+      assertEquals("http://www.programmer.com.cn/8437/", first.getOriginLink());
+      assertEquals("文/张智渊在《产品管理的前世今生——昨天》一文中，介绍了PMS产生的市场原因、理论依据以及所属的学科范畴。" + //
+            "在本篇中，将重点介绍目前国内PMS的发展现状，主要是从企业和从业者两个角度进行说明。建议所有产品管理者、" + //
+            "采用或者即将采用PMS的企业阅读。国内PMS的特点PMS是随着工业化生产由“生产”为中心转变为“消费者”为中" + //
+            "心而产生的，对企业来说，根本目的就是在资源有限的情况下生产出“适销对路”的产品，并保持长久的盈利和发展。" + //
+            "而要实现这个目的，经过市场的选择，PMS就成为目前最适合于企业发展的组织结构。从宝洁1927年提出PMS以来" + //
+            "，经过了80年的发展，PMS随着市场情况的不断变化而逐步丰满和完善，并且为全球各行各业所认可和接受。", first.getAbstraction());
    }
 
    @Test
@@ -100,6 +103,8 @@ public class ProgrammerTest extends ComponentTestCase {
 
       // System.out.println(result);
       assertNotNull(result);
-      assertEquals(9, result.getRowSize());
+      assertEquals(10, result.getRowSize());
+
+      assertEquals("http://www.programmer.com.cn/date/2011/10/page/2/", result.getCell(9, "nextPageLink").toString());
    }
 }

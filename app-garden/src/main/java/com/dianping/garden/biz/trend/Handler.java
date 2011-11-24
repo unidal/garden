@@ -60,7 +60,7 @@ public class Handler extends ContainerHolder implements PageHandler<Context> {
             try {
                fetcher = lookup(ArticleFetcher.class, trend.getType());
 
-               List<URL> urls = fetcher.getIssueList(baseUrl, lastRefreshDate);
+               List<URL> urls = fetcher.getIssueList(new URL(baseUrl), lastRefreshDate);
 
                for (URL url : urls) {
                   String originUrl = url.toExternalForm();
@@ -72,7 +72,7 @@ public class Handler extends ContainerHolder implements PageHandler<Context> {
 
                      String content = Files.forIO().readFrom(url.openStream(), "utf-8");
                      StringSource source = new StringSource(WdbcSourceType.HTML, content);
-                     List<Article> articles = fetcher.getArticles(trend, source);
+                     List<Article> articles = fetcher.getArticles(trend, originUrl, source);
                      int num = articles.size();
 
                      System.out.println(" DONE. Length=" + content.length() + ", articles=" + num);
@@ -162,7 +162,7 @@ public class Handler extends ContainerHolder implements PageHandler<Context> {
       try {
          Payload payload = ctx.getPayload();
          List<Article> articles = m_articleDao.findPageBeforeId(payload.getStartId(), payload.getPageSize(),
-                  ArticleEntity.READSET_FULL);
+               ArticleEntity.READSET_FULL);
 
          model.setArticles(articles);
       } catch (DalException e) {

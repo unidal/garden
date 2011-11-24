@@ -41,6 +41,21 @@ public class Html5Weekly extends AbstractWdbc {
    }
 
    public static class Html5WeeklyFilter extends DefaultWdbcFilter {
+      private Date m_date;
+
+      @Override
+      public void doFilter(WdbcResult result) {
+         m_date = null;
+
+         super.doFilter(result);
+
+         if (m_date != null && result.getRowSize() > 0) {
+            for (int i = 0; i < result.getRowSize(); i++) {
+               result.setValue(i, "date", m_date);
+            }
+         }
+      }
+
       @Override
       protected boolean shouldRemoveRow(WdbcResult result, int row) {
          if (row == 0) {
@@ -51,7 +66,7 @@ public class Html5Weekly extends AbstractWdbc {
                   MessageFormat format = new MessageFormat("Issue #{1} - {0,date,long}", Locale.US);
                   Object[] parts = format.parse(date);
 
-                  result.setValue(row, "date", parts[0]);
+                  m_date = (Date) parts[0];
                } catch (Exception e) {
                   // ignore it
                   e.printStackTrace();
