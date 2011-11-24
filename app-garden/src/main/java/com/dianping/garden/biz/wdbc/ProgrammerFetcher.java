@@ -81,9 +81,17 @@ public class ProgrammerFetcher implements ArticleFetcher {
          }
 
          String nextPageLink = result.get(9).getNextPageLink();
-         String content = Files.forIO().readFrom(new URL(nextPageLink).openStream(), "utf-8");
-         StringSource nextSource = new StringSource(WdbcSourceType.HTML, content);
-         result = m_wdbcMapping.apply(Programmer.class, nextSource);
+
+         result.clear();
+
+         if (nextPageLink != null) {
+            System.out.println();
+            System.out.print("Downloading " + nextPageLink + " ...");
+
+            String content = Files.forIO().readFrom(new URL(nextPageLink).openStream(), "utf-8");
+            StringSource nextSource = new StringSource(WdbcSourceType.HTML, content);
+            result = m_wdbcMapping.apply(Programmer.class, nextSource);
+         }
       }
 
       return articles;

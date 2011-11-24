@@ -14,6 +14,8 @@ public class Model extends ViewModel<TrendPage, Action, Context> {
 
    private List<Article> m_articles;
 
+   private int m_maxPage;
+
    public Model(Context ctx) {
       super(ctx);
    }
@@ -31,6 +33,10 @@ public class Model extends ViewModel<TrendPage, Action, Context> {
       return Action.LIST;
    }
 
+   public int getMaxPage() {
+      return m_maxPage;
+   }
+
    public List<Trend> getTrends() {
       return m_trends;
    }
@@ -41,6 +47,10 @@ public class Model extends ViewModel<TrendPage, Action, Context> {
 
    public void setArticles(List<Article> articles) {
       this.m_articles = articles;
+   }
+
+   public void setMaxPage(int maxPage) {
+      m_maxPage = maxPage;
    }
 
    public void setTrends(List<Trend> trends) {

@@ -113,7 +113,7 @@ public class Handler extends ContainerHolder implements PageHandler<Context> {
       if (m_debug) {
          HttpServletRequest req = ctx.getHttpServletRequest();
 
-         ctx.log("%s %s?page=%s", req.getRemoteAddr(), req.getRequestURI(), payload.getStartId());
+         ctx.log("%s %s?page=%s", req.getRemoteAddr(), req.getRequestURI(), payload.getPageNumber());
       }
 
       if (!ctx.hasErrors()) {
@@ -161,9 +161,12 @@ public class Handler extends ContainerHolder implements PageHandler<Context> {
    private void showList(Context ctx, Model model) {
       try {
          Payload payload = ctx.getPayload();
-         List<Article> articles = m_articleDao.findPageBeforeId(payload.getStartId(), payload.getPageSize(),
+         int total = m_articleDao.findAll(ArticleEntity.READSET_COUNT).get(0).getCount();
+         int pageSize = payload.getPageSize();
+         List<Article> articles = m_articleDao.findPage((payload.getPageNumber() - 1) * pageSize, pageSize,
                ArticleEntity.READSET_FULL);
 
+         model.setMaxPage((total + pageSize - 1) / pageSize);
          model.setArticles(articles);
       } catch (DalException e) {
          ctx.addError(new ErrorObject("dal.article.findPageBeforeId", e));

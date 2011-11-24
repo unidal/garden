@@ -11,8 +11,8 @@ public class Payload implements ActionPayload<TrendPage, Action> {
    @FieldMeta(value = "op")
    private Action m_action;
 
-   @FieldMeta("startId")
-   private int m_startId;
+   @FieldMeta("page")
+   private int m_pageNumber;
 
    @FieldMeta("pageSize")
    private int m_pageSize;
@@ -27,12 +27,12 @@ public class Payload implements ActionPayload<TrendPage, Action> {
       return m_page;
    }
 
-   public int getPageSize() {
-      return m_pageSize;
+   public int getPageNumber() {
+      return m_pageNumber;
    }
 
-   public int getStartId() {
-      return m_startId;
+   public int getPageSize() {
+      return m_pageSize;
    }
 
    public void setAction(String action) {
@@ -52,9 +52,9 @@ public class Payload implements ActionPayload<TrendPage, Action> {
       }
    }
 
-   public void setStartId(String startId) {
+   public void setPageNumber(String pageNumber) {
       try {
-         m_startId = Integer.parseInt(startId);
+         m_pageNumber = Integer.parseInt(pageNumber);
       } catch (Exception e) {
          // ignore it
       }
@@ -66,8 +66,8 @@ public class Payload implements ActionPayload<TrendPage, Action> {
          m_action = Action.LIST;
       }
 
-      if (m_startId <= 0) {
-         m_startId = Integer.MAX_VALUE;
+      if (m_pageNumber <= 0) {
+         m_pageNumber = 1;
       }
 
       if (m_pageSize <= 0) {

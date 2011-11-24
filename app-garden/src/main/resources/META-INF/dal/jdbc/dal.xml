@@ -1,18 +1,29 @@
 <entities do-package="com.dianping.garden.dal" gen="true">
 	<entity name="article">
 		<member name="creation-date" insert-expr="NOW()" />
-		<var name="start-id" value-type="int" />
-		<var name="num" value-type="int" />
+		<member name="count" select-expr="COUNT(*)" value-type="int" all="false" />
+		<var name="start" value-type="int" />
+		<var name="length" value-type="int" />
+		<readsets>
+			<readset name="COUNT">
+				<member name="count" />
+			</readset>
+		</readsets>
 		<query-defs>
-			<query name="find-page-before-id" type="SELECT" multiple="true">
-				<param name="start-id" />
-				<param name="num" />
+			<query name="find-all" type="SELECT" multiple="true">
 				<statement><![CDATA[
 					SELECT <FIELDS/>
 					FROM <TABLE/>
-					WHERE <FIELD name='id'/> < ${start-id}
-					ORDER BY <FIELD name='id'/> DESC
-					LIMIT ${num}
+				]]></statement>
+			</query>
+			<query name="find-page" type="SELECT" multiple="true">
+				<param name="start" />
+				<param name="length" />
+				<statement><![CDATA[
+					SELECT <FIELDS/>
+					FROM <TABLE/>
+					ORDER BY <FIELD name='publish-date'/> DESC
+					LIMIT ${start}, ${length}
 				]]></statement>
 			</query>
 			<query name="insert" type="INSERT" batch="true">

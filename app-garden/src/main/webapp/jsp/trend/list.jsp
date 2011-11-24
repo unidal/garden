@@ -11,6 +11,18 @@
 <a:body>
 
 <res:useCss value='${res.css.local.trend_css}' target="head-css"/>
+
+<div class="trend">
+<h1>
+<c:if test="${payload.pageNumber gt 1}">
+   <a href="${a:uri(model, null)}?page=${payload.pageNumber-1}"><<< Prev Page</a>&nbsp;&nbsp;&nbsp;&nbsp;
+</c:if>
+<c:if test="${payload.pageNumber lt model.maxPage}">
+   <a href="${a:uri(model, null)}?page=${payload.pageNumber+1}">Next Page >>></a>
+</c:if>
+</h1>
+</div>
+
 <c:forEach var="article" items="${model.articles}">
 <div class="trend">
 	<h1><a title="Permalink to ${article.title}" href="${article.originLink}" rel="bookmark">${article.title}</a></h1>
@@ -21,6 +33,14 @@
 </c:forEach>
 
 <div class="trend">
-   <h1><a href="${a:uri(model, null)}?startId=${lastId}">Next Page >>></a></h1>
+<h1>
+<c:if test="${payload.pageNumber gt 1}">
+   <a href="${a:uri(model, null)}?page=${payload.pageNumber-1}"><<< Prev Page</a>&nbsp;&nbsp;&nbsp;&nbsp;
+</c:if>
+<c:if test="${payload.pageNumber lt model.maxPage}">
+   <a href="${a:uri(model, null)}?page=${payload.pageNumber+1}">Next Page >>></a>
+</c:if>
+</h1>
 </div>
+
 </a:body>
