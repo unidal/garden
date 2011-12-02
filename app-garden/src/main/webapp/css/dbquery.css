@@ -1,0 +1,47 @@
+
+#sql {
+	font-size: 1em;
+}
+
+#input {
+	margin-top: 4px;
+	margin-left: 4px;
+}
+
+#result {
+	margin-top: 4px;
+	margin-left: 4px;
+}
+
+#result table {
+	border-collapse: collapse;
+	empty-cells: show;
+}
+
+#result td{
+	font-size: 14px;
+	padding: 4px;
+	border: 1px black solid;
+}
+
+#result th{
+	font-size: 14px;
+	padding: 4px;
+	border: 1px black solid;
+	font-weight: bold;
+	background: #eee;
+}
+
+#error th{
+	font-size: 18px;
+	padding: 4px;
+	font-weight: bold;
+	background: #eee;
+}
+
+#error td{
+	font-size: 16px;
+	color: red;
+	padding: 4px;
+	border: 0px black solid;
+}

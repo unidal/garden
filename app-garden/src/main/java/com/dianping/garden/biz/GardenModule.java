@@ -11,7 +11,9 @@ com.dianping.garden.biz.home.Handler.class,
 
 com.dianping.garden.biz.trend.Handler.class,
 
+com.dianping.garden.biz.query.Handler.class,
+
 })
-public class TrendModule extends AbstractModule {
+public class GardenModule extends AbstractModule {
 
 }

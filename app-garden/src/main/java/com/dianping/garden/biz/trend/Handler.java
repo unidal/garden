@@ -8,7 +8,7 @@ import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 
-import com.dianping.garden.biz.TrendPage;
+import com.dianping.garden.biz.GardenPage;
 import com.dianping.garden.biz.article.ArticleFetcher;
 import com.dianping.garden.dal.Article;
 import com.dianping.garden.dal.ArticleDao;
@@ -136,7 +136,7 @@ public class Handler extends ContainerHolder implements PageHandler<Context> {
       Payload payload = ctx.getPayload();
       Action action = payload.getAction();
 
-      model.setPage(TrendPage.TRENDS);
+      model.setPage(GardenPage.TRENDS);
       model.setAction(action);
 
       if (action.isList()) {

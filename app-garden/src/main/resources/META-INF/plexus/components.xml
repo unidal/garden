@@ -9,10 +9,10 @@
 		</component>
 		<component>
 			<role>com.site.dal.jdbc.datasource.DataSource</role>
-			<role-hint>jdbc-garden</role-hint>
+			<role-hint>garden</role-hint>
 			<implementation>com.site.dal.jdbc.datasource.JdbcDataSource</implementation>
 			<configuration>
-				<id>jdbc-garden</id>
+				<id>garden</id>
 				<maximum-pool-size>3</maximum-pool-size>
 				<connection-timeout>1s</connection-timeout>
 				<idle-timeout>10m</idle-timeout>
@@ -33,12 +33,22 @@
 		</component>
 		<component>
 			<role>com.site.dal.jdbc.mapping.TableProvider</role>
+			<role-hint>raw</role-hint>
+			<implementation>com.site.dal.jdbc.mapping.SimpleTableProvider</implementation>
+			<configuration>
+				<logical-table-name>raw</logical-table-name>
+				<physical-table-name>dual</physical-table-name>
+				<data-source-name>garden</data-source-name>
+			</configuration>
+		</component>
+		<component>
+			<role>com.site.dal.jdbc.mapping.TableProvider</role>
 			<role-hint>article</role-hint>
 			<implementation>com.site.dal.jdbc.mapping.SimpleTableProvider</implementation>
 			<configuration>
 				<logical-table-name>article</logical-table-name>
 				<physical-table-name>article</physical-table-name>
-				<data-source-name>jdbc-garden</data-source-name>
+				<data-source-name>garden</data-source-name>
 			</configuration>
 		</component>
 		<component>
@@ -48,7 +58,7 @@
 			<configuration>
 				<logical-table-name>trend</logical-table-name>
 				<physical-table-name>trend</physical-table-name>
-				<data-source-name>jdbc-garden</data-source-name>
+				<data-source-name>garden</data-source-name>
 			</configuration>
 		</component>
 		<component>
@@ -58,7 +68,7 @@
 			<configuration>
 				<logical-table-name>trend-detail</logical-table-name>
 				<physical-table-name>trend_detail</physical-table-name>
-				<data-source-name>jdbc-garden</data-source-name>
+				<data-source-name>garden</data-source-name>
 			</configuration>
 		</component>
 		<component>
@@ -68,8 +78,17 @@
 			<configuration>
 				<logical-table-name>user</logical-table-name>
 				<physical-table-name>user</physical-table-name>
-				<data-source-name>jdbc-garden</data-source-name>
+				<data-source-name>garden</data-source-name>
 			</configuration>
+		</component>
+		<component>
+			<role>com.site.dal.jdbc.raw.RawDao</role>
+			<implementation>com.site.dal.jdbc.raw.RawDao</implementation>
+			<requirements>
+				<requirement>
+					<role>com.site.dal.jdbc.QueryEngine</role>
+				</requirement>
+			</requirements>
 		</component>
 		<component>
 			<role>com.dianping.garden.dal.ArticleDao</role>
@@ -239,13 +258,13 @@
 			<implementation>com.site.web.mvc.model.ModuleRegistry</implementation>
 			<configuration>
 				<modules>
-					<module default="true">com.dianping.garden.biz.TrendModule</module>
+					<module default="true">com.dianping.garden.biz.GardenModule</module>
 				</modules>
 			</configuration>
 		</component>
 		<component>
-			<role>com.dianping.garden.biz.TrendModule</role>
-			<implementation>com.dianping.garden.biz.TrendModule</implementation>
+			<role>com.dianping.garden.biz.GardenModule</role>
+			<implementation>com.dianping.garden.biz.GardenModule</implementation>
 		</component>
 		<component>
 			<role>com.dianping.garden.biz.home.Handler</role>
@@ -281,6 +300,25 @@
 		<component>
 			<role>com.dianping.garden.biz.trend.JspViewer</role>
 			<implementation>com.dianping.garden.biz.trend.JspViewer</implementation>
+		</component>
+		<component>
+			<role>com.dianping.garden.biz.query.Handler</role>
+			<implementation>com.dianping.garden.biz.query.Handler</implementation>
+			<requirements>
+				<requirement>
+					<role>com.dianping.garden.biz.query.JspViewer</role>
+				</requirement>
+				<requirement>
+					<role>com.site.dal.jdbc.datasource.JdbcDataSourceConfigurationManager</role>
+				</requirement>
+				<requirement>
+					<role>com.site.dal.jdbc.raw.RawDao</role>
+				</requirement>
+			</requirements>
+		</component>
+		<component>
+			<role>com.dianping.garden.biz.query.JspViewer</role>
+			<implementation>com.dianping.garden.biz.query.JspViewer</implementation>
 		</component>
 	</components>
 </plexus>

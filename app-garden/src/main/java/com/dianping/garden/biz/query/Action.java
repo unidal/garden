@@ -1,9 +1,7 @@
-package com.dianping.garden.biz.trend;
+package com.dianping.garden.biz.query;
 
 public enum Action implements com.site.web.mvc.Action {
-   LIST("list"),
-
-   REFRESH("refresh"),
+   MAIN("main"),
 
    ;
 
@@ -28,11 +26,7 @@ public enum Action implements com.site.web.mvc.Action {
       return m_name;
    }
 
-   public boolean isRefresh() {
-      return this == REFRESH;
-   }
-
-   public boolean isList() {
-      return this == LIST;
+   public boolean isMain() {
+      return this == MAIN;
    }
 }

@@ -1,10 +1,10 @@
 package com.dianping.garden.biz.home;
 
 
-import com.dianping.garden.biz.TrendPage;
+import com.dianping.garden.biz.GardenPage;
 import com.site.web.mvc.ViewModel;
 
-public class Model extends ViewModel<TrendPage, Action, Context> {
+public class Model extends ViewModel<GardenPage, Action, Context> {
 	public Model(Context ctx) {
 		super(ctx);
 	}

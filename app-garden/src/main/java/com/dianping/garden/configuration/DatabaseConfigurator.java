@@ -12,10 +12,10 @@ final class DatabaseConfigurator extends AbstractJdbcResourceConfigurator {
       List<Component> all = new ArrayList<Component>();
 
       all.add(defineJdbcDataSourceConfigurationManagerComponent("datasources.xml"));
-      all.add(defineJdbcDataSourceComponent("jdbc-garden", "${jdbc.driver}", "${jdbc.url}", "${jdbc.user}",
+      all.add(defineJdbcDataSourceComponent("garden", "${jdbc.driver}", "${jdbc.url}", "${jdbc.user}",
                "${jdbc.password}", "<![CDATA[${jdbc.connectionProperties}]]>"));
 
-      defineSimpleTableProviderComponents(all, "jdbc-garden", _INDEX.getEntityClasses());
+      defineSimpleTableProviderComponents(all, "garden", _INDEX.getEntityClasses());
       defineDaoComponents(all, _INDEX.getDaoClasses());
 
       return all;

@@ -2,12 +2,12 @@ package com.dianping.garden.biz.trend;
 
 import java.util.List;
 
-import com.dianping.garden.biz.TrendPage;
+import com.dianping.garden.biz.GardenPage;
 import com.dianping.garden.dal.Article;
 import com.dianping.garden.dal.Trend;
 import com.site.web.mvc.ViewModel;
 
-public class Model extends ViewModel<TrendPage, Action, Context> {
+public class Model extends ViewModel<GardenPage, Action, Context> {
    private Action m_action;
 
    private List<Trend> m_trends;

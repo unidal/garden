@@ -5,8 +5,6 @@ public enum JspFile {
 	
 	REFRESH("/jsp/trend/refresh.jsp"),
 
-	VIEW("/jsp/trend/view.jsp"),
-
 	;
 
 	private String m_path;

@@ -17,7 +17,7 @@ import com.site.web.mvc.ActionContext;
 import com.site.web.mvc.ActionPayload;
 import com.site.web.mvc.Page;
 
-public class TrendContext<T extends ActionPayload<? extends Page, ? extends Action>> extends ActionContext<T> {
+public class GardenContext<T extends ActionPayload<? extends Page, ? extends Action>> extends ActionContext<T> {
    @SuppressWarnings("deprecation")
    @Override
    public void initialize(HttpServletRequest request, HttpServletResponse response) {

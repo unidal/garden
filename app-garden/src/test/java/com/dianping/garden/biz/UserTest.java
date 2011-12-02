@@ -14,17 +14,23 @@ public class UserTest extends ComponentTestCase {
    @Test
    public void test() throws Exception {
       UserDao dao = lookup(UserDao.class);
-      User user = dao.findByPK(1705, UserEntity.READSET_FULL);
-      long start = System.currentTimeMillis();
 
-      for (int i = 0; i < 1000; i++) {
+      // do warm-up
+      User user = dao.findByPK(1705, UserEntity.READSET_FULL);
+
+      long start = System.currentTimeMillis();
+      int count = 10000;
+
+      for (int i = 0; i < count; i++) {
          user = dao.findByPK(1705, UserEntity.READSET_FULL);
 
          assertEquals(
-                  "User[author: dd, creation-date: 2011-11-18 18:33:13.0, id: 1705, key-id: 0, origin-link: dd, source-id: 0, source-type: d, tags: ddd, title: djfkd]",
-                  user.toString());
+               "User[author: dd, creation-date: 2011-11-18 18:33:13.0, id: 1705, key-id: 0, origin-link: dd, source-id: 0, source-type: d, tags: ddd, title: djfkd]",
+               user.toString());
       }
 
-      System.out.println("Time used: " + (System.currentTimeMillis() - start) + " ms.");
+      long total = System.currentTimeMillis() - start;
+
+      System.out.println("Time used: " + total + " ms, " + 1.0d * total / count + " ms each.");
    }
 }

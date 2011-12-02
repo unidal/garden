@@ -1,13 +1,13 @@
 package com.dianping.garden.biz.home;
 
 
-import com.dianping.garden.biz.TrendPage;
+import com.dianping.garden.biz.GardenPage;
 import com.site.web.mvc.ActionContext;
 import com.site.web.mvc.ActionPayload;
 import com.site.web.mvc.payload.annotation.FieldMeta;
 
-public class Payload implements ActionPayload<TrendPage, Action> {
-	private TrendPage m_page;
+public class Payload implements ActionPayload<GardenPage, Action> {
+	private GardenPage m_page;
 
 	@FieldMeta("op")
 	private Action m_action;
@@ -22,13 +22,13 @@ public class Payload implements ActionPayload<TrendPage, Action> {
 	}
 
 	@Override
-	public TrendPage getPage() {
+	public GardenPage getPage() {
 		return m_page;
 	}
 
 	@Override
 	public void setPage(String page) {
-		m_page = TrendPage.getByName(page, TrendPage.HOME);
+		m_page = GardenPage.getByName(page, GardenPage.HOME);
 	}
 
 	@Override

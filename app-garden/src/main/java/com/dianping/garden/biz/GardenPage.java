@@ -2,10 +2,12 @@ package com.dianping.garden.biz;
 
 import com.site.web.mvc.Page;
 
-public enum TrendPage implements Page {
+public enum GardenPage implements Page {
 	HOME("home", "Home", true),
 	
 	TRENDS("trends", "Trends", true),
+	
+	DB_QUERY("dbquery", "DB Query", true),
 	
 	;
 
@@ -15,14 +17,14 @@ public enum TrendPage implements Page {
 
 	private boolean m_realPage;
 
-	private TrendPage(String name, String description, boolean realPage) {
+	private GardenPage(String name, String description, boolean realPage) {
 		m_name = name;
 		m_description = description;
 		m_realPage = realPage;
 	}
 
-	public static TrendPage getByName(String name, TrendPage defaultPage) {
-		for (TrendPage action : TrendPage.values()) {
+	public static GardenPage getByName(String name, GardenPage defaultPage) {
+		for (GardenPage action : GardenPage.values()) {
 			if (action.getName().equals(name)) {
 				return action;
 			}
@@ -43,7 +45,7 @@ public enum TrendPage implements Page {
 		return m_realPage;
 	}
 
-	public TrendPage[] getValues() {
-		return TrendPage.values();
+	public GardenPage[] getValues() {
+		return GardenPage.values();
 	}
 }
