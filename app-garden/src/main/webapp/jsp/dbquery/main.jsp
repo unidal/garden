@@ -29,7 +29,7 @@
 				</tr>
 				<tr>
 					<td align="right">SQL History</b></td>
-					<td colspan="2"><select size="1" id="history">
+					<td colspan="2"><select size="1" id="history" onchange="dbQuery.changeSql(this)">
 						<c:forEach var="sql" items="${model.historySqls}">
 							<option>${w:htmlEncode(sql)}</option>
 						</c:forEach>
