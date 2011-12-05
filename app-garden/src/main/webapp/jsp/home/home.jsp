@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=utf-8"%>
-<%@ page import="com.dianping.garden.biz.home.*"%>
+<%@ page import="com.dianping.garden.page.home.*"%>
 <%@ taglib prefix="a" uri="/WEB-INF/app.tld"%>
 <jsp:useBean id="ctx" type="Context" scope="request" />
 <jsp:useBean id="payload" type="Payload" scope="request" />

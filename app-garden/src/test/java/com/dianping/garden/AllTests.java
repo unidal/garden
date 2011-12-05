@@ -4,10 +4,10 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
-import com.dianping.garden.biz.wdbc.ApacheDirectoryProviderTest;
-import com.dianping.garden.biz.wdbc.Html5WeeklyTest;
-import com.dianping.garden.biz.wdbc.JavascriptWeeklyTest;
-import com.dianping.garden.biz.wdbc.ProgrammerTest;
+import com.dianping.garden.wdbc.ApacheDirectoryProviderTest;
+import com.dianping.garden.wdbc.Html5WeeklyTest;
+import com.dianping.garden.wdbc.JavascriptWeeklyTest;
+import com.dianping.garden.wdbc.ProgrammerTest;
 
 @RunWith(Suite.class)
 @SuiteClasses({

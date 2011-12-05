@@ -3,10 +3,10 @@ package com.dianping.garden.configuration;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.dianping.garden.biz.wdbc.Html5WeeklyFetcher;
-import com.dianping.garden.biz.wdbc.JavascriptWeeklyFetcher;
-import com.dianping.garden.biz.wdbc.ProgrammerFetcher;
-import com.dianping.garden.biz.wdbc.WdbcMapping;
+import com.dianping.garden.wdbc.Html5WeeklyFetcher;
+import com.dianping.garden.wdbc.JavascriptWeeklyFetcher;
+import com.dianping.garden.wdbc.ProgrammerFetcher;
+import com.dianping.garden.wdbc.WdbcMapping;
 import com.site.lookup.configuration.Component;
 import com.site.wdbc.WdbcEngine;
 import com.site.wdbc.http.configuration.AbstractWdbcComponentsConfigurator;

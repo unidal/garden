@@ -3,7 +3,7 @@ package com.dianping.garden.configuration;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.dianping.garden.biz.GardenModule;
+import com.dianping.garden.GardenModule;
 import com.site.lookup.configuration.Component;
 import com.site.web.configuration.AbstractWebComponentsConfigurator;
 

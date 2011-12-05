@@ -84,8 +84,7 @@ public class SimpleServer extends SimpleServerSupport {
 
    @Test
    public void startServer() throws Exception {
-      s_adaptor.display("/d/g/home");
-
+//      s_adaptor.display("/d/g/home");
       System.out.println(String.format("[%s] Press any key to stop server ... ", getTimestamp()));
       System.in.read();
    }

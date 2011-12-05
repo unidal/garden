@@ -127,8 +127,8 @@
 			</requirements>
 		</component>
 		<component>
-			<role>com.dianping.garden.biz.wdbc.WdbcMapping</role>
-			<implementation>com.dianping.garden.biz.wdbc.WdbcMapping</implementation>
+			<role>com.dianping.garden.wdbc.WdbcMapping</role>
+			<implementation>com.dianping.garden.wdbc.WdbcMapping</implementation>
 			<requirements>
 				<requirement>
 					<role>com.site.wdbc.WdbcEngine</role>
@@ -136,12 +136,12 @@
 			</requirements>
 		</component>
 		<component>
-			<role>com.dianping.garden.biz.article.ArticleFetcher</role>
+			<role>com.dianping.garden.wdbc.ArticleFetcher</role>
 			<role-hint>javascript</role-hint>
-			<implementation>com.dianping.garden.biz.wdbc.JavascriptWeeklyFetcher</implementation>
+			<implementation>com.dianping.garden.wdbc.JavascriptWeeklyFetcher</implementation>
 			<requirements>
 				<requirement>
-					<role>com.dianping.garden.biz.wdbc.WdbcMapping</role>
+					<role>com.dianping.garden.wdbc.WdbcMapping</role>
 				</requirement>
 			</requirements>
 		</component>
@@ -172,15 +172,15 @@
 		<component>
 			<role>com.site.wdbc.query.WdbcFilter</role>
 			<role-hint>JavascriptWeekly</role-hint>
-			<implementation>com.dianping.garden.biz.wdbc.JavascriptWeekly$JavascriptWeeklyFilter</implementation>
+			<implementation>com.dianping.garden.wdbc.JavascriptWeekly$JavascriptWeeklyFilter</implementation>
 		</component>
 		<component>
-			<role>com.dianping.garden.biz.article.ArticleFetcher</role>
+			<role>com.dianping.garden.wdbc.ArticleFetcher</role>
 			<role-hint>html5</role-hint>
-			<implementation>com.dianping.garden.biz.wdbc.Html5WeeklyFetcher</implementation>
+			<implementation>com.dianping.garden.wdbc.Html5WeeklyFetcher</implementation>
 			<requirements>
 				<requirement>
-					<role>com.dianping.garden.biz.wdbc.WdbcMapping</role>
+					<role>com.dianping.garden.wdbc.WdbcMapping</role>
 				</requirement>
 			</requirements>
 		</component>
@@ -211,15 +211,15 @@
 		<component>
 			<role>com.site.wdbc.query.WdbcFilter</role>
 			<role-hint>Html5Weekly</role-hint>
-			<implementation>com.dianping.garden.biz.wdbc.Html5Weekly$Html5WeeklyFilter</implementation>
+			<implementation>com.dianping.garden.wdbc.Html5Weekly$Html5WeeklyFilter</implementation>
 		</component>
 		<component>
-			<role>com.dianping.garden.biz.article.ArticleFetcher</role>
+			<role>com.dianping.garden.wdbc.ArticleFetcher</role>
 			<role-hint>programmer</role-hint>
-			<implementation>com.dianping.garden.biz.wdbc.ProgrammerFetcher</implementation>
+			<implementation>com.dianping.garden.wdbc.ProgrammerFetcher</implementation>
 			<requirements>
 				<requirement>
-					<role>com.dianping.garden.biz.wdbc.WdbcMapping</role>
+					<role>com.dianping.garden.wdbc.WdbcMapping</role>
 				</requirement>
 			</requirements>
 		</component>
@@ -251,40 +251,40 @@
 		<component>
 			<role>com.site.wdbc.query.WdbcFilter</role>
 			<role-hint>Programmer</role-hint>
-			<implementation>com.dianping.garden.biz.wdbc.Programmer$ProgrammerFilter</implementation>
+			<implementation>com.dianping.garden.wdbc.Programmer$ProgrammerFilter</implementation>
 		</component>
 		<component>
 			<role>com.site.web.mvc.model.ModuleRegistry</role>
 			<implementation>com.site.web.mvc.model.ModuleRegistry</implementation>
 			<configuration>
 				<modules>
-					<module default="true">com.dianping.garden.biz.GardenModule</module>
+					<module default="true">com.dianping.garden.GardenModule</module>
 				</modules>
 			</configuration>
 		</component>
 		<component>
-			<role>com.dianping.garden.biz.GardenModule</role>
-			<implementation>com.dianping.garden.biz.GardenModule</implementation>
+			<role>com.dianping.garden.GardenModule</role>
+			<implementation>com.dianping.garden.GardenModule</implementation>
 		</component>
 		<component>
-			<role>com.dianping.garden.biz.home.Handler</role>
-			<implementation>com.dianping.garden.biz.home.Handler</implementation>
+			<role>com.dianping.garden.page.home.Handler</role>
+			<implementation>com.dianping.garden.page.home.Handler</implementation>
 			<requirements>
 				<requirement>
-					<role>com.dianping.garden.biz.home.JspViewer</role>
+					<role>com.dianping.garden.page.home.JspViewer</role>
 				</requirement>
 			</requirements>
 		</component>
 		<component>
-			<role>com.dianping.garden.biz.home.JspViewer</role>
-			<implementation>com.dianping.garden.biz.home.JspViewer</implementation>
+			<role>com.dianping.garden.page.home.JspViewer</role>
+			<implementation>com.dianping.garden.page.home.JspViewer</implementation>
 		</component>
 		<component>
-			<role>com.dianping.garden.biz.trend.Handler</role>
-			<implementation>com.dianping.garden.biz.trend.Handler</implementation>
+			<role>com.dianping.garden.page.trend.Handler</role>
+			<implementation>com.dianping.garden.page.trend.Handler</implementation>
 			<requirements>
 				<requirement>
-					<role>com.dianping.garden.biz.trend.JspViewer</role>
+					<role>com.dianping.garden.page.trend.JspViewer</role>
 				</requirement>
 				<requirement>
 					<role>com.dianping.garden.dal.TrendDao</role>
@@ -298,15 +298,15 @@
 			</requirements>
 		</component>
 		<component>
-			<role>com.dianping.garden.biz.trend.JspViewer</role>
-			<implementation>com.dianping.garden.biz.trend.JspViewer</implementation>
+			<role>com.dianping.garden.page.trend.JspViewer</role>
+			<implementation>com.dianping.garden.page.trend.JspViewer</implementation>
 		</component>
 		<component>
-			<role>com.dianping.garden.biz.query.Handler</role>
-			<implementation>com.dianping.garden.biz.query.Handler</implementation>
+			<role>com.dianping.garden.page.query.Handler</role>
+			<implementation>com.dianping.garden.page.query.Handler</implementation>
 			<requirements>
 				<requirement>
-					<role>com.dianping.garden.biz.query.JspViewer</role>
+					<role>com.dianping.garden.page.query.JspViewer</role>
 				</requirement>
 				<requirement>
 					<role>com.site.dal.jdbc.datasource.JdbcDataSourceConfigurationManager</role>
@@ -317,8 +317,8 @@
 			</requirements>
 		</component>
 		<component>
-			<role>com.dianping.garden.biz.query.JspViewer</role>
-			<implementation>com.dianping.garden.biz.query.JspViewer</implementation>
+			<role>com.dianping.garden.page.query.JspViewer</role>
+			<implementation>com.dianping.garden.page.query.JspViewer</implementation>
 		</component>
 	</components>
 </plexus>
