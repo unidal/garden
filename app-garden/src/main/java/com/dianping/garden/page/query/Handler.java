@@ -51,7 +51,7 @@ public class Handler extends ContainerHolder implements PageHandler<Context> {
             }
 
             try {
-               List<RawDataObject> rawDataObjects = m_rawDao.executeQuery(sb.toString());
+               List<RawDataObject> rawDataObjects = m_rawDao.executeQuery(payload.getDatasource(), sb.toString());
 
                ctx.setRawDataObjects(rawDataObjects);
             } catch (DalException e) {
@@ -125,19 +125,19 @@ public class Handler extends ContainerHolder implements PageHandler<Context> {
       }
 
       if (!ctx.hasErrors()) {
-         String sql = payload.getSql();
+         if (payload.getSql() != null && payload.getSql().length() > 0) {
+            String sql = payload.getDatasource() + " - " + payload.getSql();
 
-         if (sql != null && sql.length() > 0) {
             if (sqls.contains(sql)) {
                sqls.remove(sql);
             }
 
             sqls.add(0, sql);
-         }
 
-         // no more than 10 history items
-         while (sqls.size() > 10) {
-            sqls.remove(0);
+            // no more than 10 history items
+            while (sqls.size() > 10) {
+               sqls.remove(0);
+            }
          }
       }
 

@@ -21,7 +21,7 @@
 			<table>
 				<tr>
 					<td align="right">DB Host</b></td>
-					<td colspan="2"><select size="1" name="ds">
+					<td colspan="2"><select size="1" name="ds" id="ds">
 						<c:forEach var="ds" items="${model.datasources}">
 							<option${ds eq payload.datasource?' selected':''}>${w:htmlEncode(ds)}</option>
 						</c:forEach>
@@ -56,9 +56,11 @@
 						<input type="submit" name="html" value="Execute Query">
 					</td>
 					<td>
+						<!-- 
 						<input type="submit" name="xml" value="To XML">&nbsp;&nbsp;
 						<input type="submit" name="json" value="To JSON">&nbsp;&nbsp;
 						<input type="submit" name="cvs" value="To CVS">&nbsp;&nbsp;
+						 -->
 					</td>
 				</tr>
 			</table>

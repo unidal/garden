@@ -32,14 +32,52 @@
 			</requirements>
 		</component>
 		<component>
-			<role>com.site.dal.jdbc.mapping.TableProvider</role>
-			<role-hint>raw</role-hint>
-			<implementation>com.site.dal.jdbc.mapping.SimpleTableProvider</implementation>
+			<role>com.site.dal.jdbc.datasource.DataSource</role>
+			<role-hint>8.44</role-hint>
+			<implementation>com.site.dal.jdbc.datasource.JdbcDataSource</implementation>
 			<configuration>
-				<logical-table-name>raw</logical-table-name>
-				<physical-table-name>dual</physical-table-name>
-				<data-source-name>garden</data-source-name>
+				<id>8.44</id>
+				<maximum-pool-size>3</maximum-pool-size>
+				<connection-timeout>1s</connection-timeout>
+				<idle-timeout>10m</idle-timeout>
+				<statement-cache-size>1000</statement-cache-size>
+				<properties>
+					<driver>${jdbc.driver}</driver>
+					<URL>${jdbc.url}</URL>
+					<user>${jdbc.user}</user>
+					<password>${jdbc.password}</password>
+					<connectionProperties><![CDATA[${jdbc.connectionProperties}]]></connectionProperties>
+				</properties>
 			</configuration>
+			<requirements>
+				<requirement>
+					<role>com.site.dal.jdbc.datasource.JdbcDataSourceConfigurationManager</role>
+				</requirement>
+			</requirements>
+		</component>
+		<component>
+			<role>com.site.dal.jdbc.datasource.DataSource</role>
+			<role-hint>test</role-hint>
+			<implementation>com.site.dal.jdbc.datasource.JdbcDataSource</implementation>
+			<configuration>
+				<id>test</id>
+				<maximum-pool-size>3</maximum-pool-size>
+				<connection-timeout>1s</connection-timeout>
+				<idle-timeout>10m</idle-timeout>
+				<statement-cache-size>1000</statement-cache-size>
+				<properties>
+					<driver>${jdbc.driver}</driver>
+					<URL>${jdbc.url}</URL>
+					<user>${jdbc.user}</user>
+					<password>${jdbc.password}</password>
+					<connectionProperties><![CDATA[${jdbc.connectionProperties}]]></connectionProperties>
+				</properties>
+			</configuration>
+			<requirements>
+				<requirement>
+					<role>com.site.dal.jdbc.datasource.JdbcDataSourceConfigurationManager</role>
+				</requirement>
+			</requirements>
 		</component>
 		<component>
 			<role>com.site.dal.jdbc.mapping.TableProvider</role>
@@ -80,15 +118,6 @@
 				<physical-table-name>user</physical-table-name>
 				<data-source-name>garden</data-source-name>
 			</configuration>
-		</component>
-		<component>
-			<role>com.site.dal.jdbc.raw.RawDao</role>
-			<implementation>com.site.dal.jdbc.raw.RawDao</implementation>
-			<requirements>
-				<requirement>
-					<role>com.site.dal.jdbc.QueryEngine</role>
-				</requirement>
-			</requirements>
 		</component>
 		<component>
 			<role>com.dianping.garden.dal.ArticleDao</role>
@@ -319,6 +348,15 @@
 		<component>
 			<role>com.dianping.garden.page.query.JspViewer</role>
 			<implementation>com.dianping.garden.page.query.JspViewer</implementation>
+		</component>
+		<component>
+			<role>com.site.dal.jdbc.raw.RawDao</role>
+			<implementation>com.site.dal.jdbc.raw.RawDao</implementation>
+			<requirements>
+				<requirement>
+					<role>com.site.dal.jdbc.QueryEngine</role>
+				</requirement>
+			</requirements>
 		</component>
 	</components>
 </plexus>
