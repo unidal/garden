@@ -1,30 +1,32 @@
 var dbQuery={
-	changeSql:function(target){
-		var text=target.options[target.options.selectedIndex].text;
-		var pos=text.indexOf(' - ');
+   changeSql:function(target){
+      var value=target.options[target.options.selectedIndex].value;
 
-		if (pos>0) {
-		  var sql=text.substring(pos+3);
-		  var ds=text.substring(0,pos);
-		  var options=$("ds").options; 
+      if (value) {
+         var array = eval(value);
+        
+         this.selectOption($("ds").options,array[0]);
+         ${"explain"}.checked=true;
+         this.selectOption($("maxRow").options,array[2]);
+         $("sql").value=array[3];
+      }
+   },
 
-		  $("sql").value=sql;
-		  
-		  for (var i = 0; i < options.length; i++) {
-			 if (options[i].text==ds) {
-				 options[i].selected=true;
-			 }
-	      }
-		}
-	},
+   selectOption:function(options,selected) {
+      for (var i = 0; i < options.length; i++) {
+         if (options[i].value==selected || options[i].text==selected) {
+            options[i].selected=true;
+         }
+      }
+   },
+   
+   changeStyle:function(){
+      var style="width:"+$('sql').style.width+";height:"+$('sql').style.height;
 
-	changeStyle:function(){
-		var style="width:"+$('sql').style.width+";height:"+$('sql').style.height;
-
-		$("style").value=style;
-	}
-}
+      $("style").value=style;
+   }
+};
 
 window.addEvent("domready",function(){
-	$("sql").addEvent("mouseup",dbQuery.changeStyle);
+   $("sql").addEvent("mouseup",dbQuery.changeStyle);
 });

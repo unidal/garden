@@ -1,9 +1,11 @@
 package com.dianping.garden.page.query;
 
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
 import com.dianping.garden.GardenPage;
-import com.ebay.webres.helper.Joiners;
 import com.site.dal.jdbc.raw.RawDataObject;
 import com.site.web.mvc.ViewModel;
 
@@ -12,7 +14,7 @@ public class Model extends ViewModel<GardenPage, Action, Context> {
 
    private List<String> m_datasources;
 
-   private List<String> m_historySqls;
+   private Map<String, String> m_historyMap;
 
    private List<RawDataObject> m_rawDataObjects;
 
@@ -36,11 +38,28 @@ public class Model extends ViewModel<GardenPage, Action, Context> {
    }
 
    public String getHistory() {
-      return Joiners.by("@@@").noEmptyItem().join(m_historySqls);
+      StringBuilder sb = new StringBuilder(4096);
+      boolean first = true;
+
+      for (Entry<String, String> e : m_historyMap.entrySet()) {
+         String key = e.getKey();
+
+         if (key.length() > 0) {
+            if (first) {
+               first = false;
+            } else {
+               sb.append("@@@");
+            }
+
+            sb.append(key).append("@@@").append(e.getValue());
+         }
+      }
+
+      return sb.toString();
    }
 
-   public List<String> getHistorySqls() {
-      return m_historySqls;
+   public Set<Entry<String, String>> getHistoryEntries() {
+      return m_historyMap.entrySet();
    }
 
    public List<Integer> getMaxRows() {
@@ -59,8 +78,8 @@ public class Model extends ViewModel<GardenPage, Action, Context> {
       m_datasources = datasources;
    }
 
-   public void setHistorySqls(List<String> historySqls) {
-      m_historySqls = historySqls;
+   public void setHistoryMap(Map<String, String> historyMap) {
+      m_historyMap = historyMap;
    }
 
    public void setMaxRows(List<Integer> maxRows) {

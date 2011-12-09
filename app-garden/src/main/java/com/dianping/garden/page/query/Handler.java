@@ -2,9 +2,10 @@ package com.dianping.garden.page.query;
 
 import java.io.IOException;
 import java.text.MessageFormat;
-import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 
@@ -117,31 +118,37 @@ public class Handler extends ContainerHolder implements PageHandler<Context> {
 
    private void prepareHistorySqls(Context ctx, Model model) {
       Payload payload = ctx.getPayload();
-      List<String> sqls = new ArrayList<String>();
-      List<String> historySqls = payload.getHistorySqls();
-
-      if (historySqls != null) {
-         sqls.addAll(historySqls);
-      }
+      Map<String, String> historyMap = new LinkedHashMap<String, String>();
+      int maxSize = 10;
 
       if (!ctx.hasErrors()) {
          if (payload.getSql() != null && payload.getSql().length() > 0) {
-            String sql = payload.getDatasource() + " - " + payload.getSql();
+            String value = "[" + quotes(payload.getDatasource()) + "," + //
+                  quotes(payload.isShowExecutionPlan() ? "1" : "0") + "," //
+                  + quotes(payload.getSql()) + "]";
+            String text = payload.getDatasource() + (payload.isShowExecutionPlan() ? " * " : " - ") + payload.getSql();
 
-            if (sqls.contains(sql)) {
-               sqls.remove(sql);
-            }
+            historyMap.put(value, shorten(text));
+         }
+      }
 
-            sqls.add(0, sql);
+      List<String> historySqls = payload.getHistorySqls();
 
-            // no more than 10 history items
-            while (sqls.size() > 10) {
-               sqls.remove(0);
+      if (historySqls != null) {
+         int len = historySqls.size();
+
+         for (int i = 0; i < len; i += 2) {
+            String value = historySqls.get(i);
+
+            if (!historyMap.containsKey(value) && historyMap.size() < maxSize) {
+               String text = i + 1 < len ? historySqls.get(i + 1) : "";
+
+               historyMap.put(value, shorten(text));
             }
          }
       }
 
-      model.setHistorySqls(sqls);
+      model.setHistoryMap(historyMap);
    }
 
    protected String processLimitClause(String sql, int maxRow) {
@@ -156,8 +163,9 @@ public class Handler extends ContainerHolder implements PageHandler<Context> {
 
          try {
             Object[] args = new MessageFormat("{2} LIMIT {0}").parse(snippet);
+            String first = (String) args[0];
 
-            num = Integer.parseInt((String) args[0]);
+            num = Integer.parseInt(first.trim());
          } catch (Exception e) {
             // ignore
          }
@@ -165,9 +173,11 @@ public class Handler extends ContainerHolder implements PageHandler<Context> {
          if (num < 0) {
             try {
                Object[] args = new MessageFormat("{2} LIMIT {0},{1}").parse(snippet);
+               String first = (String) args[0];
+               String second = (String) args[1];
 
-               start = Integer.parseInt((String) args[0]);
-               num = Integer.parseInt((String) args[1]);
+               start = Integer.parseInt(first.trim());
+               num = Integer.parseInt(second.trim());
             } catch (Exception e) {
                // ignore
             }
@@ -191,6 +201,35 @@ public class Handler extends ContainerHolder implements PageHandler<Context> {
       }
 
       return sb.toString();
+   }
+
+   private String quotes(Object value) {
+      StringBuilder sb = new StringBuilder();
+      String str = String.valueOf(value);
+      int len = str.length();
+
+      sb.append('\'');
+
+      for (int i = 0; i < len; i++) {
+         char ch = str.charAt(i);
+
+         if (ch == '"') {
+            sb.append("\\\"");
+         } else if (ch == '\'') {
+            sb.append("\\\'");
+         } else {
+            sb.append(ch);
+         }
+      }
+
+      sb.append('\'');
+
+      return sb.toString();
+   }
+
+   private String shorten(String sql) {
+      // TODO
+      return sql;
    }
 
    private void showMain(Context ctx, Model model) {

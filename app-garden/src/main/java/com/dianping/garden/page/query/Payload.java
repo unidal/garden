@@ -85,9 +85,10 @@ public class Payload implements ActionPayload<GardenPage, Action> {
    public void setHistorySqls(String historySqls) {
       List<String> sqls = new ArrayList<String>(20);
       String history = Decoder.urlDecode(historySqls);
+      int len = history.length();
       int off = 0;
 
-      while (true) {
+      while (len > 0) {
          int pos = history.indexOf("@@@", off);
 
          if (pos < 0) {

@@ -11,12 +11,12 @@
 <a:body>
 
 	<res:useCss value='${res.css.local.dbquery_css}' target="head-css" />
-	<res:useJs value='${res.js.local.g_mt_js}' target="head-js" />
 	<res:useJs value='${res.js.local.dbquery_js}' target="head-js" />
+	<res:useJs value='${res.js.local.g_mt_js}' target="head-js" />
 
 	<div id="input">
 		<form method="post">
-			<input type="hidden" name="history" value="${w:urlEncode(model.history)}">
+			<input type="hidden" name="history" value="${model.history}">
 			<input type="hidden" name="style" id="style" value="${payload.style}">
 			<table>
 				<tr>
@@ -30,16 +30,16 @@
 				<tr>
 					<td align="right">SQL History</b></td>
 					<td colspan="2"><select size="1" id="history" onchange="dbQuery.changeSql(this)">
-						<c:forEach var="sql" items="${model.historySqls}">
-							<option>${w:htmlEncode(sql)}</option>
+						<c:forEach var="e" items="${model.historyEntries}">
+							<option value="${e.key}">${w:htmlEncode(e.value)}</option>
 						</c:forEach>
 					</select></td>
 				</tr>
 				<tr>
 					<td>&nbsp;</td>
-					<td><input type="checkbox" name="explain" id="explain"${payload.showExecutionPlan?' checked':''} value="true"><label for="explain">Show Execution Plan</label></td>
-					<td>Max Rows
-						<select size="1" name="maxRow">
+					<td width="200"><input type="checkbox" name="explain" id="explain"${payload.showExecutionPlan?' checked':''} value="true"><label for="explain">Show Execution Plan</label></td>
+					<td align="left">Max Rows
+						<select size="1" name="maxRow" id="maxRow">
 							<c:forEach var="maxRow" items="${model.maxRows}">
 								<option${maxRow eq payload.maxRow?' selected':''}>${maxRow}</option>
 							</c:forEach>
