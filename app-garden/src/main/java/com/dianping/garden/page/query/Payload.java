@@ -135,7 +135,7 @@ public class Payload implements ActionPayload<GardenPage, Action> {
       }
 
       if (m_style == null || m_style.length() == 0) {
-         m_style = "width:640px;height:80px;";
+         m_style = "width:640px;height:60px;";
       }
 
       if (m_maxRow < 1 || m_maxRow > 1000) {

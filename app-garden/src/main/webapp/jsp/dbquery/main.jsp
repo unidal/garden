@@ -11,12 +11,12 @@
 <a:body>
 
 	<res:useCss value='${res.css.local.dbquery_css}' target="head-css" />
-	<res:useJs value='${res.js.local.dbquery_js}' target="head-js" />
 	<res:useJs value='${res.js.local.g_mt_js}' target="head-js" />
+	<res:useJs value='${res.js.local.dbquery_js}' target="head-js" />
 
 	<div id="input">
 		<form method="post">
-			<input type="hidden" name="history" value="${model.history}">
+			<input type="hidden" name="history" value="${w:htmlEncode(model.history)}">
 			<input type="hidden" name="style" id="style" value="${payload.style}">
 			<table>
 				<tr>
@@ -31,7 +31,7 @@
 					<td align="right">SQL History</b></td>
 					<td colspan="2"><select size="1" id="history" onchange="dbQuery.changeSql(this)">
 						<c:forEach var="e" items="${model.historyEntries}">
-							<option value="${e.key}">${w:htmlEncode(e.value)}</option>
+							<option value="${w:htmlEncode(e.key)}">${w:htmlEncode(e.value)}</option>
 						</c:forEach>
 					</select></td>
 				</tr>

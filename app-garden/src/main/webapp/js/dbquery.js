@@ -6,9 +6,8 @@ var dbQuery={
          var array = eval(value);
         
          this.selectOption($("ds").options,array[0]);
-         ${"explain"}.checked=true;
-         this.selectOption($("maxRow").options,array[2]);
-         $("sql").value=array[3];
+         $("explain").checked=(array[1]==1?true:false);
+         $("sql").value=array[2];
       }
    },
 
