@@ -56,30 +56,6 @@
 			</requirements>
 		</component>
 		<component>
-			<role>com.site.dal.jdbc.datasource.DataSource</role>
-			<role-hint>DianPingAPI</role-hint>
-			<implementation>com.site.dal.jdbc.datasource.JdbcDataSource</implementation>
-			<configuration>
-				<id>DianPingAPI</id>
-				<maximum-pool-size>3</maximum-pool-size>
-				<connection-timeout>1s</connection-timeout>
-				<idle-timeout>10m</idle-timeout>
-				<statement-cache-size>1000</statement-cache-size>
-				<properties>
-					<driver>${jdbc.driver}</driver>
-					<URL>${jdbc.url}</URL>
-					<user>${jdbc.user}</user>
-					<password>${jdbc.password}</password>
-					<connectionProperties><![CDATA[${jdbc.connectionProperties}]]></connectionProperties>
-				</properties>
-			</configuration>
-			<requirements>
-				<requirement>
-					<role>com.site.dal.jdbc.datasource.JdbcDataSourceConfigurationManager</role>
-				</requirement>
-			</requirements>
-		</component>
-		<component>
 			<role>com.site.dal.jdbc.mapping.TableProvider</role>
 			<role-hint>article</role-hint>
 			<implementation>com.site.dal.jdbc.mapping.SimpleTableProvider</implementation>
@@ -287,33 +263,34 @@
 			<implementation>com.site.web.mvc.model.ModuleRegistry</implementation>
 			<configuration>
 				<modules>
-					<module default="true">com.dianping.garden.GardenModule</module>
+					<module default="true">com.dianping.garden.dashboard.DashboardModule</module>
+					<module>com.dianping.garden.toolkit.ToolkitModule</module>
 				</modules>
 			</configuration>
 		</component>
 		<component>
-			<role>com.dianping.garden.GardenModule</role>
-			<implementation>com.dianping.garden.GardenModule</implementation>
+			<role>com.dianping.garden.dashboard.DashboardModule</role>
+			<implementation>com.dianping.garden.dashboard.DashboardModule</implementation>
 		</component>
 		<component>
-			<role>com.dianping.garden.page.home.Handler</role>
-			<implementation>com.dianping.garden.page.home.Handler</implementation>
+			<role>com.dianping.garden.dashboard.page.home.Handler</role>
+			<implementation>com.dianping.garden.dashboard.page.home.Handler</implementation>
 			<requirements>
 				<requirement>
-					<role>com.dianping.garden.page.home.JspViewer</role>
+					<role>com.dianping.garden.dashboard.page.home.JspViewer</role>
 				</requirement>
 			</requirements>
 		</component>
 		<component>
-			<role>com.dianping.garden.page.home.JspViewer</role>
-			<implementation>com.dianping.garden.page.home.JspViewer</implementation>
+			<role>com.dianping.garden.dashboard.page.home.JspViewer</role>
+			<implementation>com.dianping.garden.dashboard.page.home.JspViewer</implementation>
 		</component>
 		<component>
-			<role>com.dianping.garden.page.trend.Handler</role>
-			<implementation>com.dianping.garden.page.trend.Handler</implementation>
+			<role>com.dianping.garden.dashboard.page.trend.Handler</role>
+			<implementation>com.dianping.garden.dashboard.page.trend.Handler</implementation>
 			<requirements>
 				<requirement>
-					<role>com.dianping.garden.page.trend.JspViewer</role>
+					<role>com.dianping.garden.dashboard.page.trend.JspViewer</role>
 				</requirement>
 				<requirement>
 					<role>com.dianping.garden.dal.TrendDao</role>
@@ -327,15 +304,32 @@
 			</requirements>
 		</component>
 		<component>
-			<role>com.dianping.garden.page.trend.JspViewer</role>
-			<implementation>com.dianping.garden.page.trend.JspViewer</implementation>
+			<role>com.dianping.garden.dashboard.page.trend.JspViewer</role>
+			<implementation>com.dianping.garden.dashboard.page.trend.JspViewer</implementation>
 		</component>
 		<component>
-			<role>com.dianping.garden.page.query.Handler</role>
-			<implementation>com.dianping.garden.page.query.Handler</implementation>
+			<role>com.dianping.garden.toolkit.ToolkitModule</role>
+			<implementation>com.dianping.garden.toolkit.ToolkitModule</implementation>
+		</component>
+		<component>
+			<role>com.dianping.garden.toolkit.page.home.Handler</role>
+			<implementation>com.dianping.garden.toolkit.page.home.Handler</implementation>
 			<requirements>
 				<requirement>
-					<role>com.dianping.garden.page.query.JspViewer</role>
+					<role>com.dianping.garden.toolkit.page.home.JspViewer</role>
+				</requirement>
+			</requirements>
+		</component>
+		<component>
+			<role>com.dianping.garden.toolkit.page.home.JspViewer</role>
+			<implementation>com.dianping.garden.toolkit.page.home.JspViewer</implementation>
+		</component>
+		<component>
+			<role>com.dianping.garden.toolkit.page.query.Handler</role>
+			<implementation>com.dianping.garden.toolkit.page.query.Handler</implementation>
+			<requirements>
+				<requirement>
+					<role>com.dianping.garden.toolkit.page.query.JspViewer</role>
 				</requirement>
 				<requirement>
 					<role>com.site.dal.jdbc.datasource.JdbcDataSourceConfigurationManager</role>
@@ -346,8 +340,8 @@
 			</requirements>
 		</component>
 		<component>
-			<role>com.dianping.garden.page.query.JspViewer</role>
-			<implementation>com.dianping.garden.page.query.JspViewer</implementation>
+			<role>com.dianping.garden.toolkit.page.query.JspViewer</role>
+			<implementation>com.dianping.garden.toolkit.page.query.JspViewer</implementation>
 		</component>
 		<component>
 			<role>com.site.dal.jdbc.raw.RawDao</role>

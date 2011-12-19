@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wizard package="com.dianping.garden" webres="true">
+  <module name="dashboard" path="d">
+    <page name="home" description="Home" default="true" />
+    <page name="trend" description="Trends" default="true" />
+  </module>
+  <module name="toolkit" path="t">
+    <page name="home" description="Home" default="true" />
+    <page name="query" description="DB Query" />
+  </module>
+</wizard>
+
