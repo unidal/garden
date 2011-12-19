@@ -13,6 +13,12 @@ public class Context extends GardenContext<Payload> {
 
    private List<RawDataObject> m_rawDataObjects;
 
+   private long m_queryElapsed;
+
+   public long getQueryElapsed() {
+      return m_queryElapsed;
+   }
+
    public List<RawDataObject> getRawDataObjects() {
       return m_rawDataObjects;
    }
@@ -32,6 +38,10 @@ public class Context extends GardenContext<Payload> {
       String uri = UriBuilder.uri2(model, path, qs);
 
       redirect(uri);
+   }
+
+   public void setQueryElapsed(long queryElapsed) {
+      m_queryElapsed = queryElapsed;
    }
 
    public void setRawDataObjects(List<RawDataObject> rawDataObjects) {

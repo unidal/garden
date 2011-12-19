@@ -14,7 +14,7 @@
 			<connectionProperties><![CDATA[useUnicode=true&autoReconnect=true]]></connectionProperties>
 		</properties>
 	</data-source>
-	<data-source id="8.44">
+	<data-source id="DianPing">
 		<maximum-pool-size>3</maximum-pool-size>
 		<connection-timeout>1s</connection-timeout>
 		<idle-timeout>1m</idle-timeout>

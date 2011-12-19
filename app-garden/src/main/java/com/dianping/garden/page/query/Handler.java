@@ -24,241 +24,245 @@ import com.site.web.mvc.annotation.OutboundActionMeta;
 import com.site.web.mvc.annotation.PayloadMeta;
 
 public class Handler extends ContainerHolder implements PageHandler<Context> {
-	@Inject
-	private JspViewer m_jspViewer;
+   @Inject
+   private JspViewer m_jspViewer;
 
-	@Inject
-	private JdbcDataSourceConfigurationManager m_dsManager;
+   @Inject
+   private JdbcDataSourceConfigurationManager m_dsManager;
 
-	@Inject
-	private RawDao m_rawDao;
+   @Inject
+   private RawDao m_rawDao;
 
-	private void executeQuery(Context ctx, Payload payload) {
-		String sql = payload.getSql();
+   private void executeQuery(Context ctx, Payload payload) {
+      String sql = payload.getSql();
 
-		if (sql != null && sql.length() > 0) {
-			StringBuilder sb = new StringBuilder(sql.length() + 32);
-			String filtered = filterSql(sql);
+      if (sql != null && sql.length() > 0) {
+         StringBuilder sb = new StringBuilder(sql.length() + 32);
+         String filtered = filterSql(sql);
 
-			if (filtered == null) {
-				ctx.addError(new ErrorObject("query.sql.forbidden", new RuntimeException("Forbidden SQL command: " + sql)));
-			} else {
-				sb.append(processLimitClause(filtered, payload.getMaxRow()));
-			}
+         if (filtered == null) {
+            ctx.addError(new ErrorObject("query.sql.forbidden", new RuntimeException("Forbidden SQL command: " + sql)));
+         } else {
+            sb.append(processLimitClause(filtered, payload.getMaxRow()));
+         }
 
-			if (sb.length() > 0) {
-				if (payload.isShowExecutionPlan() && sql.toUpperCase().startsWith("SELECT ")) {
-					sb.insert(0, "explain ");
-				}
+         if (sb.length() > 0) {
+            if (payload.isShowExecutionPlan() && sql.toUpperCase().startsWith("SELECT ")) {
+               sb.insert(0, "explain ");
+            }
 
-				try {
-					List<RawDataObject> rawDataObjects = m_rawDao.executeQuery(payload.getDatasource(), sb.toString());
+            long start = System.currentTimeMillis();
 
-					ctx.setRawDataObjects(rawDataObjects);
-				} catch (DalException e) {
-					ctx.addError(new ErrorObject("query.dal.exception", e));
-				}
-			}
-		}
-	}
+            try {
+               List<RawDataObject> rawDataObjects = m_rawDao.executeQuery(payload.getDatasource(), sb.toString());
 
-	protected String filterSql(String sql) {
-		List<String> statements = Splitters.by(';').noEmptyItem().trim().split(sql);
-		int len = statements.size();
+               ctx.setRawDataObjects(rawDataObjects);
+            } catch (DalException e) {
+               ctx.addError(new ErrorObject("query.dal.exception", e));
+            } finally {
+               ctx.setQueryElapsed(System.currentTimeMillis() - start);
+            }
+         }
+      }
+   }
 
-		for (int i = 0; i < len; i++) {
-			String statement = statements.get(i);
-			String upper = statement.toUpperCase();
+   protected String filterSql(String sql) {
+      List<String> statements = Splitters.by(';').noEmptyItem().trim().split(sql);
+      int len = statements.size();
 
-			// NOT ALLOWED BELOW:
-			// use mysql
-			// set timestamp=12345678
-			// show databases
-			if (upper.startsWith("SET ") || upper.startsWith("USE ") || upper.startsWith("SHOW DATABASES")) {
-				statements.remove(i);
-				i--;
-				len--;
-			}
-		}
+      for (int i = 0; i < len; i++) {
+         String statement = statements.get(i);
+         String upper = statement.toUpperCase();
 
-		if (statements.isEmpty()) {
-			return null;
-		} else {
-			return statements.get(0);
-		}
-	}
+         // NOT ALLOWED BELOW:
+         // use mysql
+         // set timestamp=12345678
+         // show databases
+         if (upper.startsWith("SET ") || upper.startsWith("USE ") || false && upper.startsWith("SHOW DATABASES")) {
+            statements.remove(i);
+            i--;
+            len--;
+         }
+      }
 
-	@Override
-	@PayloadMeta(Payload.class)
-	@InboundActionMeta(name = "dbquery")
-	public void handleInbound(Context ctx) throws ServletException, IOException {
-		Payload payload = ctx.getPayload();
+      if (statements.isEmpty()) {
+         return null;
+      } else {
+         return statements.get(0);
+      }
+   }
 
-		if (payload.isShowHtml()) {
-			executeQuery(ctx, payload);
-		}
-	}
+   @Override
+   @PayloadMeta(Payload.class)
+   @InboundActionMeta(name = "dbquery")
+   public void handleInbound(Context ctx) throws ServletException, IOException {
+      Payload payload = ctx.getPayload();
 
-	@Override
-	@OutboundActionMeta(name = "dbquery")
-	public void handleOutbound(Context ctx) throws ServletException, IOException {
-		Model model = new Model(ctx);
-		Payload payload = ctx.getPayload();
-		Action action = payload.getAction();
+      if (payload.isShowHtml()) {
+         executeQuery(ctx, payload);
+      }
+   }
 
-		model.setPage(GardenPage.DB_QUERY);
-		model.setAction(action);
+   @Override
+   @OutboundActionMeta(name = "dbquery")
+   public void handleOutbound(Context ctx) throws ServletException, IOException {
+      Model model = new Model(ctx);
+      Payload payload = ctx.getPayload();
+      Action action = payload.getAction();
 
-		if (action.isMain()) {
-			showMain(ctx, model);
-		}
+      model.setPage(GardenPage.DB_QUERY);
+      model.setAction(action);
 
-		m_jspViewer.view(ctx, model);
-	}
+      if (action.isMain()) {
+         showMain(ctx, model);
+      }
 
-	private void prepareHistorySqls(Context ctx, Model model) {
-		Payload payload = ctx.getPayload();
-		Map<String, String> historyMap = new LinkedHashMap<String, String>();
-		int maxSize = 10;
+      m_jspViewer.view(ctx, model);
+   }
 
-		if (!ctx.hasErrors()) {
-			if (payload.getSql() != null && payload.getSql().length() > 0) {
-				String value = "[" + quotes(payload.getDatasource()) + "," + //
-				      (payload.isShowExecutionPlan() ? "1" : "0") + "," //
-				      + quotes(payload.getSql()) + "]";
-				String text = payload.getDatasource() + (payload.isShowExecutionPlan() ? " * " : " - ") + payload.getSql();
+   private void prepareHistorySqls(Context ctx, Model model) {
+      Payload payload = ctx.getPayload();
+      Map<String, String> historyMap = new LinkedHashMap<String, String>();
+      int maxSize = 10;
 
-				historyMap.put(value, shorten(text, 121));
-			}
-		}
+      if (!ctx.hasErrors()) {
+         if (payload.getSql() != null && payload.getSql().length() > 0) {
+            String value = "[" + quotes(payload.getDatasource()) + "," + //
+                  (payload.isShowExecutionPlan() ? "1" : "0") + "," //
+                  + quotes(payload.getSql()) + "]";
+            String text = payload.getDatasource() + (payload.isShowExecutionPlan() ? " * " : " - ") + payload.getSql();
 
-		List<String> historySqls = payload.getHistorySqls();
+            historyMap.put(value, shorten(text, 121));
+         }
+      }
 
-		if (historySqls != null) {
-			int len = historySqls.size();
+      List<String> historySqls = payload.getHistorySqls();
 
-			for (int i = 0; i < len; i += 2) {
-				String value = historySqls.get(i);
+      if (historySqls != null) {
+         int len = historySqls.size();
 
-				if (!historyMap.containsKey(value) && historyMap.size() < maxSize) {
-					String text = i + 1 < len ? historySqls.get(i + 1) : "";
+         for (int i = 0; i < len; i += 2) {
+            String value = historySqls.get(i);
 
-					historyMap.put(value, shorten(text, 121));
-				}
-			}
-		}
+            if (!historyMap.containsKey(value) && historyMap.size() < maxSize) {
+               String text = i + 1 < len ? historySqls.get(i + 1) : "";
 
-		model.setHistoryMap(historyMap);
-	}
+               historyMap.put(value, shorten(text, 121));
+            }
+         }
+      }
 
-	protected String processLimitClause(String sql, int maxRow) {
-		String str = sql.toUpperCase();
-		int pos = str.lastIndexOf(" LIMIT ");
-		StringBuilder sb = new StringBuilder(sql.length() + 32);
+      model.setHistoryMap(historyMap);
+   }
 
-		if (pos > 0) {
-			int start = -1;
-			int num = -1;
-			String snippet = str.substring(pos);
+   protected String processLimitClause(String sql, int maxRow) {
+      String str = sql.toUpperCase();
+      int pos = str.lastIndexOf(" LIMIT ");
+      StringBuilder sb = new StringBuilder(sql.length() + 32);
 
-			try {
-				Object[] args = new MessageFormat("{2} LIMIT {0}").parse(snippet);
-				String first = (String) args[0];
+      if (pos > 0) {
+         int start = -1;
+         int num = -1;
+         String snippet = str.substring(pos);
 
-				num = Integer.parseInt(first.trim());
-			} catch (Exception e) {
-				// ignore
-			}
+         try {
+            Object[] args = new MessageFormat("{2} LIMIT {0}").parse(snippet);
+            String first = (String) args[0];
 
-			if (num < 0) {
-				try {
-					Object[] args = new MessageFormat("{2} LIMIT {0},{1}").parse(snippet);
-					String first = (String) args[0];
-					String second = (String) args[1];
+            num = Integer.parseInt(first.trim());
+         } catch (Exception e) {
+            // ignore
+         }
 
-					start = Integer.parseInt(first.trim());
-					num = Integer.parseInt(second.trim());
-				} catch (Exception e) {
-					// ignore
-				}
-			}
+         if (num < 0) {
+            try {
+               Object[] args = new MessageFormat("{2} LIMIT {0},{1}").parse(snippet);
+               String first = (String) args[0];
+               String second = (String) args[1];
 
-			if (start < 0 && num <= 0) {
-				sb.append(sql);
-				sb.append(" LIMIT ").append(maxRow);
-			} else if (start < 0) {
-				sb.append(sql.substring(0, pos));
-				sb.append(" LIMIT ").append(Math.min(num, maxRow));
-			} else {
-				sb.append(sql.substring(0, pos));
-				sb.append(" LIMIT ").append(start).append(',').append(Math.min(num, maxRow));
-			}
-		} else if (str.startsWith("SELECT ")) {
-			sb.append(sql);
-			sb.append(" LIMIT ").append(maxRow);
-		} else {
-			sb.append(sql);
-		}
+               start = Integer.parseInt(first.trim());
+               num = Integer.parseInt(second.trim());
+            } catch (Exception e) {
+               // ignore
+            }
+         }
 
-		return sb.toString();
-	}
+         if (start < 0 && num <= 0) {
+            sb.append(sql);
+            sb.append(" LIMIT ").append(maxRow);
+         } else if (start < 0) {
+            sb.append(sql.substring(0, pos));
+            sb.append(" LIMIT ").append(Math.min(num, maxRow));
+         } else {
+            sb.append(sql.substring(0, pos));
+            sb.append(" LIMIT ").append(start).append(',').append(Math.min(num, maxRow));
+         }
+      } else if (str.startsWith("SELECT ")) {
+         sb.append(sql);
+         sb.append(" LIMIT ").append(maxRow);
+      } else {
+         sb.append(sql);
+      }
 
-	private String quotes(Object value) {
-		StringBuilder sb = new StringBuilder();
-		String str = String.valueOf(value);
-		int len = str.length();
+      return sb.toString();
+   }
 
-		sb.append('\'');
+   private String quotes(Object value) {
+      StringBuilder sb = new StringBuilder();
+      String str = String.valueOf(value);
+      int len = str.length();
 
-		for (int i = 0; i < len; i++) {
-			char ch = str.charAt(i);
+      sb.append('\'');
 
-			if (ch == '"') {
-				sb.append("\\\"");
-			} else if (ch == '\'') {
-				sb.append("\\\'");
-			} else {
-				sb.append(ch);
-			}
-		}
+      for (int i = 0; i < len; i++) {
+         char ch = str.charAt(i);
 
-		sb.append('\'');
+         if (ch == '"') {
+            sb.append("\\\"");
+         } else if (ch == '\'') {
+            sb.append("\\\'");
+         } else {
+            sb.append(ch);
+         }
+      }
 
-		return sb.toString();
-	}
+      sb.append('\'');
 
-	protected String shorten(String str, int maxSize) {
-		int len = str.length();
+      return sb.toString();
+   }
 
-		if (len <= maxSize) {
-			return str;
-		} else {
-			StringBuilder sb = new StringBuilder(maxSize);
-			int segment = maxSize / 2 - 1;
+   protected String shorten(String str, int maxSize) {
+      int len = str.length();
 
-			for (int i = 0; i < segment; i++) {
-				sb.append(str.charAt(i));
-			}
+      if (len <= maxSize) {
+         return str;
+      } else {
+         StringBuilder sb = new StringBuilder(maxSize);
+         int segment = maxSize / 2 - 1;
 
-			for (int i = segment; i < maxSize - segment; i++) {
-				sb.append('.');
-			}
+         for (int i = 0; i < segment; i++) {
+            sb.append(str.charAt(i));
+         }
 
-			for (int i = len - segment; i < len; i++) {
-				sb.append(str.charAt(i));
-			}
+         for (int i = segment; i < maxSize - segment; i++) {
+            sb.append('.');
+         }
 
-			return sb.toString();
-		}
-	}
+         for (int i = len - segment; i < len; i++) {
+            sb.append(str.charAt(i));
+         }
 
-	private void showMain(Context ctx, Model model) {
-		List<String> datasources = m_dsManager.getDataSourceNames();
+         return sb.toString();
+      }
+   }
 
-		model.setDataSources(datasources);
-		model.setRawDataObjects(ctx.getRawDataObjects());
-		model.setMaxRows(Arrays.asList(20, 50, 100));
+   private void showMain(Context ctx, Model model) {
+      List<String> datasources = m_dsManager.getDataSourceNames();
 
-		prepareHistorySqls(ctx, model);
-	}
+      model.setDataSources(datasources);
+      model.setRawDataObjects(ctx.getRawDataObjects());
+      model.setMaxRows(Arrays.asList(20, 50, 100));
+
+      prepareHistorySqls(ctx, model);
+   }
 }

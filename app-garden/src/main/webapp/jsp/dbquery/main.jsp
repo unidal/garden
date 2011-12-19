@@ -68,8 +68,8 @@
 	</div>
 
 	<div id="result">
-	<c:if test="${payload.showHtml and not empty model.rawDataObjects}">
-		<h2>Rows found: ${w:count(model.rawDataObjects)}</h2>
+	<c:if test="${payload.showHtml and empty ctx.errors}">
+		<h2>${w:count(model.rawDataObjects)} rows found in ${ctx.queryElapsed} ms.</h2>
 		<table>
 			<c:forEach var="do" items="${model.rawDataObjects}" varStatus="index">
 			<c:if test="${index.first}">

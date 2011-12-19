@@ -33,10 +33,10 @@
 		</component>
 		<component>
 			<role>com.site.dal.jdbc.datasource.DataSource</role>
-			<role-hint>8.44</role-hint>
+			<role-hint>DianPing</role-hint>
 			<implementation>com.site.dal.jdbc.datasource.JdbcDataSource</implementation>
 			<configuration>
-				<id>8.44</id>
+				<id>DianPing</id>
 				<maximum-pool-size>3</maximum-pool-size>
 				<connection-timeout>1s</connection-timeout>
 				<idle-timeout>10m</idle-timeout>
@@ -57,10 +57,10 @@
 		</component>
 		<component>
 			<role>com.site.dal.jdbc.datasource.DataSource</role>
-			<role-hint>test</role-hint>
+			<role-hint>DianPingAPI</role-hint>
 			<implementation>com.site.dal.jdbc.datasource.JdbcDataSource</implementation>
 			<configuration>
-				<id>test</id>
+				<id>DianPingAPI</id>
 				<maximum-pool-size>3</maximum-pool-size>
 				<connection-timeout>1s</connection-timeout>
 				<idle-timeout>10m</idle-timeout>
