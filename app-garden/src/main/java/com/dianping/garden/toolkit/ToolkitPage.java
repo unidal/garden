@@ -5,8 +5,6 @@ import com.site.web.mvc.annotation.ModuleMeta;
 
 public enum ToolkitPage implements Page {
 
-   HOME("home", "Home", true),
-
    QUERY("query", "DB Query", true),
 
 	;

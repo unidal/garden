@@ -1,7 +1,7 @@
 package com.dianping.garden.toolkit.page.query;
 
 public enum Action implements com.site.web.mvc.Action {
-   MAIN("main"),
+   QUERY("main"),
 
    ;
 
@@ -27,6 +27,6 @@ public enum Action implements com.site.web.mvc.Action {
    }
 
    public boolean isMain() {
-      return this == MAIN;
+      return this == QUERY;
    }
 }

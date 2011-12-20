@@ -352,5 +352,18 @@
 				</requirement>
 			</requirements>
 		</component>
+		<component>
+			<role>com.dianping.garden.toolkit.page.library.Handler</role>
+			<implementation>com.dianping.garden.toolkit.page.library.Handler</implementation>
+			<requirements>
+				<requirement>
+					<role>com.dianping.garden.toolkit.page.library.JspViewer</role>
+				</requirement>
+			</requirements>
+		</component>
+		<component>
+			<role>com.dianping.garden.toolkit.page.library.JspViewer</role>
+			<implementation>com.dianping.garden.toolkit.page.library.JspViewer</implementation>
+		</component>
 	</components>
 </plexus>

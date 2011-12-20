@@ -30,7 +30,7 @@ public class Model extends ViewModel<DashboardPage, Action, Context> {
 
    @Override
    public Action getDefaultAction() {
-      return Action.LIST;
+      return Action.TREND;
    }
 
    public int getMaxPage() {

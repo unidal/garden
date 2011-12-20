@@ -1,7 +1,7 @@
 package com.dianping.garden.dashboard.page.trend;
 
 public enum Action implements com.site.web.mvc.Action {
-   LIST("list"),
+   TREND("list"),
 
    REFRESH("refresh"),
 
@@ -33,6 +33,6 @@ public enum Action implements com.site.web.mvc.Action {
    }
 
    public boolean isList() {
-      return this == LIST;
+      return this == TREND;
    }
 }

@@ -142,7 +142,7 @@ public class Handler extends ContainerHolder implements PageHandler<Context> {
       if (action.isList()) {
          showList(ctx, model);
       } else if (action.isRefresh()) {
-         model.setAction(Action.LIST);
+         model.setAction(Action.TREND);
          ctx.redirect(model, null);
          return;
       }

@@ -34,7 +34,7 @@ public class Model extends ViewModel<ToolkitPage, Action, Context> {
 
    @Override
    public Action getDefaultAction() {
-      return Action.MAIN;
+      return Action.QUERY;
    }
 
    public String getHistory() {

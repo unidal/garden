@@ -2,11 +2,10 @@
 <wizard package="com.dianping.garden" webres="true">
   <module name="dashboard" path="d">
     <page name="home" description="Home" default="true" />
-    <page name="trend" description="Trends" default="true" />
+    <page name="trend" description="Trends" />
   </module>
   <module name="toolkit" path="t">
-    <page name="home" description="Home" default="true" />
-    <page name="query" description="DB Query" />
+    <page name="query" description="DB Query" default="true" />
   </module>
 </wizard>
 

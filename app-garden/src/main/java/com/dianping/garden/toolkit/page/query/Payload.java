@@ -75,7 +75,7 @@ public class Payload implements ActionPayload<ToolkitPage, Action> {
    }
 
    public void setAction(String action) {
-      m_action = Action.getByName(action, Action.MAIN);
+      m_action = Action.getByName(action, Action.QUERY);
    }
 
    public void setDatasource(String datasource) {
@@ -131,7 +131,7 @@ public class Payload implements ActionPayload<ToolkitPage, Action> {
    @Override
    public void validate(ActionContext<?> ctx) {
       if (m_action == null) {
-         m_action = Action.MAIN;
+         m_action = Action.QUERY;
       }
 
       if (m_style == null || m_style.length() == 0) {

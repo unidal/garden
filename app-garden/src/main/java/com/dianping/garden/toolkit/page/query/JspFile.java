@@ -1,17 +1,17 @@
 package com.dianping.garden.toolkit.page.query;
 
 public enum JspFile {
-   MAIN("/jsp/toolkit/query/main.jsp"),
+	QUERY("/jsp/toolkit/query.jsp"),
 
-   ;
+	;
 
-   private String m_path;
+	private String m_path;
 
-   private JspFile(String path) {
-      m_path = path;
-   }
+	private JspFile(String path) {
+		m_path = path;
+	}
 
-   public String getPath() {
-      return m_path;
-   }
+	public String getPath() {
+		return m_path;
+	}
 }

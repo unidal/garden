@@ -1,7 +1,7 @@
 package com.dianping.garden.dashboard.page.home;
 
 public enum JspFile {
-	HOME("/jsp/dashboard/home/home.jsp"),
+	HOME("/jsp/dashboard/home.jsp"),
 
 	;
 

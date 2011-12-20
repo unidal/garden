@@ -9,10 +9,8 @@ public class JspViewer extends BaseJspViewer<DashboardPage, Action, Context, Mod
 		Action action = model.getAction();
 
 		switch (action) {
-		case LIST:
-			return JspFile.LIST.getPath();
-		case REFRESH:
-			return JspFile.REFRESH.getPath();
+		case TREND:
+			return JspFile.TREND.getPath();
 		}
 
 		throw new RuntimeException("Unknown action: " + action);

@@ -36,7 +36,7 @@ public class Payload implements ActionPayload<DashboardPage, Action> {
    }
 
    public void setAction(String action) {
-      m_action = Action.getByName(action, Action.LIST);
+      m_action = Action.getByName(action, Action.TREND);
    }
 
    @Override
@@ -63,7 +63,7 @@ public class Payload implements ActionPayload<DashboardPage, Action> {
    @Override
    public void validate(ActionContext<?> ctx) {
       if (m_action == null) {
-         m_action = Action.LIST;
+         m_action = Action.TREND;
       }
 
       if (m_pageNumber <= 0) {

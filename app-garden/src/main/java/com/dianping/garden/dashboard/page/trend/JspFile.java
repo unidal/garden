@@ -1,9 +1,7 @@
 package com.dianping.garden.dashboard.page.trend;
 
 public enum JspFile {
-	LIST("/jsp/dashboard/trend/list.jsp"),
-	
-	REFRESH("/jsp/dashboard/trend/refresh.jsp"),
+	TREND("/jsp/dashboard/trend.jsp"),
 
 	;
 
