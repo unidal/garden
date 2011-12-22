@@ -1,5 +1,6 @@
 package com.dianping.cat.message;
 
+
 /**
  * <p>
  * Message factory is used to create new transaction,event and/or heartbeat.

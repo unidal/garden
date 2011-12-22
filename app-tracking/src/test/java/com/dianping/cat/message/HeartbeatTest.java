@@ -2,9 +2,7 @@ package com.dianping.cat.message;
 
 import org.junit.Test;
 
-import com.dianping.cat.message.Heartbeat;
-import com.dianping.cat.message.MessageFactory;
-import com.dianping.cat.message.Cat;
+import com.dianping.cat.Cat;
 
 public class HeartbeatTest {
 	public static MessageFactory CAT = Cat.getFactory();

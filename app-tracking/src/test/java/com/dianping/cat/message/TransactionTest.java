@@ -2,9 +2,7 @@ package com.dianping.cat.message;
 
 import org.junit.Test;
 
-import com.dianping.cat.message.MessageFactory;
-import com.dianping.cat.message.Transaction;
-import com.dianping.cat.message.Cat;
+import com.dianping.cat.Cat;
 
 public class TransactionTest {
 	public static MessageFactory CAT = Cat.getFactory();

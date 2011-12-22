@@ -5,9 +5,7 @@ import java.io.StringWriter;
 
 import org.junit.Test;
 
-import com.dianping.cat.message.Event;
-import com.dianping.cat.message.MessageFactory;
-import com.dianping.cat.message.Cat;
+import com.dianping.cat.Cat;
 
 public class EventTest {
 	public static MessageFactory CAT = Cat.getFactory();

@@ -16,5 +16,9 @@
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>com.site.common</groupId>
+			<artifactId>lookup</artifactId>
+		</dependency>
 	</dependencies>
 </project>
