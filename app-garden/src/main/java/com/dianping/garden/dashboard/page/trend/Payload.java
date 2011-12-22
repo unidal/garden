@@ -6,72 +6,91 @@ import com.site.web.mvc.ActionPayload;
 import com.site.web.mvc.payload.annotation.FieldMeta;
 
 public class Payload implements ActionPayload<DashboardPage, Action> {
-   private DashboardPage m_page;
+	private DashboardPage m_page;
 
-   @FieldMeta(value = "op")
-   private Action m_action;
+	@FieldMeta(value = "op")
+	private Action m_action;
 
-   @FieldMeta("page")
-   private int m_pageNumber;
+	@FieldMeta("t")
+	private int m_trendId;
 
-   @FieldMeta("pageSize")
-   private int m_pageSize;
+	@FieldMeta("page")
+	private int m_pageNumber;
 
-   @Override
-   public Action getAction() {
-      return m_action;
-   }
+	@FieldMeta("pageSize")
+	private int m_pageSize;
 
-   @Override
-   public DashboardPage getPage() {
-      return m_page;
-   }
+	@Override
+	public Action getAction() {
+		return m_action;
+	}
 
-   public int getPageNumber() {
-      return m_pageNumber;
-   }
+	@Override
+	public DashboardPage getPage() {
+		return m_page;
+	}
 
-   public int getPageSize() {
-      return m_pageSize;
-   }
+	public int getPageNumber() {
+		return m_pageNumber;
+	}
 
-   public void setAction(String action) {
-      m_action = Action.getByName(action, Action.TREND);
-   }
+	public int getPageSize() {
+		return m_pageSize;
+	}
 
-   @Override
-   public void setPage(String page) {
-      m_page = DashboardPage.getByName(page, DashboardPage.TREND);
-   }
+	public int getTrendId() {
+		return m_trendId;
+	}
 
-   public void setPageSize(String pageSize) {
-      try {
-         m_pageSize = Integer.parseInt(pageSize);
-      } catch (Exception e) {
-         // ignore it
-      }
-   }
+	public void setAction(String action) {
+		m_action = Action.getByName(action, Action.TREND);
+	}
 
-   public void setPageNumber(String pageNumber) {
-      try {
-         m_pageNumber = Integer.parseInt(pageNumber);
-      } catch (Exception e) {
-         // ignore it
-      }
-   }
+	@Override
+	public void setPage(String page) {
+		m_page = DashboardPage.getByName(page, DashboardPage.TREND);
+	}
 
-   @Override
-   public void validate(ActionContext<?> ctx) {
-      if (m_action == null) {
-         m_action = Action.TREND;
-      }
+	public void setPageNumber(String pageNumber) {
+		try {
+			m_pageNumber = Integer.parseInt(pageNumber);
+		} catch (Exception e) {
+			// ignore it
+		}
+	}
 
-      if (m_pageNumber <= 0) {
-         m_pageNumber = 1;
-      }
+	public void setPageSize(String pageSize) {
+		try {
+			m_pageSize = Integer.parseInt(pageSize);
+		} catch (Exception e) {
+			// ignore it
+		}
+	}
 
-      if (m_pageSize <= 0) {
-         m_pageSize = 10;
-      }
-   }
+	public void setTrendId(String trendId) {
+		try {
+			m_trendId = Integer.parseInt(trendId);
+		} catch (Exception e) {
+			// ignore it
+		}
+	}
+
+	@Override
+	public void validate(ActionContext<?> ctx) {
+		if (m_action == null) {
+			m_action = Action.TREND;
+		}
+
+		if (m_pageNumber <= 0) {
+			m_pageNumber = 1;
+		}
+
+		if (m_pageSize <= 0) {
+			m_pageSize = 10;
+		}
+
+		if (m_trendId < 0) {
+			m_trendId = 0;
+		}
+	}
 }

@@ -26,6 +26,26 @@
 					LIMIT ${start}, ${length}
 				]]></statement>
 			</query>
+			<query name="find-all-by-trend" type="SELECT" multiple="true">
+				<param name="source-id" />
+				<statement><![CDATA[
+					SELECT <FIELDS/>
+					FROM <TABLE/>
+					WHERE <FIELD name='source-id'/> = ${source-id}
+				]]></statement>
+			</query>
+			<query name="find-page-by-trend" type="SELECT" multiple="true">
+				<param name="source-id" />
+				<param name="start" />
+				<param name="length" />
+				<statement><![CDATA[
+					SELECT <FIELDS/>
+					FROM <TABLE/>
+					WHERE <FIELD name='source-id'/> = ${source-id}
+					ORDER BY <FIELD name='publish-date'/> DESC
+					LIMIT ${start}, ${length}
+				]]></statement>
+			</query>
 			<query name="insert" type="INSERT" batch="true">
 				<statement><![CDATA[
         			INSERT 

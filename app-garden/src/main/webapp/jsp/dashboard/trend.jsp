@@ -12,6 +12,13 @@
 
 <res:useCss value='${res.css.local.trend_css}' target="head-css"/>
 
+<ul class="tabs">
+	<c:forEach var="trend" items="${model.trends}">
+		<li ${trend.id == payload.trendId ? 'class="selected"' : ''}><a href="?t=${trend.id}">${trend.type}</a></li>
+	</c:forEach>
+</ul>
+
+
 <div class="trend">
 <h1>
 <c:if test="${payload.pageNumber gt 1}">
