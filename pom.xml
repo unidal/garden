@@ -10,6 +10,7 @@
    <packaging>pom</packaging>
    <modules>
       <module>app-garden</module>
+      <module>app-tracking</module>
    </modules>
    <dependencyManagement>
       <dependencies>
