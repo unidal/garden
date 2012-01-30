@@ -10,7 +10,6 @@
    <packaging>pom</packaging>
    <modules>
       <module>app-garden</module>
-      <module>app-tracking</module>
    </modules>
    <dependencyManagement>
       <dependencies>
@@ -42,7 +41,7 @@
          <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>5.1.6</version>
+            <version>5.1.12</version>
          </dependency>
          <dependency>
             <groupId>jdom</groupId>
@@ -76,11 +75,6 @@
          </dependency>
          <dependency>
             <groupId>com.site.common</groupId>
-            <artifactId>codegen</artifactId>
-            <version>1.0.0</version>
-         </dependency>
-         <dependency>
-            <groupId>com.site.common</groupId>
             <artifactId>eunit-testfwk</artifactId>
             <version>1.0.0</version>
          </dependency>
@@ -92,12 +86,12 @@
          <dependency>
             <groupId>com.site.common</groupId>
             <artifactId>test-framework</artifactId>
-            <version>1.0.0</version>
+            <version>1.0.0-a1</version>
          </dependency>
          <dependency>
             <groupId>com.site.common</groupId>
             <artifactId>web-framework</artifactId>
-            <version>1.0.0</version>
+            <version>1.0.0-a3</version>
          </dependency>
          <dependency>
             <groupId>com.ebay.webres</groupId>
@@ -112,7 +106,7 @@
          <dependency>
             <groupId>com.site.dal</groupId>
             <artifactId>dal-jdbc</artifactId>
-            <version>1.0.0</version>
+            <version>1.0.0-a1</version>
          </dependency>
          <dependency>
             <groupId>com.site.app</groupId>

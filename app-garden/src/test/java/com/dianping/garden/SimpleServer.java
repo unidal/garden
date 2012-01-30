@@ -19,127 +19,130 @@ import com.site.test.browser.BrowserManager;
 import com.site.web.MVC;
 
 public class SimpleServer extends SimpleServerSupport {
-   private static ComponentAdaptor s_adaptor = new ComponentAdaptor();
-   private static MVC s_mvc = new MVC();
+	private static ComponentAdaptor s_adaptor = new ComponentAdaptor();
 
-   @AfterClass
-   public static void afterClass() throws Exception {
-      JettyTestSupport.shutdownServer();
-   }
+	private static MVC s_mvc = new MVC();
 
-   @BeforeClass
-   public static void beforeClass() throws Exception {
-      JettyTestSupport.startServer(new SimpleServer());
-   }
+	@AfterClass
+	public static void afterClass() throws Exception {
+		JettyTestSupport.shutdownServer();
+	}
 
-   @Override
-   protected File getWarRoot() {
-      return new File("src/main/webapp");
-   }
+	@BeforeClass
+	public static void beforeClass() throws Exception {
+		JettyTestSupport.startServer(new SimpleServer());
+	}
 
-   public static void main(String[] args) throws Exception {
-      SimpleServer server = new SimpleServer();
+	@Override
+	protected File getWarRoot() {
+		return new File("src/main/webapp");
+	}
 
-      SimpleServer.beforeClass();
+	public static void main(String[] args) throws Exception {
+		SimpleServer server = new SimpleServer();
 
-      try {
-         server.before();
-         server.startServer();
-         server.after();
-      } finally {
-         SimpleServer.shutdownServer();
-      }
-   }
+		SimpleServer.beforeClass();
 
-   @Override
-   public void after() {
-      super.after();
-      s_adaptor.after();
-   }
+		try {
+			server.before();
+			server.startServer();
+			server.after();
+		} finally {
+			SimpleServer.shutdownServer();
+		}
+	}
 
-   @Override
-   public void before() {
-      s_adaptor.setServerPort(getServerPort());
-      s_adaptor.before();
-      s_mvc.setContainer(s_adaptor.getContainer());
-      super.before();
-   }
+	@Override
+	public void after() {
+		super.after();
+		s_adaptor.after();
+	}
 
-   @Override
-   protected void postConfigure(Context ctx) {
-      ctx.addServlet(new ServletHolder(s_mvc), "/d/*");
-      ctx.addServlet(new ServletHolder(s_mvc), "/t/*");
-      ctx.addFilter(GzipFilter.class, "/d/*", Handler.ALL);
-      ctx.addFilter(GzipFilter.class, "/t/*", Handler.ALL);
-      super.postConfigure(ctx);
-   }
+	@Override
+	public void before() {
+		s_adaptor.setServerPort(getServerPort());
+		s_adaptor.before();
+		s_mvc.setContainer(s_adaptor.getContainer());
+		super.before();
+	}
 
-   @Override
-   protected String getContextPath() {
-      return "/dp";
-   }
+	@Override
+	protected void postConfigure(Context ctx) {
+		ServletHolder holder = new ServletHolder(s_mvc);
 
-   @Override
-   protected int getServerPort() {
-      return 2000;
-   }
+		ctx.addServlet(holder, "/d/*");
+		ctx.addServlet(holder, "/t/*");
+		ctx.addFilter(GzipFilter.class, "/d/*", Handler.ALL);
+		ctx.addFilter(GzipFilter.class, "/t/*", Handler.ALL);
+		super.postConfigure(ctx);
+	}
 
-   @Test
-   public void startServer() throws Exception {
-//      s_adaptor.display("/dp/d");
-      System.out.println(String.format("[%s] Press any key to stop server ... ", getTimestamp()));
-      System.in.read();
-   }
+	@Override
+	protected String getContextPath() {
+		return "/dp";
+	}
 
-   static class ComponentAdaptor extends ComponentTestCase {
-      private int m_serverPort;
+	@Override
+	protected int getServerPort() {
+		return 2000;
+	}
 
-      public void after() {
-         try {
-            super.tearDown();
-         } catch (Exception e) {
-            e.printStackTrace();
-         }
-      }
+	@Test
+	public void startServer() throws Exception {
+		s_adaptor.display("/dp/d");
+		System.out.println(String.format("[%s] Press any key to stop server ... ", getTimestamp()));
+		System.in.read();
+	}
 
-      public void before() {
-         try {
-            super.setUp();
-         } catch (Exception e) {
-            e.printStackTrace();
-         }
-      }
+	static class ComponentAdaptor extends ComponentTestCase {
+		private int m_serverPort;
 
-      @Override
-      public PlexusContainer getContainer() {
-         return super.getContainer();
-      }
+		public void after() {
+			try {
+				super.tearDown();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 
-      public void setServerPort(int serverPort) {
-         m_serverPort = serverPort;
-      }
+		public void before() {
+			try {
+				super.setUp();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 
-      public void display(String requestUri) throws Exception {
-         StringBuilder sb = new StringBuilder(256);
-         BrowserManager manager = lookup(BrowserManager.class);
+		@Override
+		public PlexusContainer getContainer() {
+			return super.getContainer();
+		}
 
-         sb.append("http://localhost:").append(m_serverPort).append(requestUri);
+		public void setServerPort(int serverPort) {
+			m_serverPort = serverPort;
+		}
 
-         try {
-            manager.display(new URL(sb.toString()));
-         } finally {
-            release(manager);
-         }
-      }
+		public void display(String requestUri) throws Exception {
+			StringBuilder sb = new StringBuilder(256);
+			BrowserManager manager = lookup(BrowserManager.class);
 
-      @Override
-      public <T> T lookup(Class<T> role) throws Exception {
-         return super.lookup(role);
-      }
+			sb.append("http://localhost:").append(m_serverPort).append(requestUri);
 
-      @Override
-      public <T> T lookup(Class<T> role, Object roleHint) throws Exception {
-         return super.lookup(role, roleHint);
-      }
-   }
+			try {
+				manager.display(new URL(sb.toString()));
+			} finally {
+				release(manager);
+			}
+		}
+
+		@Override
+		public <T> T lookup(Class<T> role) throws Exception {
+			return super.lookup(role);
+		}
+
+		@Override
+		public <T> T lookup(Class<T> role, Object roleHint) throws Exception {
+			return super.lookup(role, roleHint);
+		}
+	}
 }

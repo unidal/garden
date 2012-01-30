@@ -86,7 +86,7 @@
 			<plugin>
 				<groupId>com.site.maven.plugins</groupId>
 				<artifactId>maven-codegen-plugin</artifactId>
-				<version>1.0.0</version>
+				<version>1.0.0-a3</version>
 				<executions>
 					<execution>
 						<id>default-cli</id>
@@ -103,7 +103,7 @@
 					<dependency>
 						<groupId>mysql</groupId>
 						<artifactId>mysql-connector-java</artifactId>
-						<version>5.1.6</version>
+						<version>5.1.12</version>
 					</dependency>
 				</dependencies>
 			</plugin>
@@ -111,7 +111,7 @@
 	</build>
 	<properties>
 		<jdbc.driver>com.mysql.jdbc.Driver</jdbc.driver>
-		<jdbc.url>jdbc:mysql://localhost:3306/garden</jdbc.url>
+		<jdbc.url>jdbc:mysql://tech-wuqim.dianpingoa.com:3306/garden</jdbc.url>
 		<jdbc.user>root</jdbc.user>
 		<jdbc.password>Passw0rd</jdbc.password>
 		<jdbc.connectionProperties><![CDATA[useUnicode=true&autoReconnect=true]]></jdbc.connectionProperties>

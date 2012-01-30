@@ -4,19 +4,19 @@ import com.site.web.mvc.Page;
 import com.site.web.mvc.annotation.ModuleMeta;
 
 public enum ToolkitPage implements Page {
-
-   QUERY("query", "DB Query", true),
-
-	;
+	QUERY("query", "query", "DB Query", true);
 
 	private String m_name;
+
+	private String m_path;
 
 	private String m_description;
 
 	private boolean m_realPage;
 
-	private ToolkitPage(String name, String description, boolean realPage) {
+	private ToolkitPage(String name, String path, String description, boolean realPage) {
 		m_name = name;
+		m_path = path;
 		m_description = description;
 		m_realPage = realPage;
 	}
@@ -29,10 +29,6 @@ public enum ToolkitPage implements Page {
 		}
 
 		return defaultPage;
-	}
-
-	public String getName() {
-		return m_name;
 	}
 
 	public String getDescription() {
@@ -49,11 +45,21 @@ public enum ToolkitPage implements Page {
 		}
 	}
 
-	public boolean isRealPage() {
-		return m_realPage;
+	@Override
+	public String getName() {
+		return m_name;
+	}
+
+	@Override
+	public String getPath() {
+		return m_path;
 	}
 
 	public ToolkitPage[] getValues() {
 		return ToolkitPage.values();
+	}
+
+	public boolean isRealPage() {
+		return m_realPage;
 	}
 }

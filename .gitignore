@@ -1,4 +1,6 @@
 /ws/*
 /target/*
 /*/target/*
+/*/*/target/*
 /*/.*
+/*/*/.*
