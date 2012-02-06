@@ -9,8 +9,7 @@ import com.site.web.mvc.annotation.ModulePagesMeta;
 
 com.dianping.garden.dashboard.page.home.Handler.class,
 
-com.dianping.garden.dashboard.page.trend.Handler.class,
-
+com.dianping.garden.dashboard.page.trend.Handler.class
 })
 public class DashboardModule extends AbstractModule {
 

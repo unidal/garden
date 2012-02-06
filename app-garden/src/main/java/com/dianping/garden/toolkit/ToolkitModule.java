@@ -7,8 +7,7 @@ import com.site.web.mvc.annotation.ModulePagesMeta;
 @ModuleMeta(name = "t", defaultInboundAction = "query", defaultTransition = "default", defaultErrorAction = "default")
 @ModulePagesMeta({
 
-com.dianping.garden.toolkit.page.query.Handler.class,
-
+com.dianping.garden.toolkit.page.query.Handler.class
 })
 public class ToolkitModule extends AbstractModule {
 
