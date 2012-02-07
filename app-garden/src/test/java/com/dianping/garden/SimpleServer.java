@@ -83,6 +83,14 @@ public class SimpleServer extends SimpleServerSupport {
 	}
 
 	@Override
+	protected File getScratchDir() {
+		File work = new File(System.getProperty("java.io.tmpdir", "."), "Garden");
+
+		work.mkdirs();
+		return work;
+	}
+
+	@Override
 	protected int getServerPort() {
 		return 2000;
 	}

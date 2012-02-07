@@ -9,7 +9,7 @@
 		<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 		<res:cssSlot id="head-css"/>
 		<res:jsSlot id="head-js"/>
-		<res:useCss value='${res.css.local.default_css}' target="head-css"/>
+		<res:useCss value='${res.css.local.body_css}' target="head-css"/>
 	</head>
 	<body>
 		<h1>
@@ -18,7 +18,7 @@
 		<ul class="tabs">
 			<c:forEach var="page" items="${navBar.visiblePages}">
 				<c:if test="${page.standalone}">
-					<li ${model.page.name == page.name ? 'class="selected"' : ''}><a href="${model.webapp}/${page.moduleName}/${page.name}">${page.title}</a></li>
+					<li ${model.page.name == page.name ? 'class="selected"' : ''}><a href="${model.webapp}/${page.moduleName}/${page.path}">${page.title}</a></li>
 				</c:if>
 			</c:forEach>
 		</ul>
