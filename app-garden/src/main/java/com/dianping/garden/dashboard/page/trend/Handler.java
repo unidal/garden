@@ -19,7 +19,7 @@ import com.dianping.garden.dal.TrendDetailEntity;
 import com.dianping.garden.dal.TrendEntity;
 import com.dianping.garden.dashboard.DashboardPage;
 import com.dianping.garden.wdbc.ArticleFetcher;
-import com.ebay.webres.helper.Files;
+import org.unidal.webres.helper.Files;
 import com.site.dal.jdbc.DalException;
 import com.site.lookup.ContainerHolder;
 import com.site.lookup.annotation.Inject;

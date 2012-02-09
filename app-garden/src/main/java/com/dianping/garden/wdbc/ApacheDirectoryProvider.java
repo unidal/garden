@@ -8,8 +8,8 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-import com.ebay.webres.helper.Files;
-import com.ebay.webres.helper.Scanners.IDirectoryProvider;
+import org.unidal.webres.helper.Files;
+import org.unidal.webres.helper.Scanners.IDirectoryProvider;
 
 public class ApacheDirectoryProvider implements IDirectoryProvider<URL> {
    private MessageFormat m_format = new MessageFormat("{2}<li><a href=\"{0}\">{3}</a></li>{1}");

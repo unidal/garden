@@ -10,7 +10,7 @@ import java.util.TimeZone;
 
 import com.dianping.garden.dal.Article;
 import com.dianping.garden.dal.Trend;
-import com.ebay.webres.helper.Files;
+import org.unidal.webres.helper.Files;
 import com.site.lookup.annotation.Inject;
 import com.site.lookup.configuration.Component;
 import com.site.wdbc.StringSource;

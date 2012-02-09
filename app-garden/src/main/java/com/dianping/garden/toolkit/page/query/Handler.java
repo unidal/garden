@@ -10,7 +10,7 @@ import java.util.Map;
 import javax.servlet.ServletException;
 
 import com.dianping.garden.toolkit.ToolkitPage;
-import com.ebay.webres.helper.Splitters;
+import org.unidal.webres.helper.Splitters;
 import com.site.dal.jdbc.DalException;
 import com.site.dal.jdbc.datasource.JdbcDataSourceConfigurationManager;
 import com.site.dal.jdbc.raw.RawDao;

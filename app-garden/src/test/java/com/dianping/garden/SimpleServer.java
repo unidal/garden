@@ -12,8 +12,8 @@ import org.mortbay.jetty.servlet.Context;
 import org.mortbay.jetty.servlet.ServletHolder;
 import org.mortbay.servlet.GzipFilter;
 
-import com.ebay.webres.server.support.SimpleServerSupport;
-import com.ebay.webres.taglib.support.JettyTestSupport;
+import org.unidal.webres.server.support.SimpleServerSupport;
+import org.unidal.webres.taglib.support.JettyTestSupport;
 import com.site.lookup.ComponentTestCase;
 import com.site.test.browser.BrowserManager;
 import com.site.web.MVC;

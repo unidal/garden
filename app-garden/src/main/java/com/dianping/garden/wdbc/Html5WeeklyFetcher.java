@@ -7,8 +7,8 @@ import java.util.List;
 
 import com.dianping.garden.dal.Article;
 import com.dianping.garden.dal.Trend;
-import com.ebay.webres.helper.Scanners;
-import com.ebay.webres.helper.Scanners.UrlMatcher;
+import org.unidal.webres.helper.Scanners;
+import org.unidal.webres.helper.Scanners.UrlMatcher;
 import com.site.lookup.annotation.Inject;
 import com.site.lookup.configuration.Component;
 import com.site.wdbc.WdbcSource;
