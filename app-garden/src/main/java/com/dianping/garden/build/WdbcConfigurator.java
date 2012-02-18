@@ -1,4 +1,4 @@
-package com.dianping.garden.configuration;
+package com.dianping.garden.build;
 
 import java.util.ArrayList;
 import java.util.List;

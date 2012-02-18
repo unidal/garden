@@ -98,6 +98,16 @@
 							<manifest>${basedir}/src/main/resources/META-INF/dal/jdbc/manifest.xml</manifest>
 						</configuration>
 					</execution>
+					<execution>
+						<id>generate plexus component descriptor</id>
+						<phase>process-classes</phase>
+						<goals>
+							<goal>plexus</goal>
+						</goals>
+						<configuration>
+							<className>com.dianping.garden.build.ComponentsConfigurator</className>
+						</configuration>
+					</execution>
 				</executions>
 				<dependencies>
 					<dependency>

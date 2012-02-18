@@ -1,4 +1,4 @@
-package org.unidal.demo.configuration;
+package org.unidal.demo.build;
 
 import java.util.ArrayList;
 import java.util.List;
