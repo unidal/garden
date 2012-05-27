@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <wizard package="com.dianping.garden" webres="true">
   <module name="dashboard" path="d">
-    <page name="home" default="true">
+    <page name="home" title="Home" default="true">
       <description>Home Page of Garden</description>
     </page>
-    <page name="trend">
+    <page name="trend" title="Trend">
       <description>Technical Trends</description>
     </page>
   </module>
   <module name="toolkit" path="t">
-    <page name="query" default="true">
+    <page name="query" title="DB Query" default="true">
       <description>Database Query Toolkit</description>
     </page>
   </module>
