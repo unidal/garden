@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans default-autowire="byName">
+	<bean class="com.dianping.dpsf.spring.ServiceRegistry" init-method="init" lazy-init="false">
+		<property name="services">
+			<map>
+				<entry key="http://service.dianping.com/lab/FirstService" value-ref="FirstService" />
+			</map>
+		</property>
+	</bean>
+	<bean id="FirstService" class="com.dianping.lab.DefaultFirstService" />
+</beans>

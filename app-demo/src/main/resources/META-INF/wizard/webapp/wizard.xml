@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wizard>
+  <webapp package="com.dianping.demo" name="demo" webres="false" cat="true">
+    <module name="doc" path="d" default="true">
+      <page name="home" title="Home" default="true" path="home">
+        <description>Home</description>
+      </page>
+    </module>
+  </webapp>
+</wizard>
+

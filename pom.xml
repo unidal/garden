@@ -5,11 +5,12 @@
    <modelVersion>4.0.0</modelVersion>
    <groupId>com.dianping.garden</groupId>
    <artifactId>parent</artifactId>
-   <version>0.1.0</version>
+   <version>0.1.1</version>
    <name>Garden Parent</name>
    <packaging>pom</packaging>
    <modules>
       <module>app-garden</module>
+      <module>app-lab</module>
    </modules>
    <dependencyManagement>
       <dependencies>
@@ -202,6 +203,7 @@
                <version>2.8</version>
                <configuration>
                   <downloadSources>true</downloadSources>
+                  <ajdtVersion>none</ajdtVersion>
                   <additionalConfig>
                      <file>
                         <name>.settings/org.eclipse.jdt.core.prefs</name>
