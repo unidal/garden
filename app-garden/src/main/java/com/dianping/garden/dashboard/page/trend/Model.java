@@ -5,7 +5,7 @@ import java.util.List;
 import com.dianping.garden.dal.Article;
 import com.dianping.garden.dal.Trend;
 import com.dianping.garden.dashboard.DashboardPage;
-import com.site.web.mvc.ViewModel;
+import org.unidal.web.mvc.ViewModel;
 
 public class Model extends ViewModel<DashboardPage, Action, Context> {
    private Action m_action;

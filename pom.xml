@@ -10,7 +10,6 @@
    <packaging>pom</packaging>
    <modules>
       <module>app-garden</module>
-      <module>app-lab</module>
    </modules>
    <dependencyManagement>
       <dependencies>

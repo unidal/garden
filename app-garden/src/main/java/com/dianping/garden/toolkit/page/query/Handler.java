@@ -9,26 +9,27 @@ import java.util.Map;
 
 import javax.servlet.ServletException;
 
+import org.unidal.dal.jdbc.DalException;
+import org.unidal.dal.jdbc.datasource.JdbcDataSourceDescriptorManager;
+import org.unidal.dal.jdbc.raw.RawDao;
+import org.unidal.dal.jdbc.raw.RawDataObject;
+import org.unidal.helper.Splitters;
+import org.unidal.lookup.ContainerHolder;
+import org.unidal.lookup.annotation.Inject;
+import org.unidal.web.mvc.ErrorObject;
+import org.unidal.web.mvc.PageHandler;
+import org.unidal.web.mvc.annotation.InboundActionMeta;
+import org.unidal.web.mvc.annotation.OutboundActionMeta;
+import org.unidal.web.mvc.annotation.PayloadMeta;
+
 import com.dianping.garden.toolkit.ToolkitPage;
-import org.unidal.webres.helper.Splitters;
-import com.site.dal.jdbc.DalException;
-import com.site.dal.jdbc.datasource.JdbcDataSourceConfigurationManager;
-import com.site.dal.jdbc.raw.RawDao;
-import com.site.dal.jdbc.raw.RawDataObject;
-import com.site.lookup.ContainerHolder;
-import com.site.lookup.annotation.Inject;
-import com.site.web.mvc.ErrorObject;
-import com.site.web.mvc.PageHandler;
-import com.site.web.mvc.annotation.InboundActionMeta;
-import com.site.web.mvc.annotation.OutboundActionMeta;
-import com.site.web.mvc.annotation.PayloadMeta;
 
 public class Handler extends ContainerHolder implements PageHandler<Context> {
    @Inject
    private JspViewer m_jspViewer;
 
    @Inject
-   private JdbcDataSourceConfigurationManager m_dsManager;
+   private JdbcDataSourceDescriptorManager m_dsManager;
 
    @Inject
    private RawDao m_rawDao;

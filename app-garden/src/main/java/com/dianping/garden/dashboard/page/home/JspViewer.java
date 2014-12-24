@@ -1,7 +1,7 @@
 package com.dianping.garden.dashboard.page.home;
 
 import com.dianping.garden.dashboard.DashboardPage;
-import com.site.web.mvc.view.BaseJspViewer;
+import org.unidal.web.mvc.view.BaseJspViewer;
 
 public class JspViewer extends
 		BaseJspViewer<DashboardPage, Action, Context, Model> {

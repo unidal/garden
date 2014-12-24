@@ -5,10 +5,10 @@ import java.util.Date;
 import java.util.Locale;
 
 import com.dianping.garden.wdbc.Html5Weekly.Html5WeeklyFilter;
-import com.site.wdbc.WdbcResult;
-import com.site.wdbc.http.configuration.WdbcFieldMeta;
-import com.site.wdbc.http.configuration.WdbcMeta;
-import com.site.wdbc.query.DefaultWdbcFilter;
+import org.unidal.wdbc.WdbcResult;
+import org.unidal.wdbc.http.configuration.WdbcFieldMeta;
+import org.unidal.wdbc.http.configuration.WdbcMeta;
+import org.unidal.wdbc.query.DefaultWdbcFilter;
 
 @WdbcMeta(name = "Html5Weekly", filter = Html5WeeklyFilter.class)
 public class Html5Weekly extends AbstractWdbc {

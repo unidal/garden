@@ -6,7 +6,7 @@ import java.util.List;
 
 import com.dianping.garden.dashboard.DashboardContext;
 import com.dianping.garden.view.UriBuilder;
-import com.site.dal.jdbc.raw.RawDataObject;
+import org.unidal.dal.jdbc.raw.RawDataObject;
 
 public class Context extends DashboardContext<Payload> {
    private SimpleDateFormat m_dateformat = new SimpleDateFormat("HH:mm:ss.SSS");

@@ -1,7 +1,7 @@
 package com.dianping.garden.toolkit.page.query;
 
 import com.dianping.garden.toolkit.ToolkitPage;
-import com.site.web.mvc.view.BaseJspViewer;
+import org.unidal.web.mvc.view.BaseJspViewer;
 
 public class JspViewer extends BaseJspViewer<ToolkitPage, Action, Context, Model> {
 	@Override

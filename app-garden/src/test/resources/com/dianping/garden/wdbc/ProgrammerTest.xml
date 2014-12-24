@@ -3,9 +3,9 @@
 <plexus>
    <components>
       <component>
-         <role>com.site.wdbc.WdbcQuery</role>
+         <role>org.unidal.wdbc.WdbcQuery</role>
          <role-hint>Programmer-mock</role-hint>
-         <implementation>com.site.wdbc.FindQuery</implementation>
+         <implementation>org.unidal.wdbc.FindQuery</implementation>
          <configuration>
             <words>
                <word name="day">31</word>

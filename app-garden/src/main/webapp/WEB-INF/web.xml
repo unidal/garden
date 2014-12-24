@@ -4,7 +4,7 @@
 	version="2.5">
 	<servlet>
 		<servlet-name>mvc-servlet</servlet-name>
-		<servlet-class>com.site.web.MVC</servlet-class>
+		<servlet-class>org.unidal.web.MVC</servlet-class>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 	<servlet-mapping>

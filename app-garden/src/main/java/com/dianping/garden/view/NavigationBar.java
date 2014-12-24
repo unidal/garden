@@ -2,7 +2,7 @@ package com.dianping.garden.view;
 
 import com.dianping.garden.dashboard.DashboardPage;
 import com.dianping.garden.toolkit.ToolkitPage;
-import com.site.web.mvc.Page;
+import org.unidal.web.mvc.Page;
 
 public class NavigationBar {
 	public Page[] getVisiblePages() {

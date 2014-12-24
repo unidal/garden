@@ -5,8 +5,8 @@ import java.util.List;
 
 import com.dianping.garden.dashboard.DashboardModule;
 import com.dianping.garden.toolkit.ToolkitModule;
-import com.site.lookup.configuration.Component;
-import com.site.web.configuration.AbstractWebComponentsConfigurator;
+import org.unidal.lookup.configuration.Component;
+import org.unidal.web.configuration.AbstractWebComponentsConfigurator;
 
 public class ComponentsConfigurator extends AbstractWebComponentsConfigurator {
 	@Override

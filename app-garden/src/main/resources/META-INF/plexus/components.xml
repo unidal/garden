@@ -1,16 +1,16 @@
 <plexus>
 	<components>
 		<component>
-			<role>com.site.dal.jdbc.datasource.JdbcDataSourceConfigurationManager</role>
-			<implementation>com.site.dal.jdbc.datasource.JdbcDataSourceConfigurationManager</implementation>
+			<role>org.unidal.dal.jdbc.datasource.JdbcDataSourceConfigurationManager</role>
+			<implementation>org.unidal.dal.jdbc.datasource.JdbcDataSourceConfigurationManager</implementation>
 			<configuration>
 				<datasourceFile>datasources.xml</datasourceFile>
 			</configuration>
 		</component>
 		<component>
-			<role>com.site.dal.jdbc.datasource.DataSource</role>
+			<role>org.unidal.dal.jdbc.datasource.DataSource</role>
 			<role-hint>garden</role-hint>
-			<implementation>com.site.dal.jdbc.datasource.JdbcDataSource</implementation>
+			<implementation>org.unidal.dal.jdbc.datasource.JdbcDataSource</implementation>
 			<configuration>
 				<id>garden</id>
 				<maximum-pool-size>3</maximum-pool-size>
@@ -27,14 +27,14 @@
 			</configuration>
 			<requirements>
 				<requirement>
-					<role>com.site.dal.jdbc.datasource.JdbcDataSourceConfigurationManager</role>
+					<role>org.unidal.dal.jdbc.datasource.JdbcDataSourceConfigurationManager</role>
 				</requirement>
 			</requirements>
 		</component>
 		<component>
-			<role>com.site.dal.jdbc.datasource.DataSource</role>
+			<role>org.unidal.dal.jdbc.datasource.DataSource</role>
 			<role-hint>DianPing</role-hint>
-			<implementation>com.site.dal.jdbc.datasource.JdbcDataSource</implementation>
+			<implementation>org.unidal.dal.jdbc.datasource.JdbcDataSource</implementation>
 			<configuration>
 				<id>DianPing</id>
 				<maximum-pool-size>3</maximum-pool-size>
@@ -51,14 +51,14 @@
 			</configuration>
 			<requirements>
 				<requirement>
-					<role>com.site.dal.jdbc.datasource.JdbcDataSourceConfigurationManager</role>
+					<role>org.unidal.dal.jdbc.datasource.JdbcDataSourceConfigurationManager</role>
 				</requirement>
 			</requirements>
 		</component>
 		<component>
-			<role>com.site.dal.jdbc.mapping.TableProvider</role>
+			<role>org.unidal.dal.jdbc.mapping.TableProvider</role>
 			<role-hint>article</role-hint>
-			<implementation>com.site.dal.jdbc.mapping.SimpleTableProvider</implementation>
+			<implementation>org.unidal.dal.jdbc.mapping.SimpleTableProvider</implementation>
 			<configuration>
 				<logical-table-name>article</logical-table-name>
 				<physical-table-name>article</physical-table-name>
@@ -66,9 +66,9 @@
 			</configuration>
 		</component>
 		<component>
-			<role>com.site.dal.jdbc.mapping.TableProvider</role>
+			<role>org.unidal.dal.jdbc.mapping.TableProvider</role>
 			<role-hint>trend</role-hint>
-			<implementation>com.site.dal.jdbc.mapping.SimpleTableProvider</implementation>
+			<implementation>org.unidal.dal.jdbc.mapping.SimpleTableProvider</implementation>
 			<configuration>
 				<logical-table-name>trend</logical-table-name>
 				<physical-table-name>trend</physical-table-name>
@@ -76,9 +76,9 @@
 			</configuration>
 		</component>
 		<component>
-			<role>com.site.dal.jdbc.mapping.TableProvider</role>
+			<role>org.unidal.dal.jdbc.mapping.TableProvider</role>
 			<role-hint>trend-detail</role-hint>
-			<implementation>com.site.dal.jdbc.mapping.SimpleTableProvider</implementation>
+			<implementation>org.unidal.dal.jdbc.mapping.SimpleTableProvider</implementation>
 			<configuration>
 				<logical-table-name>trend-detail</logical-table-name>
 				<physical-table-name>trend_detail</physical-table-name>
@@ -86,9 +86,9 @@
 			</configuration>
 		</component>
 		<component>
-			<role>com.site.dal.jdbc.mapping.TableProvider</role>
+			<role>org.unidal.dal.jdbc.mapping.TableProvider</role>
 			<role-hint>user</role-hint>
-			<implementation>com.site.dal.jdbc.mapping.SimpleTableProvider</implementation>
+			<implementation>org.unidal.dal.jdbc.mapping.SimpleTableProvider</implementation>
 			<configuration>
 				<logical-table-name>user</logical-table-name>
 				<physical-table-name>user</physical-table-name>
@@ -100,7 +100,7 @@
 			<implementation>com.dianping.garden.dal.ArticleDao</implementation>
 			<requirements>
 				<requirement>
-					<role>com.site.dal.jdbc.QueryEngine</role>
+					<role>org.unidal.dal.jdbc.QueryEngine</role>
 				</requirement>
 			</requirements>
 		</component>
@@ -109,7 +109,7 @@
 			<implementation>com.dianping.garden.dal.TrendDao</implementation>
 			<requirements>
 				<requirement>
-					<role>com.site.dal.jdbc.QueryEngine</role>
+					<role>org.unidal.dal.jdbc.QueryEngine</role>
 				</requirement>
 			</requirements>
 		</component>
@@ -118,7 +118,7 @@
 			<implementation>com.dianping.garden.dal.TrendDetailDao</implementation>
 			<requirements>
 				<requirement>
-					<role>com.site.dal.jdbc.QueryEngine</role>
+					<role>org.unidal.dal.jdbc.QueryEngine</role>
 				</requirement>
 			</requirements>
 		</component>
@@ -127,7 +127,7 @@
 			<implementation>com.dianping.garden.dal.UserDao</implementation>
 			<requirements>
 				<requirement>
-					<role>com.site.dal.jdbc.QueryEngine</role>
+					<role>org.unidal.dal.jdbc.QueryEngine</role>
 				</requirement>
 			</requirements>
 		</component>
@@ -136,7 +136,7 @@
 			<implementation>com.dianping.garden.wdbc.WdbcMapping</implementation>
 			<requirements>
 				<requirement>
-					<role>com.site.wdbc.WdbcEngine</role>
+					<role>org.unidal.wdbc.WdbcEngine</role>
 				</requirement>
 			</requirements>
 		</component>
@@ -151,14 +151,14 @@
 			</requirements>
 		</component>
 		<component>
-			<role>com.site.wdbc.http.Request</role>
+			<role>org.unidal.wdbc.http.Request</role>
 			<role-hint>JavascriptWeekly</role-hint>
-			<implementation>com.site.wdbc.http.impl.FormRequest</implementation>
+			<implementation>org.unidal.wdbc.http.impl.FormRequest</implementation>
 		</component>
 		<component>
-			<role>com.site.wdbc.WdbcQuery</role>
+			<role>org.unidal.wdbc.WdbcQuery</role>
 			<role-hint>JavascriptWeekly</role-hint>
-			<implementation>com.site.wdbc.SelectQuery</implementation>
+			<implementation>org.unidal.wdbc.SelectQuery</implementation>
 			<configuration>
 				<paths>
 					<path name="date">html.body.table.tr.td.p.small</path>
@@ -169,13 +169,13 @@
 			</configuration>
 			<requirements>
 				<requirement>
-					<role>com.site.wdbc.query.WdbcFilter</role>
+					<role>org.unidal.wdbc.query.WdbcFilter</role>
 					<role-hint>JavascriptWeekly</role-hint>
 				</requirement>
 			</requirements>
 		</component>
 		<component>
-			<role>com.site.wdbc.query.WdbcFilter</role>
+			<role>org.unidal.wdbc.query.WdbcFilter</role>
 			<role-hint>JavascriptWeekly</role-hint>
 			<implementation>com.dianping.garden.wdbc.JavascriptWeekly$JavascriptWeeklyFilter</implementation>
 		</component>
@@ -190,14 +190,14 @@
 			</requirements>
 		</component>
 		<component>
-			<role>com.site.wdbc.http.Request</role>
+			<role>org.unidal.wdbc.http.Request</role>
 			<role-hint>Html5Weekly</role-hint>
-			<implementation>com.site.wdbc.http.impl.FormRequest</implementation>
+			<implementation>org.unidal.wdbc.http.impl.FormRequest</implementation>
 		</component>
 		<component>
-			<role>com.site.wdbc.WdbcQuery</role>
+			<role>org.unidal.wdbc.WdbcQuery</role>
 			<role-hint>Html5Weekly</role-hint>
-			<implementation>com.site.wdbc.SelectQuery</implementation>
+			<implementation>org.unidal.wdbc.SelectQuery</implementation>
 			<configuration>
 				<paths>
 					<path name="date">html.body.table.tr.td.table.tr[2].td.p</path>
@@ -208,13 +208,13 @@
 			</configuration>
 			<requirements>
 				<requirement>
-					<role>com.site.wdbc.query.WdbcFilter</role>
+					<role>org.unidal.wdbc.query.WdbcFilter</role>
 					<role-hint>Html5Weekly</role-hint>
 				</requirement>
 			</requirements>
 		</component>
 		<component>
-			<role>com.site.wdbc.query.WdbcFilter</role>
+			<role>org.unidal.wdbc.query.WdbcFilter</role>
 			<role-hint>Html5Weekly</role-hint>
 			<implementation>com.dianping.garden.wdbc.Html5Weekly$Html5WeeklyFilter</implementation>
 		</component>
@@ -229,14 +229,14 @@
 			</requirements>
 		</component>
 		<component>
-			<role>com.site.wdbc.http.Request</role>
+			<role>org.unidal.wdbc.http.Request</role>
 			<role-hint>Programmer</role-hint>
-			<implementation>com.site.wdbc.http.impl.FormRequest</implementation>
+			<implementation>org.unidal.wdbc.http.impl.FormRequest</implementation>
 		</component>
 		<component>
-			<role>com.site.wdbc.WdbcQuery</role>
+			<role>org.unidal.wdbc.WdbcQuery</role>
 			<role-hint>Programmer</role-hint>
-			<implementation>com.site.wdbc.SelectQuery</implementation>
+			<implementation>org.unidal.wdbc.SelectQuery</implementation>
 			<configuration>
 				<paths>
 					<path name="day">html.body.div.div.div[3].div.div.div[*].div</path>
@@ -248,19 +248,19 @@
 			</configuration>
 			<requirements>
 				<requirement>
-					<role>com.site.wdbc.query.WdbcFilter</role>
+					<role>org.unidal.wdbc.query.WdbcFilter</role>
 					<role-hint>Programmer</role-hint>
 				</requirement>
 			</requirements>
 		</component>
 		<component>
-			<role>com.site.wdbc.query.WdbcFilter</role>
+			<role>org.unidal.wdbc.query.WdbcFilter</role>
 			<role-hint>Programmer</role-hint>
 			<implementation>com.dianping.garden.wdbc.Programmer$ProgrammerFilter</implementation>
 		</component>
 		<component>
-			<role>com.site.web.mvc.model.ModuleRegistry</role>
-			<implementation>com.site.web.mvc.model.ModuleRegistry</implementation>
+			<role>org.unidal.web.mvc.model.ModuleRegistry</role>
+			<implementation>org.unidal.web.mvc.model.ModuleRegistry</implementation>
 			<configuration>
 				<modules>
 					<module default="true">com.dianping.garden.dashboard.DashboardModule</module>
@@ -332,10 +332,10 @@
 					<role>com.dianping.garden.toolkit.page.query.JspViewer</role>
 				</requirement>
 				<requirement>
-					<role>com.site.dal.jdbc.datasource.JdbcDataSourceConfigurationManager</role>
+					<role>org.unidal.dal.jdbc.datasource.JdbcDataSourceConfigurationManager</role>
 				</requirement>
 				<requirement>
-					<role>com.site.dal.jdbc.raw.RawDao</role>
+					<role>org.unidal.dal.jdbc.raw.RawDao</role>
 				</requirement>
 			</requirements>
 		</component>
@@ -344,11 +344,11 @@
 			<implementation>com.dianping.garden.toolkit.page.query.JspViewer</implementation>
 		</component>
 		<component>
-			<role>com.site.dal.jdbc.raw.RawDao</role>
-			<implementation>com.site.dal.jdbc.raw.RawDao</implementation>
+			<role>org.unidal.dal.jdbc.raw.RawDao</role>
+			<implementation>org.unidal.dal.jdbc.raw.RawDao</implementation>
 			<requirements>
 				<requirement>
-					<role>com.site.dal.jdbc.QueryEngine</role>
+					<role>org.unidal.dal.jdbc.QueryEngine</role>
 				</requirement>
 			</requirements>
 		</component>

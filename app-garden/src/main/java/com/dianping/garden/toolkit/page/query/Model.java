@@ -6,8 +6,8 @@ import java.util.Map.Entry;
 import java.util.Set;
 
 import com.dianping.garden.toolkit.ToolkitPage;
-import com.site.dal.jdbc.raw.RawDataObject;
-import com.site.web.mvc.ViewModel;
+import org.unidal.dal.jdbc.raw.RawDataObject;
+import org.unidal.web.mvc.ViewModel;
 
 public class Model extends ViewModel<ToolkitPage, Action, Context> {
    private Action m_action;

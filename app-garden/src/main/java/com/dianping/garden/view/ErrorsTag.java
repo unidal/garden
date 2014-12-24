@@ -12,18 +12,18 @@ import org.codehaus.plexus.PlexusContainer;
 import org.codehaus.plexus.component.repository.exception.ComponentLookupException;
 import org.xml.sax.InputSource;
 
-import com.site.dal.xml.XmlAdapter;
-import com.site.dal.xml.XmlException;
-import com.site.dal.xml.annotation.XmlAttribute;
-import com.site.dal.xml.annotation.XmlElement;
-import com.site.dal.xml.annotation.XmlElements;
-import com.site.dal.xml.annotation.XmlRootElement;
-import com.site.dal.xml.annotation.XmlValue;
-import com.site.dal.xml.registry.XmlRegistry;
-import com.site.lookup.ContainerLoader;
-import com.site.web.jsp.tag.AbstractBodyTag;
-import com.site.web.mvc.ActionContext;
-import com.site.web.mvc.ErrorObject;
+import org.unidal.dal.xml.XmlAdapter;
+import org.unidal.dal.xml.XmlException;
+import org.unidal.dal.xml.annotation.XmlAttribute;
+import org.unidal.dal.xml.annotation.XmlElement;
+import org.unidal.dal.xml.annotation.XmlElements;
+import org.unidal.dal.xml.annotation.XmlRootElement;
+import org.unidal.dal.xml.annotation.XmlValue;
+import org.unidal.dal.xml.registry.XmlRegistry;
+import org.unidal.lookup.ContainerLoader;
+import org.unidal.web.jsp.tag.AbstractBodyTag;
+import org.unidal.web.mvc.ActionContext;
+import org.unidal.web.mvc.ErrorObject;
 
 public class ErrorsTag extends AbstractBodyTag {
    private static final long serialVersionUID = 1L;

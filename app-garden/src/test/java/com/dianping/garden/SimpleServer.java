@@ -3,7 +3,6 @@ package com.dianping.garden;
 import java.io.File;
 import java.net.URL;
 
-import org.codehaus.plexus.PlexusContainer;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -11,12 +10,11 @@ import org.mortbay.jetty.Handler;
 import org.mortbay.jetty.servlet.Context;
 import org.mortbay.jetty.servlet.ServletHolder;
 import org.mortbay.servlet.GzipFilter;
-
+import org.unidal.lookup.ComponentTestCase;
+import org.unidal.test.browser.BrowserManager;
+import org.unidal.web.MVC;
 import org.unidal.webres.server.support.SimpleServerSupport;
 import org.unidal.webres.taglib.support.JettyTestSupport;
-import com.site.lookup.ComponentTestCase;
-import com.site.test.browser.BrowserManager;
-import com.site.web.MVC;
 
 public class SimpleServer extends SimpleServerSupport {
 	private static ComponentAdaptor s_adaptor = new ComponentAdaptor();
@@ -121,11 +119,6 @@ public class SimpleServer extends SimpleServerSupport {
 			}
 		}
 
-		@Override
-		public PlexusContainer getContainer() {
-			return super.getContainer();
-		}
-
 		public void setServerPort(int serverPort) {
 			m_serverPort = serverPort;
 		}
@@ -141,16 +134,6 @@ public class SimpleServer extends SimpleServerSupport {
 			} finally {
 				release(manager);
 			}
-		}
-
-		@Override
-		public <T> T lookup(Class<T> role) throws Exception {
-			return super.lookup(role);
-		}
-
-		@Override
-		public <T> T lookup(Class<T> role, Object roleHint) throws Exception {
-			return super.lookup(role, roleHint);
 		}
 	}
 }

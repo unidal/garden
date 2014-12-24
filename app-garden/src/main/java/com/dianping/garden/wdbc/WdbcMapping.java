@@ -4,18 +4,18 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.site.converter.ConverterManager;
-import com.site.dal.xml.XmlException;
-import com.site.dal.xml.formatter.Formatter;
-import com.site.lookup.ContainerHolder;
-import com.site.lookup.annotation.Inject;
-import com.site.wdbc.WdbcEngine;
-import com.site.wdbc.WdbcException;
-import com.site.wdbc.WdbcQuery;
-import com.site.wdbc.WdbcResult;
-import com.site.wdbc.WdbcSource;
-import com.site.wdbc.http.configuration.WdbcFieldMeta;
-import com.site.wdbc.http.configuration.WdbcMeta;
+import org.unidal.converter.ConverterManager;
+import org.unidal.dal.xml.XmlException;
+import org.unidal.dal.xml.formatter.Formatter;
+import org.unidal.lookup.ContainerHolder;
+import org.unidal.lookup.annotation.Inject;
+import org.unidal.wdbc.WdbcEngine;
+import org.unidal.wdbc.WdbcException;
+import org.unidal.wdbc.WdbcQuery;
+import org.unidal.wdbc.WdbcResult;
+import org.unidal.wdbc.WdbcSource;
+import org.unidal.wdbc.http.configuration.WdbcFieldMeta;
+import org.unidal.wdbc.http.configuration.WdbcMeta;
 
 public class WdbcMapping extends ContainerHolder {
    @Inject

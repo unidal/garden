@@ -3,11 +3,12 @@ package com.dianping.garden.toolkit.page.query;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.unidal.web.jsp.function.CodecFunction;
+import org.unidal.web.mvc.ActionContext;
+import org.unidal.web.mvc.ActionPayload;
+import org.unidal.web.mvc.payload.annotation.FieldMeta;
+
 import com.dianping.garden.toolkit.ToolkitPage;
-import com.site.web.jsp.function.Decoder;
-import com.site.web.mvc.ActionContext;
-import com.site.web.mvc.ActionPayload;
-import com.site.web.mvc.payload.annotation.FieldMeta;
 
 public class Payload implements ActionPayload<ToolkitPage, Action> {
    private ToolkitPage m_page;
@@ -84,7 +85,7 @@ public class Payload implements ActionPayload<ToolkitPage, Action> {
 
    public void setHistorySqls(String historySqls) {
       List<String> sqls = new ArrayList<String>(20);
-      String history = Decoder.urlDecode(historySqls);
+      String history = CodecFunction.urlDecode(historySqls);
       int len = history.length();
       int off = 0;
 

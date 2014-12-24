@@ -1,9 +1,9 @@
 <plexus>
    <components>
       <component>
-         <role>com.site.wdbc.WdbcQuery</role>
+         <role>org.unidal.wdbc.WdbcQuery</role>
          <role-hint>Html5Weekly-mock</role-hint>
-         <implementation>com.site.wdbc.FindQuery</implementation>
+         <implementation>org.unidal.wdbc.FindQuery</implementation>
          <configuration>
             <words>
                <word name="date">August 24, 2011</word>

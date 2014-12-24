@@ -1,6 +1,6 @@
 package com.dianping.garden.toolkit.page.query;
 
-public enum Action implements com.site.web.mvc.Action {
+public enum Action implements org.unidal.web.mvc.Action {
    QUERY("main"),
 
    ;

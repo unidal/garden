@@ -1,10 +1,10 @@
 package com.dianping.garden.wdbc;
 
 import com.dianping.garden.wdbc.Programmer.ProgrammerFilter;
-import com.site.wdbc.WdbcResult;
-import com.site.wdbc.http.configuration.WdbcFieldMeta;
-import com.site.wdbc.http.configuration.WdbcMeta;
-import com.site.wdbc.query.DefaultWdbcFilter;
+import org.unidal.wdbc.WdbcResult;
+import org.unidal.wdbc.http.configuration.WdbcFieldMeta;
+import org.unidal.wdbc.http.configuration.WdbcMeta;
+import org.unidal.wdbc.query.DefaultWdbcFilter;
 
 @WdbcMeta(name = "Programmer", filter = ProgrammerFilter.class)
 public class Programmer extends AbstractWdbc {

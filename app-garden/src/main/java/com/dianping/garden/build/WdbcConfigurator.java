@@ -7,9 +7,9 @@ import com.dianping.garden.wdbc.Html5WeeklyFetcher;
 import com.dianping.garden.wdbc.JavascriptWeeklyFetcher;
 import com.dianping.garden.wdbc.ProgrammerFetcher;
 import com.dianping.garden.wdbc.WdbcMapping;
-import com.site.lookup.configuration.Component;
-import com.site.wdbc.WdbcEngine;
-import com.site.wdbc.http.configuration.AbstractWdbcComponentsConfigurator;
+import org.unidal.lookup.configuration.Component;
+import org.unidal.wdbc.WdbcEngine;
+import org.unidal.wdbc.http.configuration.AbstractWdbcComponentsConfigurator;
 
 final class WdbcConfigurator extends AbstractWdbcComponentsConfigurator {
    public List<Component> defineComponents() {
