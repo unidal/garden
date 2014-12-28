@@ -9,7 +9,8 @@
    <name>Garden Parent</name>
    <packaging>pom</packaging>
    <modules>
-      <module>app-garden</module>
+      <module>rose</module>
+      <module>orchid</module>
    </modules>
    <dependencyManagement>
       <dependencies>
