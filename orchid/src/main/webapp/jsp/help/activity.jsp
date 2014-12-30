@@ -13,7 +13,7 @@
 &quot;First Activity&quot; --&gt; (*)
 
 @enduml</pre>
-<img src='/uml/help/activity/01-Simple+Activity.uml'>
+<img src='${pageContext.request.contextPath}/uml/help/activity/01-Simple+Activity.uml'>
 </div>
 
 <div>
@@ -25,7 +25,7 @@
 --&gt; (*)
 
 @enduml</pre>
-<img src='/uml/help/activity/02-Label+on+arrows.uml'>
+<img src='${pageContext.request.contextPath}/uml/help/activity/02-Label+on+arrows.uml'>
 </div>
 
 <div>
@@ -38,7 +38,7 @@
 -left-&gt; (*)
 
 @enduml</pre>
-<img src='/uml/help/activity/03-Changing+arrow+direction.uml'>
+<img src='${pageContext.request.contextPath}/uml/help/activity/03-Changing+arrow+direction.uml'>
 </div>
 
 <div>
@@ -56,7 +56,7 @@ else
 endif
 
 @enduml</pre>
-<img src='/uml/help/activity/04-Branches.uml'>
+<img src='${pageContext.request.contextPath}/uml/help/activity/04-Branches.uml'>
 </div>
 
 <div>
@@ -71,7 +71,7 @@ else
 Endif
 --&gt;(*)
 @enduml</pre>
-<img src='/uml/help/activity/05-More+on+Branches.uml'>
+<img src='${pageContext.request.contextPath}/uml/help/activity/05-More+on+Branches.uml'>
 </div>
 
 <div>
@@ -105,7 +105,7 @@ else
 endif
 
 @enduml</pre>
-<img src='/uml/help/activity/06-Synchronization.uml'>
+<img src='${pageContext.request.contextPath}/uml/help/activity/06-Synchronization.uml'>
 </div>
 
 <div>
@@ -122,7 +122,7 @@ endif
 --&gt; (*)
 
 @enduml</pre>
-<img src='/uml/help/activity/07-Long+activity+description.uml'>
+<img src='${pageContext.request.contextPath}/uml/help/activity/07-Long+activity+description.uml'>
 </div>
 
 <div>
@@ -137,7 +137,7 @@ endif
 
 A1 --&gt; &quot;Short activity &lt;img:sourceforge.jpg&gt;&quot;
 @enduml</pre>
-<img src='/uml/help/activity/08-Notes.uml'>
+<img src='${pageContext.request.contextPath}/uml/help/activity/08-Notes.uml'>
 </div>
 
 <div>
@@ -153,7 +153,7 @@ note left
 end note
 
 @enduml</pre>
-<img src='/uml/help/activity/09-Partition.uml'>
+<img src='${pageContext.request.contextPath}/uml/help/activity/09-Partition.uml'>
 </div>
 
 <div>
@@ -182,7 +182,7 @@ partition Orchestra #CCCCEE {
 }
 
 @enduml</pre>
-<img src='/uml/help/activity/10-Title+the+diagram.uml'>
+<img src='${pageContext.request.contextPath}/uml/help/activity/10-Title+the+diagram.uml'>
 </div>
 
 <div>
@@ -193,7 +193,7 @@ title Simple example\nof title
 (*) --&gt; &quot;First activity&quot;
 --&gt; (*)
 @enduml</pre>
-<img src='/uml/help/activity/11-Skinparam.uml'>
+<img src='${pageContext.request.contextPath}/uml/help/activity/11-Skinparam.uml'>
 </div>
 
 <div>
@@ -219,7 +219,7 @@ skinparam activity {
 --&gt; (*)
 
 @enduml</pre>
-<img src='/uml/help/activity/12-Octagon.uml'>
+<img src='${pageContext.request.contextPath}/uml/help/activity/12-Octagon.uml'>
 </div>
 
 <div>
@@ -232,7 +232,7 @@ skinparam activityShape octagon
 &quot;First Activity&quot; --&gt; (*)
 
 @enduml</pre>
-<img src='/uml/help/activity/13-Complete+example.uml'>
+<img src='${pageContext.request.contextPath}/uml/help/activity/13-Complete+example.uml'>
 </div>
 
 

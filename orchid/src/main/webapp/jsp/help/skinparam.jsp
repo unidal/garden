@@ -12,7 +12,7 @@ skinparam sequenceMessageAlign center
 Alice -&gt; Bob : Hi
 Alice -&gt; Bob : This is very long
 @enduml</pre>
-<img src='/uml/help/skinparam/01-Text+Alignment.uml'>
+<img src='${pageContext.request.contextPath}/uml/help/skinparam/01-Text+Alignment.uml'>
 </div>
 
 <div>
@@ -44,7 +44,7 @@ A --&gt; User: Done
 deactivate A
 
 @enduml</pre>
-<img src='/uml/help/skinparam/02-Black+and+White.uml'>
+<img src='${pageContext.request.contextPath}/uml/help/skinparam/02-Black+and+White.uml'>
 </div>
 
 

@@ -20,7 +20,7 @@ Class15 ..&gt; Class16
 Class17 ..|&gt; Class18
 Class19 &lt;--* Class20
 @enduml</pre>
-<img src='/uml/help/classes/02-Relations+between+classes.uml'>
+<img src='${pageContext.request.contextPath}/uml/help/classes/02-Relations+between+classes.uml'>
 </div>
 
 <div>
@@ -34,7 +34,7 @@ Class03 o-- Class04 : agregation
 Class05 --&gt; &quot;1&quot; Class06
 
 @enduml</pre>
-<img src='/uml/help/classes/03-Label+on+relations.uml'>
+<img src='${pageContext.request.contextPath}/uml/help/classes/03-Label+on+relations.uml'>
 </div>
 
 <div>
@@ -47,7 +47,7 @@ Car *- Wheel : have 4 &gt;
 Car -- Person : &lt; owns
 
 @enduml</pre>
-<img src='/uml/help/classes/04-Adding+methods.uml'>
+<img src='${pageContext.request.contextPath}/uml/help/classes/04-Adding+methods.uml'>
 </div>
 
 <div>
@@ -63,7 +63,7 @@ class Flight {
    departureTime : Date
 }
 @enduml</pre>
-<img src='/uml/help/classes/05-Defining+visibility.uml'>
+<img src='${pageContext.request.contextPath}/uml/help/classes/05-Defining+visibility.uml'>
 </div>
 
 <div>
@@ -78,7 +78,7 @@ class Dummy {
 }
 
 @enduml</pre>
-<img src='/uml/help/classes/06-Abstract+and+Static.uml'>
+<img src='${pageContext.request.contextPath}/uml/help/classes/06-Abstract+and+Static.uml'>
 </div>
 
 <div>
@@ -89,7 +89,7 @@ class Dummy {
   {abstract} void methods()
 }
 @enduml</pre>
-<img src='/uml/help/classes/07-Advanced+class+body.uml'>
+<img src='${pageContext.request.contextPath}/uml/help/classes/07-Advanced+class+body.uml'>
 </div>
 
 <div>
@@ -123,7 +123,7 @@ class User {
 }
 
 @enduml</pre>
-<img src='/uml/help/classes/08-Notes+and+stereotypes.uml'>
+<img src='${pageContext.request.contextPath}/uml/help/classes/08-Notes+and+stereotypes.uml'>
 </div>
 
 <div>
@@ -143,7 +143,7 @@ class Foo
 note left: On last defined class
 
 @enduml</pre>
-<img src='/uml/help/classes/09-More+on+notes.uml'>
+<img src='${pageContext.request.contextPath}/uml/help/classes/09-More+on+notes.uml'>
 </div>
 
 <div>
@@ -167,7 +167,7 @@ note as N1
 end note
 
 @enduml</pre>
-<img src='/uml/help/classes/10-Note+on+links.uml'>
+<img src='${pageContext.request.contextPath}/uml/help/classes/10-Note+on+links.uml'>
 </div>
 
 <div>
@@ -185,7 +185,7 @@ note right on link #blue
 end note
 
 @enduml</pre>
-<img src='/uml/help/classes/11-Abstract+class+and+interface.uml'>
+<img src='${pageContext.request.contextPath}/uml/help/classes/11-Abstract+class+and+interface.uml'>
 </div>
 
 <div>
@@ -218,7 +218,7 @@ enum TimeUnit {
 annotation SuppressWarnings
 
 @enduml</pre>
-<img src='/uml/help/classes/12-Using+non-letters.uml'>
+<img src='${pageContext.request.contextPath}/uml/help/classes/12-Using+non-letters.uml'>
 </div>
 
 <div>
@@ -229,7 +229,7 @@ class class2 as &quot;It works this way too&quot;
 
 class2 *-- &quot;foo/dummy&quot; : use
 @enduml</pre>
-<img src='/uml/help/classes/13-Hide+attributes,+methods....uml'>
+<img src='${pageContext.request.contextPath}/uml/help/classes/13-Hide+attributes,+methods....uml'>
 </div>
 
 <div>
@@ -254,7 +254,7 @@ show Dummy1 methods
 show &lt;&lt;Serializable&gt;&gt; fields
 
 @enduml</pre>
-<img src='/uml/help/classes/14-Hide+classes.uml'>
+<img src='${pageContext.request.contextPath}/uml/help/classes/14-Hide+classes.uml'>
 </div>
 
 <div>
@@ -269,7 +269,7 @@ Foo2 *-- Foo1
 hide Foo2
 
 @enduml</pre>
-<img src='/uml/help/classes/15-Use+generics.uml'>
+<img src='${pageContext.request.contextPath}/uml/help/classes/15-Use+generics.uml'>
 </div>
 
 <div>
@@ -282,7 +282,7 @@ class Foo&lt;? extends Element&gt; {
 Foo *- Element
 
 @enduml</pre>
-<img src='/uml/help/classes/16-Specific+Spot.uml'>
+<img src='${pageContext.request.contextPath}/uml/help/classes/16-Specific+Spot.uml'>
 </div>
 
 <div>
@@ -292,7 +292,7 @@ Foo *- Element
 class System &lt;&lt; (S,#FF7700) Singleton &gt;&gt;
 class Date &lt;&lt; (D,orchid) &gt;&gt;
 @enduml</pre>
-<img src='/uml/help/classes/17-Packages.uml'>
+<img src='${pageContext.request.contextPath}/uml/help/classes/17-Packages.uml'>
 </div>
 
 <div>
@@ -309,7 +309,7 @@ package net.sourceforge.plantuml
 end package
 
 @enduml</pre>
-<img src='/uml/help/classes/18-Packages+style.uml'>
+<img src='${pageContext.request.contextPath}/uml/help/classes/18-Packages+style.uml'>
 </div>
 
 <div>
@@ -328,7 +328,7 @@ package foo1.foo2.foo3 {
 foo1.foo2 +-- foo1.foo2.foo3
 
 @enduml</pre>
-<img src='/uml/help/classes/19-Namespaces.uml'>
+<img src='${pageContext.request.contextPath}/uml/help/classes/19-Namespaces.uml'>
 </div>
 
 <div>
@@ -355,7 +355,7 @@ namespace net.foo {
 BaseClass &lt;|-- net.unused.Person
 
 @enduml</pre>
-<img src='/uml/help/classes/20-Automatic+namespace+creation.uml'>
+<img src='${pageContext.request.contextPath}/uml/help/classes/20-Automatic+namespace+creation.uml'>
 </div>
 
 <div>
@@ -368,7 +368,7 @@ class X1.X2.foo {
 }
 
 @enduml</pre>
-<img src='/uml/help/classes/21-Lollipop+interface.uml'>
+<img src='${pageContext.request.contextPath}/uml/help/classes/21-Lollipop+interface.uml'>
 </div>
 
 <div>
@@ -377,7 +377,7 @@ class X1.X2.foo {
 class foo
 bar ()- foo
 @enduml</pre>
-<img src='/uml/help/classes/22-Changing+arrows+direction.uml'>
+<img src='${pageContext.request.contextPath}/uml/help/classes/22-Changing+arrows+direction.uml'>
 </div>
 
 <div>
@@ -388,7 +388,7 @@ foo -right-&gt; dummyRight
 foo -up-&gt; dummyUp 
 foo -down-&gt; dummyDown
 @enduml</pre>
-<img src='/uml/help/classes/23-Title+the+diagram.uml'>
+<img src='${pageContext.request.contextPath}/uml/help/classes/23-Title+the+diagram.uml'>
 </div>
 
 <div>
@@ -399,7 +399,7 @@ title Simple &lt;b&gt;example&lt;/b&gt;\nof title
 Object &lt;|-- ArrayList
 
 @enduml</pre>
-<img src='/uml/help/classes/24-Legend+the+diagram.uml'>
+<img src='${pageContext.request.contextPath}/uml/help/classes/24-Legend+the+diagram.uml'>
 </div>
 
 <div>
@@ -414,7 +414,7 @@ legend right
 endlegend
 
 @enduml</pre>
-<img src='/uml/help/classes/25-Association+classes.uml'>
+<img src='${pageContext.request.contextPath}/uml/help/classes/25-Association+classes.uml'>
 </div>
 
 <div>
@@ -431,7 +431,7 @@ class Enrollment {
   cancel()
 }
 @enduml</pre>
-<img src='/uml/help/classes/26-Skinparam.uml'>
+<img src='${pageContext.request.contextPath}/uml/help/classes/26-Skinparam.uml'>
 </div>
 
 <div>
@@ -450,7 +450,7 @@ Class01 &quot;1&quot; *-- &quot;many&quot; Class02 : contains
 Class03 o-- Class04 : agregation
 
 @enduml</pre>
-<img src='/uml/help/classes/27-Skinned+Stereotypes.uml'>
+<img src='${pageContext.request.contextPath}/uml/help/classes/27-Skinned+Stereotypes.uml'>
 </div>
 
 <div>
@@ -473,7 +473,7 @@ Class01 &quot;1&quot; *-- &quot;many&quot; Class02 : contains
 Class03&lt;&lt;Foo&gt;&gt; o-- Class04 : agregation
 
 @enduml</pre>
-<img src='/uml/help/classes/28-Color+gradient.uml'>
+<img src='${pageContext.request.contextPath}/uml/help/classes/28-Color+gradient.uml'>
 </div>
 
 <div>
@@ -494,7 +494,7 @@ package example #GreenYellow/LightGoldenRodYellow {
 }
 
 @enduml</pre>
-<img src='/uml/help/classes/29-Splitting+large+files.uml'>
+<img src='${pageContext.request.contextPath}/uml/help/classes/29-Splitting+large+files.uml'>
 </div>
 
 

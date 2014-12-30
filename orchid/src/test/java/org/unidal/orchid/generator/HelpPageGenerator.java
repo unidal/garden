@@ -26,7 +26,7 @@ import org.unidal.web.jsp.function.CodecFunction;
 public class HelpPageGenerator {
 	@Test
 	public void generateJsp() throws Exception {
-		File base = new File(getClass().getResource("/webapp/help").getPath());
+		File base = new File("src/main/webapp/help");
 		String[] diagrams = base.list();
 
 		if (diagrams != null) {
@@ -36,7 +36,7 @@ public class HelpPageGenerator {
 				}
 
 				File dir = new File(base, diagram);
-				File index = new File("src/main/resources/webapp/jsp/help/" + diagram + ".jsp");
+				File index = new File("src/main/webapp/jsp/help/" + diagram + ".jsp").getCanonicalFile();
 				final List<String> paths = new ArrayList<String>();
 
 				Scanners.forDir().scan(dir, new FileMatcher() {
@@ -62,7 +62,7 @@ public class HelpPageGenerator {
 					sb.append("<div>\r\n");
 					sb.append("<h2>").append(id).append("</h2>\r\n");
 					sb.append("<pre>").append(CodecFunction.htmlEncode(uml)).append("</pre>\r\n");
-					sb.append("<img src='/uml/help/").append(diagram).append('/').append(path.replaceAll(" ", "+"))
+					sb.append("<img src='${pageContext.request.contextPath}/uml/help/").append(diagram).append('/').append(path.replaceAll(" ", "+"))
 					      .append("'>\r\n");
 					sb.append("</div>\r\n\r\n");
 				}

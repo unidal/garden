@@ -15,7 +15,7 @@
 several **lines**;
 
 @enduml</pre>
-<img src='/uml/help/activity2/01-Simple+Activity.uml'>
+<img src='${pageContext.request.contextPath}/uml/help/activity2/01-Simple+Activity.uml'>
 </div>
 
 <div>
@@ -32,7 +32,7 @@ several **lines**;
 stop
 
 @enduml</pre>
-<img src='/uml/help/activity2/02-Start+Stop.uml'>
+<img src='${pageContext.request.contextPath}/uml/help/activity2/02-Start+Stop.uml'>
 </div>
 
 <div>
@@ -51,7 +51,7 @@ endif
 stop
 
 @enduml</pre>
-<img src='/uml/help/activity2/03-Conditional.uml'>
+<img src='${pageContext.request.contextPath}/uml/help/activity2/03-Conditional.uml'>
 </div>
 
 <div>
@@ -68,7 +68,7 @@ repeat while (more data?)
 stop
 
 @enduml</pre>
-<img src='/uml/help/activity2/04-Repeat+loop.uml'>
+<img src='${pageContext.request.contextPath}/uml/help/activity2/04-Repeat+loop.uml'>
 </div>
 
 <div>
@@ -85,7 +85,7 @@ endwhile
 stop
 
 @enduml</pre>
-<img src='/uml/help/activity2/05-While+loop.uml'>
+<img src='${pageContext.request.contextPath}/uml/help/activity2/05-While+loop.uml'>
 </div>
 
 <div>
@@ -96,7 +96,7 @@ while (check filesize ?) is (not empty)
 endwhile (empty)
 :close file;
 @enduml</pre>
-<img src='/uml/help/activity2/06-Parallel+processing.uml'>
+<img src='${pageContext.request.contextPath}/uml/help/activity2/06-Parallel+processing.uml'>
 </div>
 
 <div>
@@ -118,7 +118,7 @@ endif
 
 
 @enduml</pre>
-<img src='/uml/help/activity2/07-Notes.uml'>
+<img src='${pageContext.request.contextPath}/uml/help/activity2/07-Notes.uml'>
 </div>
 
 <div>
@@ -139,7 +139,7 @@ end note
 stop
 
 @enduml</pre>
-<img src='/uml/help/activity2/08-Color.uml'>
+<img src='${pageContext.request.contextPath}/uml/help/activity2/08-Color.uml'>
 </div>
 
 <div>
@@ -153,7 +153,7 @@ These files must do be edited at this point!;
 :#AAAAAA:ending of the process;
 
 @enduml</pre>
-<img src='/uml/help/activity2/09-Complete+example.uml'>
+<img src='${pageContext.request.contextPath}/uml/help/activity2/09-Complete+example.uml'>
 </div>
 
 

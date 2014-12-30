@@ -18,7 +18,7 @@ State1 -&gt; State2
 State2 --&gt; [*]
 
 @enduml</pre>
-<img src='/uml/help/state/01-Simple+State.uml'>
+<img src='${pageContext.request.contextPath}/uml/help/state/01-Simple+State.uml'>
 </div>
 
 <div>
@@ -45,7 +45,7 @@ state Configuring {
   
 }
 @enduml</pre>
-<img src='/uml/help/state/02-Composite+state.uml'>
+<img src='${pageContext.request.contextPath}/uml/help/state/02-Composite+state.uml'>
 </div>
 
 <div>
@@ -70,7 +70,7 @@ State3 --&gt; [*] : Succeeded / Save Result
 State3 --&gt; [*] : Aborted
  
 @enduml</pre>
-<img src='/uml/help/state/03-Long+name.uml'>
+<img src='${pageContext.request.contextPath}/uml/help/state/03-Long+name.uml'>
 </div>
 
 <div>
@@ -95,7 +95,7 @@ state Active {
 } 
 
 @enduml</pre>
-<img src='/uml/help/state/04-Concurrent+state.uml'>
+<img src='${pageContext.request.contextPath}/uml/help/state/04-Concurrent+state.uml'>
 </div>
 
 <div>
@@ -108,7 +108,7 @@ Second --&gt; Third
 Third -left-&gt; Last
 
 @enduml</pre>
-<img src='/uml/help/state/05-Arrow+direction.uml'>
+<img src='${pageContext.request.contextPath}/uml/help/state/05-Arrow+direction.uml'>
 </div>
 
 <div>
@@ -127,7 +127,7 @@ note right of Inactive
 end note
 
 @enduml</pre>
-<img src='/uml/help/state/06-Note.uml'>
+<img src='${pageContext.request.contextPath}/uml/help/state/06-Note.uml'>
 </div>
 
 <div>
@@ -138,7 +138,7 @@ state foo
 note &quot;This is a floating note&quot; as N1
 
 @enduml</pre>
-<img src='/uml/help/state/07-More+in+notes.uml'>
+<img src='${pageContext.request.contextPath}/uml/help/state/07-More+in+notes.uml'>
 </div>
 
 <div>
@@ -158,7 +158,7 @@ state &quot;Not Shooting State&quot; as NotShooting {
 note right of NotShooting : This is a note on a composite state
 
 @enduml</pre>
-<img src='/uml/help/state/08-Skinparam.uml'>
+<img src='${pageContext.request.contextPath}/uml/help/state/08-Skinparam.uml'>
 </div>
 
 

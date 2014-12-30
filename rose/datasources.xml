@@ -9,8 +9,8 @@
 		<properties>
 			<driver>com.mysql.jdbc.Driver</driver>
 			<url><![CDATA[jdbc:mysql://localhost:3306/cat]]></url>
-			<user>cat</user>
-			<password>cat</password>
+			<user>root</user>
+			<password></password>
 			<connectionProperties><![CDATA[useUnicode=true&autoReconnect=true]]></connectionProperties>
 		</properties>
 	</data-source>
