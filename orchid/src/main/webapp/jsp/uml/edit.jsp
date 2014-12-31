@@ -1,11 +1,12 @@
-<%@ page contentType="text/html; charset=utf-8"%>
-<%@ taglib prefix="a" uri="/WEB-INF/app.tld"%>
+<%@ page contentType="text/html; charset=utf-8" isELIgnored="false" trimDirectiveWhitespaces="true" %>
+<%@ taglib prefix="a" uri="/WEB-INF/app.tld" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="w" uri="http://www.unidal.org/web/core"%>
-<jsp:useBean id="model" type="org.unidal.orchid.UmlViewModel" scope="request" />
+<jsp:useBean id="ctx" type="org.unidal.orchid.uml.edit.Context" scope="request"/>
+<jsp:useBean id="payload" type="org.unidal.orchid.uml.edit.Payload" scope="request"/>
+<jsp:useBean id="model" type="org.unidal.orchid.uml.edit.Model" scope="request"/>
 
 <a:layout>
-
 	<br>
 
 	<form action="${model.webapp}/uml" method="post">
@@ -13,16 +14,17 @@
 		<table>
 			<tr>
 				<td colspan="3" nowrap>
-					<select id="file" name="file" style="width: 100%">
-						<option value="">--- Select File ---</option>
+					<select id="file" name="file" style="width: 480px">
+						<option value="">--- Select UML or create a new one ---</option>
 						${w:showOptions(model.umlFiles, model.umlFile, 'path', 'path')}
 					</select>
-					<c:if test="${not empty model.umlFile}"><a href="${model.webapp}/uml/${model.umlFile}" target="_blank">Get Link</a></c:if>
+					<c:if test="${not empty model.umlFile}"><a href="${model.webapp}/uml/file/${model.umlFile}" target="_blank">Get Link</a></c:if>
 				</td>
+				<td></td>
 			</tr>
 			<c:if test="${not empty model.message}">
 				<tr>
-					<td colspan="3">
+					<td colspan="4">
 						<c:choose>
 							<c:when test="${model.error}"><span class="text-error">${model.message}</span></c:when>
 							<c:otherwise><span class="text-success">${model.message}</span></c:otherwise>
@@ -36,7 +38,7 @@
 					<br>
 					<c:choose>
 						<c:when test="${not empty model.umlFile}">
-							<button type="submit" name="update" value="1" class="btn btn-medium btn-primary">Update</button>
+							<button type="submit" name="update" value="1" class="btn btn-medium btn-primary">Save</button>
 						</c:when>
 						<c:otherwise>
 							<input id="newfile" type="hidden" name="newfile">
@@ -45,7 +47,7 @@
 					</c:choose>
 				</td>
 				<td width="10"></td>
-				<td valign="top"><span id="svg">${model.svg}</span></td>
+				<td valign="top" colspan="2"><span id="svg">${model.svg}</span></td>
 			</tr>
 		</table>
 	</form>

@@ -14,7 +14,7 @@ Bob --&gt; Alice: Authentication Response
 Alice -&gt; Bob: Another authentication Request
 Alice &lt;-- Bob: another authentication Response
 @enduml</pre>
-<img src='${pageContext.request.contextPath}/uml/help/sequence/01-Basic+examples.uml'>
+<img src='${model.webapp}/uml/help/sequence/01-Basic+examples.uml'>
 </div>
 
 <div>
@@ -31,7 +31,7 @@ Foo1 -&gt; Foo4 : To entity
 Foo1 -&gt; Foo5 : To database
 
 @enduml</pre>
-<img src='${pageContext.request.contextPath}/uml/help/sequence/03-Declaring+participant.uml'>
+<img src='${model.webapp}/uml/help/sequence/03-Declaring+participant.uml'>
 </div>
 
 <div>
@@ -49,7 +49,7 @@ Alice-&gt;Bob: Authentication Request
 Bob-&gt;Alice: Authentication Response
 Bob-&gt;L: Log transaction
 @enduml</pre>
-<img src='${pageContext.request.contextPath}/uml/help/sequence/04-Use+non-letters+in+participants.uml'>
+<img src='${model.webapp}/uml/help/sequence/04-Use+non-letters+in+participants.uml'>
 </div>
 
 <div>
@@ -61,7 +61,7 @@ Alice -&gt; &quot;Bob()&quot; : Hello
 ' &quot;Bob()&quot; -&gt; Long as &quot;This is very\nlong&quot;
 Long --&gt; &quot;Bob()&quot; : ok
 @enduml</pre>
-<img src='${pageContext.request.contextPath}/uml/help/sequence/05-Message+to+Self.uml'>
+<img src='${model.webapp}/uml/help/sequence/05-Message+to+Self.uml'>
 </div>
 
 <div>
@@ -69,7 +69,7 @@ Long --&gt; &quot;Bob()&quot; : ok
 <pre>@startuml
 Alice-&gt;Alice: This is a signal to self.\nIt also demonstrates\nmultiline \ntext
 @enduml</pre>
-<img src='${pageContext.request.contextPath}/uml/help/sequence/06-Change+arrow+style.uml'>
+<img src='${model.webapp}/uml/help/sequence/06-Change+arrow+style.uml'>
 </div>
 
 <div>
@@ -87,7 +87,7 @@ Bob o\\-- Alice
 Bob &lt;-&gt; Alice
 Bob &lt;-&gt;o Alice
 @enduml</pre>
-<img src='${pageContext.request.contextPath}/uml/help/sequence/07-Change+arrow+color.uml'>
+<img src='${model.webapp}/uml/help/sequence/07-Change+arrow+color.uml'>
 </div>
 
 <div>
@@ -96,7 +96,7 @@ Bob &lt;-&gt;o Alice
 Bob -[#red]&gt; Alice : hello
 Alice -[#0000FF]-&gt;Bob : ok
 @enduml</pre>
-<img src='${pageContext.request.contextPath}/uml/help/sequence/08-Message+sequence+numbering.uml'>
+<img src='${model.webapp}/uml/help/sequence/08-Message+sequence+numbering.uml'>
 </div>
 
 <div>
@@ -115,7 +115,7 @@ Bob -&gt; Alice : Yet another authentication Request
 Bob &lt;- Alice : Yet another authentication Response
 
 @enduml</pre>
-<img src='${pageContext.request.contextPath}/uml/help/sequence/09-Title.uml'>
+<img src='${model.webapp}/uml/help/sequence/09-Title.uml'>
 </div>
 
 <div>
@@ -128,7 +128,7 @@ Alice -&gt; Bob: Authentication Request
 Bob --&gt; Alice: Authentication Response
 
 @enduml</pre>
-<img src='${pageContext.request.contextPath}/uml/help/sequence/10-Legend+the+diagram.uml'>
+<img src='${model.webapp}/uml/help/sequence/10-Legend+the+diagram.uml'>
 </div>
 
 <div>
@@ -142,7 +142,7 @@ legend right
 endlegend
 
 @enduml</pre>
-<img src='${pageContext.request.contextPath}/uml/help/sequence/11-Splitting+diagrams.uml'>
+<img src='${model.webapp}/uml/help/sequence/11-Splitting+diagrams.uml'>
 </div>
 
 <div>
@@ -162,7 +162,7 @@ newpage A title for the\nlast page
 Alice -&gt; Bob : message 5
 Alice -&gt; Bob : message 6
 @enduml</pre>
-<img src='${pageContext.request.contextPath}/uml/help/sequence/12-Grouping+message.uml'>
+<img src='${model.webapp}/uml/help/sequence/12-Grouping+message.uml'>
 </div>
 
 <div>
@@ -191,7 +191,7 @@ else Another type of failure
    
 end
 @enduml</pre>
-<img src='${pageContext.request.contextPath}/uml/help/sequence/13-Notes+on+messages.uml'>
+<img src='${model.webapp}/uml/help/sequence/13-Notes+on+messages.uml'>
 </div>
 
 <div>
@@ -210,7 +210,7 @@ note left
 	on several lines
 end note
 @enduml</pre>
-<img src='${pageContext.request.contextPath}/uml/help/sequence/14-Some+other+notes.uml'>
+<img src='${model.webapp}/uml/help/sequence/14-Some+other+notes.uml'>
 </div>
 
 <div>
@@ -235,7 +235,7 @@ note over Bob, Alice
 	a long note.
 end note
 @enduml</pre>
-<img src='${pageContext.request.contextPath}/uml/help/sequence/15-Formatting+using+HTML.uml'>
+<img src='${model.webapp}/uml/help/sequence/15-Formatting+using+HTML.uml'>
 </div>
 
 <div>
@@ -258,7 +258,7 @@ note over Alice, Bob
 end note
  
 @enduml</pre>
-<img src='${pageContext.request.contextPath}/uml/help/sequence/16-Divider.uml'>
+<img src='${model.webapp}/uml/help/sequence/16-Divider.uml'>
 </div>
 
 <div>
@@ -276,7 +276,7 @@ Alice -&gt; Bob: Another authentication Request
 Alice &lt;-- Bob: another authentication Response
 
 @enduml</pre>
-<img src='${pageContext.request.contextPath}/uml/help/sequence/17-Reference.uml'>
+<img src='${model.webapp}/uml/help/sequence/17-Reference.uml'>
 </div>
 
 <div>
@@ -294,7 +294,7 @@ ref over Bob
   several lines
 end ref
 @enduml</pre>
-<img src='${pageContext.request.contextPath}/uml/help/sequence/18-Delay.uml'>
+<img src='${model.webapp}/uml/help/sequence/18-Delay.uml'>
 </div>
 
 <div>
@@ -308,7 +308,7 @@ Bob --&gt; Alice: Authentication Response
 Bob --&gt; Alice: Bye !
 
 @enduml</pre>
-<img src='${pageContext.request.contextPath}/uml/help/sequence/19-Space.uml'>
+<img src='${model.webapp}/uml/help/sequence/19-Space.uml'>
 </div>
 
 <div>
@@ -325,7 +325,7 @@ Alice -&gt; Bob: message 3
 Bob --&gt; Alice: ok
 
 @enduml</pre>
-<img src='${pageContext.request.contextPath}/uml/help/sequence/20-Lifeline+Activation+and+Destruction.uml'>
+<img src='${model.webapp}/uml/help/sequence/20-Lifeline+Activation+and+Destruction.uml'>
 </div>
 
 <div>
@@ -349,7 +349,7 @@ A -&gt; User: Done
 deactivate A
 
 @enduml</pre>
-<img src='${pageContext.request.contextPath}/uml/help/sequence/21-Participant+creation.uml'>
+<img src='${model.webapp}/uml/help/sequence/21-Participant+creation.uml'>
 </div>
 
 <div>
@@ -367,7 +367,7 @@ note right : You can also put notes!
 Alice --&gt; Bob : ok
 
 @enduml</pre>
-<img src='${pageContext.request.contextPath}/uml/help/sequence/22-Incoming+and+outgoing+messages.uml'>
+<img src='${model.webapp}/uml/help/sequence/22-Incoming+and+outgoing+messages.uml'>
 </div>
 
 <div>
@@ -387,7 +387,7 @@ deactivate A
 [&lt;- A: Done
 deactivate A
 @enduml</pre>
-<img src='${pageContext.request.contextPath}/uml/help/sequence/23-Stereotypes+and+Spots.uml'>
+<img src='${model.webapp}/uml/help/sequence/23-Stereotypes+and+Spots.uml'>
 </div>
 
 <div>
@@ -400,7 +400,7 @@ participant Alice &lt;&lt; (C,#ADD1B2) &gt;&gt;
 Bob-&gt;Alice: First message
 
 @enduml</pre>
-<img src='${pageContext.request.contextPath}/uml/help/sequence/24-More+information+on+titles.uml'>
+<img src='${model.webapp}/uml/help/sequence/24-More+information+on+titles.uml'>
 </div>
 
 <div>
@@ -417,7 +417,7 @@ Alice -&gt; Bob: Authentication Request
 Bob -&gt; Alice: Authentication Response
 
 @enduml</pre>
-<img src='${pageContext.request.contextPath}/uml/help/sequence/25-Participants+englober.uml'>
+<img src='${model.webapp}/uml/help/sequence/25-Participants+englober.uml'>
 </div>
 
 <div>
@@ -434,7 +434,7 @@ Bob -&gt; Alice : hello
 Alice -&gt; Other : hello
 
 @enduml</pre>
-<img src='${pageContext.request.contextPath}/uml/help/sequence/26-Removing+Footer.uml'>
+<img src='${model.webapp}/uml/help/sequence/26-Removing+Footer.uml'>
 </div>
 
 <div>
@@ -448,7 +448,7 @@ Alice -&gt; Bob: Authentication Request
 Bob --&gt; Alice: Authentication Response
 
 @enduml</pre>
-<img src='${pageContext.request.contextPath}/uml/help/sequence/27-Skinparam.uml'>
+<img src='${model.webapp}/uml/help/sequence/27-Skinparam.uml'>
 </div>
 
 <div>
@@ -497,7 +497,7 @@ A --&gt; User: Done
 deactivate A
 
 @enduml</pre>
-<img src='${pageContext.request.contextPath}/uml/help/sequence/28-Skin.uml'>
+<img src='${model.webapp}/uml/help/sequence/28-Skin.uml'>
 </div>
 
 

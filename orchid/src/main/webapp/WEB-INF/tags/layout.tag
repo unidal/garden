@@ -22,16 +22,16 @@
 				<div class="nav-collapse collapse">
 					<ul class="nav">
 						<li class="selected"><a href="${model.webapp}/uml">Edit</a></li>
-						<li class="selected"><a href="${model.webapp}/jsp/help/usecase.jsp">Use Case</a></li>
-						<li class="selected"><a href="${model.webapp}/jsp/help/sequence.jsp">Sequence</a></li>
-						<li class="selected"><a href="${model.webapp}/jsp/help/classes.jsp">Class</a></li>
-						<li class="selected"><a href="${model.webapp}/jsp/help/activity.jsp">Activity</a></li>
-						<li class="selected"><a href="${model.webapp}/jsp/help/activity2.jsp">Advanced Activity</a></li>
-						<li class="selected"><a href="${model.webapp}/jsp/help/component.jsp">Component</a></li>
-						<li class="selected"><a href="${model.webapp}/jsp/help/state.jsp">State</a></li>
-						<li class="selected"><a href="${model.webapp}/jsp/help/skinparam.jsp">Skin Param</a></li>
-						<li class="selected"><a href="${model.webapp}/jsp/help/salt.jsp">Salt</a></li>
-						<li class="selected"><a href="${model.webapp}/PlantUML_Language_Reference_Guide.pdf">Guide in PDF</a></li>
+						<li class="selected"><a href="${model.webapp}/uml/help/usecase">Use Case</a></li>
+						<li class="selected"><a href="${model.webapp}/uml/help/sequence">Sequence</a></li>
+						<li class="selected"><a href="${model.webapp}/uml/help/classes">Class</a></li>
+						<li class="selected"><a href="${model.webapp}/uml/help/activity">Activity</a></li>
+						<li class="selected"><a href="${model.webapp}/uml/help/activity2">Advanced Activity</a></li>
+						<li class="selected"><a href="${model.webapp}/uml/help/component">Component</a></li>
+						<li class="selected"><a href="${model.webapp}/uml/help/state">State</a></li>
+						<li class="selected"><a href="${model.webapp}/uml/help/skinparam">Skin Param</a></li>
+						<li class="selected"><a href="${model.webapp}/uml/help/salt">Salt</a></li>
+						<li class="selected"><a href="${model.webapp}/pdf/PlantUML_Language_Reference_Guide.pdf">Guide in PDF</a></li>
 					</ul>
 				</div>
 				<!--/.nav-collapse -->

@@ -15,7 +15,7 @@ usecase UC3
 usecase (Last\nusecase) as UC4
 
 @enduml</pre>
-<img src='${pageContext.request.contextPath}/uml/help/usecase/01-Usecases.uml'>
+<img src='${model.webapp}/uml/help/usecase/01-Usecases.uml'>
 </div>
 
 <div>
@@ -28,7 +28,7 @@ actor Men3
 actor :Last actor: as Men4
 
 @enduml</pre>
-<img src='${pageContext.request.contextPath}/uml/help/usecase/02-Actors.uml'>
+<img src='${model.webapp}/uml/help/usecase/02-Actors.uml'>
 </div>
 
 <div>
@@ -46,7 +46,7 @@ And you can add titles:
 This allows large description.&quot;
 
 @enduml</pre>
-<img src='${pageContext.request.contextPath}/uml/help/usecase/03-Usecases+description.uml'>
+<img src='${model.webapp}/uml/help/usecase/03-Usecases+description.uml'>
 </div>
 
 <div>
@@ -59,7 +59,7 @@ User --&gt; (Use the application) : A small label
 :Main Admin: ---&gt; (Use the application) : This is\nyet another\nlabel
 
 @enduml</pre>
-<img src='${pageContext.request.contextPath}/uml/help/usecase/04-Basic+example.uml'>
+<img src='${model.webapp}/uml/help/usecase/04-Basic+example.uml'>
 </div>
 
 <div>
@@ -72,7 +72,7 @@ User &lt;|-- Admin
 (Start) &lt;|-- (Use)
 
 @enduml</pre>
-<img src='${pageContext.request.contextPath}/uml/help/usecase/05-Extension.uml'>
+<img src='${model.webapp}/uml/help/usecase/05-Extension.uml'>
 </div>
 
 <div>
@@ -97,7 +97,7 @@ note &quot;This note is connected\nto several objects.&quot; as N2
 (Start) .. N2
 N2 .. (Use)
 @enduml</pre>
-<img src='${pageContext.request.contextPath}/uml/help/usecase/06-Using+notes.uml'>
+<img src='${model.webapp}/uml/help/usecase/06-Using+notes.uml'>
 </div>
 
 <div>
@@ -114,7 +114,7 @@ User --&gt; (Use)
 MySql --&gt; (Use)
 
 @enduml</pre>
-<img src='${pageContext.request.contextPath}/uml/help/usecase/07-Stereotypes.uml'>
+<img src='${model.webapp}/uml/help/usecase/07-Stereotypes.uml'>
 </div>
 
 <div>
@@ -123,7 +123,7 @@ MySql --&gt; (Use)
 :user: --&gt; (Use case 1)
 :user: -&gt; (Use case 2)
 @enduml</pre>
-<img src='${pageContext.request.contextPath}/uml/help/usecase/08-Changing+arrows+direction.uml'>
+<img src='${model.webapp}/uml/help/usecase/08-Changing+arrows+direction.uml'>
 </div>
 
 <div>
@@ -134,7 +134,7 @@ MySql --&gt; (Use)
 :user: -up-&gt; (dummyUp)
 :user: -down-&gt; (dummyDown)
 @enduml</pre>
-<img src='${pageContext.request.contextPath}/uml/help/usecase/09-Title+the+diagram.uml'>
+<img src='${model.webapp}/uml/help/usecase/09-Title+the+diagram.uml'>
 </div>
 
 <div>
@@ -146,7 +146,7 @@ title Simple &lt;b&gt;Usecase&lt;/b&gt;\nwith one actor
 User -&gt; (Use)
 
 @enduml</pre>
-<img src='${pageContext.request.contextPath}/uml/help/usecase/10-Splitting+diagrams.uml'>
+<img src='${model.webapp}/uml/help/usecase/10-Splitting+diagrams.uml'>
 </div>
 
 <div>
@@ -156,7 +156,7 @@ User -&gt; (Use)
 newpage
 :actor2: --&gt; (Usecase2)
 @enduml</pre>
-<img src='${pageContext.request.contextPath}/uml/help/usecase/11-Left+to+right+direction.uml'>
+<img src='${model.webapp}/uml/help/usecase/11-Left+to+right+direction.uml'>
 </div>
 
 <div>
@@ -168,7 +168,7 @@ user1 --&gt; (Usecase 1)
 user2 --&gt; (Usecase 2)
 
 @enduml</pre>
-<img src='${pageContext.request.contextPath}/uml/help/usecase/12-Skinparam.uml'>
+<img src='${model.webapp}/uml/help/usecase/12-Skinparam.uml'>
 </div>
 
 <div>
@@ -200,7 +200,7 @@ User --&gt; (Use)
 MySql --&gt; (Use)
 
 @enduml</pre>
-<img src='${pageContext.request.contextPath}/uml/help/usecase/13-Complete+example.uml'>
+<img src='${model.webapp}/uml/help/usecase/13-Complete+example.uml'>
 </div>
 
 

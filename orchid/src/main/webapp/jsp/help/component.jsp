@@ -15,7 +15,7 @@ component Comp3
 component [Last\ncomponent] as Comp4
 
 @enduml</pre>
-<img src='${pageContext.request.contextPath}/uml/help/component/01-Components.uml'>
+<img src='${model.webapp}/uml/help/component/01-Components.uml'>
 </div>
 
 <div>
@@ -28,7 +28,7 @@ interface Interf3
 interface &quot;Last\ninterface&quot; as Interf4
 
 @enduml</pre>
-<img src='${pageContext.request.contextPath}/uml/help/component/02-Interfaces.uml'>
+<img src='${model.webapp}/uml/help/component/02-Interfaces.uml'>
 </div>
 
 <div>
@@ -39,7 +39,7 @@ DataAccess - [First Component]
 [First Component] ..&gt; HTTP : use
 
 @enduml</pre>
-<img src='${pageContext.request.contextPath}/uml/help/component/03-Basic+example.uml'>
+<img src='${model.webapp}/uml/help/component/03-Basic+example.uml'>
 </div>
 
 <div>
@@ -59,7 +59,7 @@ note right of [First Component]
 end note
 
 @enduml</pre>
-<img src='${pageContext.request.contextPath}/uml/help/component/04-Using+notes.uml'>
+<img src='${model.webapp}/uml/help/component/04-Using+notes.uml'>
 </div>
 
 <div>
@@ -96,7 +96,7 @@ database &quot;MySql&quot; {
 [Folder 3] --&gt; [Frame 4]
 
 @enduml</pre>
-<img src='${pageContext.request.contextPath}/uml/help/component/05-Grouping+Components.uml'>
+<img src='${model.webapp}/uml/help/component/05-Grouping+Components.uml'>
 </div>
 
 <div>
@@ -105,7 +105,7 @@ database &quot;MySql&quot; {
 [Component] --&gt; Interface1
 [Component] -&gt; Interface2
 @enduml</pre>
-<img src='${pageContext.request.contextPath}/uml/help/component/06-Changing+arrows+direction.uml'>
+<img src='${model.webapp}/uml/help/component/06-Changing+arrows+direction.uml'>
 </div>
 
 <div>
@@ -116,7 +116,7 @@ database &quot;MySql&quot; {
 [Component] -up-&gt; up
 [Component] -down-&gt; down
 @enduml</pre>
-<img src='${pageContext.request.contextPath}/uml/help/component/07-Title+the+diagram.uml'>
+<img src='${model.webapp}/uml/help/component/07-Title+the+diagram.uml'>
 </div>
 
 <div>
@@ -130,7 +130,7 @@ DA - [First Component]
 [First Component] ..&gt; HTTP : use
 
 @enduml</pre>
-<img src='${pageContext.request.contextPath}/uml/help/component/08-Use+UML2+notation.uml'>
+<img src='${model.webapp}/uml/help/component/08-Use+UML2+notation.uml'>
 </div>
 
 <div>
@@ -144,7 +144,7 @@ DA - [First Component]
 [First Component] ..&gt; HTTP : use
 
 @enduml</pre>
-<img src='${pageContext.request.contextPath}/uml/help/component/09-Skinparam.uml'>
+<img src='${model.webapp}/uml/help/component/09-Skinparam.uml'>
 </div>
 
 
