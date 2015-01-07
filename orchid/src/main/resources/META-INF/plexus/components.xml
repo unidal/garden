@@ -33,12 +33,16 @@
 			<implementation>org.unidal.orchid.uml.edit.Handler</implementation>
 			<requirements>
 				<requirement>
-					<role>org.unidal.orchid.uml.edit.JspViewer</role>
-				</requirement>
-				<requirement>
 					<role>org.unidal.orchid.UmlManager</role>
 				</requirement>
+				<requirement>
+					<role>org.unidal.orchid.uml.edit.JspViewer</role>
+				</requirement>
 			</requirements>
+		</component>
+		<component>
+			<role>org.unidal.orchid.UmlManager</role>
+			<implementation>org.unidal.orchid.UmlManager</implementation>
 		</component>
 		<component>
 			<role>org.unidal.orchid.uml.edit.JspViewer</role>
@@ -48,10 +52,6 @@
 					<role>org.unidal.web.mvc.view.model.ModelHandler</role>
 				</requirement>
 			</requirements>
-		</component>
-		<component>
-			<role>org.unidal.orchid.UmlManager</role>
-			<implementation>org.unidal.orchid.UmlManager</implementation>
 		</component>
 		<component>
 			<role>org.unidal.orchid.uml.help.Handler</role>
