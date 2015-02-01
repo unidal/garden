@@ -5,27 +5,27 @@ var dbQuery={
       if (value) {
          var array = eval(value);
         
-         this.selectOption($("#ds").options,array[0]);
-         $("explain").checked=(array[1]==1?true:false);
-         $("sql").value=array[2];
+         this.selectOption($("#ds option"),array[0]);
+         $("#explain")[0].checked=(array[1]==1?true:false);
+         $("#sql")[0].value=array[2];
       }
    },
 
-   selectOption:function(options,selected) {
-      for (var i = 0; i < options.length; i++) {
-         if (options[i].value==selected || options[i].text==selected) {
-            options[i].selected=true;
-         }
-      }
+   selectOption:function(options, selected) {
+	  options.each(function(option) {
+	         if (option.value==selected || option.text==selected) {
+	             option.selected=true;
+	          }
+	  });
    },
    
    changeStyle:function(){
-      var style="width:"+$('sql').style.width+";height:"+$('sql').style.height;
+      var style="width:"+$('#sql')[0].style.width+";height:"+$('#sql')[0].style.height;
 
-      $("style").value=style;
+      $("#style")[0].value=style;
    }
 };
 
 window.addEvent("domready",function(){
-   $("sql").addEvent("mouseup",dbQuery.changeStyle);
+   $("#sql")[0].addEvent("mouseup",dbQuery.changeStyle);
 });
