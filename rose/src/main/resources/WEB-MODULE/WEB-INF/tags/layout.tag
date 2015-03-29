@@ -58,7 +58,7 @@
 	
 		<br />
 		<div class="container">
-			<footer><center>&copy;2013 Dianping Rose Team</center></footer>
+			<footer><center>&copy;2015 Rose Team</center></footer>
 		</div>
 	</div>
 	<!--/.fluid-container-->

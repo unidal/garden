@@ -8,7 +8,6 @@
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>org.unidal.garden</groupId>
 	<artifactId>rose</artifactId>
 	<version>1.0</version>
 	<name>Rose</name>
@@ -16,7 +15,7 @@
 		<dependency>
 			<groupId>org.unidal.framework</groupId>
 			<artifactId>web-framework</artifactId>
-			<version>2.1.2</version>
+			<version>2.2.0</version>
 		</dependency>
 		<dependency>
 			<groupId>javax.servlet</groupId>
@@ -26,12 +25,12 @@
 		<dependency>
 			<groupId>org.unidal.framework</groupId>
 			<artifactId>foundation-service</artifactId>
-			<version>2.1.2</version>
+			<version>2.2.0</version>
 		</dependency>
 		<dependency>
 			<groupId>org.unidal.framework</groupId>
 			<artifactId>dal-jdbc</artifactId>
-			<version>2.1.1</version>
+			<version>2.2.0</version>
 		</dependency>
 		<dependency>
 			<groupId>mysql</groupId>
@@ -54,7 +53,7 @@
 		<dependency>
 			<groupId>org.unidal.framework</groupId>
 			<artifactId>test-framework</artifactId>
-			<version>2.1.0</version>
+			<version>2.2.0</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
