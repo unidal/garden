@@ -51,7 +51,6 @@
 		<div class="row-fluid">
 			<div class="span12">
 				<br><br>
-
 				<jsp:doBody />
 			</div>
 		</div>

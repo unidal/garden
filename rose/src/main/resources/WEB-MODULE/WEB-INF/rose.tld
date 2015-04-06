@@ -5,6 +5,6 @@
    <short-name>a</short-name>
    <tag-file>
       <name>layout</name>
-      <path>/WEB-INF/tags/layout.tag</path>
+      <path>/WEB-INF/tags/rose.tag</path>
    </tag-file>
 </taglib>
