@@ -13,8 +13,17 @@
 			</configuration>
 		</component>
 		<component>
-			<role>org.unidal.orchid.UmlManager</role>
-			<implementation>org.unidal.orchid.UmlManager</implementation>
+			<role>org.unidal.orchid.service.UmlService</role>
+			<implementation>org.unidal.orchid.service.DefaultUmlService</implementation>
+			<requirements>
+				<requirement>
+					<role>org.unidal.orchid.service.StorageService</role>
+				</requirement>
+			</requirements>
+		</component>
+		<component>
+			<role>org.unidal.orchid.service.StorageService</role>
+			<implementation>org.unidal.orchid.service.FileStorageService</implementation>
 		</component>
 		<component>
 			<role>org.unidal.web.mvc.model.ModuleRegistry</role>
@@ -33,16 +42,15 @@
 			<implementation>org.unidal.orchid.uml.edit.Handler</implementation>
 			<requirements>
 				<requirement>
-					<role>org.unidal.orchid.UmlManager</role>
+					<role>org.unidal.orchid.service.UmlService</role>
+				</requirement>
+				<requirement>
+					<role>org.unidal.orchid.service.StorageService</role>
 				</requirement>
 				<requirement>
 					<role>org.unidal.orchid.uml.edit.JspViewer</role>
 				</requirement>
 			</requirements>
-		</component>
-		<component>
-			<role>org.unidal.orchid.UmlManager</role>
-			<implementation>org.unidal.orchid.UmlManager</implementation>
 		</component>
 		<component>
 			<role>org.unidal.orchid.uml.edit.JspViewer</role>
@@ -61,7 +69,7 @@
 					<role>org.unidal.orchid.uml.help.JspViewer</role>
 				</requirement>
 				<requirement>
-					<role>org.unidal.orchid.UmlManager</role>
+					<role>org.unidal.orchid.service.UmlService</role>
 				</requirement>
 			</requirements>
 		</component>

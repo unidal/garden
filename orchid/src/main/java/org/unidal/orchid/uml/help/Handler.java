@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.unidal.helper.Files;
 import org.unidal.lookup.annotation.Inject;
-import org.unidal.orchid.UmlManager;
+import org.unidal.orchid.service.UmlService;
 import org.unidal.orchid.uml.UmlPage;
 import org.unidal.web.mvc.PageHandler;
 import org.unidal.web.mvc.annotation.InboundActionMeta;
@@ -20,7 +20,7 @@ public class Handler implements PageHandler<Context> {
 	private JspViewer m_jspViewer;
 
 	@Inject
-	private UmlManager m_manager;
+	private UmlService m_manager;
 
 	@Override
 	@PayloadMeta(Payload.class)

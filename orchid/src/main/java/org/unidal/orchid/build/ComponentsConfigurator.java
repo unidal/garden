@@ -9,7 +9,8 @@ import org.unidal.initialization.ModuleManager;
 import org.unidal.lookup.configuration.AbstractResourceConfigurator;
 import org.unidal.lookup.configuration.Component;
 import org.unidal.orchid.OrchidModule;
-import org.unidal.orchid.UmlManager;
+import org.unidal.orchid.service.DefaultUmlService;
+import org.unidal.orchid.service.FileStorageService;
 
 public class ComponentsConfigurator extends AbstractResourceConfigurator {
 	@Override
@@ -20,7 +21,8 @@ public class ComponentsConfigurator extends AbstractResourceConfigurator {
 		all.add(C(ModuleManager.class, DefaultModuleManager.class) //
 		      .config(E("topLevelModules").value(OrchidModule.ID)));
 
-		all.add(C(UmlManager.class));
+		all.add(A(DefaultUmlService.class));
+		all.add(A(FileStorageService.class));
 
 		// Please keep it as last
 		all.addAll(new WebComponentConfigurator().defineComponents());

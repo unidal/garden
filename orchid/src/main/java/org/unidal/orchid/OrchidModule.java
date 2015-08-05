@@ -3,6 +3,7 @@ package org.unidal.orchid;
 import org.unidal.initialization.AbstractModule;
 import org.unidal.initialization.Module;
 import org.unidal.initialization.ModuleContext;
+import org.unidal.orchid.service.UmlService;
 
 public class OrchidModule extends AbstractModule {
 	public static final String ID = "orchid";
@@ -14,7 +15,7 @@ public class OrchidModule extends AbstractModule {
 
 	@Override
 	protected void execute(ModuleContext ctx) throws Exception {
-		UmlManager manager = ctx.lookup(UmlManager.class);
+		UmlService manager = ctx.lookup(UmlService.class);
 		byte[] content = manager.generateImage("testdot", "atxt");
 		String result = new String(content, "utf-8");
 

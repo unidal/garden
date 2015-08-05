@@ -1,20 +1,15 @@
 package org.unidal.orchid.uml.edit;
 
-import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletResponse;
 
-import org.unidal.helper.Files;
 import org.unidal.helper.Joiners;
-import org.unidal.helper.Scanners;
-import org.unidal.helper.Scanners.FileMatcher;
 import org.unidal.lookup.annotation.Inject;
-import org.unidal.orchid.UmlManager;
+import org.unidal.orchid.service.StorageService;
+import org.unidal.orchid.service.UmlService;
 import org.unidal.orchid.uml.UmlPage;
 import org.unidal.web.jsp.function.CodecFunction;
 import org.unidal.web.mvc.PageHandler;
@@ -26,12 +21,13 @@ import com.dianping.cat.Cat;
 
 public class Handler implements PageHandler<Context> {
 	@Inject
-	private UmlManager m_manager;
+	private UmlService m_uml;
+
+	@Inject
+	private StorageService m_storage;
 
 	@Inject
 	private JspViewer m_jspViewer;
-
-	private List<String> m_docs = Arrays.asList("doc");
 
 	private void createUml(Context ctx) throws IOException {
 		Payload payload = ctx.getPayload();
@@ -40,10 +36,10 @@ public class Handler implements PageHandler<Context> {
 
 		if (!umlFile.endsWith(".uml")) {
 			ctx.setError(true);
-			ctx.setMessage(String.format("Target UML file(%s) must be ending with '.uml'!", umlFile));
-		} else if (m_manager.tryCreateFile(umlFile)) {
-			StringBuilder message = new StringBuilder();
-			boolean success = m_manager.updateUml(umlFile, uml, message);
+			ctx.setMessage(String.format("Target UML file(%s) must be ending with '.uml'.", umlFile));
+		} else if (m_storage.tryCreateFile(umlFile)) {
+			StringBuilder message = new StringBuilder(256);
+			boolean success = m_uml.updateUml(umlFile, uml, message);
 
 			ctx.setError(!success);
 			ctx.setUmlFile(umlFile);
@@ -105,27 +101,6 @@ public class Handler implements PageHandler<Context> {
 		}
 	}
 
-	private List<File> scanUmlFiles() {
-		final List<File> files = new ArrayList<File>();
-
-		FileMatcher matcher = new FileMatcher() {
-			@Override
-			public Direction matches(File base, String path) {
-				if (path.endsWith(".uml")) {
-					files.add(new File(base, path));
-				}
-
-				return Direction.DOWN;
-			}
-		};
-
-		for (String doc : m_docs) {
-			Scanners.forDir().scan(new File(doc), matcher);
-		}
-
-		return files;
-	}
-
 	private void showImage(Context ctx, Model model, String path) throws IOException {
 		Payload payload = ctx.getPayload();
 		String type = payload.getType();
@@ -133,18 +108,14 @@ public class Handler implements PageHandler<Context> {
 		HttpServletResponse res = ctx.getHttpServletResponse();
 
 		if (path != null && path.length() > 0) {
-			File file = new File(path.substring(1));
-
-			if (file.exists()) {
-				uml = Files.forIO().readFrom(file, "utf-8");
-			}
+			uml = m_storage.getUmlContent(path.substring(1));
 		}
 
 		if (uml != null) {
-			res.setContentType(m_manager.getContextType(type));
-			type = m_manager.getImageType(type);
+			res.setContentType(m_uml.getContextType(type));
+			type = m_uml.getImageType(type);
 
-			byte[] image = m_manager.generateImage(uml, type);
+			byte[] image = m_uml.generateImage(uml, type);
 
 			if (image != null) {
 				res.setContentLength(image.length);
@@ -169,7 +140,7 @@ public class Handler implements PageHandler<Context> {
 			model.setUmlFile(umlFile);
 		}
 
-		model.setUmlFiles(scanUmlFiles());
+		model.setUmlFiles(m_storage.getUmlFiles());
 
 		if (editStyle == null) {
 			model.setEditStyle("height: 500px; width: 320px");
@@ -180,13 +151,12 @@ public class Handler implements PageHandler<Context> {
 		if (uml != null && uml.length() > 0) {
 			model.setUml(uml);
 		} else if (umlFile != null && umlFile.length() > 0) {
-			uml = Files.forIO().readFrom(new File(umlFile), "utf-8");
-
+			uml = m_storage.getUmlContent(umlFile);
 			model.setUml(uml);
 		}
 
 		if (uml != null) {
-			byte[] image = m_manager.generateImage(uml, "svg");
+			byte[] image = m_uml.generateImage(uml, "svg");
 
 			if (image != null) {
 				model.setSvg(new String(image, "utf-8"));
@@ -199,7 +169,7 @@ public class Handler implements PageHandler<Context> {
 		String uml = payload.getUml();
 		String umlFile = payload.getFile();
 		StringBuilder message = new StringBuilder();
-		boolean success = m_manager.updateUml(umlFile, uml, message);
+		boolean success = m_uml.updateUml(umlFile, uml, message);
 
 		ctx.setError(!success);
 		ctx.setMessage(message.toString());

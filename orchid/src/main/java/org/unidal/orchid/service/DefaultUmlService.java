@@ -1,10 +1,7 @@
-package org.unidal.orchid;
+package org.unidal.orchid.service;
 
 import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import net.sourceforge.plantuml.BlockUml;
@@ -13,11 +10,15 @@ import net.sourceforge.plantuml.FileFormatOption;
 import net.sourceforge.plantuml.PSystemError;
 import net.sourceforge.plantuml.SourceStringReader;
 
-import org.unidal.helper.Files;
-import org.unidal.helper.Scanners;
-import org.unidal.helper.Scanners.FileMatcher;
+import org.unidal.lookup.annotation.Inject;
+import org.unidal.lookup.annotation.Named;
 
-public class UmlManager {
+@Named(type = UmlService.class)
+public class DefaultUmlService implements UmlService {
+	@Inject
+	private StorageService m_storage;
+
+	@Override
 	public byte[] generateImage(String uml, String type) throws IOException {
 		if (!uml.trim().startsWith("@startuml")) {
 			uml = "@startuml\n" + uml;
@@ -47,6 +48,7 @@ public class UmlManager {
 		}
 	}
 
+	@Override
 	public String getContextType(String type) {
 		if (type == null || "png".equals(type)) {
 			return "image/png";
@@ -59,6 +61,7 @@ public class UmlManager {
 		}
 	}
 
+	@Override
 	public String getImageType(String type) {
 		if (type == null) {
 			return "png";
@@ -83,60 +86,19 @@ public class UmlManager {
 		return str == null || str.length() == 0;
 	}
 
-	public List<File> scanUmlFiles() {
-		final List<File> files = new ArrayList<File>();
-
-		FileMatcher matcher = new FileMatcher() {
-			@Override
-			public Direction matches(File base, String path) {
-				if (path.endsWith(".uml")) {
-					files.add(new File(base, path));
-				}
-
-				return Direction.DOWN;
-			}
-		};
-
-		Scanners.forDir().scan(new File("src"), matcher);
-		Scanners.forDir().scan(new File("doc"), matcher);
-
-		return files;
-	}
-
-	public boolean tryCreateFile(String umlFile) {
-		File file = new File(umlFile);
-
-		if (file.exists()) {
-			return false;
-		} else {
-			file.getParentFile().mkdirs();
-
-			try {
-				FileOutputStream fos = new FileOutputStream(file);
-
-				fos.close();
-				return true;
-			} catch (IOException e) {
-				return false;
-			}
-		}
-	}
-
-	public boolean updateUml(String umlFile, String uml, StringBuilder message)
-			throws IOException {
+	@Override
+	public boolean updateUml(String umlFile, String uml, StringBuilder message) throws IOException {
 		if (!isEmpty(umlFile) && !isEmpty(uml)) {
-			File file = new File(umlFile);
 			byte[] image = generateImage(uml, null);
 
 			try {
 				if (image != null) {
-					Files.forIO().writeTo(file, uml);
+					m_storage.save(umlFile, uml);
 
 					message.append("Update file(" + umlFile + ") successfully!");
 					return true;
 				} else {
-					message.append("UML is invalid, can't update file("
-							+ umlFile + ")!");
+					message.append("UML is invalid, can't update file(" + umlFile + ")!");
 				}
 			} catch (IOException e) {
 				message.append("Failed to update file(" + umlFile + ")!");
