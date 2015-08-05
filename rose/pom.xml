@@ -73,7 +73,7 @@
          <plugin>
             <groupId>org.unidal.maven.plugins</groupId>
             <artifactId>plexus-maven-plugin</artifactId>
-            <version>2.1.2</version>
+            <version>2.2.0</version>
             <executions>
                <execution>
                   <id>generate plexus component descriptor</id>
@@ -107,10 +107,12 @@
                   <additionalConfig>
                      <file>
                         <name>.settings/org.eclipse.jdt.core.prefs</name>
-                        <content><![CDATA[org.eclipse.jdt.core.compiler.codegen.targetPlatform=1.6
-eclipse.preferences.version=1
-org.eclipse.jdt.core.compiler.source=1.6
-org.eclipse.jdt.core.compiler.compliance=1.6]]></content>
+                        <content><![CDATA[
+                            org.eclipse.jdt.core.compiler.codegen.targetPlatform=1.6
+							eclipse.preferences.version=1
+							org.eclipse.jdt.core.compiler.source=1.6
+							org.eclipse.jdt.core.compiler.compliance=1.6
+					    ]]></content>
                      </file>
                   </additionalConfig>
                </configuration>
