@@ -37,7 +37,7 @@ public class Handler implements PageHandler<Context> {
 		if (!umlFile.endsWith(".uml")) {
 			ctx.setError(true);
 			ctx.setMessage(String.format("Target UML file(%s) must be ending with '.uml'.", umlFile));
-		} else if (m_storage.tryCreateFile(umlFile)) {
+		} else if (m_storage.createUmlFile(umlFile)) {
 			StringBuilder message = new StringBuilder(256);
 			boolean success = m_uml.updateUml(umlFile, uml, message);
 

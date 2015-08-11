@@ -16,7 +16,7 @@
 				<td colspan="3" nowrap>
 					<select id="file" name="file" style="width: 480px">
 						<option value="">--- Select UML or create a new one ---</option>
-						${w:showOptions(model.umlFiles, model.umlFile, 'path', 'path')}
+						${w:showOptions(model.umlFiles, model.umlFile, null, null)}
 					</select>
 					<c:if test="${not empty model.umlFile}"><a href="${model.webapp}/uml/file/${model.umlFile}" target="_blank">Get Link</a></c:if>
 				</td>

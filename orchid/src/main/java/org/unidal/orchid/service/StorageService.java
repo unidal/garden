@@ -1,15 +1,14 @@
 package org.unidal.orchid.service;
 
-import java.io.File;
-import java.io.IOException;
 import java.util.List;
 
 public interface StorageService {
-	public List<File> getUmlFiles();
+	public boolean createUmlFile(String umlFile);
+
+	public List<String> getUmlFiles();
 
 	public String getUmlContent(String umlFile);
 
-	public void save(String umlFile, String uml) throws IOException;
+	public void saveUmlFile(String umlFile, String uml) throws Exception;
 
-	public boolean tryCreateFile(String umlFile);
 }

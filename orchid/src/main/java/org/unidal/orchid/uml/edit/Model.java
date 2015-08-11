@@ -1,6 +1,5 @@
 package org.unidal.orchid.uml.edit;
 
-import java.io.File;
 import java.util.List;
 
 import org.unidal.orchid.uml.UmlPage;
@@ -11,7 +10,7 @@ public class Model extends ViewModel<UmlPage, Action, Context> {
 
 	private String m_svg;
 
-	private List<File> m_umlFiles;
+	private List<String> m_umlFiles;
 
 	private String m_umlFile;
 
@@ -54,7 +53,7 @@ public class Model extends ViewModel<UmlPage, Action, Context> {
 		return m_umlFile;
 	}
 
-	public List<File> getUmlFiles() {
+	public List<String> getUmlFiles() {
 		return m_umlFiles;
 	}
 
@@ -86,7 +85,7 @@ public class Model extends ViewModel<UmlPage, Action, Context> {
 		m_umlFile = umlFile;
 	}
 
-	public void setUmlFiles(List<File> umlFiles) {
+	public void setUmlFiles(List<String> umlFiles) {
 		m_umlFiles = umlFiles;
 	}
 }

@@ -23,8 +23,8 @@ public class OrchidModule extends AbstractModule {
 
 		if (result != null && result.contains("Error")) {
 			ctx.warn("Failed to testdot, the system will be run in downgraded mode, "
-					+ "only sequence diagrams will be generated!\r\n"
-					+ "Please make sure graphviz is installed, and mare sure file /usr/bin/dot exist!");
+			      + "only sequence diagrams will be generated!\r\n"
+			      + "Please make sure graphviz is installed, and mare sure file /usr/bin/dot exist!");
 		}
 	}
 }

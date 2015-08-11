@@ -93,14 +93,14 @@ public class DefaultUmlService implements UmlService {
 
 			try {
 				if (image != null) {
-					m_storage.save(umlFile, uml);
+					m_storage.saveUmlFile(umlFile, uml);
 
 					message.append("Update file(" + umlFile + ") successfully!");
 					return true;
 				} else {
 					message.append("UML is invalid, can't update file(" + umlFile + ")!");
 				}
-			} catch (IOException e) {
+			} catch (Exception e) {
 				message.append("Failed to update file(" + umlFile + ")!");
 			}
 		}

@@ -4,62 +4,31 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
+import org.codehaus.plexus.personality.plexus.lifecycle.phase.Initializable;
+import org.codehaus.plexus.personality.plexus.lifecycle.phase.InitializationException;
+import org.unidal.helper.Dates;
 import org.unidal.helper.Files;
 import org.unidal.helper.Scanners;
 import org.unidal.helper.Scanners.FileMatcher;
 import org.unidal.lookup.annotation.Named;
+import org.unidal.orchid.git.GitRepositories;
+import org.unidal.orchid.git.GitRepositories.RepositoryHelper;
 
 import com.dianping.cat.Cat;
 
 @Named(type = StorageService.class)
-public class FileStorageService implements StorageService {
-	@Override
-	public String getUmlContent(String umlFile) {
-		try {
-			String uml = Files.forIO().readFrom(new File(umlFile), "utf-8");
+public class FileStorageService implements StorageService, Initializable {
+	private File m_home;
 
-			return uml;
-		} catch (IOException e) {
-			Cat.logError(e);
-		}
+	private RepositoryHelper m_git;
 
-		return null;
-	}
+	private String m_lastTime;
 
 	@Override
-	public List<File> getUmlFiles() {
-		final List<File> files = new ArrayList<File>();
-
-		FileMatcher matcher = new FileMatcher() {
-			@Override
-			public Direction matches(File base, String path) {
-				if (path.endsWith(".uml")) {
-					files.add(new File(base, path));
-				}
-
-				return Direction.DOWN;
-			}
-		};
-
-		for (String doc : Arrays.asList("doc")) {
-			Scanners.forDir().scan(new File(doc), matcher);
-		}
-
-		return files;
-	}
-
-	@Override
-	public void save(String umlFile, String uml) throws IOException {
-		File file = new File(umlFile);
-		Files.forIO().writeTo(file, uml);
-	}
-
-	@Override
-	public boolean tryCreateFile(String umlFile) {
-		File file = new File(umlFile);
+	public boolean createUmlFile(String umlFile) {
+		File file = new File(m_home, umlFile);
 
 		if (file.exists()) {
 			return false;
@@ -74,6 +43,77 @@ public class FileStorageService implements StorageService {
 			} catch (IOException e) {
 				return false;
 			}
+		}
+	}
+
+	@Override
+	public String getUmlContent(String umlFile) {
+		try {
+			String uml = Files.forIO().readFrom(new File(m_home, umlFile), "utf-8");
+
+			return uml;
+		} catch (IOException e) {
+			Cat.logError(e);
+		}
+
+		return null;
+	}
+
+	@Override
+	public List<String> getUmlFiles() {
+		final List<String> files = new ArrayList<String>();
+
+		FileMatcher matcher = new FileMatcher() {
+			@Override
+			public Direction matches(File base, String path) {
+				if (path.endsWith(".uml")) {
+					files.add(path);
+				}
+
+				return Direction.DOWN;
+			}
+		};
+
+		Scanners.forDir().scan(m_home, matcher);
+
+		return files;
+	}
+
+	@Override
+	public synchronized void saveUmlFile(String umlFile, String uml) throws Exception {
+		File file = new File(m_home, umlFile);
+
+		Files.forIO().writeTo(file, uml);
+
+		String date = Dates.now().asString("YYYY-MM-dd");
+
+		if (m_lastTime == null || !date.equals(m_lastTime)) {
+			m_git.addAll().commit(date).tag(date);
+			m_lastTime = date;
+		}
+	}
+
+	@Override
+	public void initialize() throws InitializationException {
+		String homeProperty = System.getProperty("umlHome");
+		String homeEnv = System.getenv("UML_HOME");
+
+		if (homeProperty != null) {
+			m_home = new File(homeProperty);
+		} else if (homeEnv != null) {
+			m_home = new File(homeEnv);
+		} else {
+			m_home = new File("doc");
+		}
+
+		if (!m_home.exists()) {
+			Files.forDir().createDir(m_home);
+		}
+
+		try {
+			m_git = GitRepositories.at(m_home).open(true);
+		} catch (Exception e) {
+			throw new InitializationException(String.format("Error when opening git repository(%s)", m_home), e);
 		}
 	}
 }
