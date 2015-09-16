@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model>
+  <entity name="libraries" root="true">
+    <entity-ref name="library" type="list" names="libraries" />
+  </entity>
+  <entity name="library">
+    <attribute name="id" value-type="String" />
+    <attribute name="name" value-type="String" />
+    <attribute name="product" value-type="String" />
+    <attribute name="current-version" value-type="String" />
+    <attribute name="stable-version" value-type="String" />
+    <attribute name="min-version" value-type="String" />
+  </entity>
+</model>
+

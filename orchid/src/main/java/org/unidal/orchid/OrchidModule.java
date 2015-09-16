@@ -3,8 +3,10 @@ package org.unidal.orchid;
 import org.unidal.initialization.AbstractModule;
 import org.unidal.initialization.Module;
 import org.unidal.initialization.ModuleContext;
+import org.unidal.lookup.annotation.Named;
 import org.unidal.orchid.service.UmlService;
 
+@Named(type = Module.class, value = OrchidModule.ID)
 public class OrchidModule extends AbstractModule {
 	public static final String ID = "orchid";
 

@@ -6,6 +6,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.codehaus.plexus.logging.LogEnabled;
+import org.codehaus.plexus.logging.Logger;
 import org.codehaus.plexus.personality.plexus.lifecycle.phase.Initializable;
 import org.codehaus.plexus.personality.plexus.lifecycle.phase.InitializationException;
 import org.unidal.helper.Dates;
@@ -19,12 +21,14 @@ import org.unidal.orchid.git.GitRepositories.RepositoryHelper;
 import com.dianping.cat.Cat;
 
 @Named(type = StorageService.class)
-public class FileStorageService implements StorageService, Initializable {
+public class FileStorageService implements StorageService, Initializable, LogEnabled {
 	private File m_home;
 
 	private RepositoryHelper m_git;
 
 	private String m_lastTime;
+
+	private Logger m_logger;
 
 	@Override
 	public boolean createUmlFile(String umlFile) {
@@ -44,6 +48,11 @@ public class FileStorageService implements StorageService, Initializable {
 				return false;
 			}
 		}
+	}
+
+	@Override
+	public void enableLogging(Logger logger) {
+		m_logger = logger;
 	}
 
 	@Override
@@ -80,6 +89,33 @@ public class FileStorageService implements StorageService, Initializable {
 	}
 
 	@Override
+	public void initialize() throws InitializationException {
+		String homeProperty = System.getProperty("orchidHome");
+		String homeEnv = System.getenv("ORCHID_HOME");
+
+		if (homeProperty != null) {
+			m_home = new File(homeProperty);
+		} else if (homeEnv != null) {
+			m_home = new File(homeEnv);
+		} else {
+			m_home = new File("data");
+		}
+
+		if (!m_home.exists()) {
+			Files.forDir().createDir(m_home);
+		}
+
+		try {
+			m_home = m_home.getCanonicalFile();
+			m_git = GitRepositories.at(m_home).open(true);
+
+			m_logger.info(String.format("Orchid home is %s", m_home));
+		} catch (Exception e) {
+			throw new InitializationException(String.format("Error when opening git repository(%s)", m_home), e);
+		}
+	}
+
+	@Override
 	public synchronized void saveUmlFile(String umlFile, String uml) throws Exception {
 		File file = new File(m_home, umlFile);
 
@@ -90,30 +126,6 @@ public class FileStorageService implements StorageService, Initializable {
 		if (m_lastTime == null || !date.equals(m_lastTime)) {
 			m_git.addAll().commit(date).tag(date);
 			m_lastTime = date;
-		}
-	}
-
-	@Override
-	public void initialize() throws InitializationException {
-		String homeProperty = System.getProperty("umlHome");
-		String homeEnv = System.getenv("UML_HOME");
-
-		if (homeProperty != null) {
-			m_home = new File(homeProperty);
-		} else if (homeEnv != null) {
-			m_home = new File(homeEnv);
-		} else {
-			m_home = new File("doc");
-		}
-
-		if (!m_home.exists()) {
-			Files.forDir().createDir(m_home);
-		}
-
-		try {
-			m_git = GitRepositories.at(m_home).open(true);
-		} catch (Exception e) {
-			throw new InitializationException(String.format("Error when opening git repository(%s)", m_home), e);
 		}
 	}
 }

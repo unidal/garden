@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.unidal.orchid.uml.UmlModule;
+import org.unidal.orchid.library.LibraryModule;
 
 import org.unidal.lookup.configuration.Component;
 import org.unidal.web.configuration.AbstractWebComponentsConfigurator;
@@ -14,7 +15,7 @@ class WebComponentConfigurator extends AbstractWebComponentsConfigurator {
 	public List<Component> defineComponents() {
 		List<Component> all = new ArrayList<Component>();
 
-		defineModuleRegistry(all, UmlModule.class, UmlModule.class);
+		defineModuleRegistry(all, UmlModule.class, UmlModule.class, LibraryModule.class);
 
 		return all;
 	}

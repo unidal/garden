@@ -9,5 +9,10 @@
             <description>Help</description>
          </page>
       </module>
+      <module name="library" path="library" default="false">
+         <page name="version" title="Version" default="true" path="version" template="default">
+            <description>Version</description>
+         </page>
+      </module>
    </webapp>
 </wizard>

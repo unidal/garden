@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model model-package="org.unidal.orchid.library" enable-sax-parser="true" enable-json-builder="true">
+  <entity name="libraries" root="true">
+    <entity-ref name="library" type="list" names="libraries" />
+  </entity>
+  <entity name="library">
+    <attribute name="name" value-type="String" key="true"/>
+    <attribute name="version" value-type="String" />
+  </entity>
+</model>
+
