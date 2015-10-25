@@ -47,7 +47,7 @@
 					</c:choose>
 				</td>
 				<td width="10"></td>
-				<td valign="top" colspan="2"><img id="img"><span id="svg">${model.svg}</span></td>
+				<td valign="top" colspan="2"><img id="img" src="${model.src}"><span id="svg">${model.svg}</span></td>
 			</tr>
 		</table>
 	</form>

@@ -392,7 +392,7 @@ public class GitRepositories {
 		}
 
 		public RepositoryHelper tag(String name) throws Exception {
-			m_git.tag().setName(name).call();
+			m_git.tag().setName(name).setForceUpdate(true).call();
 			return this;
 		}
 

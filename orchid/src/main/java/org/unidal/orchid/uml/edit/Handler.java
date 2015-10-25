@@ -159,7 +159,13 @@ public class Handler implements PageHandler<Context> {
 			byte[] image = m_uml.generateImage(uml, "svg");
 
 			if (image != null) {
-				model.setSvg(new String(image, "utf-8"));
+				String data = new String(image, "utf-8");
+
+				if (data.startsWith("data:")) {
+					model.setSrc(data);
+				} else {
+					model.setSvg(data);
+				}
 			}
 		}
 	}

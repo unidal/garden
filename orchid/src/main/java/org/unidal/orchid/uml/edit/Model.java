@@ -10,6 +10,8 @@ public class Model extends ViewModel<UmlPage, Action, Context> {
 
 	private String m_svg;
 
+	private String m_src;
+
 	private List<String> m_umlFiles;
 
 	private String m_umlFile;
@@ -39,6 +41,10 @@ public class Model extends ViewModel<UmlPage, Action, Context> {
 
 	public String getMessage() {
 		return m_message;
+	}
+
+	public String getSrc() {
+		return m_src;
 	}
 
 	public String getSvg() {
@@ -71,6 +77,10 @@ public class Model extends ViewModel<UmlPage, Action, Context> {
 
 	public void setMessage(String message) {
 		m_message = message;
+	}
+
+	public void setSrc(String src) {
+		m_src = src;
 	}
 
 	public void setSvg(String svg) {

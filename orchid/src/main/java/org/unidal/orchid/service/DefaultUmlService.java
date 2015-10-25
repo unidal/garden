@@ -31,27 +31,28 @@ public class DefaultUmlService implements UmlService {
 		}
 
 		SourceStringReader reader = new SourceStringReader(uml);
+		FileFormat format = getFileFormat(type);
 		ByteArrayOutputStream baos = new ByteArrayOutputStream(8192);
-		FileFormat format = FileFormat.PNG;
-
-		for (FileFormat e : FileFormat.values()) {
-			if (e.name().equalsIgnoreCase(type)) {
-				format = e;
-				break;
-			}
-		}
 
 		reader.generateImage(baos, new FileFormatOption(format));
 
 		if (!hasError(reader.getBlocks())) {
-			if (uml.trim().startsWith("@startditaa")) {
+			byte[] content = baos.toByteArray();
+
+			if (format == FileFormat.PNG) {
+				return content;
+			} else if (uml.trim().startsWith("@startditaa") || content.length > 0 && (content[0] & 0x80) != 0) {
 				ByteBuffer bb = ByteBuffer.allocate(baos.size() * 4 / 3 + 32);
 
 				bb.put("data:image/png;base64,".getBytes());
-				bb.put(Base64.encodeBase64(baos.toByteArray()));
-				return bb.array();
+				bb.put(Base64.encodeBase64(content));
+
+				byte[] ba = new byte[bb.position()];
+				bb.position(0);
+				bb.get(ba);
+				return ba;
 			} else {
-				return baos.toByteArray();
+				return content;
 			}
 		} else {
 			return null;
@@ -73,6 +74,19 @@ public class DefaultUmlService implements UmlService {
 		} else {
 			return "image/" + type;
 		}
+	}
+
+	private FileFormat getFileFormat(String type) {
+		FileFormat format = FileFormat.PNG;
+
+		for (FileFormat e : FileFormat.values()) {
+			if (e.name().equalsIgnoreCase(type)) {
+				format = e;
+				break;
+			}
+		}
+
+		return format;
 	}
 
 	@Override
