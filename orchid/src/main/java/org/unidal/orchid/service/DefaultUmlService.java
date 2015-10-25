@@ -2,6 +2,7 @@ package org.unidal.orchid.service;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.nio.ByteBuffer;
 import java.util.List;
 
 import net.sourceforge.plantuml.BlockUml;
@@ -10,6 +11,7 @@ import net.sourceforge.plantuml.FileFormatOption;
 import net.sourceforge.plantuml.PSystemError;
 import net.sourceforge.plantuml.SourceStringReader;
 
+import org.codehaus.plexus.util.Base64;
 import org.unidal.lookup.annotation.Inject;
 import org.unidal.lookup.annotation.Named;
 
@@ -20,11 +22,11 @@ public class DefaultUmlService implements UmlService {
 
 	@Override
 	public byte[] generateImage(String uml, String type) throws IOException {
-		if (!uml.trim().startsWith("@startuml")) {
+		if (!uml.trim().startsWith("@start")) {
 			uml = "@startuml\n" + uml;
 		}
 
-		if (!uml.trim().endsWith("@enduml")) {
+		if (!uml.trim().endsWith("@end")) {
 			uml = uml + "\n@enduml";
 		}
 
@@ -42,18 +44,30 @@ public class DefaultUmlService implements UmlService {
 		reader.generateImage(baos, new FileFormatOption(format));
 
 		if (!hasError(reader.getBlocks())) {
-			return baos.toByteArray();
+			if (uml.trim().startsWith("@startditaa")) {
+				ByteBuffer bb = ByteBuffer.allocate(baos.size() * 4 / 3 + 32);
+
+				bb.put("data:image/png;base64,".getBytes());
+				bb.put(Base64.encodeBase64(baos.toByteArray()));
+				return bb.array();
+			} else {
+				return baos.toByteArray();
+			}
 		} else {
 			return null;
 		}
 	}
 
 	@Override
-	public String getContextType(String type) {
+	public String getContextType(String uml, String type) {
 		if (type == null || "png".equals(type)) {
 			return "image/png";
 		} else if ("text".equals(type)) {
-			return "text/plain; charset=utf-8";
+			if (uml.startsWith("@startditaa")) {
+				return "image/png";
+			} else {
+				return "text/plain; charset=utf-8";
+			}
 		} else if ("svg".equals(type)) {
 			return "image/svg+xml; charset=utf-8";
 		} else {

@@ -47,7 +47,7 @@
 					</c:choose>
 				</td>
 				<td width="10"></td>
-				<td valign="top" colspan="2"><span id="svg">${model.svg}</span></td>
+				<td valign="top" colspan="2"><img id="img"><span id="svg">${model.svg}</span></td>
 			</tr>
 		</table>
 	</form>
@@ -68,7 +68,13 @@
 			  async: false,
 			  success: function(data) {
 				// called when successful
-				$('#svg').html(data);
+				if (data.startsWith('<')) {
+				   $('#svg').html(data);
+			       $('#img').attr('src', '');
+			    } else {
+				   $('#svg').html('');
+			       $('#img').attr('src', data);
+			    }
 			  },
 			  error: function(e) {
 				// called when there is an error

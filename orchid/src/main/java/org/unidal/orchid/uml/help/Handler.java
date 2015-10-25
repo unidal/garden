@@ -56,7 +56,7 @@ public class Handler implements PageHandler<Context> {
 			String uml = Files.forIO().readFrom(in, "utf-8");
 			String type = null;
 
-			res.setContentType(m_manager.getContextType(type));
+			res.setContentType(m_manager.getContextType(uml, type));
 			type = m_manager.getImageType(type);
 
 			byte[] image = m_manager.generateImage(uml, type);

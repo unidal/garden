@@ -1,6 +1,8 @@
 package org.unidal.orchid.service;
 
 import java.io.File;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import org.codehaus.plexus.logging.LogEnabled;
@@ -75,6 +77,13 @@ public class DefaultLibraryService implements LibraryService, Initializable, Log
 
 	@Override
 	public List<Library> list() {
+		Collections.sort(m_libraries.getLibraries(), new Comparator<Library>() {
+			@Override
+         public int compare(Library o1, Library o2) {
+	         return o1.getName().compareTo(o2.getName());
+         }
+		});
+		
 		return m_libraries.getLibraries();
 	}
 

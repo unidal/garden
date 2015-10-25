@@ -6,7 +6,7 @@ public interface UmlService {
 
 	public byte[] generateImage(String uml, String type) throws IOException;
 
-	public String getContextType(String type);
+	public String getContextType(String uml, String type);
 
 	public String getImageType(String type);
 

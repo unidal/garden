@@ -112,7 +112,7 @@ public class Handler implements PageHandler<Context> {
 		}
 
 		if (uml != null) {
-			res.setContentType(m_uml.getContextType(type));
+			res.setContentType(m_uml.getContextType(uml, type));
 			type = m_uml.getImageType(type);
 
 			byte[] image = m_uml.generateImage(uml, type);
