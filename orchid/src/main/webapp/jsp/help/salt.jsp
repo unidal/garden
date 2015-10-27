@@ -39,7 +39,7 @@ salt
 }
 @enduml
 		</pre></td>
-		<td><img border="0" src="/uml/help/salt/01-Basic+widgets.uml" /></td>
+		<td><img border="0" src="${model.webapp}/uml/help/salt/01-Basic+widgets.uml" /></td>
 	</tr>
 </table>
 The goal of this tool is to discuss about simple and sample windows.
@@ -62,7 +62,7 @@ For example:
 }
 @endsalt
 		</pre></td>
-		<td><img border="0" src="/uml/help/salt/02-Using+grid.uml" /></td>
+		<td><img border="0" src="${model.webapp}/uml/help/salt/02-Using+grid.uml" /></td>
 	</tr>
 </table>
 
@@ -89,7 +89,7 @@ Just after the opening bracket, you can use a character to define if you want to
 }
 @endsalt
 		</pre></td>
-		<td><img border="0" src="/uml/help/salt/03-Using+grid2.uml" /></td>
+		<td><img border="0" src="${model.webapp}/uml/help/salt/03-Using+grid2.uml" /></td>
 	</tr>
 </table>
 
@@ -113,7 +113,7 @@ You can use several horizontal lines as separator.
 }
 @endsalt
 		</pre></td>
-		<td><img border="0" src="/uml/help/salt/04-Using+separator.uml" /></td>
+		<td><img border="0" src="${model.webapp}/uml/help/salt/04-Using+separator.uml" /></td>
 	</tr>
 </table>
 
@@ -142,7 +142,7 @@ To have a Tree, you have to start with <code>{T</code> and to use <code>+</code>
 }
 @endsalt
 		</pre></td>
-		<td><img border="0" src="/uml/help/salt/05-Tree+widget.uml" /></td>
+		<td><img border="0" src="${model.webapp}/uml/help/salt/05-Tree+widget.uml" /></td>
 	</tr>
 </table>
 
@@ -161,7 +161,7 @@ Superclass:  | { "java.lang.Object " | [Browse...] }
 }
 @endsalt
 		</pre></td>
-		<td><img border="0" src="/uml/help/salt/06-Enclosing+brackets.uml" /></td>
+		<td><img border="0" src="${model.webapp}/uml/help/salt/06-Enclosing+brackets.uml" /></td>
 	</tr>
 </table>
 
@@ -185,7 +185,7 @@ Note that you can use HTML code to have bold text.
 }
 @endsalt
 		</pre></td>
-		<td><img border="0" src="/uml/help/salt/07-Adding+tabs.uml" /></td>
+		<td><img border="0" src="${model.webapp}/uml/help/salt/07-Adding+tabs.uml" /></td>
 	</tr>
 </table>
 
@@ -211,7 +211,7 @@ Saving } |
 }
 @endsalt
 		</pre></td>
-		<td><img border="0" src="/uml/help/salt/08-Adding+tabs2.uml" /></td>
+		<td><img border="0" src="${model.webapp}/uml/help/salt/08-Adding+tabs2.uml" /></td>
 	</tr>
 </table>
 
@@ -236,7 +236,7 @@ You can add a menu by using <code>{*</code> notation.
 }
 @endsalt
 		</pre></td>
-		<td><img border="0" src="/uml/help/salt/09-Using+menu.uml" /></td>
+		<td><img border="0" src="${model.webapp}/uml/help/salt/09-Using+menu.uml" /></td>
 	</tr>
 </table>
 
@@ -260,7 +260,7 @@ It is also possible to open a menu:
 }
 @endsalt
 		</pre></td>
-		<td><img border="0" src="/uml/help/salt/10-Using+menu2.uml" /></td>
+		<td><img border="0" src="${model.webapp}/uml/help/salt/10-Using+menu2.uml" /></td>
 	</tr>
 </table>
 
@@ -282,7 +282,7 @@ Row header 2 | A long cell | *
 }
 @endsalt
 		</pre></td>
-		<td><img border="0" src="/uml/help/salt/11-Advanced+table.uml" /></td>
+		<td><img border="0" src="${model.webapp}/uml/help/salt/11-Advanced+table.uml" /></td>
 	</tr>
 </table>
 
@@ -303,7 +303,7 @@ You can use the following syntax: <code>&lt;&amp;ICON_NAME&gt;</code>.
 }
 @endsalt
         </pre></td>
-		<td><img border="2" src="/uml/help/salt/12-OpenIconic.uml" /></td>
+		<td><img border="2" src="${model.webapp}/uml/help/salt/12-OpenIconic.uml" /></td>
 	</tr>
 </table>
 
