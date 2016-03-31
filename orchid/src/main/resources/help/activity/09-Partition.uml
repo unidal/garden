@@ -1,11 +1,24 @@
 @startuml
 
-(*) --> "Some Activity"
-note right: This activity has to be defined
-"Some Activity" --> (*)
-note left
- This note is on
- several lines
-end note
+partition Conductor {
+  (*) --> "Climbs on Platform"
+  --> === S1 ===
+  --> Bows
+}
+
+partition Audience LightSkyBlue {
+  === S1 === --> Applauds
+}
+
+partition Conductor {
+  Bows --> === S2 ===
+  --> WavesArmes
+  Applauds --> === S2 ===
+}
+
+partition Orchestra #CCCCEE {
+  WavesArmes --> Introduction
+  --> "Play music"
+}
 
 @enduml

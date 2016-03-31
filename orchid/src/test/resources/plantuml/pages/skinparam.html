@@ -1,0 +1,1373 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<meta name="description"
+content="PlantUML allows you to change fonts size and type. It's also possible to change background colors, line colors, text colors. You can define UML stereotypes for that purpose."/>
+<meta name="keywords"
+content="color, font, diagram, UML, PlantUML, text, easy"/>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "url": "http://plantuml.com",
+  "name": "PlantUML",
+  "sameAs" : [ "https://twitter.com/plantuml"],
+  "logo": "http://plantuml.com/logo3.png",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://cse.google.fr/cse/publicurl?cx=002267040093494634259:o59itilhnna&q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+<link rel="canonical" href="http://plantuml.com/skinparam.html"/>
+<link rel="alternate" hreflang="en" href="http://plantuml.com/skinparam.html"/>
+<link rel="alternate" hreflang="fr" href="http://fr.plantuml.com/skinparam.html"/>
+<link rel="alternate" hreflang="es" href="http://es.plantuml.com/skinparam.html"/>
+<link rel="alternate" hreflang="de" href="http://de.plantuml.com/skinparam.html"/>
+<link rel="alternate" hreflang="ru" href="http://ru.plantuml.com/skinparam.html"/>
+<link rel="alternate" hreflang="ja" href="http://ja.plantuml.com/skinparam.html"/>
+<link rel="alternate" hreflang="zh" href="http://zh.plantuml.com/skinparam.html"/>
+<link rel="shortcut icon" href="favicon.ico"/>
+<meta name="verify-v1"
+content="2DjjlbOzO6kmuWSa0PHcysT1KR/zVGazrFgA4UX5UsE="/>
+<meta name="google-site-verification"
+content="m93ridVo_Knem7DeeG4Na13RsQ57YQ9pRIruZHB8YWk"/>
+<title>PlantUML : Changing colors and fonts</title>
+<link id="gc0" rel="stylesheet" media="screen" type="text/css" href="gc0.css"/>
+<link id="gc1" rel="stylesheet" media="screen" type="text/css" href="gc1.css"/>
+<link id="gc2" rel="stylesheet" media="screen" type="text/css" href="gc2.css"/>
+<link id="gc3" rel="stylesheet" media="screen" type="text/css" href="gc3.css"/>
+<link rel="stylesheet" media="screen" type="text/css" href="menu13.css"/>
+<link rel="stylesheet" media="screen" type="text/css" href="menuside12.css"/>
+<script>
+function detectmob() { 
+ if( navigator.userAgent.match(/Android/i)
+ || navigator.userAgent.match(/webOS/i)
+ || navigator.userAgent.match(/iPhone/i)
+ || navigator.userAgent.match(/iPad/i)
+ || navigator.userAgent.match(/iPod/i)
+ || navigator.userAgent.match(/BlackBerry/i)
+ || navigator.userAgent.match(/Phone/i)
+ ) return true; else return false; }
+if(detectmob()){
+var url = window.location.href;
+if (url.indexOf('plantuml.sourceforge.net')!=-1)
+window.location.href=url.replace("plantuml.sourceforge.net", "plantuml.com");
+if (url.indexOf('plantuml.net')!=-1)
+window.location.href=url.replace("plantuml.net", "plantuml.com");
+}
+</script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-16629806-3', 'auto');
+  ga('send', 'pageview');
+
+</script>
+<script type="text/javascript" src="jquery-1.11.0.min.js"></script>
+<script>
+var wbet=970;
+var hbet=90;
+var use1600=0;
+var dgc0 = document.getElementById("gc0");
+var dgc1 = document.getElementById("gc1");
+var dgc2 = document.getElementById("gc2");
+var dgc3 = document.getElementById("gc3");
+if (window.innerWidth>=1650) {
+dgc0.disabled = true;
+dgc1.disabled = true;
+dgc2.disabled = true;
+dgc3.disabled = false;
+} else if (window.innerWidth>=1408) {
+dgc0.disabled = true;
+dgc1.disabled = true;
+dgc2.disabled = false;
+dgc3.disabled = true;
+} else if (window.innerWidth>=1268) {
+dgc0.disabled = true;
+dgc1.disabled = false;
+dgc2.disabled = true;
+dgc3.disabled = true;
+dgc1622_1080.disabled = true;
+} else {
+dgc0.disabled = false;
+dgc1.disabled = true;
+dgc2.disabled = true;
+dgc3.disabled = true;
+}
+
+</script>
+<script type="text/javascript">
+/* <![CDATA[ */
+    (function() {
+        var s = document.createElement('script'), t = document.getElementsByTagName('script')[0];
+        s.type = 'text/javascript';
+        s.async = true;
+        s.src = 'http://api.flattr.com/js/0.6/load.js?mode=auto';
+        t.parentNode.insertBefore(s, t);
+    })();
+/* ]]> */</script>
+</head>
+<body>
+<div id="gc">
+<div id="root">
+<nav id="header">
+<ul id="menu">
+<li><a href="sequence.html" class="drop">Sequence</a>
+<div class="dropdown_2columns">
+<div class="col_1">
+<ul class="simple">
+<li><a href="sequence.html#Basic_examples">Basic examples</a></li>
+<li><a href="sequence.html#Comment">Comments</a></li>
+<li><a href="sequence.html#Declaring_participant">Declaring participant</a></li>
+<li><a href="sequence.html#Non_letter">Use non-letters in participants</a></li>
+<li><a href="sequence.html#Message_self">Message to Self</a></li>
+<li><a href="sequence.html#Arrow">Change arrow style</a></li>
+<li><a href="sequence.html#ColorArrow">Change arrow color</a></li>
+<li><a href="sequence.html#Message_sequence_numbering">Message sequence numbering</a></li>
+<li><a href="sequence.html#Simple_title">Title</a></li>
+<li><a href="sequence.html#Legend">Legend the diagram</a></li>
+<li><a href="sequence.html#Splitting_diagrams">Splitting diagrams</a></li>
+<li><a href="sequence.html#Grouping_message">Grouping message</a></li>
+<li><a href="sequence.html#Notes_on_messages">Notes on messages</a></li>
+<li><a href="sequence.html#Some_other_notes">Some other notes</a></li>
+</ul></div><div class="col_1"><ul class="simple">
+<li><a href="sequence.html#Notes_shape">Changing notes shape</a></li>
+<li><a href="sequence.html#Formatting_using_html">Creole and HTML</a></li>
+<li><a href="sequence.html#Divider">Divider</a></li>
+<li><a href="sequence.html#Reference">Reference</a></li>
+<li><a href="sequence.html#Delay">Delay</a></li>
+<li><a href="sequence.html#Space">Space</a></li>
+<li><a href="sequence.html#Lifeline_activation_destruction">Lifeline Activation and Destruction</a></li>
+<li><a href="sequence.html#create">Participant creation</a></li>
+<li><a href="sequence.html#inout">Incoming and outgoing messages</a></li>
+<li><a href="sequence.html#Spot">Stereotypes and Spots</a></li>
+<li><a href="sequence.html#Title_diagram">More information on titles</a></li>
+<li><a href="sequence.html#Englober">Participants encompass</a></li>
+<li><a href="sequence.html#Footer">Removing Footer</a></li>
+<li><a href="sequence.html#Skinparam">Skinparam</a></li>
+</ul>
+</div>
+</div>
+</li>
+<li class="menu"><a href="usecase.html" class="drop">Use Case</a>
+<div class="dropdown_1column">
+<div class="col_1">
+<ul class="simple">
+<li><a href="usecase.html#Usecase">Usecases</a></li>
+<li><a href="usecase.html#Actors">Actors</a></li>
+<li><a href="usecase.html#Body">Usecases description</a></li>
+<li><a href="usecase.html#Basic">Basic example</a></li>
+<li><a href="usecase.html#Extension">Extension</a></li>
+<li><a href="usecase.html#Using_notes">Using notes</a></li>
+<li><a href="usecase.html#Stereotypes">Stereotypes</a></li>
+<li><a href="usecase.html#Direction">Changing arrows direction</a></li>
+<li><a href="usecase.html#Title_diagram">Title the diagram</a></li>
+<li><a href="usecase.html#Newpage">Splitting diagrams</a></li>
+<li><a href="usecase.html#Rankdir">Left to right direction</a></li>
+<li><a href="usecase.html#Skinparam">Skinparam</a></li>
+<li><a href="usecase.html#Complete">Complete example</a></li>
+</ul>
+</div>
+</div>
+</li>
+<li class="menu"><a href="classes.html" class="drop">Class</a>
+<div class="dropdown_2columns">
+<div class="col_1">
+<ul class="simple">
+<li><a href="classes.html#Relations">Relations between classes</a></li>
+<li><a href="classes.html#Label">Label on relations</a></li>
+<li><a href="classes.html#Adding">Adding methods</a></li>
+<li><a href="classes.html#Visibility">Defining visibility</a></li>
+<li><a href="classes.html#AbstractStatic">Abstract and Static</a></li>
+<li><a href="classes.html#Body">Advanced class body</a></li>
+<li><a href="classes.html#Notes">Notes and stereotypes</a></li>
+<li><a href="classes.html#More">More on notes</a></li>
+<li><a href="classes.html#NoteLink">Note on links</a></li>
+<li><a href="classes.html#Abstract">Abstract class and interface</a></li>
+<li><a href="classes.html#As">Using non-letters</a></li>
+<li><a href="classes.html#Hide">Hide attributes, methods...</a></li>
+</ul></div><div class="col_1"><ul class="simple">
+<li><a href="classes.html#Hideclass">Hide classes</a></li>
+<li><a href="classes.html#Generic">Use generics</a></li>
+<li><a href="classes.html#Specific">Specific Spot</a></li>
+<li><a href="classes.html#Using">Packages</a></li>
+<li><a href="classes.html#PStyle">Packages style</a></li>
+<li><a href="classes.html#Namespaces">Namespaces</a></li>
+<li><a href="classes.html#AutomaticNamespace">Automatic namespace creation</a></li>
+<li><a href="classes.html#Lollipop">Lollipop interface</a></li>
+<li><a href="classes.html#Direction">Changing arrows direction</a></li>
+<li><a href="classes.html#Title_diagram">Title the diagram</a></li>
+<li><a href="classes.html#Legend">Legend the diagram</a></li>
+<li><a href="classes.html#Association_classes">Association classes</a></li>
+<li><a href="classes.html#Skinparam">Skinparam</a></li>
+<li><a href="classes.html#SkinnedStereotypes">Skinned Stereotypes</a></li>
+<li><a href="classes.html#gradient">Color gradient</a></li>
+<li><a href="classes.html#Splitting">Splitting large files</a></li>
+</ul>
+</div>
+</div>
+</li>
+<li class="menu"><a href="activity.html" class="drop">Activity</a>
+<div class="dropdown_1column">
+<div class="col_1">
+<ul class="simple">
+<li><a href="activity.html#Simple_activity">Simple Activity</a></li>
+<li><a href="activity.html#Label">Label on arrows</a></li>
+<li><a href="activity.html#Direction">Changing arrow direction</a></li>
+<li><a href="activity.html#Branches">Branches</a></li>
+<li><a href="activity.html#Branches2">More on Branches</a></li>
+<li><a href="activity.html#Synchronization">Synchronization</a></li>
+<li><a href="activity.html#Long_activity">Long activity description</a></li>
+<li><a href="activity.html#Notes">Notes</a></li>
+<li><a href="activity.html#Partition">Partition</a></li>
+<li><a href="activity.html#Title_diagram">Title the diagram</a></li>
+<li><a href="activity.html#Skinparam">Skinparam</a></li>
+<li><a href="activity.html#Octagon">Octagon</a></li>
+<li><a href="activity.html#Complete_example">Complete example</a></li>
+</ul>
+</div>
+</div>
+</li>
+<li class="menu"><a href="activity2.html" class="drop">Activity <img border=0 src=beta-icon.gif></a>
+<div class="dropdown_1column">
+<div class="col_1">
+<ul class="simple">
+<li><a href="activity2.html#simple">Simple Activity</a></li>
+<li><a href="activity2.html#startstop">Start/Stop</a></li>
+<li><a href="activity2.html#conditional">Conditional</a></li>
+<li><a href="activity2.html#repeat">Repeat loop</a></li>
+<li><a href="activity2.html#while">While loop</a></li>
+<li><a href="activity2.html#fork">Parallel processing</a></li>
+<li><a href="activity2.html#note">Notes</a></li>
+<li><a href="activity2.html#title">Title & Legend</a></li>
+<li><a href="activity2.html#color">Colors</a></li>
+<li><a href="activity2.html#arrow">Arrows</a></li>
+<li><a href="activity2.html#grouping">Grouping</a></li>
+<li><a href="activity2.html#swimlane">Swimlanes</a></li>
+<li><a href="activity2.html#detach">Detach</a></li>
+<li><a href="activity2.html#sdl">SDL</a></li>
+<li><a href="activity2.html#complete">Complete example</a></li>
+</ul>
+</div>
+</div>
+</li>
+<li class="menu"><a href="component.html" class="drop">Component</a>
+<div class="dropdown_1column">
+<div class="col_1">
+<ul class="simple">
+<li><a href="component.html#Component">Components</a></li>
+<li><a href="component.html#Interface">Interfaces</a></li>
+<li><a href="component.html#Basic">Basic example</a></li>
+<li><a href="component.html#Using_notes">Using notes</a></li>
+<li><a href="component.html#Packages">Grouping Components</a></li>
+<li><a href="component.html#Direction">Arrows direction</a></li>
+<li><a href="component.html#Title_diagram">Title the diagram</a></li>
+<li><a href="component.html#uml2">Use UML2 notation</a></li>
+<li><a href="component.html#colors">Individual colors</a></li>
+<li><a href="component.html#Skinparam">Skinparam</a></li>
+</ul>
+</div>
+</div>
+</li>
+<li class="menu"><a href="state.html" class="drop">State</a>
+<div class="dropdown_1column">
+<div class="col_1">
+<ul class="simple">
+<li><a href="state.html#Simple">Simple State</a></li>
+<li><a href="state.html#Composite">Composite state</a></li>
+<li><a href="state.html#Long">Long name</a></li>
+<li><a href="state.html#Concurrent">Concurrent state</a></li>
+<li><a href="state.html#Direction">Arrow direction</a></li>
+<li><a href="state.html#Note">Note</a></li>
+<li><a href="state.html#Note2">More in notes</a></li>
+<li><a href="state.html#Skinparam">Skinparam</a></li>
+</ul>
+</div>
+</div>
+</li>
+<li class="menu"><a href="objects.html" class="drop">Object</a>
+<div class="dropdown_1column">
+<div class="col_1">
+<ul class="simple">
+<li><a href="objects.html#Definition">Definition of objects</a></li>
+<li><a href="objects.html#Relations">Relations between objects</a></li>
+<li><a href="objects.html#Adding">Adding fields</a></li>
+<li><a href="classes.html#Visibility">Visibility</a></li>
+<li><a href="classes.html#Notes">Defines notes</a></li>
+<li><a href="classes.html#Using">Use packages</a></li>
+<li><a href="classes.html#Title_diagram">Title the diagram</a></li>
+<li><a href="classes.html#Skinparam">Skin the output</a></li>
+<li><a href="classes.html#Splitting">Split the image</a></li>
+</ul>
+</div>
+</div>
+</li>
+</ul>
+<div id="don">
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----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-----END PKCS7-----
+">
+<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+<img alt="" border="0" src="https://www.paypalobjects.com/fr_FR/i/scr/pixel.gif" width="1" height="1">
+<a href="https://patreon.com/plantuml">
+<img src=patreon01.png>
+</a>
+<a class="FlattrButton" style="display:none;" rev="flattr;button:compact;" href="http://plantuml.sourceforge.net/"></a>
+</form>
+</div>
+</nav>
+<nav id="side">
+<ul id="menuside">
+<li><a href="/" class="drop"><img border=0 src=logoc.png></a></li>
+<li><a href="/" class="drop">Home</a></li>
+<li><a href="screenshot.html" class="drop">Screenshots</a></li>
+<li><a href="download.html" class="drop">Download</a></li>
+<li><a href="news.html" class="drop">What's New ?</a></li>
+<li><a href="faq.html" class="drop">F.A.Q.</a></li>
+<li><a href="running.html" class="drop">Running</a></li>
+<li><a href="http://plantuml.sourceforge.net/qa" class="drop">Question & Answer</a></li>
+<li><a href="preprocessing.html" class="drop">Preprocessing</a></li>
+<li><a href="sitemap.html" class="drop">Site Map</a></li>
+<li><a href="external_links.html" class="drop">External Links</a></li>
+</ul>
+</nav>
+<div id="C1"></div>
+<div id="H1"></div>
+<div id="V0"></div>
+<div id="V1"></div>
+<div id=page>
+<nav id="mirror">
+<center>
+<a href="http://plantuml.com/skinparam.html">
+<img border=0 src=flags/us.png></a>
+<a href=http://fr.plantuml.com/skinparam.html><img border=0 src=flags/fr.png></a>
+<a href=http://de.plantuml.com/skinparam.html><img border=0 src=flags/de.png></a>
+<a href=http://es.plantuml.com/skinparam.html><img border=0 src=flags/es.png></a>
+<a href=http://translate.plantuml.com/pt><img border=0 src=flags/pt.png></a>
+<a href=http://translate.plantuml.com/it><img border=0 src=flags/it.png></a>
+<a href=http://translate.plantuml.com/no><img border=0 src=flags/no.png></a>
+<a href=http://translate.plantuml.com/sv><img border=0 src=flags/sv.png></a>
+<a href=http://translate.plantuml.com/pl><img border=0 src=flags/pl.png></a>
+<a href=http://translate.plantuml.com/nl><img border=0 src=flags/nl.png></a>
+<a href=http://translate.plantuml.com/uk><img border=0 src=flags/uk.png></a>
+<a href=http://ru.plantuml.com/skinparam.html><img border=0 src=flags/ru.png></a>
+<a href=http://zh.plantuml.com/skinparam.html><img border=0 src=flags/zh.png></a>
+<a href=http://translate.plantuml.com/kr><img border=0 src=flags/kr.png></a>
+<a href=http://ja.plantuml.com/skinparam.html><img border=0 src=flags/ja.png></a>
+&nbsp;&nbsp;
+<b><span id=mt></span></b>
+<p>
+</center>
+</nav>
+<script>
+var userLang = (navigator.language) ? navigator.language : navigator.userLanguage;
+var dmt = document.getElementById("mt");
+if (userLang!=null && userLang.indexOf('fr')!=-1)
+dmt.innerHTML='<a href=http://translate.plantuml.com/fr>Participez &#224; la traduction!</a>';
+if (userLang!=null && userLang.indexOf('de')!=-1)
+dmt.innerHTML='<a href=http://translate.plantuml.com/de>Helfen Sie mit, PlantUML zu &#252;bersetzen!</a>';
+if (userLang!=null && userLang.indexOf('es')!=-1)
+dmt.innerHTML='<a href=http://translate.plantuml.com/es>Participen en la traducci&#243;n!</a>';
+if (userLang!=null && userLang.indexOf('pt')!=-1)
+dmt.innerHTML='<a href=http://translate.plantuml.com/pt>Participar de tradu&#231;&#227;o!</a>';
+if (userLang!=null && userLang.indexOf('it')!=-1)
+dmt.innerHTML='<a href=http://translate.plantuml.com/it>Partecipa alla traduzione!</a>';
+if (userLang!=null && userLang.indexOf('no')!=-1)
+dmt.innerHTML='<a href=http://translate.plantuml.com/no>Deltagelse til oversettelse!</a>';
+if (userLang!=null && userLang.indexOf('sv')!=-1)
+dmt.innerHTML='<a href=http://translate.plantuml.com/sv>Delta i &#246;vers&#228;ttning!</a>';
+if (userLang!=null && userLang.indexOf('pl')!=-1)
+dmt.innerHTML='<a href=http://translate.plantuml.com/pl>Udzia&#322;u w t&#322;umaczeniu!</a>';
+if (userLang!=null && userLang.indexOf('nl')!=-1)
+dmt.innerHTML='<a href=http://translate.plantuml.com/nl>Deelnemen aan vertaling!</a>';
+if (userLang!=null && userLang.indexOf('uk')!=-1)
+dmt.innerHTML='<a href=http://translate.plantuml.com/uk>&#1059;&#1095;&#1072;&#1089;&#1090;&#1100; &#1091; &#1087;&#1077;&#1088;&#1077;&#1082;&#1083;&#1072;&#1076;&#1110;!</a>';
+if (userLang!=null && userLang.indexOf('ru')!=-1)
+dmt.innerHTML='<a href=http://translate.plantuml.com/ru>&#1059;&#1095;&#1072;&#1089;&#1090;&#1080;&#1077; &#1074; &#1087;&#1077;&#1088;&#1077;&#1074;&#1086;&#1076;&#1077;!</a>';
+if (userLang!=null && userLang.indexOf('zh')!=-1)
+dmt.innerHTML='<a href=http://translate.plantuml.com/zh>&#21442;&#19982;&#21040;&#32763;&#35793;&#65281;</a>';
+if (userLang!=null && userLang.indexOf('ko')!=-1)
+dmt.innerHTML='<a href=http://translate.plantuml.com/kr>&#52280;&#50668;&#54616;&#45716; &#48264;&#50669;&#51012; &#50948;&#54644;!</a>';
+if (userLang!=null && userLang.indexOf('ja')!=-1)
+dmt.innerHTML='<a href=http://translate.plantuml.com/ja>&#21442;&#21152;&#32763;&#35379;&#65281;</a>';
+</script>
+<div id=mtop1i>
+</div>
+<aside id=mtop1>
+<div id="PUB1">
+<center>
+<a id=imgpubh1a style="display:none" href=https://www.patreon.com/plantuml><img src=empty.png id=imgpubh1></a>
+<style>
+.long1 { width: 728px; height: 90px; }
+@media(min-width: 1622px) { .long1 { width: 970px; height: 90px; } }
+</style>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- Long1 -->
+<ins class="adsbygoogle long1"
+style="display:inline-block"
+data-ad-client="ca-pub-5770515425712095"
+data-ad-slot="2910190301"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</center>
+</div>
+</aside>
+<script>
+  (function() {
+    var cx = '002267040093494634259:o59itilhnna';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+        '//cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:search></gcse:search>
+<main role="main">
+<h1>Skinparam command</h1>
+<div id=mtop2i>
+</div>
+<div id=mtop2>
+<div id="PUBH4">
+<div id=annonces7div style="display:none"></div>
+<!-- Annonces7 -->
+<ins class="adsbygoogle"
+style="display:inline-block;width:728px;height:15px"
+data-ad-client="ca-pub-5770515425712095"
+data-ad-slot="8076713508"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+</div>
+You can change colors and font of the drawing using the <code>skinparam</code>
+command.
+<p><u>Example:</u>
+<dir>
+<code>skinparam backgroundColor transparent</code>
+</dir>
+<h2>Usage</h2>
+<div class=movexxxi id=move0i></div><div class=movexxx id=move0>
+<!-- Annonces6 -->
+<ins class="adsbygoogle"
+style="display:inline-block;width:728px;height:15px"
+data-ad-client="ca-pub-5770515425712095"
+data-ad-slot="9369594702"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+You can use this command :
+<ul>
+<li>In the diagram definition, like any other commands,</li>
+<li>In an <a href=preprocessing.html>included file</a>,</li>
+<li>In a configuration file, provided in the <a
+href=command_line.html>command line</a> or the <a href=ant_task.html>ANT
+task</a>.</li>
+</ul>
+<h2 id=Nested>Nested</h2>
+<div class=movexxxi id=move1i></div><div class=movexxx id=move1>
+</div>
+To avoid repetition, it is possible to nest definition. So the following definition :
+<p class="scriptplantu">
+<dir>
+<pre>
+skinparam xxxxParam1 value1
+skinparam xxxxParam2 value2
+skinparam xxxxParam3 value3
+skinparam xxxxParam4 value4
+		</pre>
+</dir>
+</p>
+is strictly equivalent to:
+<p class="scriptplantu">
+<dir>
+<pre>
+skinparam xxxx {
+  Param1 value1
+  Param2 value2
+  Param3 value3
+  Param4 value4
+}
+		</pre>
+</dir>
+</p>
+<h2>List</h2>
+<div class=movexxxi id=move2i></div><div class=movexxx id=move2>
+</div>
+Since the documentation is not always up to date, you can have the complete list of parameters using this command:
+<p class="scriptplantu">
+<dir>
+<pre>java -jar plantuml.jar -language</pre>
+</dir>
+</p>
+<h2>Colors</h2>
+<div class=movexxxi id=move3i></div><div class=movexxx id=move3>
+</div>
+You can use either <a href=http://www.w3schools.com/HTML/html_colornames.asp>standard
+color name</a> or RGB code.
+<br>
+<code>transparent</code> can only be used for background of the image.
+<p>
+<table border=1 cellspacing=0 cellpadding=5>
+<tr>
+<td><b>Parameter name</b></td>
+<td><b>Default value</b></td>
+<td><b>Color</b></td>
+<td><b>Comment</b></td>
+</tr>
+<tr>
+<td>backgroundColor</td>
+<td>white</td>
+<td bgcolor=white></td>
+<td>Background of the page, or <code>transparent</code></td>
+</tr>
+<tr>
+<td>activityArrowColor</td>
+<td>#A80036</td>
+<td bgcolor=#A80036></td>
+<td>Color of arrows in activity diagrams</td>
+</tr>
+<tr>
+<td>activityBackgroundColor</td>
+<td>#FEFECE</td>
+<td bgcolor=#FEFECE></td>
+<td>Background of activities</td>
+</tr>
+<tr>
+<td>activityBorderColor</td>
+<td>#A80036</td>
+<td bgcolor=#A80036></td>
+<td>Color of activity borders</td>
+</tr>
+<tr>
+<td>activityStartColor</td>
+<td>black</td>
+<td bgcolor=black></td>
+<td>Starting circle in activity diagrams</td>
+</tr>
+<tr>
+<td>activityEndColor</td>
+<td>black</td>
+<td bgcolor=black></td>
+<td>Ending circle in activity diagrams</td>
+</tr>
+<tr>
+<td>activityBarColor</td>
+<td>black</td>
+<td bgcolor=black></td>
+<td>Synchronization bar in activity diagrams</td>
+</tr>
+<tr>
+<td>actorBackgroundColor</td>
+<td>#FEFECE</td>
+<td bgcolor=#FEFECE></td>
+<td>Head's color of actor</td>
+</tr>
+<tr>
+<td>actorBorderColor</td>
+<td>#A80036</td>
+<td bgcolor=#A80036></td>
+<td>Color of actor borders</td>
+</tr>
+<tr>
+<td>usecaseArrowColor</td>
+<td>#A80036</td>
+<td bgcolor=#A80036></td>
+<td>Color of arrows in usecase diagrams</td>
+</tr>
+<tr>
+<td>usecaseBackgroundColor</td>
+<td>#FEFECE</td>
+<td bgcolor=#FEFECE></td>
+<td>Background of usecases</td>
+</tr>
+<tr>
+<td>usecaseBorderColor</td>
+<td>#A80036</td>
+<td bgcolor=#A80036></td>
+<td>Color of usecase borders in usecase diagrams</td>
+</tr>
+<tr>
+<td>classArrowColor</td>
+<td>#A80036</td>
+<td bgcolor=#A80036></td>
+<td>Color of arrows in class diagrams</td>
+</tr>
+<tr>
+<td>classBackgroundColor</td>
+<td>#FEFECE</td>
+<td bgcolor=#FEFECE></td>
+<td>Background of classes/interface/enum in class diagrams</td>
+</tr>
+<tr>
+<td>classBorderColor</td>
+<td>#A80036</td>
+<td bgcolor=#A80036></td>
+<td>Borders of classes/interface/enum in class diagrams</td>
+</tr>
+<tr>
+<td>objectArrowColor</td>
+<td>#A80036</td>
+<td bgcolor=#A80036></td>
+<td>Color of arrows in object diagrams</td>
+</tr>
+<tr>
+<td>objectBackgroundColor</td>
+<td>#FEFECE</td>
+<td bgcolor=#FEFECE></td>
+<td>Background of object in object diagrams</td>
+</tr>
+<tr>
+<td>objectBorderColor</td>
+<td>#A80036</td>
+<td bgcolor=#A80036></td>
+<td>Borders of object in object diagrams</td>
+</tr>
+<tr>
+<td>packageBackgroundColor</td>
+<td>#FEFECE</td>
+<td bgcolor=#FEFECE></td>
+<td>Background of packages in class diagrams</td>
+</tr>
+<tr>
+<td>packageBorderColor</td>
+<td>#A80036</td>
+<td bgcolor=#A80036></td>
+<td>Borders of packages in class diagrams</td>
+</tr>
+<tr>
+<td>stereotypeCBackgroundColor</td>
+<td>#ADD1B2</td>
+<td bgcolor=#ADD1B2></td>
+<td>Background of class spots in class diagrams</td>
+</tr>
+<tr>
+<td>stereotypeABackgroundColor</td>
+<td>#A9DCDF</td>
+<td bgcolor=#A9DCDF></td>
+<td>Background of abstract class spots in class diagrams</td>
+</tr>
+<tr>
+<td>stereotypeIBackgroundColor</td>
+<td>#B4A7E5</td>
+<td bgcolor=#B4A7E5></td>
+<td>Background of interface spots in class diagrams</td>
+</tr>
+<tr>
+<td>stereotypeEBackgroundColor</td>
+<td>#EB937F</td>
+<td bgcolor=#EB937F></td>
+<td>Background of enum spots in class diagrams</td>
+</tr>
+<tr>
+<td>componentArrowColor</td>
+<td>#A80036</td>
+<td bgcolor=#A80036></td>
+<td>Color of arrows in component diagrams</td>
+</tr>
+<tr>
+<td>componentBackgroundColor</td>
+<td>#FEFECE</td>
+<td bgcolor=#FEFECE></td>
+<td>Background of components</td>
+</tr>
+<tr>
+<td>componentBorderColor</td>
+<td>#A80036</td>
+<td bgcolor=#A80036></td>
+<td>Borders of components</td>
+</tr>
+<tr>
+<td>componentInterfaceBackgroundColor</td>
+<td>#FEFECE</td>
+<td bgcolor=#FEFECE></td>
+<td>Background of interface in component diagrams</td>
+</tr>
+<tr>
+<td>componentInterfaceBorderColor</td>
+<td>#A80036</td>
+<td bgcolor=#A80036></td>
+<td>Border of interface in component diagrams</td>
+</tr>
+<tr>
+<td>noteBackgroundColor</td>
+<td>#FBFB77</td>
+<td bgcolor=#FBFB77></td>
+<td>Background of notes</td>
+</tr>
+<tr>
+<td>noteBorderColor</td>
+<td>#A80036</td>
+<td bgcolor=#A80036></td>
+<td>Border of notes</td>
+</tr>
+<tr>
+<td>stateBackgroundColor</td>
+<td>#FEFECE</td>
+<td bgcolor=#FEFECE></td>
+<td>Background of states in state diagrams</td>
+</tr>
+<tr>
+<td>stateBorderColor</td>
+<td>#A80036</td>
+<td bgcolor=#A80036></td>
+<td>Border of states in state diagrams</td>
+</tr>
+<tr>
+<td>stateArrowColor</td>
+<td>#A80036</td>
+<td bgcolor=#A80036></td>
+<td>Colors of arrows in state diagrams</td>
+</tr>
+<tr>
+<td>stateStartColor</td>
+<td>black</td>
+<td bgcolor=black></td>
+<td>Starting circle in state diagrams</td>
+</tr>
+<tr>
+<td>stateEndColor</td>
+<td>black</td>
+<td bgcolor=black></td>
+<td>Ending circle in state diagrams</td>
+</tr>
+<tr>
+<td>sequenceArrowColor</td>
+<td>#A80036</td>
+<td bgcolor=#A80036></td>
+<td>Color of arrows in sequence diagrams</td>
+</tr>
+<tr>
+<td>sequenceDividerBackgroundColor</td>
+<td>#EEEEEE</td>
+<td bgcolor=#EEEEEE></td>
+<td>Background of divider in sequence diagrams</td>
+</tr>
+<tr>
+<td>sequenceGroupBackgroundColor</td>
+<td>#EEEEEE</td>
+<td bgcolor=#EEEEEE></td>
+<td>Header color of alt/opt/loop in sequence diagrams</td>
+</tr>
+<tr>
+<td>sequenceLifeLineBackgroundColor</td>
+<td>white</td>
+<td bgcolor=white></td>
+<td>Background of life line in sequence diagrams</td>
+</tr>
+<tr>
+<td>sequenceLifeLineBorderColor</td>
+<td>#A80036</td>
+<td bgcolor=#A80036></td>
+<td>Border of life line in sequence diagrams</td>
+</tr>
+<tr>
+<td>sequenceParticipantBackgroundColor</td>
+<td>#FEFECE</td>
+<td bgcolor=#FEFECE></td>
+<td>Background of participant in sequence diagrams</td>
+</tr>
+<tr>
+<td>sequenceParticipantBorderColor</td>
+<td>#A80036</td>
+<td bgcolor=#A80036></td>
+<td>Border of participant in sequence diagrams</td>
+</tr>
+<tr>
+<td>sequenceBoxLineColor</td>
+<td>#A80036</td>
+<td bgcolor=#A80036></td>
+<td>Border of participant englobers in sequence diagrams</td>
+</tr>
+<tr>
+<td>sequenceBoxBackgroundColor</td>
+<td>#DDDDDD</td>
+<td bgcolor=#DDDDDD></td>
+<td>Background of participant englobers in sequence diagrams</td>
+</tr>
+</table>
+<h2>Font color, name and size</h2>
+<div class=movexxxi id=move4i></div><div class=movexxx id=move4>
+</div>
+You can change the font for the drawing using <code>xxxFontColor</code>,
+<code>xxxFontSize</code> and <code>xxxFontName</code> parameters.
+<p><u>Example:</u>
+<dir>
+<pre>
+skinparam classFontColor red
+skinparam classFontSize 10
+skinparam classFontName Aapex
+</pre>
+</dir>
+You can also change the default font for all fonts using <code>skinparam
+defaultFontName</code>.
+<p><u>Example:</u>
+<dir>
+<pre>
+skinparam defaultFontName Aapex
+</pre>
+</dir>
+<p>Please note the fontname is highly system dependent, so do not
+over use it, if you look for portability. <code>Helvetica</code> and <code>Courier</code>
+should be available on all system.
+<p>
+<table border=1 cellspacing=0 cellpadding=5>
+<tr>
+<td><b>Param name</b></td>
+<td><b>Default value</b></td>
+<td><b>Comment</b></td>
+</tr>
+<tr>
+<td>activityFontColor<br>activityFontSize
+<br>activityFontStyle
+<br>activityFontName
+</td>
+<td valign=top>black<br>14
+<br>plain
+</td>
+<td>Used for activity box</td>
+</tr>
+<tr>
+<td>activityArrowFontColor<br>activityArrowFontSize
+<br>activityArrowFontStyle
+<br>activityArrowFontName
+</td>
+<td valign=top>black<br>13
+<br>plain
+</td>
+<td>Used for text on arrows in activity diagrams</td>
+</tr>
+<tr>
+<td>circledCharacterFontColor<br>circledCharacterFontSize
+<br>circledCharacterFontStyle
+<br>circledCharacterFontName
+<br>circledCharacterRadius
+</td>
+<td valign=top>black<br>17
+<br>bold
+<br>Courier
+<br>11
+</td>
+<td>Used for text in circle for class, enum & others</td>
+</tr>
+<tr>
+<td>classArrowFontColor<br>classArrowFontSize
+<br>classArrowFontStyle
+<br>classArrowFontName
+</td>
+<td valign=top>black<br>10
+<br>plain
+</td>
+<td>Used for text on arrows in class diagrams</td>
+</tr>
+<tr>
+<td>classAttributeFontColor<br>classAttributeFontSize
+<br>classAttributeIconSize
+<br>classAttributeFontStyle
+<br>classAttributeFontName
+</td>
+<td valign=top>black<br>10
+<br>10
+<br>plain
+</td>
+<td>Class attributes and methods</td>
+</tr>
+<tr>
+<td>classFontColor<br>classFontSize
+<br>classFontStyle
+<br>classFontName
+</td>
+<td valign=top>black<br>12
+<br>plain
+</td>
+<td>Used for classes name</td>
+</tr>
+<tr>
+<td>classStereotypeFontColor<br>classStereotypeFontSize
+<br>classStereotypeFontStyle
+<br>classStereotypeFontName
+</td>
+<td valign=top>black<br>12
+<br>italic
+</td>
+<td>Used for stereotype in classes</td>
+</tr>
+<tr>
+<td>objectArrowFontColor<br>objectArrowFontSize
+<br>objectArrowFontStyle
+<br>objectArrowFontName
+</td>
+<td valign=top>black<br>10
+<br>plain
+</td>
+<td>Used for text on arrows in object diagrams</td>
+</tr>
+<tr>
+<td>objectAttributeFontColor<br>objectAttributeFontSize
+<br>objectAttributeFontStyle
+<br>objectAttributeFontName
+</td>
+<td valign=top>black<br>10
+<br>plain
+</td>
+<td>Object attributes</td>
+</tr>
+<tr>
+<td>objectFontColor<br>objectFontSize
+<br>objectFontStyle
+<br>objectFontName
+</td>
+<td valign=top>black<br>12
+<br>plain
+</td>
+<td>Used for object name</td>
+</tr>
+<tr>
+<td>objectStereotypeFontColor<br>objectStereotypeFontSize
+<br>objectStereotypeFontStyle
+<br>objectStereotypeFontName
+</td>
+<td valign=top>black<br>12
+<br>italic
+</td>
+<td>Used for stereotype in objects</td>
+</tr>
+<tr>
+<td>componentFontColor<br>componentFontSize
+<br>componentFontStyle
+<br>componentFontName
+</td>
+<td valign=top>black<br>14
+<br>plain
+</td>
+<td>Used for components name</td>
+</tr>
+<tr>
+<td>componentStereotypeFontColor<br>componentStereotypeFontSize
+<br>componentStereotypeFontStyle
+<br>componentStereotypeFontName
+</td>
+<td valign=top>black<br>14
+<br>italic
+</td>
+<td>Used for stereotype in components</td>
+</tr>
+<tr>
+<td>componentArrowFontColor<br>componentArrowFontSize
+<br>componentArrowFontStyle
+<br>componentArrowFontName
+</td>
+<td valign=top>black<br>13
+<br>plain
+</td>
+<td>Used for text on arrows in component diagrams</td>
+</tr>
+<tr>
+<td>noteFontColor<br>noteFontSize
+<br>noteFontStyle
+<br>noteFontName
+</td>
+<td valign=top>black<br>13
+<br>plain
+</td>
+<td>Used for notes in all diagrams but sequence diagrams</td>
+</tr>
+<tr>
+<td>packageFontColor<br>packageFontSize
+<br>packageFontStyle
+<br>packageFontName
+</td>
+<td valign=top>black<br>14
+<br>plain
+</td>
+<td>Used for package and partition names</td>
+</tr>
+<tr>
+<td>sequenceActorFontColor<br>sequenceActorFontSize
+<br>sequenceActorFontStyle
+<br>sequenceActorFontName
+</td>
+<td valign=top>black<br>13
+<br>plain
+</td>
+<td>Used for actor in sequence diagrams</td>
+</tr>
+<tr>
+<td>sequenceDividerFontColor<br>sequenceDividerFontSize
+<br>sequenceDividerFontStyle
+<br>sequenceDividerFontName
+</td>
+<td valign=top>black<br>13
+<br>bold
+</td>
+<td>Used for text on dividers in sequence diagrams</td>
+</tr>
+<tr>
+<td>sequenceArrowFontColor<br>sequenceArrowFontSize
+<br>sequenceArrowFontStyle
+<br>sequenceArrowFontName
+</td>
+<td valign=top>black<br>13
+<br>plain
+</td>
+<td>Used for text on arrows in sequence diagrams</td>
+</tr>
+<tr>
+<td>sequenceGroupFontColor<br>sequenceGroupFontSize
+<br>sequenceGroupFontStyle
+<br>sequenceGroupFontName
+</td>
+<td valign=top>black<br>11
+<br>bold
+</td>
+<td>Used for text for "else" in sequence diagrams</td>
+</tr>
+<tr>
+<td>sequenceGroupHeaderFontColor<br>sequenceGroupHeaderFontSize
+<br>sequenceGroupHeaderFontStyle
+<br>sequenceGroupHeaderFontName
+</td>
+<td valign=top>black<br>13
+<br>bold
+</td>
+<td>Used for text for "alt/opt/loop" headers in sequence diagrams</td>
+</tr>
+<tr>
+<td>sequenceParticipantFontColor<br>sequenceParticipantFontSize
+<br>sequenceParticipantFontStyle
+<br>sequenceParticipantFontName
+</td>
+<td valign=top>black<br>13
+<br>plain
+</td>
+<td>Used for text on participant in sequence diagrams</td>
+</tr>
+<tr>
+<td>sequenceStereotypeFontColor<br>sequenceStereotypeFontSize
+<br>sequenceStereotypeFontStyle
+<br>sequenceStereotypeFontName
+</td>
+<td valign=top>black<br>14
+<br>italic
+</td>
+<td>Used for stereotypes in sequence diagrams</td>
+</tr>
+<tr>
+<td>sequenceTitleFontColor<br>sequenceTitleFontSize
+<br>sequenceTitleFontStyle
+<br>sequenceTitleFontName
+</td>
+<td valign=top>black<br>13
+<br>bold
+</td>
+<td>Used for titles in sequence diagrams</td>
+</tr>
+<tr>
+<td>titleFontColor<br>titleFontSize
+<br>titleFontStyle
+<br>titleFontName
+</td>
+<td valign=top>black<br>18
+<br>plain
+</td>
+<td>Used for titles in all diagrams but sequence diagrams</td>
+</tr>
+<tr>
+<td>stateFontColor<br>stateFontSize
+<br>stateFontStyle
+<br>stateFontName
+</td>
+<td valign=top>black<br>14
+<br>plain
+</td>
+<td>Used for states in state diagrams</td>
+</tr>
+<tr>
+<td>stateArrowFontColor<br>stateArrowFontSize
+<br>stateArrowFontStyle
+<br>stateArrowFontName
+</td>
+<td valign=top>black<br>13
+<br>plain
+</td>
+<td>Used for text on arrows in state diagrams</td>
+</tr>
+<tr>
+<td>stateAttributeFontColor<br>stateAttributeFontSize
+<br>stateAttributeFontStyle
+<br>stateAttributeFontName
+</td>
+<td valign=top>black<br>12
+<br>plain
+</td>
+<td>Used for states description in state diagrams</td>
+</tr>
+<tr>
+<td>usecaseFontColor<br>usecaseFontSize
+<br>usecaseFontStyle
+<br>usecaseFontName
+</td>
+<td valign=top>black<br>14
+<br>plain
+</td>
+<td>Used for usecase labels in usecase diagrams</td>
+</tr>
+<tr>
+<td>usecaseStereotypeFontColor<br>usecaseStereotypeFontSize
+<br>usecaseStereotypeFontStyle
+<br>usecaseStereotypeFontName
+</td>
+<td valign=top>black<br>14
+<br>italic
+</td>
+<td>Used for stereotype in usecase</td>
+</tr>
+<tr>
+<td>usecaseActorFontColor<br>usecaseActorFontSize
+<br>usecaseActorFontStyle
+<br>usecaseActorFontName
+</td>
+<td valign=top>black<br>14
+<br>plain
+</td>
+<td>Used for actor labels in usecase diagrams</td>
+</tr>
+<tr>
+<td>usecaseActorStereotypeFontColor<br>usecaseActorStereotypeFontSize
+<br>usecaseActorStereotypeFontStyle
+<br>usecaseActorStereotypeFontName
+</td>
+<td valign=top>black<br>14
+<br>italic
+</td>
+<td>Used for stereotype for actor</td>
+</tr>
+<tr>
+<td>usecaseArrowFontColor<br>usecaseArrowFontSize
+<br>usecaseArrowFontStyle
+<br>usecaseArrowFontName
+</td>
+<td valign=top>black<br>13
+<br>plain
+</td>
+<td>Used for text on arrows in usecase diagrams</td>
+</tr>
+<tr>
+<td>footerFontColor<br>footerFontSize
+<br>footerFontStyle
+<br>footerFontName
+</td>
+<td valign=top>black<br>10
+<br>plain
+</td>
+<td>Used for footer</td>
+</tr>
+<tr>
+<td>headerFontColor<br>headerFontSize
+<br>headerFontStyle
+<br>headerFontName
+</td>
+<td valign=top>black<br>10
+<br>plain
+</td>
+<td>Used for header</td>
+</tr>
+</table>
+<h2 id="Align">Text Alignement</h2>
+<div class=movexxxi id=move5i></div><div class=movexxx id=move5>
+</div>
+Text alignement can be set up to <code>left</code>, <code>right</code> or <code>center</code>.
+<p>
+<table border=1 cellspacing=0 cellpadding=5>
+<tr>
+<td><b>Param name</b></td>
+<td><b>Default value</b></td>
+<td><b>Comment</b></td>
+</tr>
+<tr>
+<td>sequenceMessageAlign</td>
+<td valign=top>left</td>
+<td>Used for messages in sequence diagrams</td>
+</tr>
+<tr>
+<td>sequenceReferenceAlign</td>
+<td valign=top>center</td>
+<td>Used for "<code>ref over</code>" in sequence diagrams</td>
+</tr>
+</table>
+<div><div class=mycell><div class=scriptplantu><pre>
+&#64;startuml
+skinparam sequenceMessageAlign center
+Alice -&gt; Bob : Hi
+Alice -&gt; Bob : This is very long
+@enduml
+</pre></div></div><div class=mycell>
+<img border="2" class=scale alt="message alignment in UML sequence diagram" src="imgp/skinparam.png"/>
+</div></div>
+<h2 id="Monochrome">Black and White</h2>
+<div class=movexxxi id=move6i></div><div class=movexxx id=move6>
+</div>
+You can force the use of a black&white output using the <code>skinparam
+monochrome true</code> command.
+<div><div class=mycell><div class=scriptplantu><pre>
+&#64;startuml
+
+skinparam monochrome true
+
+actor User
+participant "First Class" as A
+participant "Second Class" as B
+participant "Last Class" as C
+
+User -&gt; A: DoWork
+activate A
+
+A -&gt; B: Create Request
+activate B
+
+B -&gt; C: DoWork
+activate C
+C --&gt; B: WorkDone
+destroy C
+
+B --&gt; A: Request Created
+deactivate B
+
+A --&gt; User: Done
+deactivate A
+
+@enduml
+</pre></div></div><div class=mycell>
+<img border="2" class=scale alt="monochrome UML sequence diagram" src="imgp/skinparam_001.png"/>
+</div></div>
+<h2 id="Examples">Examples</h2>
+<div class=movexxxi id=move7i></div><div class=movexxx id=move7>
+</div>
+You can click on image to view the sources.
+<p>
+<a href=sequence.html#Skinparam><img border="2" class=scale src="imgp/sequence_036.png"/></a>
+<a href=usecase.html#Skinparam><img border="2" class=scale src="imgp/usecase_014.png"/></a>
+<a href=classes.html#Skinparam><img border="2" class=scale src="imgp/classes_033.png"/></a>
+<a href=activity.html#Skinparam><img border="2" class=scale src="imgp/activity_011.png"/></a>
+<a href=component.html#Skinparam><img border="2" class=scale src="imgp/component_011.png"/></a>
+<a href=component.html#Skinparam><img border="2" class=scale src="imgp/component_012.png"/></a>
+</main>
+<p>
+<aside id="PUB3">
+<style>
+.skyscraper2 { width: 160px; height: 600px; }
+@media(max-width: 1279px) { .skyscraper2 { display: none; } }
+</style>
+<!-- Skyscraper2 -->
+<ins class="adsbygoogle skyscraper2"
+style="display:inline-block"
+data-ad-client="ca-pub-5770515425712095"
+data-ad-slot="3328992709"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</aside>
+<footer id="pied_de_page">
+<table width=100% border=0><tr align=center>
+<td width=12.5%><a href="https://patreon.com/plantuml"><img src=patreon01.png></a></td>
+<td width=12.5%><a title="Your help is really appreciate" href="http://sourceforge.net/donate/index.php?group_id=259736"><img src="x-click-but7.gif" border="0" alt="Support This Project"/></a></td>
+<td width=12.5%><a class="FlattrButton" style="display:none;" rev="flattr;button:compact;" href="http://plantuml.sourceforge.net/"></a></td>
+<td width=12.5% title="Feedback appreciate"><a href=mailto:plantuml@gmail.com><img border=0 src="mail2.png"/></a></td>
+<td width=12.5%><a href="dropbox.html" title="Offer 250 Mo!"><img border=0 src="dropbox.png" alt="Offer 250 Mo!" title="Offer 250 Mo!"/></a></td>
+<td width=12.5%><a href="http://www.ej-technologies.com/products/jprofiler/overview.html" title="Java profiler"><img border=0 src="jprofiler_small.png" alt="Java profiler" title="Java profiler"/></a></td>
+<td width=12.5%><a href="http://www.twitter.com/PlantUML" title="Follow PlantUML on Twitter">
+<img border=0 src="http://twitter-badges.s3.amazonaws.com/t_small-c.png" alt="Follow PlantUML on Twitter" title="Follow PlantUML on Twitter"/></a></td>
+<td width=12.5%><!-- Start of StatCounter Code --><script type="text/javascript"> var sc_project=5903985; var sc_invisible=0; var sc_security="118f86d0"; </script>
+<script type="text/javascript" src="http://www.statcounter.com/counter/counter.js"></script> <!-- End of StatCounter Code --></td>
+</tr></table></footer>
+</div><!--page-->
+<nav id="PUB2">
+<center>
+<a id=imgpubh2a style="display:none" href=https://www.patreon.com/plantuml><img id=imgpubh2></a>
+<style>
+.long2 { width: 160px; height: 600px; }
+@media(min-width: 1420px) { .long2 { width: 300px; height: 600px; } }
+</style>
+<!-- Long2 -->
+<ins class="adsbygoogle long2"
+style="display:inline-block"
+data-ad-client="ca-pub-5770515425712095"
+data-ad-slot="4386923500"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</center>
+</nav>
+<script>
+var xhr = new XMLHttpRequest();
+var bl=1;
+xhr.open("GET", "/adsbygoogle.js", false);
+xhr.send();
+bl=0;
+</script>
+<script>
+function ha() {
+for (i=0;i<8;i++) $("#move"+i).hide();
+}
+function ha0() {
+$("#move0").show();
+for (i=1;i<8;i++) $("#move"+i).hide();
+$("#move0").offset({ top: $('#move0i').offset().top});
+}
+function ha1(a) {
+$("#move0").show();
+for (i=1;i<8;i++) if (i==a) $("#move"+i).show(); else $("#move"+i).hide();
+$("#move0").offset({ top: $('#move'+a+'i').offset().top});
+}
+var sr = function() {
+var scr = $(window).scrollTop();
+var k = $('#mtop1i').offset().top;
+var po3 = scr+$('#mtop1i').width();
+$("#mtop1").offset({ top: k});
+if (po3>k) $("#mtop1").offset({ top: po3});
+
+k = $('#mtop2i').offset().top;
+po3 += $('#mtop1').height();
+$("#mtop2").offset({ top: k});
+if (po3>k) $("#mtop2").offset({ top: po3});
+
+po3 += $('#mtop2').height();
+if ($('#move7i').offset().top<po3) ha();
+else if ($('#move6i').offset().top<po3) ha1(7);
+else if ($('#move5i').offset().top<po3) ha1(6);
+else if ($('#move4i').offset().top<po3) ha1(5);
+else if ($('#move3i').offset().top<po3) ha1(4);
+else if ($('#move2i').offset().top<po3) ha1(3);
+else if ($('#move1i').offset().top<po3) ha1(2);
+else if ($('#move0i').offset().top<po3) ha1(1);
+else ha0();
+
+};
+$(function(){
+$(window).scroll(sr);
+$(window).resize(sr);
+sr();
+});
+$(document).ready(function(){sr();setTimeout(function(){sr();}, 1500);});
+</script>
+<!-- Begin Cookie Consent plugin by Silktide - http://silktide.com/cookieconsent -->
+<script type="text/javascript">
+    window.cookieconsent_options = {"message":"This website uses cookies to ensure you get the best experience on our website","dismiss":"Got it!","learnMore":"More info","link":null,"theme":"dark-floating"};
+</script>
+<script type="text/javascript" src="//s3.amazonaws.com/cc.silktide.com/cookieconsent.latest.min.js"></script>
+<!-- End Cookie Consent plugin -->
+</div><!--root-->
+</div><!--gc-->
+</body>
+</html>

@@ -1,13 +1,9 @@
 @startuml
-participant Alice
-actor Bob
 
-ref over Alice, Bob : init
+Alice -> Bob: Authentication Request
+...
+Bob --> Alice: Authentication Response
+...5 minutes latter...
+Bob --> Alice: Bye !
 
-Alice -> Bob : hello
-
-ref over Bob
-  This can be on
-  several lines
-end ref
 @enduml

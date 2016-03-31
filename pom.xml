@@ -6,7 +6,7 @@
    <groupId>org.unidal.garden</groupId>
    <artifactId>parent</artifactId>
    <version>1.0</version>
-   <name>Garden Parent</name>
+   <name>Garden :: Parent</name>
    <packaging>pom</packaging>
    <modules>
       <module>rose</module>

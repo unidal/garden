@@ -29,6 +29,7 @@
 						<li class="selected"><a href="${model.webapp}/uml/help/activity2">Advanced Activity</a></li>
 						<li class="selected"><a href="${model.webapp}/uml/help/component">Component</a></li>
 						<li class="selected"><a href="${model.webapp}/uml/help/state">State</a></li>
+						<li class="selected"><a href="${model.webapp}/uml/help/deployment">Deployment</a></li>
 						<li class="selected"><a href="${model.webapp}/uml/help/skinparam">Skin Param</a></li>
 						<li class="selected"><a href="${model.webapp}/uml/help/salt">Salt</a></li>
 						<li class="selected"><a href="${model.webapp}/pdf/PlantUML_Language_Reference_Guide.pdf">Guide in PDF</a></li>

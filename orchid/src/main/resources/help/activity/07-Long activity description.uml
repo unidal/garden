@@ -1,12 +1,10 @@
 @startuml
+(*) -left-> "this <size:20>activity</size>
+	is <b>very</b> <color:red>long2</color>
+	and defined on several lines
+	that contains many <i>text</i>" as A1
 
-(*) --> ===B1=== 
---> "Parallel Activity 1"
---> ===B2===
+-up-> "Another activity\n on several lines"
 
-===B1=== --> "Parallel Activity 2"
---> ===B2===
-
---> (*)
-
+A1 --> "Short activity <img:sourceforge.jpg>"
 @enduml

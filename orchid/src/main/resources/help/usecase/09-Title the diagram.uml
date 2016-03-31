@@ -1,6 +1,7 @@
 @startuml
-:user: -left-> (dummyLeft) 
-:user: -right-> (dummyRight) 
-:user: -up-> (dummyUp)
-:user: -down-> (dummyDown)
+title Simple <b>Usecase</b>\nwith one actor
+
+"Use the application" as (Use)
+User -> (Use)
+
 @enduml

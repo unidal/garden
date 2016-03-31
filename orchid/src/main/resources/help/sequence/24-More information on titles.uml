@@ -1,8 +1,8 @@
 @startuml
 
-participant Bob << (C,#ADD1B2) >>
-participant Alice << (C,#ADD1B2) >>
+title __Simple__ **communication** example
 
-Bob->Alice: First message
+Alice -> Bob: Authentication Request
+Bob -> Alice: Authentication Response
 
 @enduml

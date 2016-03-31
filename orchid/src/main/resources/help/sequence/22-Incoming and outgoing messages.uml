@@ -1,13 +1,15 @@
 @startuml
-Bob -> Alice : hello
+[-> A: DoWork
 
-create Other
-Alice -> Other : new
+activate A
 
-create control String
-Alice -> String
-note right : You can also put notes!
+A -> A: Internal call
+activate A
 
-Alice --> Bob : ok
+A ->] : << createRequest >>
 
+A<--] : RequestCreated
+deactivate A
+[<- A: Done
+deactivate A
 @enduml

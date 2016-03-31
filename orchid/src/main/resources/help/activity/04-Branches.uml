@@ -1,5 +1,5 @@
 @startuml
-(*) --> "Initialisation"
+(*) --> "Initialization"
 
 if "Some Test" then
   -->[true] "Some Activity"

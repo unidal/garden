@@ -1,10 +1,29 @@
 @startuml
-(*)  --> "check input"
-If "input is verbose" then
---> [Yes] "turn on verbosity"
---> "run command"
+
+(*) --> if "Some Test" then
+
+  -->[true] "activity 1"
+  
+  if "" then
+    -> "activity 3" as a3
+  else
+    if "Other test" then
+      -left-> "activity 5"
+    else
+      --> "activity 6"
+    endif
+  endif
+  
 else
---> "run command"
-Endif
--->(*)
+
+  ->[false] "activity 2"
+  
+endif
+
+a3 --> if "last test" then
+  --> "activity 7"
+else
+  -> "activity 8"
+endif
+
 @enduml

@@ -2,7 +2,7 @@
 
 start
 
-if (graphviz installed?) then (yes)
+if (Graphviz installed?) then (yes)
   :process all\ndiagrams;
 else (no)
   :process only

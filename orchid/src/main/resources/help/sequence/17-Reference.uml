@@ -1,13 +1,13 @@
 @startuml
+participant Alice
+actor Bob
 
-== Initialisation ==
+ref over Alice, Bob : init
 
-Alice -> Bob: Authentication Request
-Bob --> Alice: Authentication Response
+Alice -> Bob : hello
 
-== Repetition ==
-
-Alice -> Bob: Another authentication Request
-Alice <-- Bob: another authentication Response
-
+ref over Bob
+  This can be on
+  several lines
+end ref
 @enduml

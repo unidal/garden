@@ -1,10 +1,11 @@
 @startuml
-(*) -left-> "this <size:20>activity</size>
-	is <b>very</b> <color:red>long2</color>
-	and defined on several lines
-	that contains many <i>text</i>" as A1
 
--up-> "Another activity\n on several lines"
+(*) --> "Some Activity"
+note right: This activity has to be defined
+"Some Activity" --> (*)
+note left
+ This note is on
+ several lines
+end note
 
-A1 --> "Short activity <img:sourceforge.jpg>"
 @enduml

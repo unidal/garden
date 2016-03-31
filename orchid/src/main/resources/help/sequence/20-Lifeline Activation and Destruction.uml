@@ -1,12 +1,21 @@
 @startuml
+participant User
 
-Alice -> Bob: message 1
-Bob --> Alice: ok
-|||
-Alice -> Bob: message 2
-Bob --> Alice: ok
-||45||
-Alice -> Bob: message 3
-Bob --> Alice: ok
+User -> A: DoWork
+activate A
+
+A -> B: << createRequest >>
+activate B
+
+B -> C: DoWork
+activate C
+C --> B: WorkDone
+destroy C
+
+B --> A: RequestCreated
+deactivate B
+
+A -> User: Done
+deactivate A
 
 @enduml

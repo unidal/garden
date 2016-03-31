@@ -1,19 +1,13 @@
 @startuml
-participant User
+Bob -> Alice : hello
 
-User -> A: DoWork
-activate A #FFBBBB
+create Other
+Alice -> Other : new
 
-A -> A: Internal call
-activate A #DarkSalmon
+create control String
+Alice -> String
+note right : You can also put notes!
 
-A -> B: << createRequest >>
-activate B
-
-B --> A: RequestCreated
-deactivate B
-deactivate A
-A -> User: Done
-deactivate A
+Alice --> Bob : ok
 
 @enduml

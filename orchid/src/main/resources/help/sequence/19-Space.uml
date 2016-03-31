@@ -1,9 +1,12 @@
 @startuml
 
-Alice -> Bob: Authentication Request
-...
-Bob --> Alice: Authentication Response
-...5 minutes latter...
-Bob --> Alice: Bye !
+Alice -> Bob: message 1
+Bob --> Alice: ok
+|||
+Alice -> Bob: message 2
+Bob --> Alice: ok
+||45||
+Alice -> Bob: message 3
+Bob --> Alice: ok
 
 @enduml

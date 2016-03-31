@@ -1,29 +1,12 @@
 @startuml
 
-(*) --> if "Some Test" then
+(*) --> ===B1=== 
+--> "Parallel Activity 1"
+--> ===B2===
 
-  -->[true] "activity 1"
-  
-  if "" then
-    -> "activity 3" as a3
-  else
-    if "Other test" then
-      -left-> "activity 5"
-    else
-      --> "activity 6"
-    endif
-  endif
-  
-else
+===B1=== --> "Parallel Activity 2"
+--> ===B2===
 
-  ->[false] "activity 2"
-  
-endif
-
-a3 --> if "last test" then
-  --> "activity 7"
-else
-  -> "activity 8"
-endif
+--> (*)
 
 @enduml

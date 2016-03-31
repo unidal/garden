@@ -1,6 +1,9 @@
 @startuml
-[Component] -left-> left 
-[Component] -right-> right 
-[Component] -up-> up
-[Component] -down-> down
+title Very simple component\ndiagram
+
+interface "Data Access" as DA
+
+DA - [First Component] 
+[First Component] ..> HTTP : use
+
 @enduml

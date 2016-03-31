@@ -1,0 +1,23 @@
+@startuml
+title this is my title
+if (condition?) then (yes)
+  :yes;
+else (no)
+  :no;
+  note right
+    this is a note
+  end note
+endif
+stop
+
+legend
+this is the legend
+endlegend
+
+footer dummy footer
+header
+  this is
+  a long __dummy__ header
+end header
+
+@enduml

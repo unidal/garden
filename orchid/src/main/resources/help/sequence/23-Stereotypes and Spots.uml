@@ -1,15 +1,8 @@
 @startuml
-[-> A: DoWork
 
-activate A
+participant "Famous Bob" as Bob << Generated >>
+participant Alice << (C,#ADD1B2) Testable >>
 
-A -> A: Internal call
-activate A
+Bob->Alice: First message
 
-A ->] : << createRequest >>
-
-A<--] : RequestCreated
-deactivate A
-[<- A: Done
-deactivate A
 @enduml

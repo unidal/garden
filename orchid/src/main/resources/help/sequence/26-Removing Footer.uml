@@ -1,12 +1,9 @@
 @startuml
 
-box "Internal Service" #LightBlue
-	participant Bob
-	participant Alice
-end box
-participant Other
+hide footbox
+title Footer removed
 
-Bob -> Alice : hello
-Alice -> Other : hello
+Alice -> Bob: Authentication Request
+Bob --> Alice: Authentication Response
 
 @enduml

@@ -9,12 +9,12 @@
    <modelVersion>4.0.0</modelVersion>
    <artifactId>rose</artifactId>
    <version>1.0</version>
-   <name>Rose</name>
+   <name>Garden :: Rose</name>
    <dependencies>
       <dependency>
          <groupId>org.unidal.framework</groupId>
          <artifactId>web-framework</artifactId>
-         <version>2.2.0</version>
+         <version>2.4.0</version>
       </dependency>
       <dependency>
          <groupId>javax.servlet</groupId>
@@ -24,12 +24,12 @@
       <dependency>
          <groupId>org.unidal.framework</groupId>
          <artifactId>foundation-service</artifactId>
-         <version>2.2.0</version>
+         <version>2.4.0</version>
       </dependency>
       <dependency>
          <groupId>org.unidal.framework</groupId>
          <artifactId>dal-jdbc</artifactId>
-         <version>2.2.0</version>
+         <version>2.4.0</version>
       </dependency>
       <dependency>
          <groupId>mysql</groupId>
@@ -52,7 +52,7 @@
       <dependency>
          <groupId>org.unidal.framework</groupId>
          <artifactId>test-framework</artifactId>
-         <version>2.2.0</version>
+         <version>2.4.0</version>
          <scope>test</scope>
       </dependency>
       <dependency>
@@ -73,7 +73,7 @@
          <plugin>
             <groupId>org.unidal.maven.plugins</groupId>
             <artifactId>plexus-maven-plugin</artifactId>
-            <version>2.2.0</version>
+            <version>2.4.0</version>
             <executions>
                <execution>
                   <id>generate plexus component descriptor</id>

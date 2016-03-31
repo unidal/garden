@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<meta name="description"
+content="PlantUML deployment diagram syntax: Deployment diagrams are not fully supported within PlantUML. This is a draft version of the language can be subject to changes."/>
+<meta name="keywords"
+content="deployment, diagram, UML, PlantUML, text, easy"/>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "url": "http://plantuml.com",
+  "name": "PlantUML",
+  "sameAs" : [ "https://twitter.com/plantuml"],
+  "logo": "http://plantuml.com/logo3.png",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://cse.google.fr/cse/publicurl?cx=002267040093494634259:o59itilhnna&q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+<link rel="canonical" href="http://plantuml.com/deployment.html"/>
+<link rel="alternate" hreflang="en" href="http://plantuml.com/deployment.html"/>
+<link rel="alternate" hreflang="fr" href="http://fr.plantuml.com/deployment.html"/>
+<link rel="alternate" hreflang="es" href="http://es.plantuml.com/deployment.html"/>
+<link rel="alternate" hreflang="de" href="http://de.plantuml.com/deployment.html"/>
+<link rel="alternate" hreflang="ru" href="http://ru.plantuml.com/deployment.html"/>
+<link rel="alternate" hreflang="ja" href="http://ja.plantuml.com/deployment.html"/>
+<link rel="alternate" hreflang="zh" href="http://zh.plantuml.com/deployment.html"/>
+<link rel="shortcut icon" href="favicon.ico"/>
+<meta name="verify-v1"
+content="2DjjlbOzO6kmuWSa0PHcysT1KR/zVGazrFgA4UX5UsE="/>
+<meta name="google-site-verification"
+content="m93ridVo_Knem7DeeG4Na13RsQ57YQ9pRIruZHB8YWk"/>
+<title>PlantUML : Deployment Diagram syntax and features</title>
+<link id="gc0" rel="stylesheet" media="screen" type="text/css" href="gc0.css"/>
+<link id="gc1" rel="stylesheet" media="screen" type="text/css" href="gc1.css"/>
+<link id="gc2" rel="stylesheet" media="screen" type="text/css" href="gc2.css"/>
+<link id="gc3" rel="stylesheet" media="screen" type="text/css" href="gc3.css"/>
+<link rel="stylesheet" media="screen" type="text/css" href="menu13.css"/>
+<link rel="stylesheet" media="screen" type="text/css" href="menuside12.css"/>
+<script>
+function detectmob() { 
+ if( navigator.userAgent.match(/Android/i)
+ || navigator.userAgent.match(/webOS/i)
+ || navigator.userAgent.match(/iPhone/i)
+ || navigator.userAgent.match(/iPad/i)
+ || navigator.userAgent.match(/iPod/i)
+ || navigator.userAgent.match(/BlackBerry/i)
+ || navigator.userAgent.match(/Phone/i)
+ ) return true; else return false; }
+if(detectmob()){
+var url = window.location.href;
+if (url.indexOf('plantuml.sourceforge.net')!=-1)
+window.location.href=url.replace("plantuml.sourceforge.net", "plantuml.com");
+if (url.indexOf('plantuml.net')!=-1)
+window.location.href=url.replace("plantuml.net", "plantuml.com");
+}
+</script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-16629806-3', 'auto');
+  ga('send', 'pageview');
+
+</script>
+<script type="text/javascript" src="jquery-1.11.0.min.js"></script>
+<script>
+var wbet=970;
+var hbet=90;
+var use1600=0;
+var dgc0 = document.getElementById("gc0");
+var dgc1 = document.getElementById("gc1");
+var dgc2 = document.getElementById("gc2");
+var dgc3 = document.getElementById("gc3");
+if (window.innerWidth>=1650) {
+dgc0.disabled = true;
+dgc1.disabled = true;
+dgc2.disabled = true;
+dgc3.disabled = false;
+} else if (window.innerWidth>=1408) {
+dgc0.disabled = true;
+dgc1.disabled = true;
+dgc2.disabled = false;
+dgc3.disabled = true;
+} else if (window.innerWidth>=1268) {
+dgc0.disabled = true;
+dgc1.disabled = false;
+dgc2.disabled = true;
+dgc3.disabled = true;
+dgc1622_1080.disabled = true;
+} else {
+dgc0.disabled = false;
+dgc1.disabled = true;
+dgc2.disabled = true;
+dgc3.disabled = true;
+}
+
+</script>
+<script type="text/javascript">
+/* <![CDATA[ */
+    (function() {
+        var s = document.createElement('script'), t = document.getElementsByTagName('script')[0];
+        s.type = 'text/javascript';
+        s.async = true;
+        s.src = 'http://api.flattr.com/js/0.6/load.js?mode=auto';
+        t.parentNode.insertBefore(s, t);
+    })();
+/* ]]> */</script>
+</head>
+<body>
+<div id="gc">
+<div id="root">
+<nav id="header">
+<ul id="menu">
+<li><a href="sequence.html" class="drop">Sequence</a>
+<div class="dropdown_2columns">
+<div class="col_1">
+<ul class="simple">
+<li><a href="sequence.html#Basic_examples">Basic examples</a></li>
+<li><a href="sequence.html#Comment">Comments</a></li>
+<li><a href="sequence.html#Declaring_participant">Declaring participant</a></li>
+<li><a href="sequence.html#Non_letter">Use non-letters in participants</a></li>
+<li><a href="sequence.html#Message_self">Message to Self</a></li>
+<li><a href="sequence.html#Arrow">Change arrow style</a></li>
+<li><a href="sequence.html#ColorArrow">Change arrow color</a></li>
+<li><a href="sequence.html#Message_sequence_numbering">Message sequence numbering</a></li>
+<li><a href="sequence.html#Simple_title">Title</a></li>
+<li><a href="sequence.html#Legend">Legend the diagram</a></li>
+<li><a href="sequence.html#Splitting_diagrams">Splitting diagrams</a></li>
+<li><a href="sequence.html#Grouping_message">Grouping message</a></li>
+<li><a href="sequence.html#Notes_on_messages">Notes on messages</a></li>
+<li><a href="sequence.html#Some_other_notes">Some other notes</a></li>
+</ul></div><div class="col_1"><ul class="simple">
+<li><a href="sequence.html#Notes_shape">Changing notes shape</a></li>
+<li><a href="sequence.html#Formatting_using_html">Creole and HTML</a></li>
+<li><a href="sequence.html#Divider">Divider</a></li>
+<li><a href="sequence.html#Reference">Reference</a></li>
+<li><a href="sequence.html#Delay">Delay</a></li>
+<li><a href="sequence.html#Space">Space</a></li>
+<li><a href="sequence.html#Lifeline_activation_destruction">Lifeline Activation and Destruction</a></li>
+<li><a href="sequence.html#create">Participant creation</a></li>
+<li><a href="sequence.html#inout">Incoming and outgoing messages</a></li>
+<li><a href="sequence.html#Spot">Stereotypes and Spots</a></li>
+<li><a href="sequence.html#Title_diagram">More information on titles</a></li>
+<li><a href="sequence.html#Englober">Participants encompass</a></li>
+<li><a href="sequence.html#Footer">Removing Footer</a></li>
+<li><a href="sequence.html#Skinparam">Skinparam</a></li>
+</ul>
+</div>
+</div>
+</li>
+<li class="menu"><a href="usecase.html" class="drop">Use Case</a>
+<div class="dropdown_1column">
+<div class="col_1">
+<ul class="simple">
+<li><a href="usecase.html#Usecase">Usecases</a></li>
+<li><a href="usecase.html#Actors">Actors</a></li>
+<li><a href="usecase.html#Body">Usecases description</a></li>
+<li><a href="usecase.html#Basic">Basic example</a></li>
+<li><a href="usecase.html#Extension">Extension</a></li>
+<li><a href="usecase.html#Using_notes">Using notes</a></li>
+<li><a href="usecase.html#Stereotypes">Stereotypes</a></li>
+<li><a href="usecase.html#Direction">Changing arrows direction</a></li>
+<li><a href="usecase.html#Title_diagram">Title the diagram</a></li>
+<li><a href="usecase.html#Newpage">Splitting diagrams</a></li>
+<li><a href="usecase.html#Rankdir">Left to right direction</a></li>
+<li><a href="usecase.html#Skinparam">Skinparam</a></li>
+<li><a href="usecase.html#Complete">Complete example</a></li>
+</ul>
+</div>
+</div>
+</li>
+<li class="menu"><a href="classes.html" class="drop">Class</a>
+<div class="dropdown_2columns">
+<div class="col_1">
+<ul class="simple">
+<li><a href="classes.html#Relations">Relations between classes</a></li>
+<li><a href="classes.html#Label">Label on relations</a></li>
+<li><a href="classes.html#Adding">Adding methods</a></li>
+<li><a href="classes.html#Visibility">Defining visibility</a></li>
+<li><a href="classes.html#AbstractStatic">Abstract and Static</a></li>
+<li><a href="classes.html#Body">Advanced class body</a></li>
+<li><a href="classes.html#Notes">Notes and stereotypes</a></li>
+<li><a href="classes.html#More">More on notes</a></li>
+<li><a href="classes.html#NoteLink">Note on links</a></li>
+<li><a href="classes.html#Abstract">Abstract class and interface</a></li>
+<li><a href="classes.html#As">Using non-letters</a></li>
+<li><a href="classes.html#Hide">Hide attributes, methods...</a></li>
+</ul></div><div class="col_1"><ul class="simple">
+<li><a href="classes.html#Hideclass">Hide classes</a></li>
+<li><a href="classes.html#Generic">Use generics</a></li>
+<li><a href="classes.html#Specific">Specific Spot</a></li>
+<li><a href="classes.html#Using">Packages</a></li>
+<li><a href="classes.html#PStyle">Packages style</a></li>
+<li><a href="classes.html#Namespaces">Namespaces</a></li>
+<li><a href="classes.html#AutomaticNamespace">Automatic namespace creation</a></li>
+<li><a href="classes.html#Lollipop">Lollipop interface</a></li>
+<li><a href="classes.html#Direction">Changing arrows direction</a></li>
+<li><a href="classes.html#Title_diagram">Title the diagram</a></li>
+<li><a href="classes.html#Legend">Legend the diagram</a></li>
+<li><a href="classes.html#Association_classes">Association classes</a></li>
+<li><a href="classes.html#Skinparam">Skinparam</a></li>
+<li><a href="classes.html#SkinnedStereotypes">Skinned Stereotypes</a></li>
+<li><a href="classes.html#gradient">Color gradient</a></li>
+<li><a href="classes.html#Splitting">Splitting large files</a></li>
+</ul>
+</div>
+</div>
+</li>
+<li class="menu"><a href="activity.html" class="drop">Activity</a>
+<div class="dropdown_1column">
+<div class="col_1">
+<ul class="simple">
+<li><a href="activity.html#Simple_activity">Simple Activity</a></li>
+<li><a href="activity.html#Label">Label on arrows</a></li>
+<li><a href="activity.html#Direction">Changing arrow direction</a></li>
+<li><a href="activity.html#Branches">Branches</a></li>
+<li><a href="activity.html#Branches2">More on Branches</a></li>
+<li><a href="activity.html#Synchronization">Synchronization</a></li>
+<li><a href="activity.html#Long_activity">Long activity description</a></li>
+<li><a href="activity.html#Notes">Notes</a></li>
+<li><a href="activity.html#Partition">Partition</a></li>
+<li><a href="activity.html#Title_diagram">Title the diagram</a></li>
+<li><a href="activity.html#Skinparam">Skinparam</a></li>
+<li><a href="activity.html#Octagon">Octagon</a></li>
+<li><a href="activity.html#Complete_example">Complete example</a></li>
+</ul>
+</div>
+</div>
+</li>
+<li class="menu"><a href="activity2.html" class="drop">Activity <img border=0 src=beta-icon.gif></a>
+<div class="dropdown_1column">
+<div class="col_1">
+<ul class="simple">
+<li><a href="activity2.html#simple">Simple Activity</a></li>
+<li><a href="activity2.html#startstop">Start/Stop</a></li>
+<li><a href="activity2.html#conditional">Conditional</a></li>
+<li><a href="activity2.html#repeat">Repeat loop</a></li>
+<li><a href="activity2.html#while">While loop</a></li>
+<li><a href="activity2.html#fork">Parallel processing</a></li>
+<li><a href="activity2.html#note">Notes</a></li>
+<li><a href="activity2.html#title">Title & Legend</a></li>
+<li><a href="activity2.html#color">Colors</a></li>
+<li><a href="activity2.html#arrow">Arrows</a></li>
+<li><a href="activity2.html#grouping">Grouping</a></li>
+<li><a href="activity2.html#swimlane">Swimlanes</a></li>
+<li><a href="activity2.html#detach">Detach</a></li>
+<li><a href="activity2.html#sdl">SDL</a></li>
+<li><a href="activity2.html#complete">Complete example</a></li>
+</ul>
+</div>
+</div>
+</li>
+<li class="menu"><a href="component.html" class="drop">Component</a>
+<div class="dropdown_1column">
+<div class="col_1">
+<ul class="simple">
+<li><a href="component.html#Component">Components</a></li>
+<li><a href="component.html#Interface">Interfaces</a></li>
+<li><a href="component.html#Basic">Basic example</a></li>
+<li><a href="component.html#Using_notes">Using notes</a></li>
+<li><a href="component.html#Packages">Grouping Components</a></li>
+<li><a href="component.html#Direction">Arrows direction</a></li>
+<li><a href="component.html#Title_diagram">Title the diagram</a></li>
+<li><a href="component.html#uml2">Use UML2 notation</a></li>
+<li><a href="component.html#colors">Individual colors</a></li>
+<li><a href="component.html#Skinparam">Skinparam</a></li>
+</ul>
+</div>
+</div>
+</li>
+<li class="menu"><a href="state.html" class="drop">State</a>
+<div class="dropdown_1column">
+<div class="col_1">
+<ul class="simple">
+<li><a href="state.html#Simple">Simple State</a></li>
+<li><a href="state.html#Composite">Composite state</a></li>
+<li><a href="state.html#Long">Long name</a></li>
+<li><a href="state.html#Concurrent">Concurrent state</a></li>
+<li><a href="state.html#Direction">Arrow direction</a></li>
+<li><a href="state.html#Note">Note</a></li>
+<li><a href="state.html#Note2">More in notes</a></li>
+<li><a href="state.html#Skinparam">Skinparam</a></li>
+</ul>
+</div>
+</div>
+</li>
+<li class="menu"><a href="objects.html" class="drop">Object</a>
+<div class="dropdown_1column">
+<div class="col_1">
+<ul class="simple">
+<li><a href="objects.html#Definition">Definition of objects</a></li>
+<li><a href="objects.html#Relations">Relations between objects</a></li>
+<li><a href="objects.html#Adding">Adding fields</a></li>
+<li><a href="classes.html#Visibility">Visibility</a></li>
+<li><a href="classes.html#Notes">Defines notes</a></li>
+<li><a href="classes.html#Using">Use packages</a></li>
+<li><a href="classes.html#Title_diagram">Title the diagram</a></li>
+<li><a href="classes.html#Skinparam">Skin the output</a></li>
+<li><a href="classes.html#Splitting">Split the image</a></li>
+</ul>
+</div>
+</div>
+</li>
+</ul>
+<div id="don">
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----MIIHNwYJKoZIhvcNAQcEoIIHKDCCByQCAQExggEwMIIBLAIBADCBlDCBjjELMAkGA1UEBhMCVVMxCzAJBgNVBAgTAkNBMRYwFAYDVQQHEw1Nb3VudGFpbiBWaWV3MRQwEgYDVQQKEwtQYXlQYWwgSW5jLjETMBEGA1UECxQKbGl2ZV9jZXJ0czERMA8GA1UEAxQIbGl2ZV9hcGkxHDAaBgkqhkiG9w0BCQEWDXJlQHBheXBhbC5jb20CAQAwDQYJKoZIhvcNAQEBBQAEgYBIASwQUaTAeI7IYXaEKzEfKgz/oFo5LDsuYMAEaid04TDcDD3nlJs9Y1XkfloI4mtuft6ET9X05yGb8mikkLp2iFwI0c6p/QoLy6zWNRnyXuErWH6Ut8+dxBH1OeZDMJn2fU+Z1r/75wX3yDo4kdBPkjJIuOlmZkeuOPh8pcPjkDELMAkGBSsOAwIaBQAwgbQGCSqGSIb3DQEHATAUBggqhkiG9w0DBwQItJYB/IwUpteAgZA/DFlT/ewNvoOCxRdA5aOw9ndK3SGPZD5SE+aNqotBhGU04G4Ypd9E35Wwt8BaWcCOiGxivwxSbwcKfHIBInVyGaGybO5sSPZVUZYPLwsXUsvWHsAPGzCIJIs4ymJ6SuI+2ka9sJQSSOdy1bNp46OWM3aRUxBIngFhGk6TJTBxueI/t+SRL7C1r8wEvmN3rN+gggOHMIIDgzCCAuygAwIBAgIBADANBgkqhkiG9w0BAQUFADCBjjELMAkGA1UEBhMCVVMxCzAJBgNVBAgTAkNBMRYwFAYDVQQHEw1Nb3VudGFpbiBWaWV3MRQwEgYDVQQKEwtQYXlQYWwgSW5jLjETMBEGA1UECxQKbGl2ZV9jZXJ0czERMA8GA1UEAxQIbGl2ZV9hcGkxHDAaBgkqhkiG9w0BCQEWDXJlQHBheXBhbC5jb20wHhcNMDQwMjEzMTAxMzE1WhcNMzUwMjEzMTAxMzE1WjCBjjELMAkGA1UEBhMCVVMxCzAJBgNVBAgTAkNBMRYwFAYDVQQHEw1Nb3VudGFpbiBWaWV3MRQwEgYDVQQKEwtQYXlQYWwgSW5jLjETMBEGA1UECxQKbGl2ZV9jZXJ0czERMA8GA1UEAxQIbGl2ZV9hcGkxHDAaBgkqhkiG9w0BCQEWDXJlQHBheXBhbC5jb20wgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBAMFHTt38RMxLXJyO2SmS+Ndl72T7oKJ4u4uw+6awntALWh03PewmIJuzbALScsTS4sZoS1fKciBGoh11gIfHzylvkdNe/hJl66/RGqrj5rFb08sAABNTzDTiqqNpJeBsYs/c2aiGozptX2RlnBktH+SUNpAajW724Nv2Wvhif6sFAgMBAAGjge4wgeswHQYDVR0OBBYEFJaffLvGbxe9WT9S1wob7BDWZJRrMIG7BgNVHSMEgbMwgbCAFJaffLvGbxe9WT9S1wob7BDWZJRroYGUpIGRMIGOMQswCQYDVQQGEwJVUzELMAkGA1UECBMCQ0ExFjAUBgNVBAcTDU1vdW50YWluIFZpZXcxFDASBgNVBAoTC1BheVBhbCBJbmMuMRMwEQYDVQQLFApsaXZlX2NlcnRzMREwDwYDVQQDFAhsaXZlX2FwaTEcMBoGCSqGSIb3DQEJARYNcmVAcGF5cGFsLmNvbYIBADAMBgNVHRMEBTADAQH/MA0GCSqGSIb3DQEBBQUAA4GBAIFfOlaagFrl71+jq6OKidbWFSE+Q4FqROvdgIONth+8kSK//Y/4ihuE4Ymvzn5ceE3S/iBSQQMjyvb+s2TWbQYDwcp129OPIbD9epdr4tJOUNiSojw7BHwYRiPh58S1xGlFgHFXwrEBb3dgNbMUa+u4qectsMAXpVHnD9wIyfmHMYIBmjCCAZYCAQEwgZQwgY4xCzAJBgNVBAYTAlVTMQswCQYDVQQIEwJDQTEWMBQGA1UEBxMNTW91bnRhaW4gVmlldzEUMBIGA1UEChMLUGF5UGFsIEluYy4xEzARBgNVBAsUCmxpdmVfY2VydHMxETAPBgNVBAMUCGxpdmVfYXBpMRwwGgYJKoZIhvcNAQkBFg1yZUBwYXlwYWwuY29tAgEAMAkGBSsOAwIaBQCgXTAYBgkqhkiG9w0BCQMxCwYJKoZIhvcNAQcBMBwGCSqGSIb3DQEJBTEPFw0xMzA0MDcxMTI4NTNaMCMGCSqGSIb3DQEJBDEWBBSWopBfqQ2o3Ql7QcuyxgtsPia8LTANBgkqhkiG9w0BAQEFAASBgI8ip/JfF5egCQ5i6+lxb1whekZ/0yIH9v37wRwT4/6wZsWFGijFvPQnAiIsZi2XyL3BabE4Hi77t7o1X/7J3Ai01ZwJytdCrQdB9m1RPQRfN/pPho+TBAQXVZcr4K0qCI0/cm5NcykigYYZ2bAri/V9f+kfVkTcgnzb+m14HqYU-----END PKCS7-----
+">
+<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+<img alt="" border="0" src="https://www.paypalobjects.com/fr_FR/i/scr/pixel.gif" width="1" height="1">
+<a href="https://patreon.com/plantuml">
+<img src=patreon01.png>
+</a>
+<a class="FlattrButton" style="display:none;" rev="flattr;button:compact;" href="http://plantuml.sourceforge.net/"></a>
+</form>
+</div>
+</nav>
+<nav id="side">
+<ul id="menuside">
+<li><a href="/" class="drop"><img border=0 src=logoc.png></a></li>
+<li><a href="/" class="drop">Home</a></li>
+<li><a href="screenshot.html" class="drop">Screenshots</a></li>
+<li><a href="download.html" class="drop">Download</a></li>
+<li><a href="news.html" class="drop">What's New ?</a></li>
+<li><a href="faq.html" class="drop">F.A.Q.</a></li>
+<li><a href="running.html" class="drop">Running</a></li>
+<li><a href="http://plantuml.sourceforge.net/qa" class="drop">Question & Answer</a></li>
+<li><a href="preprocessing.html" class="drop">Preprocessing</a></li>
+<li><a href="sitemap.html" class="drop">Site Map</a></li>
+<li><a href="external_links.html" class="drop">External Links</a></li>
+</ul>
+</nav>
+<div id="C1"></div>
+<div id="H1"></div>
+<div id="V0"></div>
+<div id="V1"></div>
+<div id=page>
+<nav id="mirror">
+<center>
+<a href="http://plantuml.com/deployment.html">
+<img border=0 src=flags/us.png></a>
+<a href=http://fr.plantuml.com/deployment.html><img border=0 src=flags/fr.png></a>
+<a href=http://de.plantuml.com/deployment.html><img border=0 src=flags/de.png></a>
+<a href=http://es.plantuml.com/deployment.html><img border=0 src=flags/es.png></a>
+<a href=http://translate.plantuml.com/pt><img border=0 src=flags/pt.png></a>
+<a href=http://translate.plantuml.com/it><img border=0 src=flags/it.png></a>
+<a href=http://translate.plantuml.com/no><img border=0 src=flags/no.png></a>
+<a href=http://translate.plantuml.com/sv><img border=0 src=flags/sv.png></a>
+<a href=http://translate.plantuml.com/pl><img border=0 src=flags/pl.png></a>
+<a href=http://translate.plantuml.com/nl><img border=0 src=flags/nl.png></a>
+<a href=http://translate.plantuml.com/uk><img border=0 src=flags/uk.png></a>
+<a href=http://ru.plantuml.com/deployment.html><img border=0 src=flags/ru.png></a>
+<a href=http://zh.plantuml.com/deployment.html><img border=0 src=flags/zh.png></a>
+<a href=http://translate.plantuml.com/kr><img border=0 src=flags/kr.png></a>
+<a href=http://ja.plantuml.com/deployment.html><img border=0 src=flags/ja.png></a>
+&nbsp;&nbsp;
+<b><span id=mt></span></b>
+<p>
+</center>
+</nav>
+<script>
+var userLang = (navigator.language) ? navigator.language : navigator.userLanguage;
+var dmt = document.getElementById("mt");
+if (userLang!=null && userLang.indexOf('fr')!=-1)
+dmt.innerHTML='<a href=http://translate.plantuml.com/fr>Participez &#224; la traduction!</a>';
+if (userLang!=null && userLang.indexOf('de')!=-1)
+dmt.innerHTML='<a href=http://translate.plantuml.com/de>Helfen Sie mit, PlantUML zu &#252;bersetzen!</a>';
+if (userLang!=null && userLang.indexOf('es')!=-1)
+dmt.innerHTML='<a href=http://translate.plantuml.com/es>Participen en la traducci&#243;n!</a>';
+if (userLang!=null && userLang.indexOf('pt')!=-1)
+dmt.innerHTML='<a href=http://translate.plantuml.com/pt>Participar de tradu&#231;&#227;o!</a>';
+if (userLang!=null && userLang.indexOf('it')!=-1)
+dmt.innerHTML='<a href=http://translate.plantuml.com/it>Partecipa alla traduzione!</a>';
+if (userLang!=null && userLang.indexOf('no')!=-1)
+dmt.innerHTML='<a href=http://translate.plantuml.com/no>Deltagelse til oversettelse!</a>';
+if (userLang!=null && userLang.indexOf('sv')!=-1)
+dmt.innerHTML='<a href=http://translate.plantuml.com/sv>Delta i &#246;vers&#228;ttning!</a>';
+if (userLang!=null && userLang.indexOf('pl')!=-1)
+dmt.innerHTML='<a href=http://translate.plantuml.com/pl>Udzia&#322;u w t&#322;umaczeniu!</a>';
+if (userLang!=null && userLang.indexOf('nl')!=-1)
+dmt.innerHTML='<a href=http://translate.plantuml.com/nl>Deelnemen aan vertaling!</a>';
+if (userLang!=null && userLang.indexOf('uk')!=-1)
+dmt.innerHTML='<a href=http://translate.plantuml.com/uk>&#1059;&#1095;&#1072;&#1089;&#1090;&#1100; &#1091; &#1087;&#1077;&#1088;&#1077;&#1082;&#1083;&#1072;&#1076;&#1110;!</a>';
+if (userLang!=null && userLang.indexOf('ru')!=-1)
+dmt.innerHTML='<a href=http://translate.plantuml.com/ru>&#1059;&#1095;&#1072;&#1089;&#1090;&#1080;&#1077; &#1074; &#1087;&#1077;&#1088;&#1077;&#1074;&#1086;&#1076;&#1077;!</a>';
+if (userLang!=null && userLang.indexOf('zh')!=-1)
+dmt.innerHTML='<a href=http://translate.plantuml.com/zh>&#21442;&#19982;&#21040;&#32763;&#35793;&#65281;</a>';
+if (userLang!=null && userLang.indexOf('ko')!=-1)
+dmt.innerHTML='<a href=http://translate.plantuml.com/kr>&#52280;&#50668;&#54616;&#45716; &#48264;&#50669;&#51012; &#50948;&#54644;!</a>';
+if (userLang!=null && userLang.indexOf('ja')!=-1)
+dmt.innerHTML='<a href=http://translate.plantuml.com/ja>&#21442;&#21152;&#32763;&#35379;&#65281;</a>';
+</script>
+<div id=mtop1i>
+</div>
+<aside id=mtop1>
+<div id="PUB1">
+<center>
+<a id=imgpubh1a style="display:none" href=https://www.patreon.com/plantuml><img src=empty.png id=imgpubh1></a>
+<style>
+.long1 { width: 728px; height: 90px; }
+@media(min-width: 1622px) { .long1 { width: 970px; height: 90px; } }
+</style>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- Long1 -->
+<ins class="adsbygoogle long1"
+style="display:inline-block"
+data-ad-client="ca-pub-5770515425712095"
+data-ad-slot="2910190301"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</center>
+</div>
+</aside>
+<script>
+  (function() {
+    var cx = '002267040093494634259:o59itilhnna';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+        '//cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:search></gcse:search>
+<main role="main">
+<h1>Deployment Diagram</h1>
+<div id=mtop2i>
+</div>
+<div id=mtop2>
+<div id="PUBH4">
+<div id=annonces7div style="display:none"></div>
+<!-- Annonces7 -->
+<ins class="adsbygoogle"
+style="display:inline-block;width:728px;height:15px"
+data-ad-client="ca-pub-5770515425712095"
+data-ad-slot="8076713508"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+</div>
+<p>To be able to generate those diagram, you must have <a
+href="graphvizdot.html">Graphviz
+software</a> installed on your machine in the default directory <code>c:\Program
+Files\GraphvizX.XX</code> or <code>/usr/bin/dot</code>.</p>
+<p>You can <a href=graphvizdot.html>have a look here if you have
+installed Graphviz somewhere else.</a>
+<p>
+<h3><font color=red>This is only a proposal and subject to change.</font></h3>
+<h2>Declaring element</h2>
+<div class=movexxxi id=move0i></div><div class=movexxx id=move0>
+<!-- Annonces6 -->
+<ins class="adsbygoogle"
+style="display:inline-block;width:728px;height:15px"
+data-ad-client="ca-pub-5770515425712095"
+data-ad-slot="9369594702"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+<div><div class=mycell><div class=scriptplantu><pre>
+&#64;startuml
+
+artifact artifact
+actor actor
+folder folder
+node node
+frame frame
+cloud cloud
+database database
+storage storage
+agent agent
+usecase usecase
+component component
+boundary boundary
+control control
+entity entity
+interface interface
+
+
+@enduml
+</pre></div></div><div class=mycell>
+<img border="2" class=scale alt="simple UML deployment diagram" src="imgp/deployment.png"/>
+</div></div>
+<h2>Linking</h2>
+<div class=movexxxi id=move1i></div><div class=movexxx id=move1>
+</div>
+<div><div class=mycell><div class=scriptplantu><pre>
+&#64;startuml
+
+node node1
+node node2
+node node3
+node node4
+node node5
+node1 -- node2
+node1 .. node3
+node1 ~~ node4
+node1 == node5
+
+@enduml
+</pre></div></div><div class=mycell>
+<img border="2" class=scale alt="put links in UML deployment diagram" src="imgp/deployment_001.png"/>
+</div></div>
+<h2>Linking</h2>
+<div class=movexxxi id=move2i></div><div class=movexxx id=move2>
+</div>
+<div><div class=mycell><div class=scriptplantu><pre>
+&#64;startuml
+
+artifact artifact1
+artifact artifact2
+artifact artifact3
+artifact artifact4
+artifact artifact5
+artifact artifact6
+artifact artifact7
+artifact artifact8
+artifact artifact9
+artifact artifact10
+artifact1 --&gt; artifact2
+artifact1 --* artifact3
+artifact1 --o artifact4
+artifact1 --+ artifact5
+artifact1 --# artifact6
+artifact1 --&gt;&gt; artifact7
+artifact1 --0 artifact8
+artifact1 --^ artifact9
+artifact1 --(0 artifact10
+
+@enduml
+</pre></div></div><div class=mycell>
+<img border="2" class=scale width=100% alt="change style of link in UML deployment diagram" src="imgp/deployment_002.png"/>
+</div></div>
+<h2>Linking</h2>
+<div class=movexxxi id=move3i></div><div class=movexxx id=move3>
+</div>
+<div><div class=mycell><div class=scriptplantu><pre>
+&#64;startuml
+
+cloud cloud1
+cloud cloud2
+cloud cloud3
+cloud cloud4
+cloud cloud5
+cloud1 -0- cloud2
+cloud1 -0)- cloud3
+cloud1 -(0- cloud4
+cloud1 -(0)- cloud5
+
+@enduml
+</pre></div></div><div class=mycell>
+<img border="2" class=scale alt="other links are possible" src="imgp/deployment_003.png"/>
+</div></div>
+<h2>Package</h2>
+<div class=movexxxi id=move4i></div><div class=movexxx id=move4>
+</div>
+<div><div class=mycell><div class=scriptplantu><pre>
+&#64;startuml
+artifact Foo1 {
+  folder Foo2
+}
+
+folder Foo3 {
+  artifact Foo4
+}
+
+frame Foo5 {
+  database Foo6
+}
+
+@enduml
+</pre></div></div><div class=mycell>
+<img border="2" class=scale alt="using package in UML deployment diagram" src="imgp/deployment_004.png"/>
+</div></div>
+<div><div class=mycell><div class=scriptplantu><pre>
+&#64;startuml
+node Foo1 {
+ cloud Foo2 
+}
+
+cloud Foo3 {
+  frame Foo4
+}
+
+database Foo5  {
+  storage Foo6
+}
+
+storage Foo7 {
+  storage Foo8
+}
+@enduml
+</pre></div></div><div class=mycell>
+<img border="2" class=scale alt="change style of package in UML deployment diagram" src="imgp/deployment_005.png"/>
+</div></div>
+</main>
+<p>
+<aside id="PUB3">
+<style>
+.skyscraper2 { width: 160px; height: 600px; }
+@media(max-width: 1279px) { .skyscraper2 { display: none; } }
+</style>
+<!-- Skyscraper2 -->
+<ins class="adsbygoogle skyscraper2"
+style="display:inline-block"
+data-ad-client="ca-pub-5770515425712095"
+data-ad-slot="3328992709"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</aside>
+<footer id="pied_de_page">
+<table width=100% border=0><tr align=center>
+<td width=12.5%><a href="https://patreon.com/plantuml"><img src=patreon01.png></a></td>
+<td width=12.5%><a title="Your help is really appreciate" href="http://sourceforge.net/donate/index.php?group_id=259736"><img src="x-click-but7.gif" border="0" alt="Support This Project"/></a></td>
+<td width=12.5%><a class="FlattrButton" style="display:none;" rev="flattr;button:compact;" href="http://plantuml.sourceforge.net/"></a></td>
+<td width=12.5% title="Feedback appreciate"><a href=mailto:plantuml@gmail.com><img border=0 src="mail2.png"/></a></td>
+<td width=12.5%><a href="dropbox.html" title="Offer 250 Mo!"><img border=0 src="dropbox.png" alt="Offer 250 Mo!" title="Offer 250 Mo!"/></a></td>
+<td width=12.5%><a href="http://www.ej-technologies.com/products/jprofiler/overview.html" title="Java profiler"><img border=0 src="jprofiler_small.png" alt="Java profiler" title="Java profiler"/></a></td>
+<td width=12.5%><a href="http://www.twitter.com/PlantUML" title="Follow PlantUML on Twitter">
+<img border=0 src="http://twitter-badges.s3.amazonaws.com/t_small-c.png" alt="Follow PlantUML on Twitter" title="Follow PlantUML on Twitter"/></a></td>
+<td width=12.5%><!-- Start of StatCounter Code --><script type="text/javascript"> var sc_project=5903985; var sc_invisible=0; var sc_security="118f86d0"; </script>
+<script type="text/javascript" src="http://www.statcounter.com/counter/counter.js"></script> <!-- End of StatCounter Code --></td>
+</tr></table></footer>
+</div><!--page-->
+<nav id="PUB2">
+<center>
+<a id=imgpubh2a style="display:none" href=https://www.patreon.com/plantuml><img id=imgpubh2></a>
+<style>
+.long2 { width: 160px; height: 600px; }
+@media(min-width: 1420px) { .long2 { width: 300px; height: 600px; } }
+</style>
+<!-- Long2 -->
+<ins class="adsbygoogle long2"
+style="display:inline-block"
+data-ad-client="ca-pub-5770515425712095"
+data-ad-slot="4386923500"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</center>
+</nav>
+<script>
+var xhr = new XMLHttpRequest();
+var bl=1;
+xhr.open("GET", "/adsbygoogle.js", false);
+xhr.send();
+bl=0;
+</script>
+<script>
+function ha() {
+for (i=0;i<5;i++) $("#move"+i).hide();
+}
+function ha0() {
+$("#move0").show();
+for (i=1;i<5;i++) $("#move"+i).hide();
+$("#move0").offset({ top: $('#move0i').offset().top});
+}
+function ha1(a) {
+$("#move0").show();
+for (i=1;i<5;i++) if (i==a) $("#move"+i).show(); else $("#move"+i).hide();
+$("#move0").offset({ top: $('#move'+a+'i').offset().top});
+}
+var sr = function() {
+var scr = $(window).scrollTop();
+var k = $('#mtop1i').offset().top;
+var po3 = scr+$('#mtop1i').width();
+$("#mtop1").offset({ top: k});
+if (po3>k) $("#mtop1").offset({ top: po3});
+
+k = $('#mtop2i').offset().top;
+po3 += $('#mtop1').height();
+$("#mtop2").offset({ top: k});
+if (po3>k) $("#mtop2").offset({ top: po3});
+
+po3 += $('#mtop2').height();
+if ($('#move4i').offset().top<po3) ha();
+else if ($('#move3i').offset().top<po3) ha1(4);
+else if ($('#move2i').offset().top<po3) ha1(3);
+else if ($('#move1i').offset().top<po3) ha1(2);
+else if ($('#move0i').offset().top<po3) ha1(1);
+else ha0();
+
+};
+$(function(){
+$(window).scroll(sr);
+$(window).resize(sr);
+sr();
+});
+$(document).ready(function(){sr();setTimeout(function(){sr();}, 1500);});
+</script>
+<!-- Begin Cookie Consent plugin by Silktide - http://silktide.com/cookieconsent -->
+<script type="text/javascript">
+    window.cookieconsent_options = {"message":"This website uses cookies to ensure you get the best experience on our website","dismiss":"Got it!","learnMore":"More info","link":null,"theme":"dark-floating"};
+</script>
+<script type="text/javascript" src="//s3.amazonaws.com/cc.silktide.com/cookieconsent.latest.min.js"></script>
+<!-- End Cookie Consent plugin -->
+</div><!--root-->
+</div><!--gc-->
+</body>
+</html>

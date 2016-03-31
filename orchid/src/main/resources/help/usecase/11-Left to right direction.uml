@@ -1,5 +1,7 @@
 @startuml
-:actor1: --> (Usecase1)
-newpage
-:actor2: --> (Usecase2)
+'default
+top to bottom direction
+user1 --> (Usecase 1)
+user2 --> (Usecase 2)
+
 @enduml
