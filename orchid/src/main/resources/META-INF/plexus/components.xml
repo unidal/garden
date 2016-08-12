@@ -13,6 +13,21 @@
 			</configuration>
 		</component>
 		<component>
+			<role>org.unidal.orchid.service.DocumentService</role>
+			<role-hint>local</role-hint>
+			<implementation>org.unidal.orchid.service.LocalDocumentService</implementation>
+		</component>
+		<component>
+			<role>org.unidal.orchid.service.DocumentService</role>
+			<role-hint>mysql</role-hint>
+			<implementation>org.unidal.orchid.service.MysqlDocumentService</implementation>
+			<requirements>
+				<requirement>
+					<role>org.unidal.orchid.dal.DocumentDao</role>
+				</requirement>
+			</requirements>
+		</component>
+		<component>
 			<role>org.unidal.orchid.service.UmlService</role>
 			<implementation>org.unidal.orchid.service.DefaultUmlService</implementation>
 			<requirements>
@@ -28,6 +43,31 @@
 		<component>
 			<role>org.unidal.orchid.service.LibraryService</role>
 			<implementation>org.unidal.orchid.service.DefaultLibraryService</implementation>
+		</component>
+		<component>
+			<role>org.unidal.dal.jdbc.datasource.DataSourceProvider</role>
+			<implementation>org.unidal.dal.jdbc.datasource.DefaultDataSourceProvider</implementation>
+			<configuration>
+				<datasourceFile>datasources.xml</datasourceFile>
+			</configuration>
+		</component>
+		<component>
+			<role>org.unidal.dal.jdbc.mapping.TableProvider</role>
+			<role-hint>document</role-hint>
+			<implementation>org.unidal.dal.jdbc.mapping.SimpleTableProvider</implementation>
+			<configuration>
+				<physical-table-name>document</physical-table-name>
+				<data-source-name>garden</data-source-name>
+			</configuration>
+		</component>
+		<component>
+			<role>org.unidal.orchid.dal.DocumentDao</role>
+			<implementation>org.unidal.orchid.dal.DocumentDao</implementation>
+			<requirements>
+				<requirement>
+					<role>org.unidal.dal.jdbc.QueryEngine</role>
+				</requirement>
+			</requirements>
 		</component>
 		<component>
 			<role>org.unidal.web.mvc.model.ModuleRegistry</role>
@@ -92,6 +132,10 @@
 			<requirements>
 				<requirement>
 					<role>org.unidal.orchid.uml.upload.JspViewer</role>
+				</requirement>
+				<requirement>
+					<role>org.unidal.orchid.service.DocumentService</role>
+					<role-hint>mysql</role-hint>
 				</requirement>
 			</requirements>
 		</component>

@@ -160,6 +160,15 @@ org.eclipse.jdt.core.compiler.compliance=1.6]]></content>
                </execution>
             </executions>
          </plugin>
+         <plugin>
+            <groupId>org.unidal.maven.plugins</groupId>
+            <artifactId>uml-maven-plugin</artifactId>
+            <version>1.0.0</version>
+            <configuration>
+               <product>UML</product>
+               <repository>http://localhost:2567</repository>
+            </configuration>
+         </plugin>
       </plugins>
    </build>
    <distributionManagement>

@@ -3,16 +3,18 @@ package org.unidal.orchid.build;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.unidal.dal.jdbc.configuration.AbstractJdbcResourceConfigurator;
 import org.unidal.initialization.DefaultModuleManager;
 import org.unidal.initialization.ModuleManager;
-import org.unidal.lookup.configuration.AbstractResourceConfigurator;
 import org.unidal.lookup.configuration.Component;
 import org.unidal.orchid.OrchidModule;
 import org.unidal.orchid.service.DefaultLibraryService;
 import org.unidal.orchid.service.DefaultUmlService;
 import org.unidal.orchid.service.FileStorageService;
+import org.unidal.orchid.service.LocalDocumentService;
+import org.unidal.orchid.service.MysqlDocumentService;
 
-public class ComponentsConfigurator extends AbstractResourceConfigurator {
+public class ComponentsConfigurator extends AbstractJdbcResourceConfigurator {
 	@Override
 	public List<Component> defineComponents() {
 		List<Component> all = new ArrayList<Component>();
@@ -21,10 +23,17 @@ public class ComponentsConfigurator extends AbstractResourceConfigurator {
 		all.add(C(ModuleManager.class, DefaultModuleManager.class) //
 		      .config(E("topLevelModules").value(OrchidModule.ID)));
 
+		all.add(A(LocalDocumentService.class));
+		all.add(A(MysqlDocumentService.class));
+
 		all.add(A(DefaultUmlService.class));
 		all.add(A(FileStorageService.class));
 
 		all.add(A(DefaultLibraryService.class));
+
+		all.add(defineJdbcDataSourceConfigurationManagerComponent("datasources.xml"));
+
+		all.addAll(new GardenDatabaseConfigurator().defineComponents());
 
 		// Please keep it as last
 		all.addAll(new WebComponentConfigurator().defineComponents());

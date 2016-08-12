@@ -5,7 +5,7 @@
 	<groupId>org.unidal.maven.plugins</groupId>
 	<artifactId>uml-maven-plugin</artifactId>
 	<name>UML Maven Plugin</name>
-	<version>1.0</version>
+	<version>1.0.0</version>
 	<packaging>maven-plugin</packaging>
 	<dependencies>
 		<dependency>

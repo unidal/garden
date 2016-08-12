@@ -17,6 +17,8 @@ import org.unidal.web.mvc.ActionPayload;
 import org.unidal.web.mvc.payload.annotation.FieldMeta;
 import org.unidal.web.mvc.payload.annotation.PathMeta;
 
+import com.dianping.cat.Cat;
+
 public class Payload implements ActionPayload<UmlPage, Action> {
 	private UmlPage m_page;
 
@@ -85,6 +87,7 @@ public class Payload implements ActionPayload<UmlPage, Action> {
 		try {
 			prepareContentMap(ctx);
 		} catch (IOException e) {
+			Cat.logError(e);
 			ctx.addError("payload.invalid", e);
 		}
 	}
