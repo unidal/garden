@@ -9,7 +9,9 @@ import org.unidal.web.mvc.annotation.ModulePagesMeta;
 
 org.unidal.orchid.uml.edit.Handler.class,
 
-org.unidal.orchid.uml.help.Handler.class
+org.unidal.orchid.uml.help.Handler.class,
+
+org.unidal.orchid.uml.upload.Handler.class
 })
 public class UmlModule extends AbstractModule {
 

@@ -87,6 +87,24 @@
 			</requirements>
 		</component>
 		<component>
+			<role>org.unidal.orchid.uml.upload.Handler</role>
+			<implementation>org.unidal.orchid.uml.upload.Handler</implementation>
+			<requirements>
+				<requirement>
+					<role>org.unidal.orchid.uml.upload.JspViewer</role>
+				</requirement>
+			</requirements>
+		</component>
+		<component>
+			<role>org.unidal.orchid.uml.upload.JspViewer</role>
+			<implementation>org.unidal.orchid.uml.upload.JspViewer</implementation>
+			<requirements>
+				<requirement>
+					<role>org.unidal.web.mvc.view.model.ModelHandler</role>
+				</requirement>
+			</requirements>
+		</component>
+		<component>
 			<role>org.unidal.web.mvc.Module</role>
 			<role-hint>org.unidal.orchid.library.LibraryModule</role-hint>
 			<implementation>org.unidal.orchid.library.LibraryModule</implementation>

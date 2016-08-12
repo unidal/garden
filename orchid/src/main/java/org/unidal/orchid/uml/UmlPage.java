@@ -7,7 +7,9 @@ public enum UmlPage implements Page {
 
    EDIT("edit", "edit", "Edit", "Edit", true),
 
-   HELP("help", "help", "Help", "Help", true);
+   HELP("help", "help", "Help", "Help", true),
+
+   UPLOAD("upload", "upload", "Upload", "Upload", true);
 
    private String m_name;
 
