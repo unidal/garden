@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<libraries>
+   <library name="sample.dll" product="sample" current-version="1.1" stable-version="1.0" min-version="1.0"/>
+</libraries>

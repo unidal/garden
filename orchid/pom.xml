@@ -166,7 +166,7 @@ org.eclipse.jdt.core.compiler.compliance=1.6]]></content>
             <version>1.0.0</version>
             <configuration>
                <product>UML</product>
-               <repository>http://localhost:2567</repository>
+               <repository>http://localhost:8650</repository>
             </configuration>
          </plugin>
       </plugins>

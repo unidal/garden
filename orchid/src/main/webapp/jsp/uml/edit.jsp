@@ -15,6 +15,7 @@
 			<tr>
 				<td colspan="4" nowrap>
 					<select id="product" name="product" style="width: 150px">
+						<option value="">--- Select Product ---</option>
 						${w:showOptions(model.products, model.product, null, null)}
 					</select>
 					<select id="file" name="file" style="width: 480px">

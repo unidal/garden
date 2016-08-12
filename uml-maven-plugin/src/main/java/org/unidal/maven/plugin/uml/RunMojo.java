@@ -1,7 +1,5 @@
 package org.unidal.maven.plugin.uml;
 
-
-
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -19,39 +17,38 @@ import org.unidal.test.browser.DefaultBrowser;
  * @author Wenchao Meng
  */
 public class RunMojo extends AbstractMojo {
-	
 	/**
 	 * @parameter property="port"
 	 */
-	private int port = 8080;
-	
+	private int port = 8650;
+
 	private String prefix = "jar:file:";
-	
+
 	/**
 	 * @parameter property="warVersion"
 	 */
 	private String warVersion = "1.2.0";
-	
+
 	private String warPath = String.format("org/unidal/garden/orchid/%s/orchid-%s.war", warVersion, warVersion);
-	
+
 	private String pluginMavenPath = "org/unidal/maven/plugins";
 
 	@Override
 	public void execute() throws MojoExecutionException, MojoFailureException {
-		
+
 		URL url = getClass().getResource(String.format("%s.class", getClass().getSimpleName()));
-		
+
 		int beginIndex = prefix.length();
 		int endIndex = url.toString().indexOf(pluginMavenPath);
-		
+
 		String basePath = url.toString().substring(beginIndex, endIndex);
 		getLog().debug(String.format("basePath(%s)", basePath));
-		
+
 		File war = new File(basePath + warPath);
-		
+
 		getLog().debug(String.format("warPath(%s)", war));
-		
-		if(!war.exists()){
+
+		if (!war.exists()) {
 			getLog().warn("can not find the war:" + war);
 			return;
 		}
@@ -63,10 +60,8 @@ public class RunMojo extends AbstractMojo {
 		}
 	}
 
-	
-	
 	private void startWar(File war) throws Exception {
-		
+
 		Server server = new Server(port);
 		WebAppContext webapp = new WebAppContext();
 		webapp.setContextPath("/");
