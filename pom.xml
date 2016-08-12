@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
    <modelVersion>4.0.0</modelVersion>
    <groupId>org.unidal.garden</groupId>
    <artifactId>parent</artifactId>
@@ -11,6 +9,7 @@
    <modules>
       <module>rose</module>
       <module>orchid</module>
+      <module>uml-maven-plugin</module>
    </modules>
    <build>
       <pluginManagement>
@@ -61,12 +60,10 @@
                   <additionalConfig>
                      <file>
                         <name>.settings/org.eclipse.jdt.core.prefs</name>
-                        <content><![CDATA[
-org.eclipse.jdt.core.compiler.codegen.targetPlatform=1.6
+                        <content><![CDATA[org.eclipse.jdt.core.compiler.codegen.targetPlatform=1.6
 eclipse.preferences.version=1
 org.eclipse.jdt.core.compiler.source=1.6
-org.eclipse.jdt.core.compiler.compliance=1.6
-                        ]]></content>
+org.eclipse.jdt.core.compiler.compliance=1.6]]></content>
                      </file>
                   </additionalConfig>
                </configuration>
@@ -101,7 +98,7 @@ org.eclipse.jdt.core.compiler.compliance=1.6
          <id>releases</id>
          <url>${releases.repo}</url>
       </repository>
-     <snapshotRepository>
+      <snapshotRepository>
          <id>snapshots</id>
          <url>${snapshots.repo}</url>
       </snapshotRepository>
@@ -110,3 +107,4 @@ org.eclipse.jdt.core.compiler.compliance=1.6
       <project.build.sourceEncoding>utf-8</project.build.sourceEncoding>
    </properties>
 </project>
+
