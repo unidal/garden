@@ -1,3 +1,5 @@
+.project
+.settings
 /ws/*
 /target/*
 /*/target/*
