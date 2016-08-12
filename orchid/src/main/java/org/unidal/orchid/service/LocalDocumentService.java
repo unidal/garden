@@ -65,6 +65,13 @@ public class LocalDocumentService implements DocumentService, Initializable {
 	}
 
 	@Override
+   public boolean hasDocument(String product, String id) {
+		File file = new File(m_docBase, id);
+
+		return file.exists();
+   }
+
+	@Override
 	public void initialize() throws InitializationException {
 		m_docBase = new File("doc"); // fix directory as expected
 

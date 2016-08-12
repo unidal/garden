@@ -13,6 +13,22 @@
 			</configuration>
 		</component>
 		<component>
+			<role>org.unidal.orchid.service.DocumentServiceManager</role>
+			<implementation>org.unidal.orchid.service.DefaultDocumentServiceManager</implementation>
+			<requirements>
+				<requirement>
+					<role>org.unidal.orchid.service.DocumentService</role>
+					<role-hint>local</role-hint>
+					<field-name>m_local</field-name>
+				</requirement>
+				<requirement>
+					<role>org.unidal.orchid.service.DocumentService</role>
+					<role-hint>mysql</role-hint>
+					<field-name>m_mysql</field-name>
+				</requirement>
+			</requirements>
+		</component>
+		<component>
 			<role>org.unidal.orchid.service.DocumentService</role>
 			<role-hint>local</role-hint>
 			<implementation>org.unidal.orchid.service.LocalDocumentService</implementation>
@@ -32,7 +48,7 @@
 			<implementation>org.unidal.orchid.service.DefaultUmlService</implementation>
 			<requirements>
 				<requirement>
-					<role>org.unidal.orchid.service.StorageService</role>
+					<role>org.unidal.orchid.service.DocumentServiceManager</role>
 				</requirement>
 			</requirements>
 		</component>
@@ -89,7 +105,7 @@
 					<role>org.unidal.orchid.service.UmlService</role>
 				</requirement>
 				<requirement>
-					<role>org.unidal.orchid.service.StorageService</role>
+					<role>org.unidal.orchid.service.DocumentServiceManager</role>
 				</requirement>
 				<requirement>
 					<role>org.unidal.orchid.uml.edit.JspViewer</role>

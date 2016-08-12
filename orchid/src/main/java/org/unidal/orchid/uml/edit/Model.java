@@ -22,6 +22,10 @@ public class Model extends ViewModel<UmlPage, Action, Context> {
 
 	private String m_editStyle;
 
+	private List<String> m_products;
+
+	private String m_product;
+
 	public Model(Context ctx) {
 		super(ctx);
 
@@ -41,6 +45,14 @@ public class Model extends ViewModel<UmlPage, Action, Context> {
 
 	public String getMessage() {
 		return m_message;
+	}
+
+	public String getProduct() {
+		return m_product;
+	}
+
+	public List<String> getProducts() {
+		return m_products;
 	}
 
 	public String getSrc() {
@@ -77,6 +89,14 @@ public class Model extends ViewModel<UmlPage, Action, Context> {
 
 	public void setMessage(String message) {
 		m_message = message;
+	}
+
+	public void setProduct(String product) {
+		m_product = product;
+	}
+
+	public void setProducts(List<String> products) {
+		m_products = products;
 	}
 
 	public void setSrc(String src) {

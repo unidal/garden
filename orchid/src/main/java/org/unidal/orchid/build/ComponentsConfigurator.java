@@ -8,6 +8,7 @@ import org.unidal.initialization.DefaultModuleManager;
 import org.unidal.initialization.ModuleManager;
 import org.unidal.lookup.configuration.Component;
 import org.unidal.orchid.OrchidModule;
+import org.unidal.orchid.service.DefaultDocumentServiceManager;
 import org.unidal.orchid.service.DefaultLibraryService;
 import org.unidal.orchid.service.DefaultUmlService;
 import org.unidal.orchid.service.FileStorageService;
@@ -23,6 +24,7 @@ public class ComponentsConfigurator extends AbstractJdbcResourceConfigurator {
 		all.add(C(ModuleManager.class, DefaultModuleManager.class) //
 		      .config(E("topLevelModules").value(OrchidModule.ID)));
 
+		all.add(A(DefaultDocumentServiceManager.class));
 		all.add(A(LocalDocumentService.class));
 		all.add(A(MysqlDocumentService.class));
 

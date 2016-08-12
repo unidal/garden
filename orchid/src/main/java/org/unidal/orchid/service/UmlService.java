@@ -10,5 +10,5 @@ public interface UmlService {
 
 	public String getImageType(String type);
 
-	public boolean updateUml(String umlFile, String uml, StringBuilder message) throws IOException;
+	public boolean updateUml(String product, String umlFile, String uml, StringBuilder message) throws IOException;
 }

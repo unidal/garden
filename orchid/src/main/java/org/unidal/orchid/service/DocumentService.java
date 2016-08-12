@@ -7,6 +7,8 @@ public interface DocumentService {
 
 	public List<String> getDocumentIds(String product) throws Exception;
 
+	public boolean hasDocument(String product, String id) throws Exception;
+
 	public String getDocument(String product, String id) throws Exception;
 
 	public void deleteDocument(String product, String id) throws Exception;

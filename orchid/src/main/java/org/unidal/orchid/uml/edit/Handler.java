@@ -8,7 +8,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.unidal.helper.Joiners;
 import org.unidal.lookup.annotation.Inject;
-import org.unidal.orchid.service.StorageService;
+import org.unidal.orchid.service.DocumentService;
+import org.unidal.orchid.service.DocumentServiceManager;
 import org.unidal.orchid.service.UmlService;
 import org.unidal.orchid.uml.UmlPage;
 import org.unidal.web.jsp.function.CodecFunction;
@@ -24,12 +25,12 @@ public class Handler implements PageHandler<Context> {
 	private UmlService m_uml;
 
 	@Inject
-	private StorageService m_storage;
+	private DocumentServiceManager m_manager;
 
 	@Inject
 	private JspViewer m_jspViewer;
 
-	private void createUml(Context ctx) throws IOException {
+	private void createUml(Context ctx) throws Exception {
 		Payload payload = ctx.getPayload();
 		String uml = payload.getUml();
 		String umlFile = payload.getNewFile();
@@ -37,9 +38,9 @@ public class Handler implements PageHandler<Context> {
 		if (!umlFile.endsWith(".uml")) {
 			ctx.setError(true);
 			ctx.setMessage(String.format("Target UML file(%s) must be ending with '.uml'.", umlFile));
-		} else if (m_storage.createUmlFile(umlFile)) {
+		} else if (!m_manager.getDocumentService().hasDocument(payload.getProduct(), umlFile)) {
 			StringBuilder message = new StringBuilder(256);
-			boolean success = m_uml.updateUml(umlFile, uml, message);
+			boolean success = m_uml.updateUml(payload.getProduct(), umlFile, uml, message);
 
 			ctx.setError(!success);
 			ctx.setUmlFile(umlFile);
@@ -83,14 +84,19 @@ public class Handler implements PageHandler<Context> {
 		String pathInfo = Joiners.by('/').prefixDelimiter().join(sections);
 		String type = payload.getType();
 
-		if (pathInfo.endsWith(".uml")) {
-			String path = CodecFunction.urlDecode(pathInfo);
+		try {
+			if (pathInfo.endsWith(".uml")) {
+				String path = CodecFunction.urlDecode(pathInfo);
 
-			showImage(ctx, model, path);
-		} else if (type != null && type.length() > 0) {
-			showImage(ctx, model, null);
-		} else {
-			showPage(ctx, model);
+				showImage(ctx, model, path);
+			} else if (type != null && type.length() > 0) {
+				showImage(ctx, model, null);
+			} else {
+				showPage(ctx, model);
+			}
+		} catch (Exception e) {
+			Cat.logError(e);
+			ctx.addError("document.error", e);
 		}
 
 		model.setAction(Action.VIEW);
@@ -101,14 +107,14 @@ public class Handler implements PageHandler<Context> {
 		}
 	}
 
-	private void showImage(Context ctx, Model model, String path) throws IOException {
+	private void showImage(Context ctx, Model model, String path) throws Exception {
 		Payload payload = ctx.getPayload();
 		String type = payload.getType();
 		String uml = payload.getUml();
 		HttpServletResponse res = ctx.getHttpServletResponse();
 
 		if (path != null && path.length() > 0) {
-			uml = m_storage.getUmlContent(path.substring(1));
+			uml = m_manager.getDocumentService().getDocument(payload.getProduct(), path.substring(1));
 		}
 
 		if (uml != null) {
@@ -130,7 +136,7 @@ public class Handler implements PageHandler<Context> {
 		ctx.stopProcess();
 	}
 
-	private void showPage(Context ctx, Model model) throws ServletException, IOException {
+	private void showPage(Context ctx, Model model) throws Exception {
 		Payload payload = ctx.getPayload();
 		String uml = payload.getUml();
 		String editStyle = payload.getEditStyle();
@@ -140,7 +146,11 @@ public class Handler implements PageHandler<Context> {
 			model.setUmlFile(umlFile);
 		}
 
-		model.setUmlFiles(m_storage.getUmlFiles());
+		DocumentService documentService = m_manager.getDocumentService();
+
+		model.setProducts(documentService.getProducts());
+		model.setProduct(payload.getProduct());
+		model.setUmlFiles(documentService.getDocumentIds(payload.getProduct()));
 
 		if (editStyle == null) {
 			model.setEditStyle("height: 500px; width: 320px");
@@ -151,7 +161,7 @@ public class Handler implements PageHandler<Context> {
 		if (uml != null && uml.length() > 0) {
 			model.setUml(uml);
 		} else if (umlFile != null && umlFile.length() > 0) {
-			uml = m_storage.getUmlContent(umlFile);
+			uml = documentService.getDocument(payload.getProduct(), umlFile);
 			model.setUml(uml);
 		}
 
@@ -175,7 +185,7 @@ public class Handler implements PageHandler<Context> {
 		String uml = payload.getUml();
 		String umlFile = payload.getFile();
 		StringBuilder message = new StringBuilder();
-		boolean success = m_uml.updateUml(umlFile, uml, message);
+		boolean success = m_uml.updateUml(payload.getProduct(), umlFile, uml, message);
 
 		ctx.setError(!success);
 		ctx.setMessage(message.toString());

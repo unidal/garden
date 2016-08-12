@@ -18,7 +18,7 @@ import org.unidal.lookup.annotation.Named;
 @Named(type = UmlService.class)
 public class DefaultUmlService implements UmlService {
 	@Inject
-	private StorageService m_storage;
+	private DocumentServiceManager m_manager;
 
 	@Override
 	public byte[] generateImage(String uml, String type) throws IOException {
@@ -115,13 +115,13 @@ public class DefaultUmlService implements UmlService {
 	}
 
 	@Override
-	public boolean updateUml(String umlFile, String uml, StringBuilder message) throws IOException {
+	public boolean updateUml(String product, String umlFile, String uml, StringBuilder message) throws IOException {
 		if (!isEmpty(umlFile) && !isEmpty(uml)) {
 			byte[] image = generateImage(uml, null);
 
 			try {
 				if (image != null) {
-					m_storage.saveUmlFile(umlFile, uml);
+					m_manager.getDocumentService().storeDocument(product, umlFile, uml);
 
 					message.append("Update file(" + umlFile + ") successfully!");
 					return true;

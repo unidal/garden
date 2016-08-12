@@ -13,14 +13,16 @@
 		<input type="hidden" name="es" id="es" value="${model.editStyle}">
 		<table>
 			<tr>
-				<td colspan="3" nowrap>
+				<td colspan="4" nowrap>
+					<select id="product" name="product" style="width: 150px">
+						${w:showOptions(model.products, model.product, null, null)}
+					</select>
 					<select id="file" name="file" style="width: 480px">
 						<option value="">--- Select UML or create a new one ---</option>
 						${w:showOptions(model.umlFiles, model.umlFile, null, null)}
 					</select>
 					<c:if test="${not empty model.umlFile}"><a href="${model.webapp}/uml/file/${model.umlFile}" target="_blank">Get Link</a></c:if>
 				</td>
-				<td></td>
 			</tr>
 			<c:if test="${not empty model.message}">
 				<tr>
@@ -97,10 +99,17 @@
             $('#es').val('height: '+this.style.height+'; width: '+this.style.width);
 		});
 		
+		$('#product').change(function() {
+			var product = $(this).children('option:selected').val();
+			
+			window.location.href="?product=" + product;
+		});
+		
 		$('#file').change(function() {
+			var product = $('#product').val();
 			var file = $(this).children('option:selected').val();
 			
-			window.location.href="?file=" + encodeURIComponent(file);
+			window.location.href="?product=" + product + "&file=" + encodeURIComponent(file);
 		});
 		
 		$('#saveAs').bind('click', function() {

@@ -35,6 +35,9 @@ public class Payload implements ActionPayload<UmlPage, Action> {
 	@FieldMeta("newfile")
 	private String m_newFile;
 
+	@FieldMeta("product")
+	private String m_product;
+
 	@PathMeta("pathSections")
 	private List<String> m_pathSections;
 
@@ -62,6 +65,10 @@ public class Payload implements ActionPayload<UmlPage, Action> {
 
 	public List<String> getPathSections() {
 		return m_pathSections;
+	}
+
+	public String getProduct() {
+		return m_product;
 	}
 
 	public String getSaveAs() {
@@ -93,6 +100,10 @@ public class Payload implements ActionPayload<UmlPage, Action> {
 	public void validate(ActionContext<?> ctx) {
 		if (m_action == null) {
 			m_action = Action.VIEW;
+		}
+
+		if (m_product == null) {
+			m_product = "LOCAL";
 		}
 	}
 }

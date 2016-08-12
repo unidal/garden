@@ -37,6 +37,17 @@ public class MysqlDocumentService implements DocumentService {
 	}
 
 	@Override
+	public boolean hasDocument(String product, String id) throws Exception {
+		try {
+			m_dao.findByProductAndUri(product, id, DocumentEntity.READSET_ID_URI);
+
+			return true;
+		} catch (DalNotFoundException e) {
+			return false;
+		}
+	}
+
+	@Override
 	public List<String> getDocumentIds(String product) throws Exception {
 		List<Document> docs = m_dao.findAllByProduct(product, DocumentEntity.READSET_ID_URI);
 		List<String> ids = new ArrayList<String>(docs.size());
