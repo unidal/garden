@@ -89,6 +89,7 @@ public class LocalDocumentService implements DocumentService, Initializable {
 	public void storeDocument(String product, String id, String content) throws Exception {
 		File file = new File(m_docBase, id);
 
+		file.getParentFile().mkdirs();
 		Files.forIO().writeTo(file, content);
 	}
 }

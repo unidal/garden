@@ -1,16 +1,21 @@
 left to right direction
 
 :Project Member: as D
-:User: as U
+:End User: as U
 
-usecase (UML - Local Mode) as (Local)
-usecase (UML - HA Mode) as (HA)
-usecase (UML - Deploy) as (Deploy)
-usecase (UML - Help) as (Help)
-usecase (UML - Storage Model) as (Model)
+usecase (UML Editing\nby code\n\n starts with 'mvn uml:run') as (Edit)
+usecase (UML Examples\n\n& References) as (Help)
+usecase (Local Mode\n\nUML in the File System) as (Local)
+usecase (Upload UML to MysQL\n\nwith 'mvn uml:deploy') as (Deploy)
 
+usecase (Online Edit Mode\n\nUML stores in MySQL) as (Online)
+usecase (Active Document\n\nEmbed UML diagrams in wiki page) as (Doc)
+
+D --> Edit
+D --> Help
 D --> Local
-U --> HA
 D --> Deploy
-D ..> Help
-D --> Model
+
+U --> Online
+U --> Doc
+

@@ -20,7 +20,7 @@ public class Handler implements PageHandler<Context> {
 	private JspViewer m_jspViewer;
 
 	@Inject
-	private UmlService m_manager;
+	private UmlService m_uml;
 
 	@Override
 	@PayloadMeta(Payload.class)
@@ -54,12 +54,12 @@ public class Handler implements PageHandler<Context> {
 
 		if (in != null) {
 			String uml = Files.forIO().readFrom(in, "utf-8");
-			String type = null;
+			String type = ctx.getPayload().getType();
 
-			res.setContentType(m_manager.getContextType(uml, type));
-			type = m_manager.getImageType(type);
+			res.setContentType(m_uml.getContextType(uml, type));
+			type = m_uml.getImageType(type);
 
-			byte[] image = m_manager.generateImage(uml, type);
+			byte[] image = m_uml.generateImage(uml, type);
 
 			if (image != null) {
 				res.setContentLength(image.length);

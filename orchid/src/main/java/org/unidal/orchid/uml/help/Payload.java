@@ -16,9 +16,8 @@ public class Payload implements ActionPayload<UmlPage, Action> {
 	@PathMeta("path")
 	private String[] m_pathSections;
 
-	public void setAction(String action) {
-		m_action = Action.getByName(action, Action.VIEW);
-	}
+	@FieldMeta("type")
+	private String m_type;
 
 	@Override
 	public Action getAction() {
@@ -38,16 +37,8 @@ public class Payload implements ActionPayload<UmlPage, Action> {
 		}
 	}
 
-	@Override
-	public void setPage(String page) {
-		m_page = UmlPage.getByName(page, UmlPage.HELP);
-	}
-
-	@Override
-	public void validate(ActionContext<?> ctx) {
-		if (m_action == null) {
-			m_action = Action.VIEW;
-		}
+	public String getType() {
+		return m_type;
 	}
 
 	public String getUmlFile() {
@@ -61,6 +52,22 @@ public class Payload implements ActionPayload<UmlPage, Action> {
 			}
 
 			return CodecFunction.urlDecode(sb.toString());
+		}
+	}
+
+	public void setAction(String action) {
+		m_action = Action.getByName(action, Action.VIEW);
+	}
+
+	@Override
+	public void setPage(String page) {
+		m_page = UmlPage.getByName(page, UmlPage.HELP);
+	}
+
+	@Override
+	public void validate(ActionContext<?> ctx) {
+		if (m_action == null) {
+			m_action = Action.VIEW;
 		}
 	}
 }

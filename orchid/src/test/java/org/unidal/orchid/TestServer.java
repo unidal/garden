@@ -32,7 +32,7 @@ public class TestServer extends JettyServer {
 
 	@Override
 	protected int getServerPort() {
-		return 2567;
+		return 8650;
 	}
 
 	@Override
