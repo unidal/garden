@@ -65,6 +65,7 @@
 			<implementation>org.unidal.dal.jdbc.datasource.DefaultDataSourceProvider</implementation>
 			<configuration>
 				<datasourceFile>datasources.xml</datasourceFile>
+				<baseDirRef>GARDEN_HOME</baseDirRef>
 			</configuration>
 		</component>
 		<component>

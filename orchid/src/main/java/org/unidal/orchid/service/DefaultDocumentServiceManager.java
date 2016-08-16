@@ -13,7 +13,9 @@ public class DefaultDocumentServiceManager implements DocumentServiceManager {
 
 	@Override
 	public DocumentService getDocumentService() {
-		String mode = System.getProperty("mode");
+		String mode = System.getenv("GARDEN_MODE");
+
+		mode = System.getProperty("mode", mode);
 
 		if ("online".equals(mode)) {
 			return m_mysql;

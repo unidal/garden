@@ -18,24 +18,20 @@ import org.unidal.test.browser.DefaultBrowser;
  */
 public class RunMojo extends AbstractMojo {
 	/**
-	 * @parameter property="port"
+	 * @parameter property="port" default-value="8650"
 	 */
 	private int port = 8650;
-
-	private String prefix = "jar:file:";
 
 	/**
 	 * @parameter property="warVersion"
 	 */
 	private String warVersion = "1.2.0";
 
-	private String warPath = String.format("org/unidal/garden/orchid/%s/orchid-%s.war", warVersion, warVersion);
-
-	private String pluginMavenPath = "org/unidal/maven/plugins";
-
 	@Override
 	public void execute() throws MojoExecutionException, MojoFailureException {
-
+		String prefix = "jar:file:";
+		String pluginMavenPath = "org/unidal/maven/plugins";
+		String warPath = String.format("org/unidal/garden/orchid/%s/orchid-%s.war", warVersion, warVersion);
 		URL url = getClass().getResource(String.format("%s.class", getClass().getSimpleName()));
 
 		int beginIndex = prefix.length();
@@ -61,9 +57,9 @@ public class RunMojo extends AbstractMojo {
 	}
 
 	private void startWar(File war) throws Exception {
-
 		Server server = new Server(port);
 		WebAppContext webapp = new WebAppContext();
+
 		webapp.setContextPath("/");
 		webapp.setWar(war.getAbsolutePath());
 		server.setHandler(webapp);

@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.unidal.dal.jdbc.configuration.AbstractJdbcResourceConfigurator;
+import org.unidal.dal.jdbc.datasource.DataSourceProvider;
+import org.unidal.dal.jdbc.datasource.DefaultDataSourceProvider;
 import org.unidal.initialization.DefaultModuleManager;
 import org.unidal.initialization.ModuleManager;
 import org.unidal.lookup.configuration.Component;
@@ -33,7 +35,9 @@ public class ComponentsConfigurator extends AbstractJdbcResourceConfigurator {
 
 		all.add(A(DefaultLibraryService.class));
 
-		all.add(defineJdbcDataSourceConfigurationManagerComponent("datasources.xml"));
+		all.add(C(DataSourceProvider.class, DefaultDataSourceProvider.class) //
+		      .config(E("datasourceFile").value("datasources.xml"), //
+		            E("baseDirRef").value("GARDEN_HOME")));
 
 		all.addAll(new GardenDatabaseConfigurator().defineComponents());
 
