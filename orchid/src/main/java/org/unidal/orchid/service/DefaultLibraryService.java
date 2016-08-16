@@ -35,23 +35,18 @@ public class DefaultLibraryService implements LibraryService, Initializable, Log
 
 	@Override
 	public void initialize() throws InitializationException {
-		String homeProperty = System.getProperty("orchidHome");
-		String homeEnv = System.getenv("ORCHID_HOME");
-		File home;
+		String home = System.getenv("GARDEN_HOME");
+		File baseDir;
 
-		if (homeProperty != null) {
-			home = new File(homeProperty);
-		} else if (homeEnv != null) {
-			home = new File(homeEnv);
+		home = System.getProperty("baseDir", home);
+
+		if (home == null) {
+			baseDir = new File("data");
 		} else {
-			home = new File("data");
+			baseDir = new File(home, "data");
 		}
 
-		if (!home.exists()) {
-			Files.forDir().createDir(home);
-		}
-
-		m_libraryFile = new File(home, "library.xml");
+		m_libraryFile = new File(baseDir, "library.xml");
 
 		try {
 			m_libraryFile = m_libraryFile.getCanonicalFile();
@@ -79,11 +74,11 @@ public class DefaultLibraryService implements LibraryService, Initializable, Log
 	public List<Library> list() {
 		Collections.sort(m_libraries.getLibraries(), new Comparator<Library>() {
 			@Override
-         public int compare(Library o1, Library o2) {
-	         return o1.getName().compareTo(o2.getName());
-         }
+			public int compare(Library o1, Library o2) {
+				return o1.getName().compareTo(o2.getName());
+			}
 		});
-		
+
 		return m_libraries.getLibraries();
 	}
 
