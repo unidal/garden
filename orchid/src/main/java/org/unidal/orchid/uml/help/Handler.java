@@ -6,6 +6,7 @@ import java.io.InputStream;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletResponse;
 
+import org.mortbay.jetty.EofException;
 import org.unidal.helper.Files;
 import org.unidal.lookup.annotation.Inject;
 import org.unidal.orchid.service.UmlService;
@@ -63,7 +64,12 @@ public class Handler implements PageHandler<Context> {
 
 			if (image != null) {
 				res.setContentLength(image.length);
-				res.getOutputStream().write(image);
+
+				try {
+					res.getOutputStream().write(image);
+				} catch (EofException e) {
+					// ignore it
+				}
 			} else {
 				res.sendError(400, "UML Incompleted!");
 			}

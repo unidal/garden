@@ -102,7 +102,7 @@ public class Payload implements ActionPayload<UmlPage, Action> {
 			m_action = Action.VIEW;
 		}
 
-		if (m_product == null) {
+		if (m_product == null || m_product.length() == 0) {
 			m_product = "LOCAL";
 		}
 	}
