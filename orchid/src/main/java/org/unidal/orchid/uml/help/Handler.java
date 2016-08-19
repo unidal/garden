@@ -1,12 +1,12 @@
 package org.unidal.orchid.uml.help;
 
+import java.io.EOFException;
 import java.io.IOException;
 import java.io.InputStream;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletResponse;
 
-import org.mortbay.jetty.EofException;
 import org.unidal.helper.Files;
 import org.unidal.lookup.annotation.Inject;
 import org.unidal.orchid.service.UmlService;
@@ -67,7 +67,7 @@ public class Handler implements PageHandler<Context> {
 
 				try {
 					res.getOutputStream().write(image);
-				} catch (EofException e) {
+				} catch (EOFException e) {
 					// ignore it
 				}
 			} else {
