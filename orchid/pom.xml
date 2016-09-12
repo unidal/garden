@@ -165,8 +165,8 @@ org.eclipse.jdt.core.compiler.compliance=1.6]]></content>
             <artifactId>uml-maven-plugin</artifactId>
             <version>1.0.0</version>
             <configuration>
-               <product>LegacyUML</product>
-               <repository>http://garden.fx.ctripcorp.com/orchid</repository>
+               <product>URML</product>
+               <repository>http://localhost:8650/orchid</repository>
             </configuration>
          </plugin>
       </plugins>
