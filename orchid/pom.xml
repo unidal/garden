@@ -15,7 +15,7 @@
       <dependency>
          <groupId>org.unidal.framework</groupId>
          <artifactId>web-framework</artifactId>
-         <version>2.5.0</version>
+         <version>2.5.1</version>
       </dependency>
       <dependency>
          <groupId>javax.servlet</groupId>
@@ -165,8 +165,8 @@ org.eclipse.jdt.core.compiler.compliance=1.6]]></content>
             <artifactId>uml-maven-plugin</artifactId>
             <version>1.0.0</version>
             <configuration>
-               <product>UML</product>
-               <repository>http://localhost:8650</repository>
+               <product>LegacyUML</product>
+               <repository>http://garden.fx.ctripcorp.com/orchid</repository>
             </configuration>
          </plugin>
       </plugins>
