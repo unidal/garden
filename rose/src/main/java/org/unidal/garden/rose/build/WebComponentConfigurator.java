@@ -3,19 +3,23 @@ package org.unidal.garden.rose.build;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.unidal.garden.rose.query.QueryModule;
-
+import org.unidal.lookup.configuration.AbstractResourceConfigurator;
 import org.unidal.lookup.configuration.Component;
-import org.unidal.web.configuration.AbstractWebComponentsConfigurator;
+import org.unidal.web.mvc.model.ModuleRegistry;
 
-class WebComponentConfigurator extends AbstractWebComponentsConfigurator {
-	@SuppressWarnings("unchecked")
-	@Override
-	public List<Component> defineComponents() {
-		List<Component> all = new ArrayList<Component>();
+class WebComponentConfigurator extends AbstractResourceConfigurator {
+   @Override
+   public List<Component> defineComponents() {
+      List<Component> all = new ArrayList<Component>();
 
-		defineModuleRegistry(all, QueryModule.class, QueryModule.class);
 
-		return all;
-	}
+      all.add(A(ModuleRegistry.class).config(E("default-module").value(org.unidal.garden.rose.query.QueryModule.class.getName())));
+  
+      all.add(A(org.unidal.garden.rose.query.QueryModule.class));
+
+      all.add(A(org.unidal.garden.rose.query.home.Handler.class));
+      all.add(A(org.unidal.garden.rose.query.home.JspViewer.class));
+
+      return all;
+   }
 }

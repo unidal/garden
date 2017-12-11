@@ -5,6 +5,7 @@ import java.io.IOException;
 import javax.servlet.ServletException;
 
 import org.unidal.lookup.annotation.Inject;
+import org.unidal.lookup.annotation.Named;
 import org.unidal.orchid.library.LibraryPage;
 import org.unidal.orchid.service.LibraryService;
 import org.unidal.web.mvc.PageHandler;
@@ -14,6 +15,7 @@ import org.unidal.web.mvc.annotation.PayloadMeta;
 
 import com.dianping.cat.Cat;
 
+@Named
 public class Handler implements PageHandler<Context> {
 	@Inject
 	private LibraryService m_libraryService;

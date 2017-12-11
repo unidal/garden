@@ -3,17 +3,17 @@ package org.unidal.orchid.service;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.nio.ByteBuffer;
+import java.util.Base64;
 import java.util.List;
+
+import org.unidal.lookup.annotation.Inject;
+import org.unidal.lookup.annotation.Named;
 
 import net.sourceforge.plantuml.BlockUml;
 import net.sourceforge.plantuml.FileFormat;
 import net.sourceforge.plantuml.FileFormatOption;
 import net.sourceforge.plantuml.PSystemError;
 import net.sourceforge.plantuml.SourceStringReader;
-
-import org.codehaus.plexus.util.Base64;
-import org.unidal.lookup.annotation.Inject;
-import org.unidal.lookup.annotation.Named;
 
 @Named(type = UmlService.class)
 public class DefaultUmlService implements UmlService {
@@ -45,7 +45,7 @@ public class DefaultUmlService implements UmlService {
 				ByteBuffer bb = ByteBuffer.allocate(baos.size() * 4 / 3 + 32);
 
 				bb.put("data:image/png;base64,".getBytes());
-				bb.put(Base64.encodeBase64(content));
+				bb.put(Base64.getEncoder().encode(content));
 
 				byte[] ba = new byte[bb.position()];
 				bb.position(0);

@@ -6,6 +6,7 @@ import java.util.Map;
 import javax.servlet.ServletException;
 
 import org.unidal.lookup.annotation.Inject;
+import org.unidal.lookup.annotation.Named;
 import org.unidal.orchid.service.DocumentService;
 import org.unidal.orchid.service.MysqlDocumentService;
 import org.unidal.orchid.uml.UmlPage;
@@ -16,6 +17,7 @@ import org.unidal.web.mvc.annotation.PayloadMeta;
 
 import com.dianping.cat.Cat;
 
+@Named
 public class Handler implements PageHandler<Context> {
 	@Inject
 	private JspViewer m_jspViewer;

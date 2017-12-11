@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.unidal.helper.Files;
 import org.unidal.lookup.annotation.Inject;
+import org.unidal.lookup.annotation.Named;
 import org.unidal.orchid.service.UmlService;
 import org.unidal.orchid.uml.UmlPage;
 import org.unidal.web.mvc.PageHandler;
@@ -16,6 +17,7 @@ import org.unidal.web.mvc.annotation.InboundActionMeta;
 import org.unidal.web.mvc.annotation.OutboundActionMeta;
 import org.unidal.web.mvc.annotation.PayloadMeta;
 
+@Named
 public class Handler implements PageHandler<Context> {
 	@Inject
 	private JspViewer m_jspViewer;

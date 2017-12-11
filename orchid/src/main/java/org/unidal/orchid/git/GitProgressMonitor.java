@@ -2,9 +2,9 @@ package org.unidal.orchid.git;
 
 import java.util.concurrent.TimeUnit;
 
-import org.codehaus.plexus.logging.LogEnabled;
-import org.codehaus.plexus.logging.Logger;
 import org.eclipse.jgit.lib.BatchingProgressMonitor;
+import org.unidal.lookup.logging.LogEnabled;
+import org.unidal.lookup.logging.Logger;
 
 public class GitProgressMonitor extends BatchingProgressMonitor implements LogEnabled {
 	private Logger m_logger;

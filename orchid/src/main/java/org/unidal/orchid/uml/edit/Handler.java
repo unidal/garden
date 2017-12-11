@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.unidal.helper.Joiners;
 import org.unidal.lookup.annotation.Inject;
+import org.unidal.lookup.annotation.Named;
 import org.unidal.orchid.service.DocumentService;
 import org.unidal.orchid.service.DocumentServiceManager;
 import org.unidal.orchid.service.UmlService;
@@ -20,6 +21,7 @@ import org.unidal.web.mvc.annotation.PayloadMeta;
 
 import com.dianping.cat.Cat;
 
+@Named
 public class Handler implements PageHandler<Context> {
 	@Inject
 	private UmlService m_uml;

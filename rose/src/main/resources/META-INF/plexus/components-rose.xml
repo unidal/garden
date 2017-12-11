@@ -1,8 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- THIS FILE WAS AUTO GENERATED FROM class org.unidal.garden.rose.build.ComponentsConfigurator, DO NOT EDIT IT -->
 <plexus>
 	<components>
 		<component>
-			<role>org.unidal.dal.jdbc.datasource.JdbcDataSourceDescriptorManager</role>
-			<implementation>org.unidal.dal.jdbc.datasource.JdbcDataSourceDescriptorManager</implementation>
+			<role>org.unidal.dal.jdbc.datasource.DataSourceProvider</role>
+			<implementation>org.unidal.dal.jdbc.datasource.DefaultDataSourceProvider</implementation>
 			<configuration>
 				<datasourceFile>datasources.xml</datasourceFile>
 			</configuration>
@@ -11,7 +13,7 @@
 			<role>org.unidal.web.mvc.model.ModuleRegistry</role>
 			<implementation>org.unidal.web.mvc.model.ModuleRegistry</implementation>
 			<configuration>
-				<defaultModule>org.unidal.garden.rose.query.QueryModule</defaultModule>
+				<default-module>org.unidal.garden.rose.query.QueryModule</default-module>
 			</configuration>
 		</component>
 		<component>
@@ -24,10 +26,10 @@
 			<implementation>org.unidal.garden.rose.query.home.Handler</implementation>
 			<requirements>
 				<requirement>
-					<role>org.unidal.garden.rose.query.home.JspViewer</role>
+					<role>org.unidal.dal.jdbc.datasource.JdbcDataSourceDescriptorManager</role>
 				</requirement>
 				<requirement>
-					<role>org.unidal.dal.jdbc.datasource.JdbcDataSourceDescriptorManager</role>
+					<role>org.unidal.garden.rose.query.home.JspViewer</role>
 				</requirement>
 				<requirement>
 					<role>org.unidal.dal.jdbc.raw.RawDao</role>
@@ -40,19 +42,6 @@
 			<requirements>
 				<requirement>
 					<role>org.unidal.web.mvc.view.model.ModelHandler</role>
-				</requirement>
-			</requirements>
-		</component>
-		<component>
-			<role>org.unidal.dal.jdbc.datasource.JdbcDataSourceDescriptorManager</role>
-			<implementation>org.unidal.dal.jdbc.datasource.JdbcDataSourceDescriptorManager</implementation>
-		</component>
-		<component>
-			<role>org.unidal.dal.jdbc.raw.RawDao</role>
-			<implementation>org.unidal.dal.jdbc.raw.RawDao</implementation>
-			<requirements>
-				<requirement>
-					<role>org.unidal.dal.jdbc.QueryEngine</role>
 				</requirement>
 			</requirements>
 		</component>

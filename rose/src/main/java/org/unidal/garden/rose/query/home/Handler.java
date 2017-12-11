@@ -16,12 +16,14 @@ import org.unidal.dal.jdbc.raw.RawDataObject;
 import org.unidal.garden.rose.query.QueryPage;
 import org.unidal.helper.Splitters;
 import org.unidal.lookup.annotation.Inject;
+import org.unidal.lookup.annotation.Named;
 import org.unidal.web.mvc.ErrorObject;
 import org.unidal.web.mvc.PageHandler;
 import org.unidal.web.mvc.annotation.InboundActionMeta;
 import org.unidal.web.mvc.annotation.OutboundActionMeta;
 import org.unidal.web.mvc.annotation.PayloadMeta;
 
+@Named
 public class Handler implements PageHandler<Context> {
 	@Inject
 	private JspViewer m_jspViewer;

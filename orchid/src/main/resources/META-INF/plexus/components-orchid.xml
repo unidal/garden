@@ -1,3 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- THIS FILE WAS AUTO GENERATED FROM class org.unidal.orchid.build.ComponentsConfigurator, DO NOT EDIT IT -->
 <plexus>
 	<components>
 		<component>
@@ -90,7 +92,7 @@
 			<role>org.unidal.web.mvc.model.ModuleRegistry</role>
 			<implementation>org.unidal.web.mvc.model.ModuleRegistry</implementation>
 			<configuration>
-				<defaultModule>org.unidal.orchid.uml.UmlModule</defaultModule>
+				<default-module>org.unidal.orchid.uml.UmlModule</default-module>
 			</configuration>
 		</component>
 		<component>
@@ -103,13 +105,13 @@
 			<implementation>org.unidal.orchid.uml.edit.Handler</implementation>
 			<requirements>
 				<requirement>
-					<role>org.unidal.orchid.service.UmlService</role>
+					<role>org.unidal.orchid.uml.edit.JspViewer</role>
 				</requirement>
 				<requirement>
 					<role>org.unidal.orchid.service.DocumentServiceManager</role>
 				</requirement>
 				<requirement>
-					<role>org.unidal.orchid.uml.edit.JspViewer</role>
+					<role>org.unidal.orchid.service.UmlService</role>
 				</requirement>
 			</requirements>
 		</component>
@@ -148,11 +150,11 @@
 			<implementation>org.unidal.orchid.uml.upload.Handler</implementation>
 			<requirements>
 				<requirement>
-					<role>org.unidal.orchid.uml.upload.JspViewer</role>
-				</requirement>
-				<requirement>
 					<role>org.unidal.orchid.service.DocumentService</role>
 					<role-hint>mysql</role-hint>
+				</requirement>
+				<requirement>
+					<role>org.unidal.orchid.uml.upload.JspViewer</role>
 				</requirement>
 			</requirements>
 		</component>
@@ -175,10 +177,10 @@
 			<implementation>org.unidal.orchid.library.version.Handler</implementation>
 			<requirements>
 				<requirement>
-					<role>org.unidal.orchid.service.LibraryService</role>
+					<role>org.unidal.orchid.library.version.JspViewer</role>
 				</requirement>
 				<requirement>
-					<role>org.unidal.orchid.library.version.JspViewer</role>
+					<role>org.unidal.orchid.service.LibraryService</role>
 				</requirement>
 			</requirements>
 		</component>
