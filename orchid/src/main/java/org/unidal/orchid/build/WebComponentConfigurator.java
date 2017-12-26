@@ -26,11 +26,6 @@ class WebComponentConfigurator extends AbstractResourceConfigurator {
       all.add(A(org.unidal.orchid.uml.upload.Handler.class));
       all.add(A(org.unidal.orchid.uml.upload.JspViewer.class));
 
-      all.add(A(org.unidal.orchid.library.LibraryModule.class));
-
-      all.add(A(org.unidal.orchid.library.version.Handler.class));
-      all.add(A(org.unidal.orchid.library.version.JspViewer.class));
-
       return all;
    }
 }

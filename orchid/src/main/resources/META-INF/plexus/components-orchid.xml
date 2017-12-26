@@ -167,31 +167,5 @@
 				</requirement>
 			</requirements>
 		</component>
-		<component>
-			<role>org.unidal.web.mvc.Module</role>
-			<role-hint>org.unidal.orchid.library.LibraryModule</role-hint>
-			<implementation>org.unidal.orchid.library.LibraryModule</implementation>
-		</component>
-		<component>
-			<role>org.unidal.orchid.library.version.Handler</role>
-			<implementation>org.unidal.orchid.library.version.Handler</implementation>
-			<requirements>
-				<requirement>
-					<role>org.unidal.orchid.library.version.JspViewer</role>
-				</requirement>
-				<requirement>
-					<role>org.unidal.orchid.service.LibraryService</role>
-				</requirement>
-			</requirements>
-		</component>
-		<component>
-			<role>org.unidal.orchid.library.version.JspViewer</role>
-			<implementation>org.unidal.orchid.library.version.JspViewer</implementation>
-			<requirements>
-				<requirement>
-					<role>org.unidal.web.mvc.view.model.ModelHandler</role>
-				</requirement>
-			</requirements>
-		</component>
 	</components>
 </plexus>
