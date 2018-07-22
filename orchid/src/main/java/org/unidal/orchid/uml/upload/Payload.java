@@ -17,7 +17,7 @@ import org.unidal.web.mvc.ActionPayload;
 import org.unidal.web.mvc.payload.annotation.FieldMeta;
 import org.unidal.web.mvc.payload.annotation.PathMeta;
 
-import com.dianping.cat.Cat;
+import org.unidal.cat.Cat;
 
 public class Payload implements ActionPayload<UmlPage, Action> {
 	private UmlPage m_page;

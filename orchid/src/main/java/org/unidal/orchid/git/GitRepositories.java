@@ -34,9 +34,9 @@ import org.eclipse.jgit.util.io.NullOutputStream;
 import org.unidal.helper.Files;
 import org.unidal.helper.Files.Policy;
 
-import com.dianping.cat.Cat;
-import com.dianping.cat.message.Message;
-import com.dianping.cat.message.Transaction;
+import org.unidal.cat.Cat;
+import org.unidal.cat.message.Message;
+import org.unidal.cat.message.Transaction;
 
 public class GitRepositories {
 	public static RepositoryHelper at(File repositoryDir) throws Exception {

@@ -1,11 +1,7 @@
 package org.unidal.garden.rose;
 
-import java.util.EnumSet;
+import java.io.File;
 
-import javax.servlet.DispatcherType;
-
-import org.eclipse.jetty.servlets.GzipFilter;
-import org.eclipse.jetty.webapp.WebAppContext;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
@@ -17,7 +13,7 @@ public class TestServer extends JettyServer {
 		TestServer server = new TestServer();
 
 		server.startServer();
-		server.startWebapp();
+		server.startWebApp();
 		server.stopServer();
 	}
 
@@ -31,20 +27,14 @@ public class TestServer extends JettyServer {
 		return 7673;
 	}
 
-	@Override
-	protected boolean isWebXmlDefined() {
-		return false;
-	}
-
-	@Override
-	protected void postConfigure(WebAppContext context) {
-		context.addFilter(GzipFilter.class, "/*", EnumSet.allOf(DispatcherType.class));
-	}
-
 	@Test
-	public void startWebapp() throws Exception {
+	public void startWebApp() throws Exception {
 		// open the page in the default browser
 		display("/rose/query");
 		waitForAnyKey();
+	}
+	
+	protected File getWarRoot() {
+		return new File("src/main/resources/META-INF/resources");
 	}
 }

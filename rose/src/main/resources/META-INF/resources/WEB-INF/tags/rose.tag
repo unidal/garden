@@ -54,11 +54,6 @@
 				<jsp:doBody />
 			</div>
 		</div>
-	
-		<br />
-		<div class="container">
-			<footer><center>&copy;2015 Rose Team</center></footer>
-		</div>
 	</div>
 	<!--/.fluid-container-->
 

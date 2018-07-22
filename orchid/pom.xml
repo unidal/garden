@@ -3,7 +3,7 @@
    <parent>
       <groupId>org.unidal.garden</groupId>
       <artifactId>parent</artifactId>
-      <version>1.0</version>
+      <version>1.0.0</version>
       <relativePath>../pom.xml</relativePath>
    </parent>
    <modelVersion>4.0.0</modelVersion>
@@ -12,7 +12,6 @@
    <name>Garden :: Orchid</name>
    <packaging>war</packaging>
    <properties>
-      <project.build.sourceEncoding>utf-8</project.build.sourceEncoding>
       <plantuml.version>7989</plantuml.version>
       <jgit.version>4.0.1.201506240215-r</jgit.version>
       <commons-exec.version>1.1</commons-exec.version>
@@ -90,7 +89,9 @@
                      <goal>dal-model</goal>
                   </goals>
                   <configuration>
-                     <manifest><![CDATA[${basedir}/src/main/resources/META-INF/dal/model/libraries-manifest.xml,]]></manifest>
+                     <manifest><![CDATA[
+                        ${basedir}/src/main/resources/META-INF/dal/model/libraries-manifest.xml,
+                     ]]></manifest>
                   </configuration>
                </execution>
                <execution>
@@ -100,9 +101,9 @@
                      <goal>dal-jdbc</goal>
                   </goals>
                   <configuration>
-                     <manifest><![CDATA[,
+                     <manifest><![CDATA[
                         ${basedir}/src/main/resources/META-INF/dal/jdbc/uml-manifest.xml,
-                     ,]]></manifest>
+                     ]]></manifest>
                   </configuration>
                </execution>
             </executions>
@@ -124,35 +125,6 @@
             </executions>
          </plugin>
       </plugins>
-      <pluginManagement>
-         <plugins>
-            <plugin>
-               <artifactId>maven-compiler-plugin</artifactId>
-               <version>2.5.1</version>
-               <configuration>
-                  <source>1.6</source>
-                  <target>1.6</target>
-               </configuration>
-            </plugin>
-            <plugin>
-               <artifactId>maven-eclipse-plugin</artifactId>
-               <version>2.9</version>
-               <configuration>
-                  <downloadSources>true</downloadSources>
-                  <ajdtVersion>none</ajdtVersion>
-                  <additionalConfig>
-                     <file>
-                        <name>.settings/org.eclipse.jdt.core.prefs</name>
-                        <content><![CDATA[eclipse.preferences.version=1
-                           org.eclipse.jdt.core.compiler.codegen.targetPlatform=1.6
-                           org.eclipse.jdt.core.compiler.source=1.6
-                           org.eclipse.jdt.core.compiler.compliance=1.6]]></content>
-                     </file>
-                  </additionalConfig>
-               </configuration>
-            </plugin>
-         </plugins>
-      </pluginManagement>
    </build>
 </project>
 

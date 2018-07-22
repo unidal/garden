@@ -18,7 +18,7 @@ import org.unidal.lookup.logging.Logger;
 import org.unidal.orchid.git.GitRepositories;
 import org.unidal.orchid.git.GitRepositories.RepositoryHelper;
 
-import com.dianping.cat.Cat;
+import org.unidal.cat.Cat;
 
 @Named(type = StorageService.class)
 public class FileStorageService implements StorageService, Initializable, LogEnabled {

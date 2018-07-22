@@ -7,24 +7,24 @@
 
 <div>
 <h2>Relations between classes</h2>
-<div>Relations between classes are defined using the following symbols :
+<div>Relations between classes are defined using the following symbols:
 <br/><br/>
 <div style="margin-left: 2em">
 <table border="1" cellpadding="5" cellspacing="0">
 <tr>
 <td>Extension</td>
 <td><code>&lt;|--</code></td>
-<td><img alt="extension symbol" width="40" src="img/extends01.png"/></td>
+<td><img alt="extension symbol" width="40" src="${model.webapp}/img/extends01.png"/></td>
 </tr>
 <tr>
 <td>Composition</td>
 <td><code>*--</code></td>
-<td><img alt="composition symbol" src="img/sym03.png"/></td>
+<td><img alt="composition symbol" src="${model.webapp}/img/sym03.png"/></td>
 </tr>
 <tr>
 <td>Aggregation</td>
 <td><code>o--</code></td>
-<td><img alt="aggregation symbol" src="img/sym01.png"/></td>
+<td><img alt="aggregation symbol" src="${model.webapp}/img/sym01.png"/></td>
 </tr>
 </table>
 </div>
@@ -95,26 +95,26 @@ visibility of the corresponding item:
 </tr>
 <tr align=center>
 <td><code>-</code></td>
-<td><img src="PRIVATE_FIELD.png"/></td>
-<td><img src="PRIVATE_METHOD.png"/></td>
+<td><img src="${model.webapp}/img/PRIVATE_FIELD.png"/></td>
+<td><img src="${model.webapp}/img/PRIVATE_METHOD.png"/></td>
 <td align=left><code>private</code></td>
 </tr>
 <tr align=center>
 <td><code>#</code></td>
-<td><img src="PROTECTED_FIELD.png"/></td>
-<td><img src="PROTECTED_METHOD.png"/></td>
+<td><img src="${model.webapp}/img/PROTECTED_FIELD.png"/></td>
+<td><img src="${model.webapp}/img/PROTECTED_METHOD.png"/></td>
 <td align=left><code>protected</code></td>
 </tr>
 <tr align=center>
 <td><code>~</code></td>
-<td><img src="PACKAGE_PRIVATE_FIELD.png"/></td>
-<td><img src="PACKAGE_PRIVATE_METHOD.png"/></td>
+<td><img src="${model.webapp}/img/PACKAGE_PRIVATE_FIELD.png"/></td>
+<td><img src="${model.webapp}/img/PACKAGE_PRIVATE_METHOD.png"/></td>
 <td align=left><code>package private</code></td>
 </tr>
 <tr align=center>
 <td><code>+</code></td>
-<td><img src="PUBLIC_FIELD.png"/></td>
-<td><img src="PUBLIC_METHOD.png"/></td>
+<td><img src="${model.webapp}/img/PUBLIC_FIELD.png"/></td>
+<td><img src="${model.webapp}/img/PUBLIC_METHOD.png"/></td>
 <td align=left><code>public</code></td>
 </tr>
 </table></div>

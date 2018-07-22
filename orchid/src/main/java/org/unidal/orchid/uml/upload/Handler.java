@@ -15,7 +15,7 @@ import org.unidal.web.mvc.annotation.InboundActionMeta;
 import org.unidal.web.mvc.annotation.OutboundActionMeta;
 import org.unidal.web.mvc.annotation.PayloadMeta;
 
-import com.dianping.cat.Cat;
+import org.unidal.cat.Cat;
 
 @Named
 public class Handler implements PageHandler<Context> {
