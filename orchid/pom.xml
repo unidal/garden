@@ -12,7 +12,7 @@
    <name>Garden :: Orchid</name>
    <packaging>war</packaging>
    <properties>
-      <plantuml.version>7989</plantuml.version>
+      <plantuml.version>1.2019.11</plantuml.version>
       <jgit.version>4.0.1.201506240215-r</jgit.version>
       <commons-exec.version>1.1</commons-exec.version>
    </properties>

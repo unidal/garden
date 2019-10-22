@@ -12,7 +12,7 @@ import org.unidal.lookup.annotation.Named;
 import net.sourceforge.plantuml.BlockUml;
 import net.sourceforge.plantuml.FileFormat;
 import net.sourceforge.plantuml.FileFormatOption;
-import net.sourceforge.plantuml.PSystemError;
+import net.sourceforge.plantuml.error.PSystemError;
 import net.sourceforge.plantuml.SourceStringReader;
 
 @Named(type = UmlService.class)
@@ -34,7 +34,7 @@ public class DefaultUmlService implements UmlService {
 		FileFormat format = getFileFormat(type);
 		ByteArrayOutputStream baos = new ByteArrayOutputStream(8192);
 
-		reader.generateImage(baos, new FileFormatOption(format));
+		reader.outputImage(baos, new FileFormatOption(format)).getDescription();
 
 		if (!hasError(reader.getBlocks())) {
 			byte[] content = baos.toByteArray();
