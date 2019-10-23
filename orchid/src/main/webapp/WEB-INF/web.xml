@@ -13,7 +13,7 @@
       </init-param>
       <init-param>
          <param-name>excludes</param-name>
-         <param-value>/css/*,/img/*,/js/*,/pdf/*</param-value>
+         <param-value>/favicon.ico,/css/*,/img/*,/js/*,/pdf/*</param-value>
       </init-param>
    </filter>
    <filter-mapping>
