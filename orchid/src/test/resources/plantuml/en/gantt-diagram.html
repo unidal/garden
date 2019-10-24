@@ -1,0 +1,144 @@
+<html lang="en"><head><meta name="flattr:id" content="1ew3x0"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "url": "http://plantuml.com",
+  "name": "PlantUML",
+  "sameAs" : ["https://twitter.com/plantuml","https://en.wikipedia.org/wiki/PlantUML","https://www.wikidata.org/wiki/Q18346546", "https://plus.google.com/+PlantumlPublic/"],
+  "logo": "http://plantuml.com/logo3.png",
+  "contactPoint": [{
+    "@type": "ContactPoint",
+    "email": "plantuml@gmail.com",
+    "url": "http://plantuml.com",
+    "contactType": "customer service"
+  }],
+    "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://cse.google.fr/cse/publicurl?cx=002267040093494634259:o59itilhnna&q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+    "@type": "ListItem",
+    "position": 1,
+    "item": {
+      "@id": "http://plantuml.com",
+      "name": "Home"
+    }
+  },{
+    "@type": "ListItem",
+    "position": 2,
+    "item": {
+      "@id": "http://plantuml.com/sitemap-language-specification",
+      "name": "Language specification"
+    }
+  },{
+    "@type": "ListItem",
+    "position": 3,
+    "item": {
+      "@id": "http://plantuml.com/gantt-diagram",
+      "name": "Gantt Diagram"
+  }
+  }]
+}
+</script><link rel="canonical" href="http://plantuml.com/gantt-diagram"/><link rel="alternate" hreflang="x-default" href="http://plantuml.com/gantt-diagram"/><link rel="alternate" hreflang="de" href="http://plantuml.com/de/gantt-diagram"/><link rel="alternate" hreflang="en" href="http://plantuml.com/gantt-diagram"/><link rel="alternate" hreflang="es" href="http://plantuml.com/es/gantt-diagram"/><link rel="alternate" hreflang="fr" href="http://plantuml.com/fr/gantt-diagram"/><link rel="alternate" hreflang="ja" href="http://plantuml.com/ja/gantt-diagram"/><link rel="alternate" hreflang="ru" href="http://plantuml.com/ru/gantt-diagram"/><link rel="alternate" hreflang="ko" href="http://plantuml.com/ko/gantt-diagram"/><link rel="alternate" hreflang="zh" href="http://plantuml.com/zh/gantt-diagram"/><link rel="shortcut icon" href="//s.plantuml.com/favicon.ico"/><link rel="publisher" href="https://plus.google.com/+PlantumlPublic/"/><link rel="alternate" type="application/rss+xml" title="RSS" href="http://plantuml.com/en/gantt-diagram.rss"><title>Gantt Diagram syntax and features</title><meta name="description" content="PlantUML Gantt diagram syntax: Gantt diagrams are not fully supported within PlantUML. This is a draft version of the language can be subject to changes."/><meta property="og:type" content="article"/><meta property="og:title" content="Gantt Diagram syntax and features"/><meta property="og:description" content="PlantUML Gantt diagram syntax: Gantt diagrams are not fully supported within PlantUML. This is a draft version of the language can be subject to changes."/><meta property="og:url" content="http://plantuml.com/gantt-diagram"/><meta property="og:site_name" content="PlantUML.com"/><meta name="twitter:image" content="http://plantuml.com/og-gantt-diagram"/><meta property="og:locale" content="en"/><meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Gantt Diagram syntax and features"/><meta name="twitter:description" content="PlantUML Gantt diagram syntax: Gantt diagrams are not fully supported within PlantUML. This is a draft version of the language can be subject to changes."/><meta name="twitter:site" content="@PlantUML"/><meta name="twitter:creator" content="@PlantUML"/><style media="screen" type="text/css">li{margin:2px}#external li{margin:13px}.mycell{display:inline-block;vertical-align:top;padding:10px}#header{z-index:2;position:fixed;left:205px;right:0;height:40px;top:0;background:#edeff3}#header2{z-index:2;position:fixed;left:205px;right:0;height:10px;top:40px;background:#fefefe}#header3{z-index:3;position:fixed;left:1010px;right:0;height:40px;top:0;background:#edeff3}#root{margin:50px 0 0 220px;background:#fefefe}#side{position:fixed;margin-left:0;margin-top:-50px;height:100%;width:205px;padding-top:0;background:#edeff3;z-index:2}@media screen and (max-width:1190px){#header{left:185px}#header2{left:185px}#root{margin:50px 0 0 200px}#side{width:185px}}@media screen and (max-width:1010px){#side{width:181px;margin-top:0}#root{margin:0 0 0 184px}#header,#header2{visibility:hidden}}body{margin:auto;overflow-x:hidden;background:#fefefe}a{text-decoration:none;color:#0366d6}a:hover{text-decoration:underline}#menu{border:0;font-family:Helvetica,sans-serif;font-size:14px;padding:0;margin:0;width:200%}#menu li{float:left;list-style:none;text-align:center;position:relative;margin:10px 0 0 10px;border:0}#menu li a{padding:0 7px 0 7px;text-decoration:none;color:#637282}#menu a:hover{color:#cbc9c8}#menuside{border:0;font-family:Helvetica,sans-serif;font-size:14px;padding:0;margin:0}#menuside li{list-style:none;text-align:center;position:relative;padding:0;margin:13px 20px 14px 10px;border:0}#menuside li a{display:inline-block;text-decoration:none;color:#637282;width:100%}#menuside a:hover{color:#cbc9c8}#BC{z-index:0;padding-top:5px;top:35px}.breadcrumb{font-family:Helvetica,sans-serif;font-size:14px;text-align:center;display:inline-block;overflow:hidden;border-radius:5px}.breadcrumb a{text-decoration:none;outline:0;display:block;float:left;font-size:12px;line-height:24px;color:#373f49;padding:0 10px 0 35px;background:#f0f1f1;background:linear-gradient(#f0f1f1,#c6d2d2);position:relative}.breadcrumb a:first-child{padding-left:21px;border-radius:5px 0 0 5px}.breadcrumb a:first-child:before{left:14px}.breadcrumb a:last-child{visibility:hidden}.breadcrumb a.active,.breadcrumb a:hover{color:#000;background:#c6d2d2;background:linear-gradient(#e3e4e4,#b8c7c7)}.breadcrumb a.active:after,.breadcrumb a:hover:after{background:#c6d2d2;background:linear-gradient(135deg,#e3e4e4,#b8c7c7)}.breadcrumb a:after{content:'';position:absolute;top:0;right:-12px;width:24px;height:24px;transform:scale(0.707) rotate(45deg);z-index:1;background:#f0f1f1;background:linear-gradient(135deg,#f0f1f1,#c6d2d2);box-shadow:2px -2px 0 2px rgba(0,0,0,0.1),3px -3px 0 2px rgba(255,255,255,0.1);border-radius:0 5px 0 50px}.breadcrumb a:last-child:after{content:none;visibility:hidden}.lga,.lga a,.lgi,.lgi a{font-family:Helvetica,sans-serif;font-size:13px;text-align:center;color:#fff;padding:0 5px;margin:0}.lga,.lga a{background-color:#008}.lgi,.lgi a{background-color:#888}.lga:hover,.lga:hover a{text-decoration:none;color:#BBB}.lgi:hover,.lgi:hover a{text-decoration:none;color:#CCC}</style><script async src="https://www.googletagmanager.com/gtag/js?id=UA-16629806-3"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date());gtag("config","UA-16629806-3");</script><script>(function(){var b=document.createElement("script"),a=document.getElementsByTagName("script")[0];b.type="text/javascript";b.async=true;b.src="http://api.flattr.com/js/0.6/load.js?mode=auto";a.parentNode.insertBefore(b,a)})();var llg="en";</script><script async src="//s.plantuml.com/lg3.js"></script><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script></head><body><nav id=header><ul id="menu"><li><a id=me1 href="sequence-diagram">Sequence</a></li><li><a id=me2 href="use-case-diagram">Use Case</a></li><li><a id=me3 href="class-diagram">Class</a></li><li><a id=me4 href="activity-diagram-legacy">Activity</a></li><li><a id=me5 href="activity-diagram-beta">Activity <img border=0 width=20 height=8 src=//s.plantuml.com/beta-icon.gif></a></li><li><a id=me6 href="component-diagram">Component</a></li><li><a id=me7 href="state-diagram">State</a></li><li><a id=me8 href="object-diagram">Object</a></li><li><a id=me9 href="deployment-diagram">Deployment</a></li><li><a id=me10 href="timing-diagram">Timing</a></li></ul></nav><nav id=header3><ins class="adsbygoogle" style="display:inline-block;width:100%;height:40px" data-ad-client="ca-pub-5770515425712095" data-ad-slot="7824244819" data-ad-format="link" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></nav><nav id=header2></nav><nav id="side"><p><div style="height:185px;"><style>.msd{width:200px;height:185px}@media(max-width:1190px){.msd{width:180px}}</style><ins class="adsbygoogle msd" style="display:inline-block" data-ad-client="ca-pub-5770515425712095" data-ad-slot="6244156563" data-ad-format="link" data-full-width-responsive="false"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div><ul id="menuside"><li><a id=me31 href="index">Home</a></li><li><a id=me32 href="news">What's New ?</a></li><li><a id=me33 href="starting">Getting Started</a></li><li><a id=me34 href="running">Running</a></li><li><a id=me35 href="faq">F.A.Q.</a></li><li><a id=me36 href="dedication">Dedication</a></li><li><a id=me37 href="download">Download</a></li><li><a id=me38 href="https://forum.plantuml.net">Forum</a></li><li><a id=me39 href="preprocessing">Preprocessing</a></li><li><a id=me40 href="commons">Commons</a></li><li><a id=me41 href="stdlib">Standard Library</a></li><li><a id=me42 href="sitemap">Site Map</a></li><li><a id=me43 href="guide">PDF Guide</a></li><li><a id=me44 href="external-links">External Links</a></li></ul><p></nav><div id=root><div id=BC><div class="breadcrumb" style="z-index:1;position: relative;"><a href="sitemap">PlantUML</a><a href="sitemap-language-specification">Language specification</a><a href="gantt-diagram">Gantt Diagram</a><a href="#"></a></div><iframe style="z-index:1;position: relative;" src="//s.plantuml.com/ppbtn?190" allowtransparency="true" frameborder="0" scrolling="0" width="115" height="20"></iframe><iframe style="z-index:1;position: relative;" src="//s.plantuml.com/pnbtn?99" allowtransparency="true" frameborder="0" scrolling="0" width="115" height="20"></iframe><a href="https://liberapay.com/plantuml/donate"><img width=85 height=20 src="https://img.shields.io/liberapay/patrons/plantuml.svg?logo=liberapay"></a><p><style>.lha,.lhi{font-family:Helvetica,sans-serif;font-size:13px;display:inline-block;margin:0 5px 0 0}.lha a,.lhi a{width:70px;display:inline-block;text-align:center;vertical-align:middle;text-decoration:none;padding-top:2px;padding-bottom:2px;margin-top:5px}.lha a{background:#008;color:#fff}.lhi a{background:#888;color:#fff}.lha a:hover{color:#888;background:#22f}.lhi a:hover{color:#888;background:#22f}</style><table border=0 cellspacing=0 cellpadding=0 width=99%><tr><td><a rel="nofollow" href=http://wiki.plantuml.net/site/gantt-diagram>You can contribute on this page by clicking here</a> &nbsp;<a rel="nofollow" href=http://wiki.plantuml.net/site/menu>(Menu)</a></td><td align=right><div class=lha><a href="//plantuml.com/en/gantt-diagram" title="English" id=lgen>English</a></div><div class=lhi><a href="//plantuml.com/de/gantt-diagram" title="Deutsch" id=lgde>Deutsch</a></div><div class=lhi><a href="//plantuml.com/es/gantt-diagram" title="Español" id=lges>Español</a></div><div class=lhi><a href="//plantuml.com/fr/gantt-diagram" title="Français" id=lgfr>Français</a></div><div class=lhi><a href="//plantuml.com/ja/gantt-diagram" title="日本語" id=lgja>日本語</a></div><div class=lhi><a href="//plantuml.com/ko/gantt-diagram" title="한국어" id=lgko>한국어</a></div><div class=lhi><a href="//plantuml.com/ru/gantt-diagram" title="Русский" id=lgru>Русский</a></div><div class=lhi><a href="//plantuml.com/zh/gantt-diagram" title="中文" id=lgzh>中文</a></div></td></tr></table><p></div><p><a id="1"></a><p>&nbsp;<p>&nbsp; <h1>Gantt Diagram</h1><p><u>This is only a proposal and subject to change</u>. <p> You are very welcome <a href="http://forum.plantuml.net">to create a new discussion</a> on this future syntax. Your feedbacks, ideas and suggestions help us to find the right solution. <p> The Gantt is described in <em>natural</em> language, using very simple sentences (subject-verb-complement). <p><a id="2"></a><p>&nbsp;<p>&nbsp; <h2>Declaring tasks</h2><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5770515425712095" data-ad-slot="6161423756" data-ad-format="link" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script><p><style>.qsd{float:right;margin:15px 3px;width:336px;height:600px}@media(max-width:1300px){.qsd{width:300px}}@media(max-width:1250px){.qsd{width:160px}}</style><div class=qsd><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5770515425712095" data-ad-slot="8887659449" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div><p> Tasks defined using square bracket. Their durations are defined using the <code>last</code> verb: <p><div><div class=mycell><code><pre>
+@startgantt
+[Prototype design] lasts 15 days
+[Test prototype] lasts 10 days
+@endgantt
+</pre></code></div><div class=mycell><img border="2" title="simple UML timing diagram" width=241 height=49 class=scale src="//s.plantuml.com/imgw/gantt-diagram-ptqw9nih.png"/></div></div><p><a id="3"></a><p>&nbsp;<p>&nbsp; <h2>Adding constraints</h2> It is possible to add constraints between task. <p><div><div class=mycell><code><pre>
+@startgantt
+[Prototype design] lasts 15 days
+[Test prototype] lasts 10 days
+[Test prototype] starts at [Prototype design]'s end
+@endgantt
+</pre></code></div><div class=mycell><img border="2" title="simple UML timing diagram" width=401 height=49 class=scale src="//s.plantuml.com/imgw/gantt-diagram-eaafc60a.png"/></div></div><p><div><div class=mycell><code><pre>
+@startgantt
+[Prototype design] lasts 10 days
+[Code prototype] lasts 10 days
+[Write tests] lasts 5 days
+[Code prototype] starts at [Prototype design]'s end
+[Write tests] starts at [Code prototype]'s start
+@endgantt
+</pre></code></div><div class=mycell><img border="2" title="simple UML timing diagram" width=321 height=65 class=scale src="//s.plantuml.com/imgw/gantt-diagram-tyhfy4ny.png"/></div></div><p><p><a id="4"></a><p>&nbsp;<p>&nbsp; <h2>Short names</h2> It is possible to define short name for tasks with the <code>as</code> keyword. <p><div><div class=mycell><code><pre>
+@startgantt
+[Prototype design] as [D] lasts 15 days
+[Test prototype] as [T] lasts 10 days
+[T] starts at [D]'s end
+@endgantt
+</pre></code></div><div class=mycell><img border="2" title="simple UML timing diagram" width=401 height=49 class=scale src="//s.plantuml.com/imgw/gantt-diagram-nq2do7x3.png"/></div></div><p><p><a id="5"></a><p>&nbsp;<p>&nbsp; <h2>Customize colors</h2> It also possible to customize <a href="https://www.w3schools.com/colors/colors_names.asp">colors</a>. <p><div><div class=mycell><code><pre>
+@startgantt
+[Prototype design] lasts 13 days
+[Test prototype] lasts 4 days
+[Test prototype] starts at [Prototype design]'s end
+[Prototype design] is colored in Fuchsia/FireBrick 
+[Test prototype] is colored in GreenYellow/Green 
+@endgantt
+</pre></code></div><div class=mycell><img border="2" title="simple UML timing diagram" width=296 height=49 class=scale src="//s.plantuml.com/imgw/gantt-diagram-ib2llljj.png"/></div></div><p><p><a id="6"></a><p>&nbsp;<p>&nbsp; <h2>Milestone</h2> You can define Milestones using the <code>happens</code> verb. <p><div><div class=mycell><code><pre>
+@startgantt
+[Test prototype] lasts 10 days
+[Prototype completed] happens at [Test prototype]'s end
+[Setup assembly line] lasts 12 days
+[Setup assembly line] starts at [Test prototype]'s end
+@endgantt
+</pre></code></div><div class=mycell><img border="2" title="simple UML timing diagram" width=353 height=65 class=scale src="//s.plantuml.com/imgw/gantt-diagram-yhdt2kze.png"/></div></div><p><p><a id="7"></a><p>&nbsp;<p>&nbsp; <h2>Calendar</h2> You can specify a starting date for the whole project. By default, the first task starts at this date. <p><div><div class=mycell><code><pre>
+@startgantt
+Project starts the 20th of september 2017
+[Prototype design] as [TASK1] lasts 13 days
+[TASK1] is colored in Lavender/LightBlue
+@endgantt
+</pre></code></div><div class=mycell><img border="2" title="simple UML timing diagram" width=242 height=61 class=scale src="//s.plantuml.com/imgw/gantt-diagram-5tksqpve.png"/></div></div><p><a id="8"></a><p>&nbsp;<p>&nbsp; <h2>Close day</h2> It is possible to close some day. <p><div><div class=mycell><code><pre>
+@startgantt
+project starts the 2018/04/09
+saturday are closed
+sunday are closed
+2018/05/01 is closed
+2018/04/17 to 2018/04/19 is closed
+[Prototype design] lasts 14 days
+[Test prototype] lasts 4 days
+[Test prototype] starts at [Prototype design]'s end
+[Prototype design] is colored in Fuchsia/FireBrick 
+[Test prototype] is colored in GreenYellow/Green 
+@endgantt
+</pre></code></div><div class=mycell><img border="2" width=481 height=77 class=scale src="//s.plantuml.com/imgw/gantt-diagram-vkwyb44i.png"/></div></div><p><a id="9"></a><p>&nbsp;<p>&nbsp; <h2>Simplified task succession</h2> It's possible to use the <code>then</code> keyword to denote consecutive tasks. <p><div><div class=mycell><code><pre>
+@startgantt
+[Prototype design] lasts 14 days
+then [Test prototype] lasts 4 days
+then [Deploy prototype] lasts 6 days
+@endgantt
+</pre></code></div><div class=mycell><img border="2" width=389 height=65 class=scale src="//s.plantuml.com/imgw/gantt-diagram-dwzfqnco.png"/></div></div><p> You can also use arrow <code>-&gt;</code><p><p><div><div class=mycell><code><pre>
+@startgantt
+[Prototype design] lasts 14 days
+[Build prototype] lasts 4 days
+[Prepare test] lasts 6 days
+[Prototype design] -&gt; [Build prototype]
+[Prototype design] -&gt; [Prepare test]
+@endgantt
+</pre></code></div><div class=mycell><img border="2" width=321 height=65 class=scale src="//s.plantuml.com/imgw/gantt-diagram-bl7fo50c.png"/></div></div><p><p><a id="10"></a><p>&nbsp;<p>&nbsp; <h2>Separator</h2><p> You can use <code>--</code> to separate sets of tasks. <p><code><pre>
+@startgantt
+[Task1] lasts 10 days
+then [Task2] lasts 4 days
+-- Phase Two --
+then [Task3] lasts 5 days
+then [Task4] lasts 6 days
+@endgantt
+</pre></code><p><img border="2" width=401 height=97 class=scale src="//s.plantuml.com/imgw/gantt-diagram-ddyqejsk.png"/><p><a id="11"></a><p>&nbsp;<p>&nbsp; <h2>Working with resources</h2> You can affect tasks on resources using the <code>on</code> keyword and brackets for resource name. <p><code><pre>
+@startgantt
+[Task1] on {Alice} lasts 10 days
+[Task2] on {Bob:50%} lasts 2 days 
+then [Task3] on {Alice:25%} lasts 1 days
+@endgantt
+</pre></code><p><img border="2" width=171 height=129 class=scale src="//s.plantuml.com/imgw/gantt-diagram-w7qh5p61.png"/><a id="12"></a><p>&nbsp;<p>&nbsp; <h2>Complex example</h2> It also possible to use the <code>and</code> conjunction. <p> You can also add delays in constraints. <p><code><pre>
+@startgantt
+[Prototype design] lasts 13 days and is colored in Lavender/LightBlue
+[Test prototype] lasts 9 days and is colored in Coral/Green and starts 3 days after [Prototype design]'s end
+[Write tests] lasts 5 days and ends at [Prototype design]'s end
+[Hire tests writers] lasts 6 days and ends at [Write tests]'s start
+[Init and write tests report] is colored in Coral/Green
+[Init and write tests report] starts 1 day before [Test prototype]'s start and ends at [Test prototype]'s end
+@endgantt
+</pre></code><p><img border="2" title="simple UML timing diagram" width=415 height=97 class=scale src="//s.plantuml.com/imgw/gantt-diagram-fpth3e0d.png"/><p><p><p><p><hr><p><ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-format="fluid" data-ad-layout="in-article" data-ad-client="ca-pub-5770515425712095" data-ad-slot="4513300169"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script><p><footer><table width=100% border=0><tr align=center><td width=20%><iframe src="//s.plantuml.com/ppbtn?190" allowtransparency="true" frameborder="0" scrolling="0" width="115" height="20"></iframe></td><td width=20%><iframe src="//s.plantuml.com/pnbtn?99" allowtransparency="true" frameborder="0" scrolling="0" width="115" height="20"></iframe></td><td width=20%><a href="https://liberapay.com/plantuml/donate"><img width=85 height=20 src="https://img.shields.io/liberapay/patrons/plantuml.svg?logo=liberapay"></a></td><td width=20%><script id="_wau1ft">var _wau=_wau||[];_wau.push(["small","vwt5xirsg4hh","1ft"]);(function(){var a=document.createElement("script");a.async=true;a.src="//widgets.amung.us/small.js";document.getElementsByTagName("head")[0].appendChild(a)})();</script></td><td width=20%><a href=https://www.ej-technologies.com/products/jprofiler/overview.html title="JProfiler"><img width=92 height=26 alt="JProfiler" src=//s.plantuml.com/jprofiler_small.png></a></td></tr></table></footer></div><script>var sc_project=11133780;var sc_invisible=1;var sc_security="3da8bfdb";</script><script src="http://www.statcounter.com/counter/counter.js"></script></body></html>

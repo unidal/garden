@@ -1,0 +1,3 @@
+@startuml
+rectangle "Capture Information"  as CI <<$archimate/business-process>> #yellow
+@enduml

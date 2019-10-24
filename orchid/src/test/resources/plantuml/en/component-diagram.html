@@ -1,0 +1,239 @@
+<html lang="en"><head><meta name="flattr:id" content="1ew3x0"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "url": "http://plantuml.com",
+  "name": "PlantUML",
+  "sameAs" : ["https://twitter.com/plantuml","https://en.wikipedia.org/wiki/PlantUML","https://www.wikidata.org/wiki/Q18346546", "https://plus.google.com/+PlantumlPublic/"],
+  "logo": "http://plantuml.com/logo3.png",
+  "contactPoint": [{
+    "@type": "ContactPoint",
+    "email": "plantuml@gmail.com",
+    "url": "http://plantuml.com",
+    "contactType": "customer service"
+  }],
+    "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://cse.google.fr/cse/publicurl?cx=002267040093494634259:o59itilhnna&q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+    "@type": "ListItem",
+    "position": 1,
+    "item": {
+      "@id": "http://plantuml.com",
+      "name": "Home"
+    }
+  },{
+    "@type": "ListItem",
+    "position": 2,
+    "item": {
+      "@id": "http://plantuml.com/sitemap-language-specification",
+      "name": "Language specification"
+    }
+  },{
+    "@type": "ListItem",
+    "position": 3,
+    "item": {
+      "@id": "http://plantuml.com/component-diagram",
+      "name": "Component Diagram"
+  }
+  }]
+}
+</script><link rel="canonical" href="http://plantuml.com/component-diagram"/><link rel="alternate" hreflang="x-default" href="http://plantuml.com/component-diagram"/><link rel="alternate" hreflang="de" href="http://plantuml.com/de/component-diagram"/><link rel="alternate" hreflang="en" href="http://plantuml.com/component-diagram"/><link rel="alternate" hreflang="es" href="http://plantuml.com/es/component-diagram"/><link rel="alternate" hreflang="fr" href="http://plantuml.com/fr/component-diagram"/><link rel="alternate" hreflang="ja" href="http://plantuml.com/ja/component-diagram"/><link rel="alternate" hreflang="ru" href="http://plantuml.com/ru/component-diagram"/><link rel="alternate" hreflang="ko" href="http://plantuml.com/ko/component-diagram"/><link rel="alternate" hreflang="zh" href="http://plantuml.com/zh/component-diagram"/><link rel="shortcut icon" href="//s.plantuml.com/favicon.ico"/><link rel="publisher" href="https://plus.google.com/+PlantumlPublic/"/><link rel="alternate" type="application/rss+xml" title="RSS" href="http://plantuml.com/en/component-diagram.rss"><title>Component Diagram syntax and features</title><meta name="description" content="PlantUML component diagram syntax: You can define interfaces, components, relationships, groups, notes... Changing fonts and colors is also possible."/><meta property="og:type" content="article"/><meta property="og:title" content="Component Diagram syntax and features"/><meta property="og:description" content="PlantUML component diagram syntax: You can define interfaces, components, relationships, groups, notes... Changing fonts and colors is also possible."/><meta property="og:url" content="http://plantuml.com/component-diagram"/><meta property="og:site_name" content="PlantUML.com"/><meta name="twitter:image" content="http://plantuml.com/og-component-diagram"/><meta property="og:locale" content="en"/><meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Component Diagram syntax and features"/><meta name="twitter:description" content="PlantUML component diagram syntax: You can define interfaces, components, relationships, groups, notes... Changing fonts and colors is also possible."/><meta name="twitter:site" content="@PlantUML"/><meta name="twitter:creator" content="@PlantUML"/><style media="screen" type="text/css">li{margin:2px}#external li{margin:13px}.mycell{display:inline-block;vertical-align:top;padding:10px}#header{z-index:2;position:fixed;left:205px;right:0;height:40px;top:0;background:#edeff3}#header2{z-index:2;position:fixed;left:205px;right:0;height:10px;top:40px;background:#fefefe}#header3{z-index:3;position:fixed;left:1010px;right:0;height:40px;top:0;background:#edeff3}#root{margin:50px 0 0 220px;background:#fefefe}#side{position:fixed;margin-left:0;margin-top:-50px;height:100%;width:205px;padding-top:0;background:#edeff3;z-index:2}@media screen and (max-width:1190px){#header{left:185px}#header2{left:185px}#root{margin:50px 0 0 200px}#side{width:185px}}@media screen and (max-width:1010px){#side{width:181px;margin-top:0}#root{margin:0 0 0 184px}#header,#header2{visibility:hidden}}body{margin:auto;overflow-x:hidden;background:#fefefe}a{text-decoration:none;color:#0366d6}a:hover{text-decoration:underline}#menu{border:0;font-family:Helvetica,sans-serif;font-size:14px;padding:0;margin:0;width:200%}#menu li{float:left;list-style:none;text-align:center;position:relative;margin:10px 0 0 10px;border:0}#menu li a{padding:0 7px 0 7px;text-decoration:none;color:#637282}#menu a:hover{color:#cbc9c8}#menuside{border:0;font-family:Helvetica,sans-serif;font-size:14px;padding:0;margin:0}#menuside li{list-style:none;text-align:center;position:relative;padding:0;margin:13px 20px 14px 10px;border:0}#menuside li a{display:inline-block;text-decoration:none;color:#637282;width:100%}#menuside a:hover{color:#cbc9c8}#BC{z-index:0;padding-top:5px;top:35px}.breadcrumb{font-family:Helvetica,sans-serif;font-size:14px;text-align:center;display:inline-block;overflow:hidden;border-radius:5px}.breadcrumb a{text-decoration:none;outline:0;display:block;float:left;font-size:12px;line-height:24px;color:#373f49;padding:0 10px 0 35px;background:#f0f1f1;background:linear-gradient(#f0f1f1,#c6d2d2);position:relative}.breadcrumb a:first-child{padding-left:21px;border-radius:5px 0 0 5px}.breadcrumb a:first-child:before{left:14px}.breadcrumb a:last-child{visibility:hidden}.breadcrumb a.active,.breadcrumb a:hover{color:#000;background:#c6d2d2;background:linear-gradient(#e3e4e4,#b8c7c7)}.breadcrumb a.active:after,.breadcrumb a:hover:after{background:#c6d2d2;background:linear-gradient(135deg,#e3e4e4,#b8c7c7)}.breadcrumb a:after{content:'';position:absolute;top:0;right:-12px;width:24px;height:24px;transform:scale(0.707) rotate(45deg);z-index:1;background:#f0f1f1;background:linear-gradient(135deg,#f0f1f1,#c6d2d2);box-shadow:2px -2px 0 2px rgba(0,0,0,0.1),3px -3px 0 2px rgba(255,255,255,0.1);border-radius:0 5px 0 50px}.breadcrumb a:last-child:after{content:none;visibility:hidden}.lga,.lga a,.lgi,.lgi a{font-family:Helvetica,sans-serif;font-size:13px;text-align:center;color:#fff;padding:0 5px;margin:0}.lga,.lga a{background-color:#008}.lgi,.lgi a{background-color:#888}.lga:hover,.lga:hover a{text-decoration:none;color:#BBB}.lgi:hover,.lgi:hover a{text-decoration:none;color:#CCC}</style><script async src="https://www.googletagmanager.com/gtag/js?id=UA-16629806-3"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date());gtag("config","UA-16629806-3");</script><script>(function(){var b=document.createElement("script"),a=document.getElementsByTagName("script")[0];b.type="text/javascript";b.async=true;b.src="http://api.flattr.com/js/0.6/load.js?mode=auto";a.parentNode.insertBefore(b,a)})();var llg="en";</script><script async src="//s.plantuml.com/lg3.js"></script><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script></head><body><nav id=header><ul id="menu"><li><a id=me1 href="sequence-diagram">Sequence</a></li><li><a id=me2 href="use-case-diagram">Use Case</a></li><li><a id=me3 href="class-diagram">Class</a></li><li><a id=me4 href="activity-diagram-legacy">Activity</a></li><li><a id=me5 href="activity-diagram-beta">Activity <img border=0 width=20 height=8 src=//s.plantuml.com/beta-icon.gif></a></li><li><a id=me6 href="component-diagram">Component</a></li><li><a id=me7 href="state-diagram">State</a></li><li><a id=me8 href="object-diagram">Object</a></li><li><a id=me9 href="deployment-diagram">Deployment</a></li><li><a id=me10 href="timing-diagram">Timing</a></li></ul></nav><nav id=header3><ins class="adsbygoogle" style="display:inline-block;width:100%;height:40px" data-ad-client="ca-pub-5770515425712095" data-ad-slot="7824244819" data-ad-format="link" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></nav><nav id=header2></nav><nav id="side"><p><div style="height:185px;"><style>.msd{width:200px;height:185px}@media(max-width:1190px){.msd{width:180px}}</style><ins class="adsbygoogle msd" style="display:inline-block" data-ad-client="ca-pub-5770515425712095" data-ad-slot="6244156563" data-ad-format="link" data-full-width-responsive="false"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div><ul id="menuside"><li><a id=me31 href="index">Home</a></li><li><a id=me32 href="news">What's New ?</a></li><li><a id=me33 href="starting">Getting Started</a></li><li><a id=me34 href="running">Running</a></li><li><a id=me35 href="faq">F.A.Q.</a></li><li><a id=me36 href="dedication">Dedication</a></li><li><a id=me37 href="download">Download</a></li><li><a id=me38 href="https://forum.plantuml.net">Forum</a></li><li><a id=me39 href="preprocessing">Preprocessing</a></li><li><a id=me40 href="commons">Commons</a></li><li><a id=me41 href="stdlib">Standard Library</a></li><li><a id=me42 href="sitemap">Site Map</a></li><li><a id=me43 href="guide">PDF Guide</a></li><li><a id=me44 href="external-links">External Links</a></li></ul><p></nav><div id=root><div id=BC><div class="breadcrumb" style="z-index:1;position: relative;"><a href="sitemap">PlantUML</a><a href="sitemap-language-specification">Language specification</a><a href="component-diagram">Component Diagram</a><a href="#"></a></div><iframe style="z-index:1;position: relative;" src="//s.plantuml.com/ppbtn?190" allowtransparency="true" frameborder="0" scrolling="0" width="115" height="20"></iframe><iframe style="z-index:1;position: relative;" src="//s.plantuml.com/pnbtn?99" allowtransparency="true" frameborder="0" scrolling="0" width="115" height="20"></iframe><a href="https://liberapay.com/plantuml/donate"><img width=85 height=20 src="https://img.shields.io/liberapay/patrons/plantuml.svg?logo=liberapay"></a><p><style>.lha,.lhi{font-family:Helvetica,sans-serif;font-size:13px;display:inline-block;margin:0 5px 0 0}.lha a,.lhi a{width:70px;display:inline-block;text-align:center;vertical-align:middle;text-decoration:none;padding-top:2px;padding-bottom:2px;margin-top:5px}.lha a{background:#008;color:#fff}.lhi a{background:#888;color:#fff}.lha a:hover{color:#888;background:#22f}.lhi a:hover{color:#888;background:#22f}</style><table border=0 cellspacing=0 cellpadding=0 width=99%><tr><td><a rel="nofollow" href=http://wiki.plantuml.net/site/component-diagram>You can contribute on this page by clicking here</a> &nbsp;<a rel="nofollow" href=http://wiki.plantuml.net/site/menu>(Menu)</a></td><td align=right><div class=lha><a href="//plantuml.com/en/component-diagram" title="English" id=lgen>English</a></div><div class=lhi><a href="//plantuml.com/de/component-diagram" title="Deutsch" id=lgde>Deutsch</a></div><div class=lhi><a href="//plantuml.com/es/component-diagram" title="Español" id=lges>Español</a></div><div class=lhi><a href="//plantuml.com/fr/component-diagram" title="Français" id=lgfr>Français</a></div><div class=lhi><a href="//plantuml.com/ja/component-diagram" title="日本語" id=lgja>日本語</a></div><div class=lhi><a href="//plantuml.com/ko/component-diagram" title="한국어" id=lgko>한국어</a></div><div class=lhi><a href="//plantuml.com/ru/component-diagram" title="Русский" id=lgru>Русский</a></div><div class=lhi><a href="//plantuml.com/zh/component-diagram" title="中文" id=lgzh>中文</a></div></td></tr></table><p></div><p><a id="1"></a><p>&nbsp;<p>&nbsp; <h1>Component Diagram</h1><p><p> Let's have few examples : <a id="2"></a><p>&nbsp;<p>&nbsp; <h2>Components</h2><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5770515425712095" data-ad-slot="6161423756" data-ad-format="link" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script><p><style>.qsd{float:right;margin:15px 3px;width:336px;height:600px}@media(max-width:1300px){.qsd{width:300px}}@media(max-width:1250px){.qsd{width:160px}}</style><div class=qsd><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5770515425712095" data-ad-slot="8887659449" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div> Components must be bracketed. <p> You can also use the <code>component</code> keyword to define a component. And you can define an alias, using the <code>as</code> keyword. This alias will be used latter, when defining relations. <div><div class=mycell><code><pre>
+@startuml
+
+[First component]
+[Another component] as Comp2  
+component Comp3
+component [Last\ncomponent] as Comp4
+
+@enduml
+</pre></code></div><div class=mycell><img border="2" title="foo" width=317 height=171 class=scale src="//s.plantuml.com/imgw/component-diagram-alucfrm2.png"/></div></div><p><a id="3"></a><p>&nbsp;<p>&nbsp; <h2>Interfaces</h2><p> Interface can be defined using the <code>()</code> symbol (because this looks like a circle). <p> You can also use the <code>interface</code> keyword to define an interface. And you can define an alias, using the <code>as</code> keyword. This alias will be used latter, when defining relations. <p> We will see latter that interface definition is optional. <div><div class=mycell><code><pre>
+@startuml
+
+() "First Interface"
+() "Another interface" as Interf2
+interface Interf3
+interface "Last\ninterface" as Interf4
+
+@enduml
+</pre></code></div><div class=mycell><img border="2" title="foo" width=270 height=237 class=scale src="//s.plantuml.com/imgw/component-diagram-ww6h3vjd.png"/></div></div><p><a id="4"></a><p>&nbsp;<p>&nbsp; <h2>Basic example</h2><p><p><p> Links between elements are made using combinations of dotted line (<code>..</code>), straight line (<code>--</code>), and arrows (<code>--&gt;</code>) symbols. <div><div class=mycell><code><pre>
+@startuml
+
+DataAccess - [First Component] 
+[First Component] ..&gt; HTTP : use
+
+@enduml
+</pre></code></div><div class=mycell><img border="2" title="foo" width=223 height=198 class=scale src="//s.plantuml.com/imgw/component-diagram-v38dpj8e.png"/></div></div><p><a id="5"></a><p>&nbsp;<p>&nbsp; <h2>Using notes</h2><p> You can use the <code>note left of</code> , <code>note right of</code> , <code>note top of</code> , <code>note bottom of</code> keywords to define notes related to a single object. <p><p> A note can be also define alone with the <code>note</code> keywords, then linked to other objects using the <code>..</code> symbol. <p><div><div class=mycell><code><pre>
+@startuml
+
+interface "Data Access" as DA
+
+DA - [First Component] 
+[First Component] ..&gt; HTTP : use
+
+note left of HTTP : Web Service only
+
+note right of [First Component]
+  A note can also
+  be on several lines
+end note
+
+@enduml
+</pre></code></div><div class=mycell><img border="2" title="foo" width=409 height=186 class=scale src="//s.plantuml.com/imgw/component-diagram-8xmkottg.png"/></div></div><p><a id="6"></a><p>&nbsp;<p>&nbsp; <h2>Grouping Components</h2><p> You can use several keywords to group components and interfaces together: <ul><li><code>package</code></li><li><code>node</code></li><li><code>folder</code></li><li><code>frame</code></li><li><code>cloud</code></li><li><code>database</code></li></ul><p><div><div class=mycell><code><pre>
+@startuml
+
+package "Some Group" {
+  HTTP - [First Component]
+  [Another Component]
+}
+ 
+node "Other Groups" {
+  FTP - [Second Component]
+  [First Component] --&gt; FTP
+} 
+
+cloud {
+  [Example 1]
+}
+
+
+database "MySql" {
+  folder "This is my folder" {
+	[Folder 3]
+  }
+  frame "Foo" {
+	[Frame 4]
+  }
+}
+
+
+[Another Component] --&gt; [Example 1]
+[Example 1] --&gt; [Folder 3]
+[Folder 3] --&gt; [Frame 4]
+
+@enduml
+</pre></code></div><div class=mycell><img border="2" title="foo" width=460 height=555 class=scale src="//s.plantuml.com/imgw/component-diagram-qb1plsmg.png"/></div></div><p><a id="7"></a><p>&nbsp;<p>&nbsp; <h2>Changing arrows direction</h2><p><p> By default, links between classes have two dashes <code>--</code> and are vertically oriented. It is possible to use horizontal link by putting a single dash (or dot) like this: <p><div><div class=mycell><code><pre>
+@startuml
+[Component] --&gt; Interface1
+[Component] -&gt; Interface2
+@enduml
+</pre></code></div><div class=mycell><img border="2" title="foo" width=186 height=180 class=scale src="//s.plantuml.com/imgw/component-diagram-2ezluoyd.png"/></div></div><p> You can also change directions by reversing the link: <p><div><div class=mycell><code><pre>
+@startuml
+Interface1 &lt;-- [Component]
+Interface2 &lt;- [Component]
+@enduml
+</pre></code></div><div class=mycell><img border="2" title="foo" width=185 height=191 class=scale src="//s.plantuml.com/imgw/component-diagram-rotgoisj.png"/></div></div><p> It is also possible to change arrow direction by adding <code>left</code>, <code>right</code>, <code>up</code> or <code>down</code> keywords inside the arrow: <p><div><div class=mycell><code><pre>
+@startuml
+[Component] -left-&gt; left 
+[Component] -right-&gt; right 
+[Component] -up-&gt; up
+[Component] -down-&gt; down
+@enduml
+</pre></code></div><div class=mycell><img border="2" title="foo" width=222 height=300 class=scale src="//s.plantuml.com/imgw/component-diagram-melx0tzk.png"/></div></div><p> You can shorten the arrow by using only the first character of the direction (for example, <code>-d-</code> instead of <code>-down-</code>) or the two first characters (<code>-do-</code>). <p> Please note that you should not abuse this functionality : <em>Graphviz</em> gives usually good results without tweaking. <p><a id="8"></a><p>&nbsp;<p>&nbsp; <h2>Use UML2 notation</h2><p> The <code>skinparam componentStyle uml2</code> command is used to switch to UML2 notation. <div><div class=mycell><code><pre>
+@startuml
+skinparam componentStyle uml2
+
+interface "Data Access" as DA
+
+DA - [First Component] 
+[First Component] ..&gt; HTTP : use
+
+@enduml
+</pre></code></div><div class=mycell><img border="2" title="foo" width=245 height=208 class=scale src="//s.plantuml.com/imgw/component-diagram-vhm6kccu.png"/></div></div><p><a id="9"></a><p>&nbsp;<p>&nbsp; <h2>Long description</h2> It is possible to put description on several lines using square brackets. <div><div class=mycell><code><pre>
+@startuml
+component comp1 [
+This component
+has a long comment
+on several lines
+]
+@enduml
+</pre></code></div><div class=mycell><img border="2" title="foo" width=184 height=99 class=scale src="//s.plantuml.com/imgw/component-diagram-8l4vzgar.png"/></div></div><a id="10"></a><p>&nbsp;<p>&nbsp; <h2>Individual colors</h2><p><p> You can specify a color after component definition. <div><div class=mycell><code><pre>
+@startuml
+component  [Web Server] #Yellow
+@enduml
+</pre></code></div><div class=mycell><img border="2" title="foo" width=112 height=54 class=scale src="//s.plantuml.com/imgw/component-diagram-zio4zpt1.png"/></div></div><p><p><a id="11"></a><p>&nbsp;<p>&nbsp; <h2>Using Sprite in Stereotype</h2> You can use sprites within stereotype components. <div><div class=mycell><code><pre>
+@startuml
+sprite $businessProcess [16x16/16] {
+FFFFFFFFFFFFFFFF
+FFFFFFFFFFFFFFFF
+FFFFFFFFFFFFFFFF
+FFFFFFFFFFFFFFFF
+FFFFFFFFFF0FFFFF
+FFFFFFFFFF00FFFF
+FF00000000000FFF
+FF000000000000FF
+FF00000000000FFF
+FFFFFFFFFF00FFFF
+FFFFFFFFFF0FFFFF
+FFFFFFFFFFFFFFFF
+FFFFFFFFFFFFFFFF
+FFFFFFFFFFFFFFFF
+FFFFFFFFFFFFFFFF
+FFFFFFFFFFFFFFFF
+}
+
+
+rectangle " End to End\nbusiness process" &lt;&lt;$businessProcess&gt;&gt; {
+ rectangle "inner process 1" &lt;&lt;$businessProcess&gt;&gt; as src
+ rectangle "inner process 2" &lt;&lt;$businessProcess&gt;&gt; as tgt
+ src -&gt; tgt
+}
+@enduml
+</pre></code></div><div class=mycell><img border="2" title="foo" width=335 height=174 class=scale src="//s.plantuml.com/imgw/component-diagram-mt1qo9js.png"/></div></div><p><a id="12"></a><p>&nbsp;<p>&nbsp; <h2>Skinparam</h2><p><p><p> You can use the <code><a href="skinparam">skinparam</a></code> command to change colors and fonts for the drawing. <p> You can use this command : <ul><li> In the diagram definition, like any other commands,</li><li> In an <a href="preprocessing">included file</a>,</li><li> In a configuration file, provided in the <a href="command-line">command line</a> or the <a href="ant-task">ANT task</a>.</li></ul><p> You can define specific color and fonts for stereotyped components and interfaces. <p><div><div class=mycell><code><pre>
+@startuml
+
+skinparam interface {
+  backgroundColor RosyBrown
+  borderColor orange
+}
+
+skinparam component {
+  FontSize 13
+  BackgroundColor&lt;&lt;Apache&gt;&gt; Red
+  BorderColor&lt;&lt;Apache&gt;&gt; #FF6655
+  FontName Courier
+  BorderColor black
+  BackgroundColor gold
+  ArrowFontName Impact
+  ArrowColor #FF6655
+  ArrowFontColor #777777
+}
+
+() "Data Access" as DA
+
+DA - [First Component] 
+[First Component] ..&gt; () HTTP : use
+HTTP - [Web Server] &lt;&lt; Apache &gt;&gt;
+
+@enduml
+</pre></code></div><div class=mycell><img border="2" title="foo" width=313 height=184 class=scale src="//s.plantuml.com/imgw/component-diagram-xgtubdyi.png"/></div></div><p><div><div class=mycell><code><pre>
+@startuml
+[AA] &lt;&lt;static lib&gt;&gt;
+[BB] &lt;&lt;shared lib&gt;&gt;
+[CC] &lt;&lt;static lib&gt;&gt;
+
+node node1
+node node2 &lt;&lt;shared node&gt;&gt;
+database Production
+
+skinparam component {
+	backgroundColor&lt;&lt;static lib&gt;&gt; DarkKhaki
+	backgroundColor&lt;&lt;shared lib&gt;&gt; Green
+}
+
+skinparam node {
+	borderColor Green
+	backgroundColor Yellow
+	backgroundColor&lt;&lt;shared node&gt;&gt; Magenta
+}
+skinparam databaseBackgroundColor Aqua
+
+@enduml
+</pre></code></div><div class=mycell><img border="2" title="foo" width=394 height=199 class=scale src="//s.plantuml.com/imgw/component-diagram-xtjkbl9e.png"/></div></div><p><hr><p><ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-format="fluid" data-ad-layout="in-article" data-ad-client="ca-pub-5770515425712095" data-ad-slot="4513300169"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script><p><footer><table width=100% border=0><tr align=center><td width=20%><iframe src="//s.plantuml.com/ppbtn?190" allowtransparency="true" frameborder="0" scrolling="0" width="115" height="20"></iframe></td><td width=20%><iframe src="//s.plantuml.com/pnbtn?99" allowtransparency="true" frameborder="0" scrolling="0" width="115" height="20"></iframe></td><td width=20%><a href="https://liberapay.com/plantuml/donate"><img width=85 height=20 src="https://img.shields.io/liberapay/patrons/plantuml.svg?logo=liberapay"></a></td><td width=20%><script id="_wau1ft">var _wau=_wau||[];_wau.push(["small","vwt5xirsg4hh","1ft"]);(function(){var a=document.createElement("script");a.async=true;a.src="//widgets.amung.us/small.js";document.getElementsByTagName("head")[0].appendChild(a)})();</script></td><td width=20%><a href=https://www.ej-technologies.com/products/jprofiler/overview.html title="JProfiler"><img width=92 height=26 alt="JProfiler" src=//s.plantuml.com/jprofiler_small.png></a></td></tr></table></footer></div><script>var sc_project=11133780;var sc_invisible=1;var sc_security="3da8bfdb";</script><script src="http://www.statcounter.com/counter/counter.js"></script></body></html>

@@ -1,0 +1,205 @@
+<html lang="zh"><head><meta name="flattr:id" content="1ew3x0"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "url": "http://plantuml.com",
+  "name": "PlantUML",
+  "sameAs" : ["https://twitter.com/plantuml","https://en.wikipedia.org/wiki/PlantUML","https://www.wikidata.org/wiki/Q18346546", "https://plus.google.com/+PlantumlPublic/"],
+  "logo": "http://plantuml.com/logo3.png",
+  "contactPoint": [{
+    "@type": "ContactPoint",
+    "email": "plantuml@gmail.com",
+    "url": "http://plantuml.com",
+    "contactType": "customer service"
+  }],
+    "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://cse.google.fr/cse/publicurl?cx=002267040093494634259:o59itilhnna&q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+    "@type": "ListItem",
+    "position": 1,
+    "item": {
+      "@id": "http://plantuml.com",
+      "name": "Home"
+    }
+  },{
+    "@type": "ListItem",
+    "position": 2,
+    "item": {
+      "@id": "http://plantuml.com/sitemap-language-specification",
+      "name": "Language specification"
+    }
+  },{
+    "@type": "ListItem",
+    "position": 3,
+    "item": {
+      "@id": "http://plantuml.com/state-diagram",
+      "name": "State Diagram"
+  }
+  }]
+}
+</script><link rel="canonical" href="http://plantuml.com/zh/state-diagram"/><link rel="alternate" hreflang="x-default" href="http://plantuml.com/state-diagram"/><link rel="alternate" hreflang="de" href="http://plantuml.com/de/state-diagram"/><link rel="alternate" hreflang="en" href="http://plantuml.com/state-diagram"/><link rel="alternate" hreflang="es" href="http://plantuml.com/es/state-diagram"/><link rel="alternate" hreflang="fr" href="http://plantuml.com/fr/state-diagram"/><link rel="alternate" hreflang="ja" href="http://plantuml.com/ja/state-diagram"/><link rel="alternate" hreflang="ru" href="http://plantuml.com/ru/state-diagram"/><link rel="alternate" hreflang="ko" href="http://plantuml.com/ko/state-diagram"/><link rel="alternate" hreflang="zh" href="http://plantuml.com/zh/state-diagram"/><link rel="shortcut icon" href="//s.plantuml.com/favicon.ico"/><link rel="publisher" href="https://plus.google.com/+PlantumlPublic/"/><link rel="alternate" type="application/rss+xml" title="RSS" href="http://plantuml.com/zh/state-diagram.rss"><title>状态图的语法和功能</title><meta name="description" content="PlantUML状态图语法：你可以简单的状态，复合状态，并发状态，关系，笔记...改变字体和颜色也有可能。"/><meta property="og:type" content="article"/><meta property="og:title" content="状态图的语法和功能"/><meta property="og:description" content="PlantUML状态图语法：你可以简单的状态，复合状态，并发状态，关系，笔记...改变字体和颜色也有可能。"/><meta property="og:url" content="http://plantuml.com/zh/state-diagram"/><meta property="og:site_name" content="PlantUML.com"/><meta name="twitter:image" content="http://plantuml.com/og-state-diagram"/><meta property="og:locale" content="zh"/><meta name="twitter:card" content="summary"/><meta name="twitter:title" content="状态图的语法和功能"/><meta name="twitter:description" content="PlantUML状态图语法：你可以简单的状态，复合状态，并发状态，关系，笔记...改变字体和颜色也有可能。"/><meta name="twitter:site" content="@PlantUML"/><meta name="twitter:creator" content="@PlantUML"/><style media="screen" type="text/css">li{margin:2px}#external li{margin:13px}.mycell{display:inline-block;vertical-align:top;padding:10px}#header{z-index:2;position:fixed;left:205px;right:0;height:40px;top:0;background:#edeff3}#header2{z-index:2;position:fixed;left:205px;right:0;height:10px;top:40px;background:#fefefe}#header3{z-index:3;position:fixed;left:910px;right:0;height:40px;top:0;background:#edeff3}#root{margin:50px 0 0 220px;background:#fefefe}#side{position:fixed;margin-left:0;margin-top:-50px;height:100%;width:205px;padding-top:0;background:#edeff3;z-index:2}@media screen and (max-width:1190px){#header{left:185px}#header2{left:185px}#root{margin:50px 0 0 200px}#side{width:185px}}@media screen and (max-width:1010px){#side{width:181px;margin-top:0}#root{margin:0 0 0 184px}#header,#header2{visibility:hidden}}body{margin:auto;overflow-x:hidden;background:#fefefe}a{text-decoration:none;color:#0366d6}a:hover{text-decoration:underline}#menu{border:0;font-family:Helvetica,sans-serif;font-size:14px;padding:0;margin:0;width:200%}#menu li{float:left;list-style:none;text-align:center;position:relative;margin:10px 0 0 10px;border:0}#menu li a{padding:0 7px 0 7px;text-decoration:none;color:#637282}#menu a:hover{color:#cbc9c8}#menuside{border:0;font-family:Helvetica,sans-serif;font-size:14px;padding:0;margin:0}#menuside li{list-style:none;text-align:center;position:relative;padding:0;margin:13px 20px 14px 10px;border:0}#menuside li a{display:inline-block;text-decoration:none;color:#637282;width:100%}#menuside a:hover{color:#cbc9c8}#BC{z-index:0;padding-top:5px;top:35px}.breadcrumb{font-family:Helvetica,sans-serif;font-size:14px;text-align:center;display:inline-block;overflow:hidden;border-radius:5px}.breadcrumb a{text-decoration:none;outline:0;display:block;float:left;font-size:12px;line-height:24px;color:#373f49;padding:0 10px 0 35px;background:#f0f1f1;background:linear-gradient(#f0f1f1,#c6d2d2);position:relative}.breadcrumb a:first-child{padding-left:21px;border-radius:5px 0 0 5px}.breadcrumb a:first-child:before{left:14px}.breadcrumb a:last-child{visibility:hidden}.breadcrumb a.active,.breadcrumb a:hover{color:#000;background:#c6d2d2;background:linear-gradient(#e3e4e4,#b8c7c7)}.breadcrumb a.active:after,.breadcrumb a:hover:after{background:#c6d2d2;background:linear-gradient(135deg,#e3e4e4,#b8c7c7)}.breadcrumb a:after{content:'';position:absolute;top:0;right:-12px;width:24px;height:24px;transform:scale(0.707) rotate(45deg);z-index:1;background:#f0f1f1;background:linear-gradient(135deg,#f0f1f1,#c6d2d2);box-shadow:2px -2px 0 2px rgba(0,0,0,0.1),3px -3px 0 2px rgba(255,255,255,0.1);border-radius:0 5px 0 50px}.breadcrumb a:last-child:after{content:none;visibility:hidden}.lga,.lga a,.lgi,.lgi a{font-family:Helvetica,sans-serif;font-size:13px;text-align:center;color:#fff;padding:0 5px;margin:0}.lga,.lga a{background-color:#008}.lgi,.lgi a{background-color:#888}.lga:hover,.lga:hover a{text-decoration:none;color:#BBB}.lgi:hover,.lgi:hover a{text-decoration:none;color:#CCC}</style><script async src="https://www.googletagmanager.com/gtag/js?id=UA-16629806-3"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date());gtag("config","UA-16629806-3");</script><script>(function(){var b=document.createElement("script"),a=document.getElementsByTagName("script")[0];b.type="text/javascript";b.async=true;b.src="http://api.flattr.com/js/0.6/load.js?mode=auto";a.parentNode.insertBefore(b,a)})();var llg="zh";</script><script async src="//s.plantuml.com/lg3.js"></script><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script></head><body><nav id=header><ul id="menu"><li><a id=me1 href="sequence-diagram">时序图</a></li><li><a id=me2 href="use-case-diagram">用例图</a></li><li><a id=me3 href="class-diagram">类图</a></li><li><a id=me4 href="activity-diagram-legacy">活动图</a></li><li><a id=me5 href="activity-diagram-beta">活动图 <img border=0 width=20 height=8 src=//s.plantuml.com/beta-icon.gif></a></li><li><a id=me6 href="component-diagram">组件图</a></li><li><a id=me7 href="state-diagram">状态图</a></li><li><a id=me8 href="object-diagram">对象图</a></li><li><a id=me9 href="deployment-diagram">部署图</a></li><li><a id=me10 href="timing-diagram">定时图</a></li></ul></nav><nav id=header3><ins class="adsbygoogle" style="display:inline-block;width:100%;height:40px" data-ad-client="ca-pub-5770515425712095" data-ad-slot="7824244819" data-ad-format="link" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></nav><nav id=header2></nav><nav id="side"><p><div style="height:185px;"><style>.msd{width:200px;height:185px}@media(max-width:1190px){.msd{width:180px}}</style><ins class="adsbygoogle msd" style="display:inline-block" data-ad-client="ca-pub-5770515425712095" data-ad-slot="6244156563" data-ad-format="link" data-full-width-responsive="false"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div><ul id="menuside"><li><a id=me31 href="index">主页</a></li><li><a id=me32 href="news">新鲜</a></li><li><a id=me33 href="starting">入门指南</a></li><li><a id=me34 href="running">使用</a></li><li><a id=me35 href="faq">常见问题</a></li><li><a id=me36 href="dedication">贡献</a></li><li><a id=me37 href="download">下载</a></li><li><a id=me38 href="https://forum.plantuml.net">论坛 </a></li><li><a id=me39 href="preprocessing">预处理</a></li><li><a id=me40 href="commons">通用命令</a></li><li><a id=me41 href="stdlib">标准库</a></li><li><a id=me42 href="sitemap">网站地图</a></li><li><a id=me43 href="guide">用户指南(PDF)</a></li><li><a id=me44 href="external-links">外部链接</a></li></ul><p></nav><div id=root><div id=BC><div class="breadcrumb" style="z-index:1;position: relative;"><a href="sitemap">PlantUML</a><a href="sitemap-language-specification">Language specification</a><a href="state-diagram">State Diagram</a><a href="#"></a></div><iframe style="z-index:1;position: relative;" src="//s.plantuml.com/ppbtn?190" allowtransparency="true" frameborder="0" scrolling="0" width="115" height="20"></iframe><iframe style="z-index:1;position: relative;" src="//s.plantuml.com/pnbtn?99" allowtransparency="true" frameborder="0" scrolling="0" width="115" height="20"></iframe><a href="https://liberapay.com/plantuml/donate"><img width=85 height=20 src="https://img.shields.io/liberapay/patrons/plantuml.svg?logo=liberapay"></a><p><style>.lha,.lhi{font-family:Helvetica,sans-serif;font-size:13px;display:inline-block;margin:0 5px 0 0}.lha a,.lhi a{width:70px;display:inline-block;text-align:center;vertical-align:middle;text-decoration:none;padding-top:2px;padding-bottom:2px;margin-top:5px}.lha a{background:#008;color:#fff}.lhi a{background:#888;color:#fff}.lha a:hover{color:#888;background:#22f}.lhi a:hover{color:#888;background:#22f}</style><table border=0 cellspacing=0 cellpadding=0 width=99%><tr><td><a rel="nofollow" href=translate-state-diagram>您可以点击此处在此页面上做出贡献</a> &nbsp;<a rel="nofollow" href=http://wiki.plantuml.net/zh/site/menu>(Menu)</a></td><td align=right><div class=lhi><a href="//plantuml.com/en/state-diagram" title="English" id=lgen>English</a></div><div class=lhi><a href="//plantuml.com/de/state-diagram" title="Deutsch" id=lgde>Deutsch</a></div><div class=lhi><a href="//plantuml.com/es/state-diagram" title="Español" id=lges>Español</a></div><div class=lhi><a href="//plantuml.com/fr/state-diagram" title="Français" id=lgfr>Français</a></div><div class=lhi><a href="//plantuml.com/ja/state-diagram" title="日本語" id=lgja>日本語</a></div><div class=lhi><a href="//plantuml.com/ko/state-diagram" title="한국어" id=lgko>한국어</a></div><div class=lhi><a href="//plantuml.com/ru/state-diagram" title="Русский" id=lgru>Русский</a></div><div class=lha><a href="//plantuml.com/zh/state-diagram" title="中文" id=lgzh>中文</a></div></td></tr></table><p></div><p><a id="1"></a><p>&nbsp;<p>&nbsp; <h1>状态图</h1><p><a id="2"></a><p>&nbsp;<p>&nbsp; <h2>简单状态</h2><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5770515425712095" data-ad-slot="6161423756" data-ad-format="link" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script><p><style>.qsd{float:right;margin:15px 3px;width:336px;height:600px}@media(max-width:1300px){.qsd{width:300px}}@media(max-width:1250px){.qsd{width:160px}}</style><div class=qsd><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5770515425712095" data-ad-slot="8887659449" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div> 使用(<code>[*]</code>)开始和结束状态图。 <p> 使用<code>--&gt;</code>添加箭头。 <p><div><div class=mycell><code><pre>
+@startuml
+
+[*] --&gt; State1
+State1 --&gt; [*]
+State1 : this is a string
+State1 : this is another string
+
+State1 -&gt; State2
+State2 --&gt; [*]
+
+@enduml
+</pre></code></div><div class=mycell><img border="2" title="foo" width=245 height=246 class=scale src="//s.plantuml.com/imgw/state-diagram-qthtq5zh.png"/></div></div><p><a id="3"></a><p>&nbsp;<p>&nbsp; <h2>Change state rendering</h2><p> You can use <code>hide empty description</code> to render state as simple box. <p><div><div class=mycell><code><pre>
+@startuml
+hide empty description
+[*] --&gt; State1
+State1 --&gt; [*]
+State1 : this is a string
+State1 : this is another string
+
+State1 -&gt; State2
+State2 --&gt; [*]
+@enduml
+</pre></code></div><div class=mycell><img border="2" title="foo" width=234 height=246 class=scale src="//s.plantuml.com/imgw/state-diagram-cqjbleyc.png"/></div></div><p><a id="4"></a><p>&nbsp;<p>&nbsp; <h2>合成状态</h2><p><p> 一个状态也可能是合成的，必须使用关键字<code>state</code>和花括号来定义合成状态。 <p><div><div class=mycell><code><pre>
+@startuml
+scale 350 width
+[*] --&gt; NotShooting
+
+state NotShooting {
+  [*] --&gt; Idle
+  Idle --&gt; Configuring : EvConfig
+  Configuring --&gt; Idle : EvConfig
+}
+
+state Configuring {
+  [*] --&gt; NewValueSelection
+  NewValueSelection --&gt; NewValuePreview : EvNewValue
+  NewValuePreview --&gt; NewValueSelection : EvNewValueRejected
+  NewValuePreview --&gt; NewValueSelection : EvNewValueSaved
+  
+  state NewValuePreview {
+	 State1 -&gt; State2
+  }
+  
+}
+@enduml
+</pre></code></div><div class=mycell><img border="2" title="foo" width=344 height=586 class=scale src="//s.plantuml.com/imgw/state-diagram-28wesd1b.png"/></div></div><p><a id="5"></a><p>&nbsp;<p>&nbsp; <h2>长名字</h2><p><p> 也可以使用关键字<code>state</code>定义长名字状态。 <p><div><div class=mycell><code><pre>
+@startuml
+scale 600 width
+
+[*] -&gt; State1
+State1 --&gt; State2 : Succeeded
+State1 --&gt; [*] : Aborted
+State2 --&gt; State3 : Succeeded
+State2 --&gt; [*] : Aborted
+state State3 {
+  state "Accumulate Enough Data\nLong State Name" as long1
+  long1 : Just a test
+  [*] --&gt; long1
+  long1 --&gt; long1 : New Data
+  long1 --&gt; ProcessData : Enough Data
+}
+State3 --&gt; State3 : Failed
+State3 --&gt; [*] : Succeeded / Save Result
+State3 --&gt; [*] : Aborted
+ 
+@enduml
+</pre></code></div><div class=mycell><img border="2" title="foo" width=630 height=653 class=scale src="//s.plantuml.com/imgw/state-diagram-qrkqiqdt.png"/></div></div><p><a id="6"></a><p>&nbsp;<p>&nbsp; <h2>并发状态</h2><p><p> 用<code>--</code> or <code>||</code>作为分隔符来合成并发状态。 <div><div class=mycell><code><pre>
+@startuml
+[*] --&gt; Active
+
+state Active {
+  [*] -&gt; NumLockOff
+  NumLockOff --&gt; NumLockOn : EvNumLockPressed
+  NumLockOn --&gt; NumLockOff : EvNumLockPressed
+  --
+  [*] -&gt; CapsLockOff
+  CapsLockOff --&gt; CapsLockOn : EvCapsLockPressed
+  CapsLockOn --&gt; CapsLockOff : EvCapsLockPressed
+  --
+  [*] -&gt; ScrollLockOff
+  ScrollLockOff --&gt; ScrollLockOn : EvCapsLockPressed
+  ScrollLockOn --&gt; ScrollLockOff : EvCapsLockPressed
+}
+
+@enduml
+</pre></code></div><div class=mycell><img border="2" title="foo" width=326 height=651 class=scale src="//s.plantuml.com/imgw/state-diagram-edzi4vqi.png"/></div></div><p><a id="7"></a><p>&nbsp;<p>&nbsp; <h2>箭头方向</h2><p> 使用<code>-&gt;</code>定义水平箭头，也可以使用下列格式强制设置箭头方向： <ul><li><code>-down-&gt;</code> (default arrow)</li><li><code>-right-&gt;</code> or <code>-&gt;</code></li><li><code>-left-&gt;</code></li><li><code>-up-&gt;</code></li></ul><p><div><div class=mycell><code><pre>
+@startuml
+
+[*] -up-&gt; First
+First -right-&gt; Second
+Second --&gt; Third
+Third -left-&gt; Last
+
+@enduml
+</pre></code></div><div class=mycell><img border="2" title="foo" width=210 height=178 class=scale src="//s.plantuml.com/imgw/state-diagram-tkhejkpz.png"/></div></div> 可以用首字母缩写或者开始的两个字母定义方向(如, <code>-d-</code>，<code>-down-</code>和<code>-do-</code>是完全等价的)。 <p> 请不要滥用这些功能，<em>Graphviz</em>不喜欢这样。 <p><a id="8"></a><p>&nbsp;<p>&nbsp; <h3>= 注释 =</h3><p> 可以用 <code>note left of</code>, <code>note right of</code>, <code>note top of</code>, <code>note bottom of</code> 关键字来定义注释。 <p> 还可以定义多行注释。 <div><div class=mycell><code><pre>
+@startuml
+
+[*] --&gt; Active
+Active --&gt; Inactive
+
+note left of Active : this is a short\nnote
+
+note right of Inactive
+  A note can also
+  be defined on
+  several lines
+end note
+
+@enduml
+</pre></code></div><div class=mycell><img border="2" title="foo" width=362 height=268 class=scale src="//s.plantuml.com/imgw/state-diagram-rmr8qex7.png"/></div></div><p><p> 以及浮动注释。 <div><div class=mycell><code><pre>
+@startuml
+
+state foo
+note "This is a floating note" as N1
+
+@enduml
+</pre></code></div><div class=mycell><img border="2" title="foo" width=246 height=68 class=scale src="//s.plantuml.com/imgw/state-diagram-ibwqw6mc.png"/></div></div><p><a id="9"></a><p>&nbsp;<p>&nbsp; <h2>更多注释</h2><p><p> 可以在合成状态中放置注释。 <div><div class=mycell><code><pre>
+@startuml
+
+[*] --&gt; NotShooting
+
+state "Not Shooting State" as NotShooting {
+  state "Idle mode" as Idle
+  state "Configuring mode" as Configuring
+  [*] --&gt; Idle
+  Idle --&gt; Configuring : EvConfig
+  Configuring --&gt; Idle : EvConfig
+}
+
+note right of NotShooting : This is a note on a composite state
+
+@enduml
+</pre></code></div><div class=mycell><img border="2" title="foo" width=455 height=364 class=scale src="//s.plantuml.com/imgw/state-diagram-lpowgz2h.png"/></div></div><p><a id="10"></a><p>&nbsp;<p>&nbsp; <h2>显示参数</h2><p> 用<code><a href="skinparam">skinparam</a></code>改变字体和颜色。 <p> 可以在如下场景中使用： <ul><li> 在图示的定义中，</li><li><a href="preprocessing">在引入的文件中</a>，</li><li> 在<a href="command-line">命令行</a>或者<a href="ant-task">ANT任务</a>提供的配置文件中。</li></ul><p> 还可以为状态的构造类型指定特殊的字体和颜色。 <p><div><div class=mycell><code><pre>
+@startuml
+skinparam backgroundColor LightYellow
+skinparam state {
+  StartColor MediumBlue
+  EndColor Red
+  BackgroundColor Peru
+  BackgroundColor&lt;&lt;Warning&gt;&gt; Olive
+  BorderColor Gray
+  FontName Impact
+}
+
+[*] --&gt; NotShooting
+
+state "Not Shooting State" as NotShooting {
+  state "Idle mode" as Idle &lt;&lt;Warning&gt;&gt;
+  state "Configuring mode" as Configuring
+  [*] --&gt; Idle
+  Idle --&gt; Configuring : EvConfig
+  Configuring --&gt; Idle : EvConfig
+}
+
+NotShooting --&gt; [*]
+@enduml
+</pre></code></div><div class=mycell><img border="2" title="foo" width=189 height=444 class=scale src="//s.plantuml.com/imgw/state-diagram-1wwcxue1.png"/></div></div><p><p><hr><p><ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-format="fluid" data-ad-layout="in-article" data-ad-client="ca-pub-5770515425712095" data-ad-slot="4513300169"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script><p><footer><table width=100% border=0><tr align=center><td width=20%><iframe src="//s.plantuml.com/ppbtn?190" allowtransparency="true" frameborder="0" scrolling="0" width="115" height="20"></iframe></td><td width=20%><iframe src="//s.plantuml.com/pnbtn?99" allowtransparency="true" frameborder="0" scrolling="0" width="115" height="20"></iframe></td><td width=20%><a href="https://liberapay.com/plantuml/donate"><img width=85 height=20 src="https://img.shields.io/liberapay/patrons/plantuml.svg?logo=liberapay"></a></td><td width=20%><script id="_wau1ft">var _wau=_wau||[];_wau.push(["small","vwt5xirsg4hh","1ft"]);(function(){var a=document.createElement("script");a.async=true;a.src="//widgets.amung.us/small.js";document.getElementsByTagName("head")[0].appendChild(a)})();</script></td><td width=20%><a href=https://www.ej-technologies.com/products/jprofiler/overview.html title="JProfiler"><img width=92 height=26 alt="JProfiler" src=//s.plantuml.com/jprofiler_small.png></a></td></tr></table></footer></div><script>var sc_project=11129481;var sc_invisible=1;var sc_security="bd89fcfd";</script><script src="http://www.statcounter.com/counter/counter.js"></script></body></html>

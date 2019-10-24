@@ -1,0 +1,48 @@
+@startuml
+!unquoted function SALT($x)
+"{{
+salt
+%invoke_void_func("_"+$x)
+}}" as $x
+!endfunction
+
+!function _choose()
+{+
+<b>an example
+choose one option
+()one
+()two
+[ok]
+}
+!endfunction
+
+!function _wait()
+{+
+<b>please wait
+operation in progress
+<&clock>
+[cancel]
+}
+!endfunction
+
+!function _success()
+{+
+<b>success
+congratulations!
+[ok]
+}
+!endfunction
+ 
+!function _error()
+{+
+<b>error
+failed, sorry
+[ok]
+}
+!endfunction
+
+(*) --> SALT(choose)
+-right-> SALT(wait)
+wait -right-> SALT(success)
+wait -down-> SALT(error)
+@enduml

@@ -1,0 +1,239 @@
+<html lang="zh"><head><meta name="flattr:id" content="1ew3x0"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "url": "http://plantuml.com",
+  "name": "PlantUML",
+  "sameAs" : ["https://twitter.com/plantuml","https://en.wikipedia.org/wiki/PlantUML","https://www.wikidata.org/wiki/Q18346546", "https://plus.google.com/+PlantumlPublic/"],
+  "logo": "http://plantuml.com/logo3.png",
+  "contactPoint": [{
+    "@type": "ContactPoint",
+    "email": "plantuml@gmail.com",
+    "url": "http://plantuml.com",
+    "contactType": "customer service"
+  }],
+    "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://cse.google.fr/cse/publicurl?cx=002267040093494634259:o59itilhnna&q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+    "@type": "ListItem",
+    "position": 1,
+    "item": {
+      "@id": "http://plantuml.com",
+      "name": "Home"
+    }
+  },{
+    "@type": "ListItem",
+    "position": 2,
+    "item": {
+      "@id": "http://plantuml.com/sitemap-language-specification",
+      "name": "Language specification"
+    }
+  },{
+    "@type": "ListItem",
+    "position": 3,
+    "item": {
+      "@id": "http://plantuml.com/component-diagram",
+      "name": "Component Diagram"
+  }
+  }]
+}
+</script><link rel="canonical" href="http://plantuml.com/zh/component-diagram"/><link rel="alternate" hreflang="x-default" href="http://plantuml.com/component-diagram"/><link rel="alternate" hreflang="de" href="http://plantuml.com/de/component-diagram"/><link rel="alternate" hreflang="en" href="http://plantuml.com/component-diagram"/><link rel="alternate" hreflang="es" href="http://plantuml.com/es/component-diagram"/><link rel="alternate" hreflang="fr" href="http://plantuml.com/fr/component-diagram"/><link rel="alternate" hreflang="ja" href="http://plantuml.com/ja/component-diagram"/><link rel="alternate" hreflang="ru" href="http://plantuml.com/ru/component-diagram"/><link rel="alternate" hreflang="ko" href="http://plantuml.com/ko/component-diagram"/><link rel="alternate" hreflang="zh" href="http://plantuml.com/zh/component-diagram"/><link rel="shortcut icon" href="//s.plantuml.com/favicon.ico"/><link rel="publisher" href="https://plus.google.com/+PlantumlPublic/"/><link rel="alternate" type="application/rss+xml" title="RSS" href="http://plantuml.com/zh/component-diagram.rss"><title>组件图的语法和功能</title><meta name="description" content="PlantUML组件图语法：您可以定义界面，组件，人际关系，团体，笔记...改变字体和颜色也有可能。"/><meta property="og:type" content="article"/><meta property="og:title" content="组件图的语法和功能"/><meta property="og:description" content="PlantUML组件图语法：您可以定义界面，组件，人际关系，团体，笔记...改变字体和颜色也有可能。"/><meta property="og:url" content="http://plantuml.com/zh/component-diagram"/><meta property="og:site_name" content="PlantUML.com"/><meta name="twitter:image" content="http://plantuml.com/og-component-diagram"/><meta property="og:locale" content="zh"/><meta name="twitter:card" content="summary"/><meta name="twitter:title" content="组件图的语法和功能"/><meta name="twitter:description" content="PlantUML组件图语法：您可以定义界面，组件，人际关系，团体，笔记...改变字体和颜色也有可能。"/><meta name="twitter:site" content="@PlantUML"/><meta name="twitter:creator" content="@PlantUML"/><style media="screen" type="text/css">li{margin:2px}#external li{margin:13px}.mycell{display:inline-block;vertical-align:top;padding:10px}#header{z-index:2;position:fixed;left:205px;right:0;height:40px;top:0;background:#edeff3}#header2{z-index:2;position:fixed;left:205px;right:0;height:10px;top:40px;background:#fefefe}#header3{z-index:3;position:fixed;left:910px;right:0;height:40px;top:0;background:#edeff3}#root{margin:50px 0 0 220px;background:#fefefe}#side{position:fixed;margin-left:0;margin-top:-50px;height:100%;width:205px;padding-top:0;background:#edeff3;z-index:2}@media screen and (max-width:1190px){#header{left:185px}#header2{left:185px}#root{margin:50px 0 0 200px}#side{width:185px}}@media screen and (max-width:1010px){#side{width:181px;margin-top:0}#root{margin:0 0 0 184px}#header,#header2{visibility:hidden}}body{margin:auto;overflow-x:hidden;background:#fefefe}a{text-decoration:none;color:#0366d6}a:hover{text-decoration:underline}#menu{border:0;font-family:Helvetica,sans-serif;font-size:14px;padding:0;margin:0;width:200%}#menu li{float:left;list-style:none;text-align:center;position:relative;margin:10px 0 0 10px;border:0}#menu li a{padding:0 7px 0 7px;text-decoration:none;color:#637282}#menu a:hover{color:#cbc9c8}#menuside{border:0;font-family:Helvetica,sans-serif;font-size:14px;padding:0;margin:0}#menuside li{list-style:none;text-align:center;position:relative;padding:0;margin:13px 20px 14px 10px;border:0}#menuside li a{display:inline-block;text-decoration:none;color:#637282;width:100%}#menuside a:hover{color:#cbc9c8}#BC{z-index:0;padding-top:5px;top:35px}.breadcrumb{font-family:Helvetica,sans-serif;font-size:14px;text-align:center;display:inline-block;overflow:hidden;border-radius:5px}.breadcrumb a{text-decoration:none;outline:0;display:block;float:left;font-size:12px;line-height:24px;color:#373f49;padding:0 10px 0 35px;background:#f0f1f1;background:linear-gradient(#f0f1f1,#c6d2d2);position:relative}.breadcrumb a:first-child{padding-left:21px;border-radius:5px 0 0 5px}.breadcrumb a:first-child:before{left:14px}.breadcrumb a:last-child{visibility:hidden}.breadcrumb a.active,.breadcrumb a:hover{color:#000;background:#c6d2d2;background:linear-gradient(#e3e4e4,#b8c7c7)}.breadcrumb a.active:after,.breadcrumb a:hover:after{background:#c6d2d2;background:linear-gradient(135deg,#e3e4e4,#b8c7c7)}.breadcrumb a:after{content:'';position:absolute;top:0;right:-12px;width:24px;height:24px;transform:scale(0.707) rotate(45deg);z-index:1;background:#f0f1f1;background:linear-gradient(135deg,#f0f1f1,#c6d2d2);box-shadow:2px -2px 0 2px rgba(0,0,0,0.1),3px -3px 0 2px rgba(255,255,255,0.1);border-radius:0 5px 0 50px}.breadcrumb a:last-child:after{content:none;visibility:hidden}.lga,.lga a,.lgi,.lgi a{font-family:Helvetica,sans-serif;font-size:13px;text-align:center;color:#fff;padding:0 5px;margin:0}.lga,.lga a{background-color:#008}.lgi,.lgi a{background-color:#888}.lga:hover,.lga:hover a{text-decoration:none;color:#BBB}.lgi:hover,.lgi:hover a{text-decoration:none;color:#CCC}</style><script async src="https://www.googletagmanager.com/gtag/js?id=UA-16629806-3"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date());gtag("config","UA-16629806-3");</script><script>(function(){var b=document.createElement("script"),a=document.getElementsByTagName("script")[0];b.type="text/javascript";b.async=true;b.src="http://api.flattr.com/js/0.6/load.js?mode=auto";a.parentNode.insertBefore(b,a)})();var llg="zh";</script><script async src="//s.plantuml.com/lg3.js"></script><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script></head><body><nav id=header><ul id="menu"><li><a id=me1 href="sequence-diagram">时序图</a></li><li><a id=me2 href="use-case-diagram">用例图</a></li><li><a id=me3 href="class-diagram">类图</a></li><li><a id=me4 href="activity-diagram-legacy">活动图</a></li><li><a id=me5 href="activity-diagram-beta">活动图 <img border=0 width=20 height=8 src=//s.plantuml.com/beta-icon.gif></a></li><li><a id=me6 href="component-diagram">组件图</a></li><li><a id=me7 href="state-diagram">状态图</a></li><li><a id=me8 href="object-diagram">对象图</a></li><li><a id=me9 href="deployment-diagram">部署图</a></li><li><a id=me10 href="timing-diagram">定时图</a></li></ul></nav><nav id=header3><ins class="adsbygoogle" style="display:inline-block;width:100%;height:40px" data-ad-client="ca-pub-5770515425712095" data-ad-slot="7824244819" data-ad-format="link" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></nav><nav id=header2></nav><nav id="side"><p><div style="height:185px;"><style>.msd{width:200px;height:185px}@media(max-width:1190px){.msd{width:180px}}</style><ins class="adsbygoogle msd" style="display:inline-block" data-ad-client="ca-pub-5770515425712095" data-ad-slot="6244156563" data-ad-format="link" data-full-width-responsive="false"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div><ul id="menuside"><li><a id=me31 href="index">主页</a></li><li><a id=me32 href="news">新鲜</a></li><li><a id=me33 href="starting">入门指南</a></li><li><a id=me34 href="running">使用</a></li><li><a id=me35 href="faq">常见问题</a></li><li><a id=me36 href="dedication">贡献</a></li><li><a id=me37 href="download">下载</a></li><li><a id=me38 href="https://forum.plantuml.net">论坛 </a></li><li><a id=me39 href="preprocessing">预处理</a></li><li><a id=me40 href="commons">通用命令</a></li><li><a id=me41 href="stdlib">标准库</a></li><li><a id=me42 href="sitemap">网站地图</a></li><li><a id=me43 href="guide">用户指南(PDF)</a></li><li><a id=me44 href="external-links">外部链接</a></li></ul><p></nav><div id=root><div id=BC><div class="breadcrumb" style="z-index:1;position: relative;"><a href="sitemap">PlantUML</a><a href="sitemap-language-specification">Language specification</a><a href="component-diagram">Component Diagram</a><a href="#"></a></div><iframe style="z-index:1;position: relative;" src="//s.plantuml.com/ppbtn?190" allowtransparency="true" frameborder="0" scrolling="0" width="115" height="20"></iframe><iframe style="z-index:1;position: relative;" src="//s.plantuml.com/pnbtn?99" allowtransparency="true" frameborder="0" scrolling="0" width="115" height="20"></iframe><a href="https://liberapay.com/plantuml/donate"><img width=85 height=20 src="https://img.shields.io/liberapay/patrons/plantuml.svg?logo=liberapay"></a><p><style>.lha,.lhi{font-family:Helvetica,sans-serif;font-size:13px;display:inline-block;margin:0 5px 0 0}.lha a,.lhi a{width:70px;display:inline-block;text-align:center;vertical-align:middle;text-decoration:none;padding-top:2px;padding-bottom:2px;margin-top:5px}.lha a{background:#008;color:#fff}.lhi a{background:#888;color:#fff}.lha a:hover{color:#888;background:#22f}.lhi a:hover{color:#888;background:#22f}</style><table border=0 cellspacing=0 cellpadding=0 width=99%><tr><td><a rel="nofollow" href=translate-component-diagram>您可以点击此处在此页面上做出贡献</a> &nbsp;<a rel="nofollow" href=http://wiki.plantuml.net/zh/site/menu>(Menu)</a></td><td align=right><div class=lhi><a href="//plantuml.com/en/component-diagram" title="English" id=lgen>English</a></div><div class=lhi><a href="//plantuml.com/de/component-diagram" title="Deutsch" id=lgde>Deutsch</a></div><div class=lhi><a href="//plantuml.com/es/component-diagram" title="Español" id=lges>Español</a></div><div class=lhi><a href="//plantuml.com/fr/component-diagram" title="Français" id=lgfr>Français</a></div><div class=lhi><a href="//plantuml.com/ja/component-diagram" title="日本語" id=lgja>日本語</a></div><div class=lhi><a href="//plantuml.com/ko/component-diagram" title="한국어" id=lgko>한국어</a></div><div class=lhi><a href="//plantuml.com/ru/component-diagram" title="Русский" id=lgru>Русский</a></div><div class=lha><a href="//plantuml.com/zh/component-diagram" title="中文" id=lgzh>中文</a></div></td></tr></table><p></div><p><a id="1"></a><p>&nbsp;<p>&nbsp; <h1>组件图</h1><p><p> 我们来看几个例子 : <a id="2"></a><p>&nbsp;<p>&nbsp; <h3>= 组件 =</h3><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5770515425712095" data-ad-slot="6161423756" data-ad-format="link" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script><p><style>.qsd{float:right;margin:15px 3px;width:336px;height:600px}@media(max-width:1300px){.qsd{width:300px}}@media(max-width:1250px){.qsd{width:160px}}</style><div class=qsd><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5770515425712095" data-ad-slot="8887659449" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div> 组件必须用中括号括起来。 <p> 还可以使用关键字<code>component</code>定义一个组件。 并且可以用关键字<code>as</code>给组件定义一个别名。 这个别名可以在稍后定义关系的时候使用。 <div><div class=mycell><code><pre>
+@startuml
+
+[First component]
+[Another component] as Comp2  
+component Comp3
+component [Last\ncomponent] as Comp4
+
+@enduml
+</pre></code></div><div class=mycell><img border="2" title="foo" width=317 height=171 class=scale src="//s.plantuml.com/imgw/component-diagram-alucfrm2.png"/></div></div><p><a id="3"></a><p>&nbsp;<p>&nbsp; <h3>= 接口 =</h3><p> 接口可以使用<code>()</code>来定义(因为这个看起来像个圆)。 <p> 还可以使用关键字<code>interface</code>关键字来定义接口。 并且还可以使用关键字<code>as</code>定义一个别名。 这个别名可以在稍后定义关系的时候使用。 <p> 我们稍后可以看到，接口的定义是可选的。 <div><div class=mycell><code><pre>
+@startuml
+
+() "First Interface"
+() "Another interface" as Interf2
+interface Interf3
+interface "Last\ninterface" as Interf4
+
+@enduml
+</pre></code></div><div class=mycell><img border="2" title="foo" width=270 height=237 class=scale src="//s.plantuml.com/imgw/component-diagram-ww6h3vjd.png"/></div></div><p><a id="4"></a><p>&nbsp;<p>&nbsp; <h2>基础的示例</h2><p><p><p> 元素之间可以使用虚线(<code>..</code>)、直线(<code>--</code>)、箭头(<code>--&gt;</code>)进行连接。 <div><div class=mycell><code><pre>
+@startuml
+
+DataAccess - [First Component] 
+[First Component] ..&gt; HTTP : use
+
+@enduml
+</pre></code></div><div class=mycell><img border="2" title="foo" width=223 height=198 class=scale src="//s.plantuml.com/imgw/component-diagram-v38dpj8e.png"/></div></div><p><a id="5"></a><p>&nbsp;<p>&nbsp; <h2>使用注释</h2><p> 你可以使用 <code>note left of</code> , <code>note right of</code> , <code>note top of</code> , <code>note bottom of</code> 等关键字定义相对于对象位置的注释。 <p><p> 也可以使用关键字<code>note</code>单独定义注释，然后使用虚线(<code>..</code>)将其连接到其他对象。 <p><div><div class=mycell><code><pre>
+@startuml
+
+interface "Data Access" as DA
+
+DA - [First Component] 
+[First Component] ..&gt; HTTP : use
+
+note left of HTTP : Web Service only
+
+note right of [First Component]
+  A note can also
+  be on several lines
+end note
+
+@enduml
+</pre></code></div><div class=mycell><img border="2" title="foo" width=409 height=186 class=scale src="//s.plantuml.com/imgw/component-diagram-8xmkottg.png"/></div></div><p><a id="6"></a><p>&nbsp;<p>&nbsp; <h2>组合组件</h2><p> 你可以使用多个关键字将组件和接口组合在一起。 <ul><li><code>package</code></li><li><code>node</code></li><li><code>folder</code></li><li><code>frame</code></li><li><code>cloud</code></li><li><code>database</code></li></ul><p><div><div class=mycell><code><pre>
+@startuml
+
+package "Some Group" {
+  HTTP - [First Component]
+  [Another Component]
+}
+ 
+node "Other Groups" {
+  FTP - [Second Component]
+  [First Component] --&gt; FTP
+} 
+
+cloud {
+  [Example 1]
+}
+
+
+database "MySql" {
+  folder "This is my folder" {
+	[Folder 3]
+  }
+  frame "Foo" {
+	[Frame 4]
+  }
+}
+
+
+[Another Component] --&gt; [Example 1]
+[Example 1] --&gt; [Folder 3]
+[Folder 3] --&gt; [Frame 4]
+
+@enduml
+</pre></code></div><div class=mycell><img border="2" title="foo" width=460 height=555 class=scale src="//s.plantuml.com/imgw/component-diagram-qb1plsmg.png"/></div></div><p><a id="7"></a><p>&nbsp;<p>&nbsp; <h2>改变箭头方向</h2><p><p> 默认情况下，对象之间用<code>--</code>连接，并且连接是竖直的。不过可以使用一个横线或者点设置水平方向的连接，就行这样： <p><div><div class=mycell><code><pre>
+@startuml
+[Component] --&gt; Interface1
+[Component] -&gt; Interface2
+@enduml
+</pre></code></div><div class=mycell><img border="2" title="foo" width=186 height=180 class=scale src="//s.plantuml.com/imgw/component-diagram-2ezluoyd.png"/></div></div><p> 也可以使用反向连接： <p><div><div class=mycell><code><pre>
+@startuml
+Interface1 &lt;-- [Component]
+Interface2 &lt;- [Component]
+@enduml
+</pre></code></div><div class=mycell><img border="2" title="foo" width=185 height=191 class=scale src="//s.plantuml.com/imgw/component-diagram-rotgoisj.png"/></div></div><p> 还可以使用关键字<code>left</code>, <code>right</code>, <code>up</code> or <code>down</code>改变箭头方向。 <p><div><div class=mycell><code><pre>
+@startuml
+[Component] -left-&gt; left 
+[Component] -right-&gt; right 
+[Component] -up-&gt; up
+[Component] -down-&gt; down
+@enduml
+</pre></code></div><div class=mycell><img border="2" title="foo" width=222 height=300 class=scale src="//s.plantuml.com/imgw/component-diagram-melx0tzk.png"/></div></div><p> 允许使用方向单词的首字母或者前两个字母表示方向(例如<code>-d-</code>, <code>-do-</code>, <code>-down-</code>都是等价的)。 <p> 请不要乱用这些功能：<em>Graphviz</em>(PlantUML的后端引擎)不喜欢这个样子。 <p><a id="8"></a><p>&nbsp;<p>&nbsp; <h2>使用UML2标记符</h2><p> 命令<code>skinparam componentStyle uml2</code> 可以切换到UML2标记符。 <div><div class=mycell><code><pre>
+@startuml
+skinparam componentStyle uml2
+
+interface "Data Access" as DA
+
+DA - [First Component] 
+[First Component] ..&gt; HTTP : use
+
+@enduml
+</pre></code></div><div class=mycell><img border="2" title="foo" width=245 height=208 class=scale src="//s.plantuml.com/imgw/component-diagram-vhm6kccu.png"/></div></div><p><a id="9"></a><p>&nbsp;<p>&nbsp; <h2>长描述</h2> 可以用方括号"[ ]"在连线上添加描述。 <div><div class=mycell><code><pre>
+@startuml
+component comp1 [
+This component
+has a long comment
+on several lines
+]
+@enduml
+</pre></code></div><div class=mycell><img border="2" title="foo" width=184 height=99 class=scale src="//s.plantuml.com/imgw/component-diagram-8l4vzgar.png"/></div></div><a id="10"></a><p>&nbsp;<p>&nbsp; <h2>不同的颜色表示</h2><p><p> 你可以在声明一个组件时加上颜色的声明。 <div><div class=mycell><code><pre>
+@startuml
+component  [Web Server] #Yellow
+@enduml
+</pre></code></div><div class=mycell><img border="2" title="foo" width=112 height=54 class=scale src="//s.plantuml.com/imgw/component-diagram-zio4zpt1.png"/></div></div><p><p><a id="11"></a><p>&nbsp;<p>&nbsp; <h2>在定型组件中使用精灵图</h2> 你可以在定型组件中使用精灵图（sprite）。 <div><div class=mycell><code><pre>
+@startuml
+sprite $businessProcess [16x16/16] {
+FFFFFFFFFFFFFFFF
+FFFFFFFFFFFFFFFF
+FFFFFFFFFFFFFFFF
+FFFFFFFFFFFFFFFF
+FFFFFFFFFF0FFFFF
+FFFFFFFFFF00FFFF
+FF00000000000FFF
+FF000000000000FF
+FF00000000000FFF
+FFFFFFFFFF00FFFF
+FFFFFFFFFF0FFFFF
+FFFFFFFFFFFFFFFF
+FFFFFFFFFFFFFFFF
+FFFFFFFFFFFFFFFF
+FFFFFFFFFFFFFFFF
+FFFFFFFFFFFFFFFF
+}
+
+
+rectangle " End to End\nbusiness process" &lt;&lt;$businessProcess&gt;&gt; {
+ rectangle "inner process 1" &lt;&lt;$businessProcess&gt;&gt; as src
+ rectangle "inner process 2" &lt;&lt;$businessProcess&gt;&gt; as tgt
+ src -&gt; tgt
+}
+@enduml
+</pre></code></div><div class=mycell><img border="2" title="foo" width=335 height=174 class=scale src="//s.plantuml.com/imgw/component-diagram-mt1qo9js.png"/></div></div><p><a id="12"></a><p>&nbsp;<p>&nbsp; <h2>显示参数</h2><p> 用<code><a href="skinparam">skinparam</a></code>改变字体和颜色。 <p> 可以在如下场景中使用： <ul><li> 在图示的定义中，</li><li><a href="preprocessing">在引入的文件中</a>，</li><li> 在<a href="command-line">命令行</a>或者<a href="ant-task">ANT任务</a>提供的配置文件中。</li></ul><p> 可以为构造类型和接口定义特殊的颜色和字体。 <p><div><div class=mycell><code><pre>
+@startuml
+
+skinparam interface {
+  backgroundColor RosyBrown
+  borderColor orange
+}
+
+skinparam component {
+  FontSize 13
+  BackgroundColor&lt;&lt;Apache&gt;&gt; Red
+  BorderColor&lt;&lt;Apache&gt;&gt; #FF6655
+  FontName Courier
+  BorderColor black
+  BackgroundColor gold
+  ArrowFontName Impact
+  ArrowColor #FF6655
+  ArrowFontColor #777777
+}
+
+() "Data Access" as DA
+
+DA - [First Component] 
+[First Component] ..&gt; () HTTP : use
+HTTP - [Web Server] &lt;&lt; Apache &gt;&gt;
+
+@enduml
+</pre></code></div><div class=mycell><img border="2" title="foo" width=313 height=184 class=scale src="//s.plantuml.com/imgw/component-diagram-xgtubdyi.png"/></div></div><p><div><div class=mycell><code><pre>
+@startuml
+[AA] &lt;&lt;static lib&gt;&gt;
+[BB] &lt;&lt;shared lib&gt;&gt;
+[CC] &lt;&lt;static lib&gt;&gt;
+
+node node1
+node node2 &lt;&lt;shared node&gt;&gt;
+database Production
+
+skinparam component {
+	backgroundColor&lt;&lt;static lib&gt;&gt; DarkKhaki
+	backgroundColor&lt;&lt;shared lib&gt;&gt; Green
+}
+
+skinparam node {
+	borderColor Green
+	backgroundColor Yellow
+	backgroundColor&lt;&lt;shared node&gt;&gt; Magenta
+}
+skinparam databaseBackgroundColor Aqua
+
+@enduml
+</pre></code></div><div class=mycell><img border="2" title="foo" width=394 height=199 class=scale src="//s.plantuml.com/imgw/component-diagram-xtjkbl9e.png"/></div></div><p><hr><p><ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-format="fluid" data-ad-layout="in-article" data-ad-client="ca-pub-5770515425712095" data-ad-slot="4513300169"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script><p><footer><table width=100% border=0><tr align=center><td width=20%><iframe src="//s.plantuml.com/ppbtn?190" allowtransparency="true" frameborder="0" scrolling="0" width="115" height="20"></iframe></td><td width=20%><iframe src="//s.plantuml.com/pnbtn?99" allowtransparency="true" frameborder="0" scrolling="0" width="115" height="20"></iframe></td><td width=20%><a href="https://liberapay.com/plantuml/donate"><img width=85 height=20 src="https://img.shields.io/liberapay/patrons/plantuml.svg?logo=liberapay"></a></td><td width=20%><script id="_wau1ft">var _wau=_wau||[];_wau.push(["small","vwt5xirsg4hh","1ft"]);(function(){var a=document.createElement("script");a.async=true;a.src="//widgets.amung.us/small.js";document.getElementsByTagName("head")[0].appendChild(a)})();</script></td><td width=20%><a href=https://www.ej-technologies.com/products/jprofiler/overview.html title="JProfiler"><img width=92 height=26 alt="JProfiler" src=//s.plantuml.com/jprofiler_small.png></a></td></tr></table></footer></div><script>var sc_project=11129481;var sc_invisible=1;var sc_security="bd89fcfd";</script><script src="http://www.statcounter.com/counter/counter.js"></script></body></html>

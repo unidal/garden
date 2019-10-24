@@ -1,0 +1,213 @@
+<html lang="zh"><head><meta name="flattr:id" content="1ew3x0"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "url": "http://plantuml.com",
+  "name": "PlantUML",
+  "sameAs" : ["https://twitter.com/plantuml","https://en.wikipedia.org/wiki/PlantUML","https://www.wikidata.org/wiki/Q18346546", "https://plus.google.com/+PlantumlPublic/"],
+  "logo": "http://plantuml.com/logo3.png",
+  "contactPoint": [{
+    "@type": "ContactPoint",
+    "email": "plantuml@gmail.com",
+    "url": "http://plantuml.com",
+    "contactType": "customer service"
+  }],
+    "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://cse.google.fr/cse/publicurl?cx=002267040093494634259:o59itilhnna&q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+    "@type": "ListItem",
+    "position": 1,
+    "item": {
+      "@id": "http://plantuml.com",
+      "name": "Home"
+    }
+  },{
+    "@type": "ListItem",
+    "position": 2,
+    "item": {
+      "@id": "http://plantuml.com/sitemap-language-specification",
+      "name": "Language specification"
+    }
+  },{
+    "@type": "ListItem",
+    "position": 3,
+    "item": {
+      "@id": "http://plantuml.com/use-case-diagram",
+      "name": "Use Case Diagram"
+  }
+  }]
+}
+</script><link rel="canonical" href="http://plantuml.com/zh/use-case-diagram"/><link rel="alternate" hreflang="x-default" href="http://plantuml.com/use-case-diagram"/><link rel="alternate" hreflang="de" href="http://plantuml.com/de/use-case-diagram"/><link rel="alternate" hreflang="en" href="http://plantuml.com/use-case-diagram"/><link rel="alternate" hreflang="es" href="http://plantuml.com/es/use-case-diagram"/><link rel="alternate" hreflang="fr" href="http://plantuml.com/fr/use-case-diagram"/><link rel="alternate" hreflang="ja" href="http://plantuml.com/ja/use-case-diagram"/><link rel="alternate" hreflang="ru" href="http://plantuml.com/ru/use-case-diagram"/><link rel="alternate" hreflang="ko" href="http://plantuml.com/ko/use-case-diagram"/><link rel="alternate" hreflang="zh" href="http://plantuml.com/zh/use-case-diagram"/><link rel="shortcut icon" href="//s.plantuml.com/favicon.ico"/><link rel="publisher" href="https://plus.google.com/+PlantumlPublic/"/><link rel="alternate" type="application/rss+xml" title="RSS" href="http://plantuml.com/zh/use-case-diagram.rss"><title>用例图语法和功能</title><meta name="description" content="PlantUML用例图语法：您可以有用例，actors，扩展，注释，构造型，箭头...更改字体和颜色也是可能的。"/><meta property="og:type" content="article"/><meta property="og:title" content="用例图语法和功能"/><meta property="og:description" content="PlantUML用例图语法：您可以有用例，actors，扩展，注释，构造型，箭头...更改字体和颜色也是可能的。"/><meta property="og:url" content="http://plantuml.com/zh/use-case-diagram"/><meta property="og:site_name" content="PlantUML.com"/><meta name="twitter:image" content="http://plantuml.com/og-use-case-diagram"/><meta property="og:locale" content="zh"/><meta name="twitter:card" content="summary"/><meta name="twitter:title" content="用例图语法和功能"/><meta name="twitter:description" content="PlantUML用例图语法：您可以有用例，actors，扩展，注释，构造型，箭头...更改字体和颜色也是可能的。"/><meta name="twitter:site" content="@PlantUML"/><meta name="twitter:creator" content="@PlantUML"/><style media="screen" type="text/css">li{margin:2px}#external li{margin:13px}.mycell{display:inline-block;vertical-align:top;padding:10px}#header{z-index:2;position:fixed;left:205px;right:0;height:40px;top:0;background:#edeff3}#header2{z-index:2;position:fixed;left:205px;right:0;height:10px;top:40px;background:#fefefe}#header3{z-index:3;position:fixed;left:910px;right:0;height:40px;top:0;background:#edeff3}#root{margin:50px 0 0 220px;background:#fefefe}#side{position:fixed;margin-left:0;margin-top:-50px;height:100%;width:205px;padding-top:0;background:#edeff3;z-index:2}@media screen and (max-width:1190px){#header{left:185px}#header2{left:185px}#root{margin:50px 0 0 200px}#side{width:185px}}@media screen and (max-width:1010px){#side{width:181px;margin-top:0}#root{margin:0 0 0 184px}#header,#header2{visibility:hidden}}body{margin:auto;overflow-x:hidden;background:#fefefe}a{text-decoration:none;color:#0366d6}a:hover{text-decoration:underline}#menu{border:0;font-family:Helvetica,sans-serif;font-size:14px;padding:0;margin:0;width:200%}#menu li{float:left;list-style:none;text-align:center;position:relative;margin:10px 0 0 10px;border:0}#menu li a{padding:0 7px 0 7px;text-decoration:none;color:#637282}#menu a:hover{color:#cbc9c8}#menuside{border:0;font-family:Helvetica,sans-serif;font-size:14px;padding:0;margin:0}#menuside li{list-style:none;text-align:center;position:relative;padding:0;margin:13px 20px 14px 10px;border:0}#menuside li a{display:inline-block;text-decoration:none;color:#637282;width:100%}#menuside a:hover{color:#cbc9c8}#BC{z-index:0;padding-top:5px;top:35px}.breadcrumb{font-family:Helvetica,sans-serif;font-size:14px;text-align:center;display:inline-block;overflow:hidden;border-radius:5px}.breadcrumb a{text-decoration:none;outline:0;display:block;float:left;font-size:12px;line-height:24px;color:#373f49;padding:0 10px 0 35px;background:#f0f1f1;background:linear-gradient(#f0f1f1,#c6d2d2);position:relative}.breadcrumb a:first-child{padding-left:21px;border-radius:5px 0 0 5px}.breadcrumb a:first-child:before{left:14px}.breadcrumb a:last-child{visibility:hidden}.breadcrumb a.active,.breadcrumb a:hover{color:#000;background:#c6d2d2;background:linear-gradient(#e3e4e4,#b8c7c7)}.breadcrumb a.active:after,.breadcrumb a:hover:after{background:#c6d2d2;background:linear-gradient(135deg,#e3e4e4,#b8c7c7)}.breadcrumb a:after{content:'';position:absolute;top:0;right:-12px;width:24px;height:24px;transform:scale(0.707) rotate(45deg);z-index:1;background:#f0f1f1;background:linear-gradient(135deg,#f0f1f1,#c6d2d2);box-shadow:2px -2px 0 2px rgba(0,0,0,0.1),3px -3px 0 2px rgba(255,255,255,0.1);border-radius:0 5px 0 50px}.breadcrumb a:last-child:after{content:none;visibility:hidden}.lga,.lga a,.lgi,.lgi a{font-family:Helvetica,sans-serif;font-size:13px;text-align:center;color:#fff;padding:0 5px;margin:0}.lga,.lga a{background-color:#008}.lgi,.lgi a{background-color:#888}.lga:hover,.lga:hover a{text-decoration:none;color:#BBB}.lgi:hover,.lgi:hover a{text-decoration:none;color:#CCC}</style><script async src="https://www.googletagmanager.com/gtag/js?id=UA-16629806-3"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date());gtag("config","UA-16629806-3");</script><script>(function(){var b=document.createElement("script"),a=document.getElementsByTagName("script")[0];b.type="text/javascript";b.async=true;b.src="http://api.flattr.com/js/0.6/load.js?mode=auto";a.parentNode.insertBefore(b,a)})();var llg="zh";</script><script async src="//s.plantuml.com/lg3.js"></script><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script></head><body><nav id=header><ul id="menu"><li><a id=me1 href="sequence-diagram">时序图</a></li><li><a id=me2 href="use-case-diagram">用例图</a></li><li><a id=me3 href="class-diagram">类图</a></li><li><a id=me4 href="activity-diagram-legacy">活动图</a></li><li><a id=me5 href="activity-diagram-beta">活动图 <img border=0 width=20 height=8 src=//s.plantuml.com/beta-icon.gif></a></li><li><a id=me6 href="component-diagram">组件图</a></li><li><a id=me7 href="state-diagram">状态图</a></li><li><a id=me8 href="object-diagram">对象图</a></li><li><a id=me9 href="deployment-diagram">部署图</a></li><li><a id=me10 href="timing-diagram">定时图</a></li></ul></nav><nav id=header3><ins class="adsbygoogle" style="display:inline-block;width:100%;height:40px" data-ad-client="ca-pub-5770515425712095" data-ad-slot="7824244819" data-ad-format="link" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></nav><nav id=header2></nav><nav id="side"><p><div style="height:185px;"><style>.msd{width:200px;height:185px}@media(max-width:1190px){.msd{width:180px}}</style><ins class="adsbygoogle msd" style="display:inline-block" data-ad-client="ca-pub-5770515425712095" data-ad-slot="6244156563" data-ad-format="link" data-full-width-responsive="false"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div><ul id="menuside"><li><a id=me31 href="index">主页</a></li><li><a id=me32 href="news">新鲜</a></li><li><a id=me33 href="starting">入门指南</a></li><li><a id=me34 href="running">使用</a></li><li><a id=me35 href="faq">常见问题</a></li><li><a id=me36 href="dedication">贡献</a></li><li><a id=me37 href="download">下载</a></li><li><a id=me38 href="https://forum.plantuml.net">论坛 </a></li><li><a id=me39 href="preprocessing">预处理</a></li><li><a id=me40 href="commons">通用命令</a></li><li><a id=me41 href="stdlib">标准库</a></li><li><a id=me42 href="sitemap">网站地图</a></li><li><a id=me43 href="guide">用户指南(PDF)</a></li><li><a id=me44 href="external-links">外部链接</a></li></ul><p></nav><div id=root><div id=BC><div class="breadcrumb" style="z-index:1;position: relative;"><a href="sitemap">PlantUML</a><a href="sitemap-language-specification">Language specification</a><a href="use-case-diagram">Use Case Diagram</a><a href="#"></a></div><iframe style="z-index:1;position: relative;" src="//s.plantuml.com/ppbtn?190" allowtransparency="true" frameborder="0" scrolling="0" width="115" height="20"></iframe><iframe style="z-index:1;position: relative;" src="//s.plantuml.com/pnbtn?99" allowtransparency="true" frameborder="0" scrolling="0" width="115" height="20"></iframe><a href="https://liberapay.com/plantuml/donate"><img width=85 height=20 src="https://img.shields.io/liberapay/patrons/plantuml.svg?logo=liberapay"></a><p><style>.lha,.lhi{font-family:Helvetica,sans-serif;font-size:13px;display:inline-block;margin:0 5px 0 0}.lha a,.lhi a{width:70px;display:inline-block;text-align:center;vertical-align:middle;text-decoration:none;padding-top:2px;padding-bottom:2px;margin-top:5px}.lha a{background:#008;color:#fff}.lhi a{background:#888;color:#fff}.lha a:hover{color:#888;background:#22f}.lhi a:hover{color:#888;background:#22f}</style><table border=0 cellspacing=0 cellpadding=0 width=99%><tr><td><a rel="nofollow" href=translate-use-case-diagram>您可以点击此处在此页面上做出贡献</a> &nbsp;<a rel="nofollow" href=http://wiki.plantuml.net/zh/site/menu>(Menu)</a></td><td align=right><div class=lhi><a href="//plantuml.com/en/use-case-diagram" title="English" id=lgen>English</a></div><div class=lhi><a href="//plantuml.com/de/use-case-diagram" title="Deutsch" id=lgde>Deutsch</a></div><div class=lhi><a href="//plantuml.com/es/use-case-diagram" title="Español" id=lges>Español</a></div><div class=lhi><a href="//plantuml.com/fr/use-case-diagram" title="Français" id=lgfr>Français</a></div><div class=lhi><a href="//plantuml.com/ja/use-case-diagram" title="日本語" id=lgja>日本語</a></div><div class=lhi><a href="//plantuml.com/ko/use-case-diagram" title="한국어" id=lgko>한국어</a></div><div class=lhi><a href="//plantuml.com/ru/use-case-diagram" title="Русский" id=lgru>Русский</a></div><div class=lha><a href="//plantuml.com/zh/use-case-diagram" title="中文" id=lgzh>中文</a></div></td></tr></table><p></div><p><a id="1"></a><p>&nbsp;<p>&nbsp; <h1>用例图</h1><p><p> Let's have few examples : <p> Note that you can disable the shadowing using the <code>skinparam shadowing false</code> command. <a id="2"></a><p>&nbsp;<p>&nbsp; <h3>= 用例 =</h3><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5770515425712095" data-ad-slot="6161423756" data-ad-format="link" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script><p><style>.qsd{float:right;margin:15px 3px;width:336px;height:600px}@media(max-width:1300px){.qsd{width:300px}}@media(max-width:1250px){.qsd{width:160px}}</style><div class=qsd><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5770515425712095" data-ad-slot="8887659449" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div> 用例用圆括号括起来。 <p> 也可以用关键字<code>usecase</code>来定义用例。 还可以用关键字<code>as</code>定义一个别名，这个别名可以在以后定义关系的时候使用。 <div><div class=mycell><code><pre>
+@startuml
+
+(First usecase)
+(Another usecase) as (UC2)  
+usecase UC3
+usecase (Last\nusecase) as UC4
+
+@enduml
+</pre></code></div><div class=mycell><img border="2" title="foo" width=322 height=163 class=scale src="//s.plantuml.com/imgw/use-case-diagram-aolntstz.png"/></div></div><p><a id="3"></a><p>&nbsp;<p>&nbsp; <h3>= 角色 =</h3><p> 角色用两个冒号包裹起来。 <p> 也可以用<code>actor</code>关键字来定义角色。 还可以用关键字<code>as</code>来定义一个别名，这个别名可以在以后定义关系的时候使用。 <p> 后面我们会看到角色的定义是可选的。 <div><div class=mycell><code><pre>
+@startuml
+
+:First Actor:
+:Another\nactor: as Men2  
+actor Men3
+actor :Last actor: as Men4
+
+@enduml
+</pre></code></div><div class=mycell><img border="2" title="foo" width=167 height=264 class=scale src="//s.plantuml.com/imgw/use-case-diagram-wioitsxa.png"/></div></div><p><a id="4"></a><p>&nbsp;<p>&nbsp; <h2>用例描述</h2><p><p> 如果想定义跨越多行的用例描述，可以用双引号将其裹起来。 <p> 还可以使用这些分隔符：<code>--</code><code>..</code><code>==</code><code>__</code>。 并且还可以在分隔符中间放置标题。 <p><div><div class=mycell><code><pre>
+@startuml
+
+usecase UC1 as "You can use
+several lines to define your usecase.
+You can also use separators.
+--
+Several separators are possible.
+==
+And you can add titles:
+..Conclusion..
+This allows large description."
+
+@enduml
+</pre></code></div><div class=mycell><img border="2" title="foo" width=310 height=201 class=scale src="//s.plantuml.com/imgw/use-case-diagram-4bnie7fo.png"/></div></div><p><a id="5"></a><p>&nbsp;<p>&nbsp; <h2>基础示例</h2><p><p> 用箭头<code>--&gt;</code>连接角色和用例。 <p> 横杠<code>-</code>越多，箭头越长。 通过在箭头定义的后面加一个冒号及文字的方式来添加标签。 <p> 在这个例子中，<em>User</em>并没有定义，而是直接拿来当做一个角色使用。 <div><div class=mycell><code><pre>
+@startuml
+
+User -&gt; (Start)
+User --&gt; (Use the application) : A small label
+
+:Main Admin: ---&gt; (Use the application) : This is\nyet another\nlabel
+
+@enduml
+</pre></code></div><div class=mycell><img border="2" title="foo" width=270 height=362 class=scale src="//s.plantuml.com/imgw/use-case-diagram-uodxmdlm.png"/></div></div><p><p><a id="6"></a><p>&nbsp;<p>&nbsp; <h3>= 继承 =</h3><p> 如果一个角色或者用例继承于另一个，那么可以用<code>&lt;|--</code>符号表示。 <p><div><div class=mycell><code><pre>
+@startuml
+:Main Admin: as Admin
+(Use the application) as (Use)
+
+User &lt;|-- Admin
+(Start) &lt;|-- (Use)
+
+@enduml
+</pre></code></div><div class=mycell><img border="2" title="foo" width=278 height=247 class=scale src="//s.plantuml.com/imgw/use-case-diagram-8rkbnrdv.png"/></div></div><p><a id="7"></a><p>&nbsp;<p>&nbsp; <h2>使用注释</h2><p> 可以用<code>note left of</code> , <code>note right of</code> , <code>note top of</code> , <code>note bottom of</code>等关键字给一个对象添加注释。 <p> 注释还可以通过<code>note</code>关键字来定义，然后用<code>..</code>连接其他对象。 <p><div><div class=mycell><code><pre>
+@startuml
+:Main Admin: as Admin
+(Use the application) as (Use)
+
+User -&gt; (Start)
+User --&gt; (Use)
+
+Admin ---&gt; (Use)
+
+note right of Admin : This is an example.
+
+note right of (Use)
+  A note can also
+  be on several lines
+end note
+
+note "This note is connected\nto several objects." as N2
+(Start) .. N2
+N2 .. (Use)
+@enduml
+</pre></code></div><div class=mycell><img border="2" title="foo" width=482 height=309 class=scale src="//s.plantuml.com/imgw/use-case-diagram-s7c61asi.png"/></div></div><p><a id="8"></a><p>&nbsp;<p>&nbsp; <h2>构造类型</h2><p> 用 <code>&lt;&lt;</code> 和 <code>&gt;&gt;</code> 来定义角色或者用例的构造类型。 <p><div><div class=mycell><code><pre>
+@startuml
+User &lt;&lt; Human &gt;&gt;
+:Main Database: as MySql &lt;&lt; Application &gt;&gt;
+(Start) &lt;&lt; One Shot &gt;&gt;
+(Use the application) as (Use) &lt;&lt; Main &gt;&gt;
+
+User -&gt; (Start)
+User --&gt; (Use)
+
+MySql --&gt; (Use)
+
+@enduml
+</pre></code></div><div class=mycell><img border="2" title="foo" width=346 height=230 class=scale src="//s.plantuml.com/imgw/use-case-diagram-bvoiwtto.png"/></div></div><p><a id="9"></a><p>&nbsp;<p>&nbsp; <h2>改变箭头方向</h2><p> 默认连接是竖直方向的，用<code>--</code>表示，可以用一个横杠或点来表示水平连接。 <p><div><div class=mycell><code><pre>
+@startuml
+:user: --&gt; (Use case 1)
+:user: -&gt; (Use case 2)
+@enduml
+</pre></code></div><div class=mycell><img border="2" title="foo" width=223 height=193 class=scale src="//s.plantuml.com/imgw/use-case-diagram-bk6wbbmf.png"/></div></div><p> 也可以通过翻转箭头来改变方向。 <p><div><div class=mycell><code><pre>
+@startuml
+(Use case 1) &lt;.. :user:
+(Use case 2) &lt;- :user:
+@enduml
+</pre></code></div><div class=mycell><img border="2" title="foo" width=223 height=193 class=scale src="//s.plantuml.com/imgw/use-case-diagram-ez1gxpnx.png"/></div></div><p> 还可以通过给箭头添加<code>left</code>, <code>right</code>, <code>up</code>或<code>down</code>等关键字来改变方向。 <p><div><div class=mycell><code><pre>
+@startuml
+:user: -left-&gt; (dummyLeft) 
+:user: -right-&gt; (dummyRight) 
+:user: -up-&gt; (dummyUp)
+:user: -down-&gt; (dummyDown)
+@enduml
+</pre></code></div><div class=mycell><img border="2" title="foo" width=336 height=284 class=scale src="//s.plantuml.com/imgw/use-case-diagram-vghwcqsz.png"/></div></div><p> 这些方向关键字也可以只是用首字母或者前两个字母的缩写来代替。 <p> 但是请注意，这样的缩写不要乱用，Graphviz不喜欢这样。 <p><a id="10"></a><p>&nbsp;<p>&nbsp; <h2>分割图示</h2><p> 用<code>newpage</code>关键字将图示分解为多个页面。 <div><div class=mycell><code><pre>
+@startuml
+:actor1: --&gt; (Usecase1)
+newpage
+:actor2: --&gt; (Usecase2)
+@enduml
+</pre></code></div><div class=mycell><img border="2" title="foo" width=109 height=193 class=scale src="//s.plantuml.com/imgw/use-case-diagram-fezqu8ni.png"/></div></div><p><a id="11"></a><p>&nbsp;<p>&nbsp; <h2>从左向右方向</h2><p> 默认从上往下构建图示。 <div><div class=mycell><code><pre>
+@startuml
+'default
+top to bottom direction
+user1 --&gt; (Usecase 1)
+user2 --&gt; (Usecase 2)
+
+@enduml
+</pre></code></div><div class=mycell><img border="2" title="foo" width=249 height=193 class=scale src="//s.plantuml.com/imgw/use-case-diagram-u6eg0qha.png"/></div></div> 你可以用<code>left to right direction</code>命令改变图示方向。 <p><div><div class=mycell><code><pre>
+@startuml
+
+left to right direction
+user1 --&gt; (Usecase 1)
+user2 --&gt; (Usecase 2)
+
+@enduml
+</pre></code></div><div class=mycell><img border="2" title="foo" width=211 height=222 class=scale src="//s.plantuml.com/imgw/use-case-diagram-ahp2yo67.png"/></div></div><p><a id="12"></a><p>&nbsp;<p>&nbsp; <h2>显示参数</h2><p><p> 用<code><a href="skinparam">skinparam</a></code>改变字体和颜色。 <p> 可以在如下场景中使用： <ul><li> 在图示的定义中，</li><li><a href="preprocessing">在引入的文件中</a>，</li><li> 在<a href="command-line">命令行</a>或者<a href="ant-task">ANT任务</a>提供的配置文件中。</li></ul><p> 你也可以给构造的角色和用例指定特殊颜色和字体。 <p><div><div class=mycell><code><pre>
+@startuml
+skinparam handwritten true
+
+skinparam usecase {
+	BackgroundColor DarkSeaGreen
+	BorderColor DarkSlateGray
+
+	BackgroundColor&lt;&lt; Main &gt;&gt; YellowGreen
+	BorderColor&lt;&lt; Main &gt;&gt; YellowGreen
+	
+	ArrowColor Olive
+	ActorBorderColor black
+	ActorFontName Courier
+
+	ActorBackgroundColor&lt;&lt; Human &gt;&gt; Gold
+}
+
+User &lt;&lt; Human &gt;&gt;
+:Main Database: as MySql &lt;&lt; Application &gt;&gt;
+(Start) &lt;&lt; One Shot &gt;&gt;
+(Use the application) as (Use) &lt;&lt; Main &gt;&gt;
+
+User -&gt; (Start)
+User --&gt; (Use)
+
+MySql --&gt; (Use)
+
+@enduml
+</pre></code></div><div class=mycell><img border="2" title="foo" width=346 height=230 class=scale src="//s.plantuml.com/imgw/use-case-diagram-0r5yhzf5.png"/></div></div><p><a id="13"></a><p>&nbsp;<p>&nbsp; <h2>一个完整的例子</h2><p><p><div><div class=mycell><code><pre>
+@startuml
+left to right direction
+skinparam packageStyle rectangle
+actor customer
+actor clerk
+rectangle checkout {
+  customer -- (checkout)
+  (checkout) .&gt; (payment) : include
+  (help) .&gt; (checkout) : extends
+  (checkout) -- clerk
+}
+@enduml
+</pre></code></div><div class=mycell><img border="2" title="foo" width=318 height=286 class=scale src="//s.plantuml.com/imgw/use-case-diagram-furcqsme.png"/></div></div><p><hr><p><ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-format="fluid" data-ad-layout="in-article" data-ad-client="ca-pub-5770515425712095" data-ad-slot="4513300169"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script><p><footer><table width=100% border=0><tr align=center><td width=20%><iframe src="//s.plantuml.com/ppbtn?190" allowtransparency="true" frameborder="0" scrolling="0" width="115" height="20"></iframe></td><td width=20%><iframe src="//s.plantuml.com/pnbtn?99" allowtransparency="true" frameborder="0" scrolling="0" width="115" height="20"></iframe></td><td width=20%><a href="https://liberapay.com/plantuml/donate"><img width=85 height=20 src="https://img.shields.io/liberapay/patrons/plantuml.svg?logo=liberapay"></a></td><td width=20%><script id="_wau1ft">var _wau=_wau||[];_wau.push(["small","vwt5xirsg4hh","1ft"]);(function(){var a=document.createElement("script");a.async=true;a.src="//widgets.amung.us/small.js";document.getElementsByTagName("head")[0].appendChild(a)})();</script></td><td width=20%><a href=https://www.ej-technologies.com/products/jprofiler/overview.html title="JProfiler"><img width=92 height=26 alt="JProfiler" src=//s.plantuml.com/jprofiler_small.png></a></td></tr></table></footer></div><script>var sc_project=11129481;var sc_invisible=1;var sc_security="bd89fcfd";</script><script src="http://www.statcounter.com/counter/counter.js"></script></body></html>

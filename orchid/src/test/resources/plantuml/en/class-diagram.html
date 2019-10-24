@@ -1,0 +1,552 @@
+<html lang="en"><head><meta name="flattr:id" content="1ew3x0"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "url": "http://plantuml.com",
+  "name": "PlantUML",
+  "sameAs" : ["https://twitter.com/plantuml","https://en.wikipedia.org/wiki/PlantUML","https://www.wikidata.org/wiki/Q18346546", "https://plus.google.com/+PlantumlPublic/"],
+  "logo": "http://plantuml.com/logo3.png",
+  "contactPoint": [{
+    "@type": "ContactPoint",
+    "email": "plantuml@gmail.com",
+    "url": "http://plantuml.com",
+    "contactType": "customer service"
+  }],
+    "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://cse.google.fr/cse/publicurl?cx=002267040093494634259:o59itilhnna&q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+    "@type": "ListItem",
+    "position": 1,
+    "item": {
+      "@id": "http://plantuml.com",
+      "name": "Home"
+    }
+  },{
+    "@type": "ListItem",
+    "position": 2,
+    "item": {
+      "@id": "http://plantuml.com/sitemap-language-specification",
+      "name": "Language specification"
+    }
+  },{
+    "@type": "ListItem",
+    "position": 3,
+    "item": {
+      "@id": "http://plantuml.com/class-diagram",
+      "name": "Class Diagram"
+  }
+  }]
+}
+</script><link rel="canonical" href="http://plantuml.com/class-diagram"/><link rel="alternate" hreflang="x-default" href="http://plantuml.com/class-diagram"/><link rel="alternate" hreflang="de" href="http://plantuml.com/de/class-diagram"/><link rel="alternate" hreflang="en" href="http://plantuml.com/class-diagram"/><link rel="alternate" hreflang="es" href="http://plantuml.com/es/class-diagram"/><link rel="alternate" hreflang="fr" href="http://plantuml.com/fr/class-diagram"/><link rel="alternate" hreflang="ja" href="http://plantuml.com/ja/class-diagram"/><link rel="alternate" hreflang="ru" href="http://plantuml.com/ru/class-diagram"/><link rel="alternate" hreflang="ko" href="http://plantuml.com/ko/class-diagram"/><link rel="alternate" hreflang="zh" href="http://plantuml.com/zh/class-diagram"/><link rel="shortcut icon" href="//s.plantuml.com/favicon.ico"/><link rel="publisher" href="https://plus.google.com/+PlantumlPublic/"/><link rel="alternate" type="application/rss+xml" title="RSS" href="http://plantuml.com/en/class-diagram.rss"><title>Class Diagram syntax and features</title><meta name="description" content="PlantUML class diagram syntax: You can define interfaces, members, relationships, packages, generics, notes... Changing fonts and colors is also possible."/><meta property="og:type" content="article"/><meta property="og:title" content="Class Diagram syntax and features"/><meta property="og:description" content="PlantUML class diagram syntax: You can define interfaces, members, relationships, packages, generics, notes... Changing fonts and colors is also possible."/><meta property="og:url" content="http://plantuml.com/class-diagram"/><meta property="og:site_name" content="PlantUML.com"/><meta name="twitter:image" content="http://plantuml.com/og-class-diagram"/><meta property="og:locale" content="en"/><meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Class Diagram syntax and features"/><meta name="twitter:description" content="PlantUML class diagram syntax: You can define interfaces, members, relationships, packages, generics, notes... Changing fonts and colors is also possible."/><meta name="twitter:site" content="@PlantUML"/><meta name="twitter:creator" content="@PlantUML"/><style media="screen" type="text/css">li{margin:2px}#external li{margin:13px}.mycell{display:inline-block;vertical-align:top;padding:10px}#header{z-index:2;position:fixed;left:205px;right:0;height:40px;top:0;background:#edeff3}#header2{z-index:2;position:fixed;left:205px;right:0;height:10px;top:40px;background:#fefefe}#header3{z-index:3;position:fixed;left:1010px;right:0;height:40px;top:0;background:#edeff3}#root{margin:50px 0 0 220px;background:#fefefe}#side{position:fixed;margin-left:0;margin-top:-50px;height:100%;width:205px;padding-top:0;background:#edeff3;z-index:2}@media screen and (max-width:1190px){#header{left:185px}#header2{left:185px}#root{margin:50px 0 0 200px}#side{width:185px}}@media screen and (max-width:1010px){#side{width:181px;margin-top:0}#root{margin:0 0 0 184px}#header,#header2{visibility:hidden}}body{margin:auto;overflow-x:hidden;background:#fefefe}a{text-decoration:none;color:#0366d6}a:hover{text-decoration:underline}#menu{border:0;font-family:Helvetica,sans-serif;font-size:14px;padding:0;margin:0;width:200%}#menu li{float:left;list-style:none;text-align:center;position:relative;margin:10px 0 0 10px;border:0}#menu li a{padding:0 7px 0 7px;text-decoration:none;color:#637282}#menu a:hover{color:#cbc9c8}#menuside{border:0;font-family:Helvetica,sans-serif;font-size:14px;padding:0;margin:0}#menuside li{list-style:none;text-align:center;position:relative;padding:0;margin:13px 20px 14px 10px;border:0}#menuside li a{display:inline-block;text-decoration:none;color:#637282;width:100%}#menuside a:hover{color:#cbc9c8}#BC{z-index:0;padding-top:5px;top:35px}.breadcrumb{font-family:Helvetica,sans-serif;font-size:14px;text-align:center;display:inline-block;overflow:hidden;border-radius:5px}.breadcrumb a{text-decoration:none;outline:0;display:block;float:left;font-size:12px;line-height:24px;color:#373f49;padding:0 10px 0 35px;background:#f0f1f1;background:linear-gradient(#f0f1f1,#c6d2d2);position:relative}.breadcrumb a:first-child{padding-left:21px;border-radius:5px 0 0 5px}.breadcrumb a:first-child:before{left:14px}.breadcrumb a:last-child{visibility:hidden}.breadcrumb a.active,.breadcrumb a:hover{color:#000;background:#c6d2d2;background:linear-gradient(#e3e4e4,#b8c7c7)}.breadcrumb a.active:after,.breadcrumb a:hover:after{background:#c6d2d2;background:linear-gradient(135deg,#e3e4e4,#b8c7c7)}.breadcrumb a:after{content:'';position:absolute;top:0;right:-12px;width:24px;height:24px;transform:scale(0.707) rotate(45deg);z-index:1;background:#f0f1f1;background:linear-gradient(135deg,#f0f1f1,#c6d2d2);box-shadow:2px -2px 0 2px rgba(0,0,0,0.1),3px -3px 0 2px rgba(255,255,255,0.1);border-radius:0 5px 0 50px}.breadcrumb a:last-child:after{content:none;visibility:hidden}.lga,.lga a,.lgi,.lgi a{font-family:Helvetica,sans-serif;font-size:13px;text-align:center;color:#fff;padding:0 5px;margin:0}.lga,.lga a{background-color:#008}.lgi,.lgi a{background-color:#888}.lga:hover,.lga:hover a{text-decoration:none;color:#BBB}.lgi:hover,.lgi:hover a{text-decoration:none;color:#CCC}</style><script async src="https://www.googletagmanager.com/gtag/js?id=UA-16629806-3"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date());gtag("config","UA-16629806-3");</script><script>(function(){var b=document.createElement("script"),a=document.getElementsByTagName("script")[0];b.type="text/javascript";b.async=true;b.src="http://api.flattr.com/js/0.6/load.js?mode=auto";a.parentNode.insertBefore(b,a)})();var llg="en";</script><script async src="//s.plantuml.com/lg3.js"></script><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script></head><body><nav id=header><ul id="menu"><li><a id=me1 href="sequence-diagram">Sequence</a></li><li><a id=me2 href="use-case-diagram">Use Case</a></li><li><a id=me3 href="class-diagram">Class</a></li><li><a id=me4 href="activity-diagram-legacy">Activity</a></li><li><a id=me5 href="activity-diagram-beta">Activity <img border=0 width=20 height=8 src=//s.plantuml.com/beta-icon.gif></a></li><li><a id=me6 href="component-diagram">Component</a></li><li><a id=me7 href="state-diagram">State</a></li><li><a id=me8 href="object-diagram">Object</a></li><li><a id=me9 href="deployment-diagram">Deployment</a></li><li><a id=me10 href="timing-diagram">Timing</a></li></ul></nav><nav id=header3><ins class="adsbygoogle" style="display:inline-block;width:100%;height:40px" data-ad-client="ca-pub-5770515425712095" data-ad-slot="7824244819" data-ad-format="link" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></nav><nav id=header2></nav><nav id="side"><p><div style="height:185px;"><style>.msd{width:200px;height:185px}@media(max-width:1190px){.msd{width:180px}}</style><ins class="adsbygoogle msd" style="display:inline-block" data-ad-client="ca-pub-5770515425712095" data-ad-slot="6244156563" data-ad-format="link" data-full-width-responsive="false"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div><ul id="menuside"><li><a id=me31 href="index">Home</a></li><li><a id=me32 href="news">What's New ?</a></li><li><a id=me33 href="starting">Getting Started</a></li><li><a id=me34 href="running">Running</a></li><li><a id=me35 href="faq">F.A.Q.</a></li><li><a id=me36 href="dedication">Dedication</a></li><li><a id=me37 href="download">Download</a></li><li><a id=me38 href="https://forum.plantuml.net">Forum</a></li><li><a id=me39 href="preprocessing">Preprocessing</a></li><li><a id=me40 href="commons">Commons</a></li><li><a id=me41 href="stdlib">Standard Library</a></li><li><a id=me42 href="sitemap">Site Map</a></li><li><a id=me43 href="guide">PDF Guide</a></li><li><a id=me44 href="external-links">External Links</a></li></ul><p></nav><div id=root><div id=BC><div class="breadcrumb" style="z-index:1;position: relative;"><a href="sitemap">PlantUML</a><a href="sitemap-language-specification">Language specification</a><a href="class-diagram">Class Diagram</a><a href="#"></a></div><iframe style="z-index:1;position: relative;" src="//s.plantuml.com/ppbtn?190" allowtransparency="true" frameborder="0" scrolling="0" width="115" height="20"></iframe><iframe style="z-index:1;position: relative;" src="//s.plantuml.com/pnbtn?99" allowtransparency="true" frameborder="0" scrolling="0" width="115" height="20"></iframe><a href="https://liberapay.com/plantuml/donate"><img width=85 height=20 src="https://img.shields.io/liberapay/patrons/plantuml.svg?logo=liberapay"></a><p><style>.lha,.lhi{font-family:Helvetica,sans-serif;font-size:13px;display:inline-block;margin:0 5px 0 0}.lha a,.lhi a{width:70px;display:inline-block;text-align:center;vertical-align:middle;text-decoration:none;padding-top:2px;padding-bottom:2px;margin-top:5px}.lha a{background:#008;color:#fff}.lhi a{background:#888;color:#fff}.lha a:hover{color:#888;background:#22f}.lhi a:hover{color:#888;background:#22f}</style><table border=0 cellspacing=0 cellpadding=0 width=99%><tr><td><a rel="nofollow" href=http://wiki.plantuml.net/site/class-diagram>You can contribute on this page by clicking here</a> &nbsp;<a rel="nofollow" href=http://wiki.plantuml.net/site/menu>(Menu)</a></td><td align=right><div class=lha><a href="//plantuml.com/en/class-diagram" title="English" id=lgen>English</a></div><div class=lhi><a href="//plantuml.com/de/class-diagram" title="Deutsch" id=lgde>Deutsch</a></div><div class=lhi><a href="//plantuml.com/es/class-diagram" title="Español" id=lges>Español</a></div><div class=lhi><a href="//plantuml.com/fr/class-diagram" title="Français" id=lgfr>Français</a></div><div class=lhi><a href="//plantuml.com/ja/class-diagram" title="日本語" id=lgja>日本語</a></div><div class=lhi><a href="//plantuml.com/ko/class-diagram" title="한국어" id=lgko>한국어</a></div><div class=lhi><a href="//plantuml.com/ru/class-diagram" title="Русский" id=lgru>Русский</a></div><div class=lhi><a href="//plantuml.com/zh/class-diagram" title="中文" id=lgzh>中文</a></div></td></tr></table><p></div><p><a id="1"></a><p>&nbsp;<p>&nbsp; <h1>Class Diagram</h1><p><a id="2"></a><p>&nbsp;<p>&nbsp; <h2>Relations between classes</h2><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5770515425712095" data-ad-slot="6161423756" data-ad-format="link" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script><p><style>.qsd{float:right;margin:15px 3px;width:336px;height:600px}@media(max-width:1300px){.qsd{width:300px}}@media(max-width:1250px){.qsd{width:160px}}</style><div class=qsd><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5770515425712095" data-ad-slot="8887659449" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div><p> Relations between classes are defined using the following symbols : <p><table border=1 cellspacing=0 cellpadding=5><tr><td><b> Type </b></td><td><b> Symbol </b></td><td><b> Drawing </b></td></tr><tr><td> Extension </td><td><code>&lt;|--</code></td><td><img src=//s.plantuml.com/extends01.png></td></tr><tr><td> Composition </td><td><code>*--</code></td><td><img src=//s.plantuml.com/sym03.png></td></tr><tr><td> Aggregation </td><td><code>o--</code></td><td><img src=//s.plantuml.com/sym01.png></td></tr></table><p> It is possible to replace <code>--</code> by <code>..</code> to have a dotted line. <p> Knowing those rules, it is possible to draw the following drawings: <p><p><div><div class=mycell><code><pre>
+@startuml
+Class01 &lt;|-- Class02
+Class03 *-- Class04
+Class05 o-- Class06
+Class07 .. Class08
+Class09 -- Class10
+@enduml
+</pre></code></div><div class=mycell><img border="2" title="foo" width=551 height=174 class=scale src="//s.plantuml.com/imgw/class-diagram-pbisfrrj.png"/></div></div><p><div><div class=mycell><code><pre>
+@startuml
+Class11 &lt;|.. Class12
+Class13 --&gt; Class14
+Class15 ..&gt; Class16
+Class17 ..|&gt; Class18
+Class19 &lt;--* Class20
+@enduml
+</pre></code></div><div class=mycell><img border="2" title="foo" width=551 height=174 class=scale src="//s.plantuml.com/imgw/class-diagram-4bzgas9l.png"/></div></div><p><div><div class=mycell><code><pre>
+@startuml
+Class21 #-- Class22
+Class23 x-- Class24
+Class25 }-- Class26
+Class27 +-- Class28
+Class29 ^-- Class30
+@enduml
+</pre></code></div><div class=mycell><img border="2" title="foo" width=551 height=174 class=scale src="//s.plantuml.com/imgw/class-diagram-bwtlealk.png"/></div></div><p><a id="3"></a><p>&nbsp;<p>&nbsp; <h2>Label on relations</h2><p><p> It is possible a add a label on the relation, using <code>:</code>, followed by the text of the label. <p> For cardinality, you can use double-quotes <code>""</code> on each side of the relation. <p><p><div><div class=mycell><code><pre>
+@startuml
+
+Class01 "1" *-- "many" Class02 : contains
+
+Class03 o-- Class04 : aggregation
+
+Class05 --&gt; "1" Class06
+
+@enduml
+</pre></code></div><div class=mycell><img border="2" title="foo" width=330 height=192 class=scale src="//s.plantuml.com/imgw/class-diagram-bpt9mgeq.png"/></div></div><p> You can add an extra arrow pointing at one object showing which object acts on the other object, using <code>&lt;</code> or <code>&gt;</code> at the begin or at the end of the label. <p><p><div><div class=mycell><code><pre>
+@startuml
+class Car
+
+Driver - Car : drives &gt;
+Car *- Wheel : have 4 &gt;
+Car -- Person : &lt; owns
+
+@enduml
+</pre></code></div><div class=mycell><img border="2" title="foo" width=368 height=192 class=scale src="//s.plantuml.com/imgw/class-diagram-j2yu44ci.png"/></div></div><a id="4"></a><p>&nbsp;<p>&nbsp; <h2>Adding methods</h2><p> To declare fields and methods, you can use the symbol <code>:</code> followed by the field's or method's name. <p> The system checks for parenthesis to choose between methods and fields. <p><div><div class=mycell><code><pre>
+@startuml
+Object &lt;|-- ArrayList
+
+Object : equals()
+ArrayList : Object[] elementData
+ArrayList : size()
+
+@enduml
+</pre></code></div><div class=mycell><img border="2" title="foo" width=127 height=215 class=scale src="//s.plantuml.com/imgw/class-diagram-nzbuvma9.png"/></div></div><p><p> It is also possible to group between brackets <code>{}</code> all fields and methods. <p> Note that the syntax is highly flexible about type/name order. <p><p><div><div class=mycell><code><pre>
+@startuml
+class Dummy {
+  String data
+  void methods()
+}
+
+class Flight {
+   flightNumber : Integer
+   departureTime : Date
+}
+@enduml
+</pre></code></div><div class=mycell><img border="2" title="foo" width=249 height=93 class=scale src="//s.plantuml.com/imgw/class-diagram-skfniiby.png"/></div></div><p> You can use <code>{field}</code> and <code>{method}</code> modifiers to override default behaviour of the parser about fields and methods. <div><div class=mycell><code><pre>
+@startuml
+class Dummy {
+  {field} A field (despite parentheses)
+  {method} Some method
+}
+
+@enduml
+</pre></code></div><div class=mycell><img border="2" title="foo" width=170 height=92 class=scale src="//s.plantuml.com/imgw/class-diagram-he51geea.png"/></div></div><p><a id="5"></a><p>&nbsp;<p>&nbsp; <h2>Defining visibility</h2><p> When you define methods or fields, you can use characters to define the visibility of the corresponding item: <p><table border=1 cellspacing=0 cellpadding=5><tr><td><b> Character </b></td><td><b> Icon for field </b></td><td><b> Icon for method </b></td><td><b> Visibility </b></td></tr><tr><td><code>-</code></td><td><img src=//s.plantuml.com/private-field.png></td><td><img src=//s.plantuml.com/private-method.png></td><td> private </td></tr><tr><td><code>#</code></td><td><img src=//s.plantuml.com/protected-field.png></td><td><img src=//s.plantuml.com/protected-method.png></td><td> protected </td></tr><tr><td><code>~</code></td><td><img src=//s.plantuml.com/package-private-field.png></td><td><img src=//s.plantuml.com/package-private-method.png></td><td> package private </td></tr><tr><td><code>+</code></td><td><img src=//s.plantuml.com/public-field.png></td><td><img src=//s.plantuml.com/public-method.png></td><td> public </td></tr></table><p><div><div class=mycell><code><pre>
+@startuml
+
+class Dummy {
+ -field1
+ #field2
+ ~method1()
+ +method2()
+}
+
+@enduml
+</pre></code></div><div class=mycell><img border="2" title="foo" width=92 height=120 class=scale src="//s.plantuml.com/imgw/class-diagram-rxqsvfdo.png"/></div></div><p><p> You can turn off this feature using the <code>skinparam classAttributeIconSize 0</code> command : <p><p><div><div class=mycell><code><pre>
+@startuml
+skinparam classAttributeIconSize 0
+class Dummy {
+ -field1
+ #field2
+ ~method1()
+ +method2()
+}
+
+@enduml
+</pre></code></div><div class=mycell><img border="2" title="foo" width=92 height=120 class=scale src="//s.plantuml.com/imgw/class-diagram-csigq6ix.png"/></div></div><p><a id="6"></a><p>&nbsp;<p>&nbsp; <h2>Abstract and Static</h2><p><p><p> You can define static or abstract methods or fields using the <code>{static}</code> or <code>{abstract}</code> modifier. <p> These modifiers can be used at the start or at the end of the line. You can also use <code>{classifier}</code> instead of <code>{static}</code>. <p><div><div class=mycell><code><pre>
+@startuml
+class Dummy {
+  {static} String id
+  {abstract} void methods()
+}
+@enduml
+</pre></code></div><div class=mycell><img border="2" title="foo" width=102 height=92 class=scale src="//s.plantuml.com/imgw/class-diagram-xdvf0ipd.png"/></div></div><p><a id="7"></a><p>&nbsp;<p>&nbsp; <h2>Advanced class body</h2><p><p><p> By default, methods and fields are automatically regrouped by PlantUML. You can use separators to define your own way of ordering fields and methods. The following separators are possible : <code>--</code><code>..</code><code>==</code><code>__</code>. <p> You can also use titles within the separators: <p><p><div><div class=mycell><code><pre>
+@startuml
+class Foo1 {
+  You can use
+  several lines
+  ..
+  as you want
+  and group
+  ==
+  things together.
+  __
+  You can have as many groups
+  as you want
+  --
+  End of class
+}
+
+class User {
+  .. Simple Getter ..
+  + getName()
+  + getAddress()
+  .. Some setter ..
+  + setName()
+  __ private data __
+  int age
+  -- encrypted --
+  String password
+}
+
+@enduml
+</pre></code></div><div class=mycell><img border="2" title="foo" width=305 height=200 class=scale src="//s.plantuml.com/imgw/class-diagram-pxfexlqi.png"/></div></div><p><a id="8"></a><p>&nbsp;<p>&nbsp; <h2>Notes and stereotypes</h2><p> Stereotypes are defined with the <code>class</code> keyword, <code>&lt;&lt;</code> and <code>&gt;&gt;</code>. <p> You can also define notes using <code>note left of</code> , <code>note right of</code> , <code>note top of</code> , <code>note bottom of</code> keywords. <p> You can also define a note on the last defined class using <code>note left</code>, <code>note right</code>, <code>note top</code>, <code>note bottom</code>. <p> A note can be also define alone with the <code>note</code> keywords, then linked to other objects using the <code>..</code> symbol. <p><div><div class=mycell><code><pre>
+@startuml
+class Object &lt;&lt; general &gt;&gt;
+Object &lt;|--- ArrayList
+
+note top of Object : In java, every class\nextends this one.
+
+note "This is a floating note" as N1
+note "This note is connected\nto several objects." as N2
+Object .. N2
+N2 .. ArrayList
+
+class Foo
+note left: On last defined class
+
+@enduml
+</pre></code></div><div class=mycell><img border="2" title="foo" width=592 height=393 class=scale src="//s.plantuml.com/imgw/class-diagram-bz2ok0sm.png"/></div></div><p><a id="9"></a><p>&nbsp;<p>&nbsp; <h2>More on notes</h2><p><p> It is also possible to use few html tags like : <p><ul><li><code>&lt;b&gt;</code></li><li><code>&lt;u&gt;</code></li><li><code>&lt;i&gt;</code></li><li><code>&lt;s&gt;</code>, <code>&lt;del&gt;</code>, <code>&lt;strike&gt;</code></li><li><code>&lt;font color="#AAAAAA"&gt;</code> or <code>&lt;font color="colorName"&gt;</code></li><li><code>&lt;color:#AAAAAA&gt;</code> or <code>&lt;color:colorName&gt;</code></li><li><code>&lt;size:nn&gt;</code> to change font size</li><li><code>&lt;img src="file"&gt;</code> or <code>&lt;img:file&gt;</code>: the file must be accessible by the filesystem</li></ul><p><p> You can also have a note on several lines. <p> You can also define a note on the last defined class using <code>note left</code>, <code>note right</code>, <code>note top</code>, <code>note bottom</code>. <div><div class=mycell><code><pre>
+@startuml
+
+class Foo
+note left: On last defined class
+
+note top of Object
+  In java, &lt;size:18&gt;every&lt;/size&gt; &lt;u&gt;class&lt;/u&gt;
+  &lt;b&gt;extends&lt;/b&gt;
+  &lt;i&gt;this&lt;/i&gt; one.
+end note
+
+note as N1
+  This note is &lt;u&gt;also&lt;/u&gt;
+  &lt;b&gt;&lt;color:royalBlue&gt;on several&lt;/color&gt;
+  &lt;s&gt;words&lt;/s&gt; lines
+  And this is hosted by &lt;img:sourceforge.jpg&gt;
+end note
+
+@enduml
+</pre></code></div><div class=mycell><img border="2" title="foo" width=716 height=216 class=scale src="//s.plantuml.com/imgw/class-diagram-ufhcppdx.png"/></div></div><p><a id="10"></a><p>&nbsp;<p>&nbsp; <h2>Note on links</h2><p><p> It is possible to add a note on a link, just after the link definition, using <code>note on link</code>. <p> You can also use <code>note left on link</code>, <code>note right on link</code>, <code>note top on link</code>, <code>note bottom on link</code> if you want to change the relative position of the note with the label. <p><div><div class=mycell><code><pre>
+@startuml
+
+class Dummy
+Dummy --&gt; Foo : A link
+note on link #red: note that is red
+
+Dummy --&gt; Foo2 : Another link
+note right on link #blue
+	this is my note on right link
+	and in blue
+end note
+
+@enduml
+</pre></code></div><div class=mycell><img border="2" title="foo" width=444 height=232 class=scale src="//s.plantuml.com/imgw/class-diagram-cg8uls0h.png"/></div></div><p><a id="11"></a><p>&nbsp;<p>&nbsp; <h2>Abstract class and interface</h2><p><p> You can declare a class as abstract using <code>abstract"</code> or <code>abstract class</code> keywords. <p> The class will be printed in <em>italic</em>. <p><p> You can use the <code>interface</code>, <code>annotation</code> and <code>enum</code> keywords too. <p><div><div class=mycell><code><pre>
+@startuml
+
+abstract class AbstractList
+abstract AbstractCollection
+interface List
+interface Collection
+
+List &lt;|-- AbstractList
+Collection &lt;|-- AbstractCollection
+
+Collection &lt;|- List
+AbstractCollection &lt;|- AbstractList
+AbstractList &lt;|-- ArrayList
+
+class ArrayList {
+  Object[] elementData
+  size()
+}
+
+enum TimeUnit {
+  DAYS
+  HOURS
+  MINUTES
+}
+
+annotation SuppressWarnings
+
+@enduml
+</pre></code></div><div class=mycell><img border="2" title="foo" width=536 height=351 class=scale src="//s.plantuml.com/imgw/class-diagram-tn3ulogn.png"/></div></div><p><a id="12"></a><p>&nbsp;<p>&nbsp; <h2>Using non-letters</h2><p><p> If you want to use <a href="unicode">non-letters</a> in the class (or enum...) display, you can either : <ul><li>Use the <code>as</code> keyword in the class definition</li><li>Put quotes <code>""</code> around the class name </li></ul><p><div><div class=mycell><code><pre>
+@startuml
+class "This is my class" as class1
+class class2 as "It works this way too"
+
+class2 *-- "foo/dummy" : use
+@enduml
+</pre></code></div><div class=mycell><img border="2" title="foo" width=313 height=192 class=scale src="//s.plantuml.com/imgw/class-diagram-dka83ioi.png"/></div></div><p><a id="13"></a><p>&nbsp;<p>&nbsp; <h2>Hide attributes, methods...</h2><p> You can parameterize the display of classes using the <code>hide/show</code> command. <p> The basic command is: <code>hide empty members</code>. This command will hide attributes or methods if they are empty. <p> Instead of <code>empty members</code>, you can use: <ul><li><code>empty fields</code> or <code>empty attributes</code> for empty fields,</li><li><code>empty methods</code> for empty methods,</li><li><code>fields</code> or <code>attributes</code> which will hide fields, even if they are described,</li><li><code>methods</code> which will hide methods, even if they are described,</li><li><code>members</code> which will hide fields <u>and</u> methods, even if they are described,</li><li><code>circle</code> for the circled character in front of class name,</li><li><code>stereotype</code> for the stereotype.</li></ul><p> You can also provide, just after the <code>hide</code> or <code>show</code> keyword: <ul><li><code>class</code> for all classes,</li><li><code>interface</code> for all interfaces,</li><li><code>enum</code> for all enums,</li><li><code>&lt;&lt;foo1&gt;&gt;</code> for classes which are stereotyped with <em>foo1</em>,</li><li>an existing class name.</li></ul><p> You can use several <code>show/hide</code> commands to define rules and exceptions. <p><div><div class=mycell><code><pre>
+@startuml
+
+class Dummy1 {
+  +myMethods()
+}
+
+class Dummy2 {
+  +hiddenMethod()
+}
+
+class Dummy3 &lt;&lt;Serializable&gt;&gt; {
+	String name
+}
+
+hide members
+hide &lt;&lt;Serializable&gt;&gt; circle
+show Dummy1 methods
+show &lt;&lt;Serializable&gt;&gt; fields
+
+@enduml
+</pre></code></div><div class=mycell><img border="2" title="foo" width=222 height=194 class=scale src="//s.plantuml.com/imgw/class-diagram-mnukfadi.png"/></div></div><p><a id="14"></a><p>&nbsp;<p>&nbsp; <h2>Hide classes</h2><p><p> You can also use the <code>show/hide</code> commands to hide classes. <p> This may be useful if you define a large <a href="preprocessing">!included file</a>, and if you want to hide come classes after <a href="preprocessing">file inclusion</a>. <p><div><div class=mycell><code><pre>
+@startuml
+
+class Foo1
+class Foo2
+
+Foo2 *-- Foo1
+
+hide Foo2
+
+@enduml
+</pre></code></div><div class=mycell><img border="2" title="foo" width=76 height=174 class=scale src="//s.plantuml.com/imgw/class-diagram-bvjxedqt.png"/></div></div><p><a id="15"></a><p>&nbsp;<p>&nbsp; <h2>Use generics</h2><p><p> You can also use bracket <code>&lt;</code> and <code>&gt;</code> to define generics usage in a class. <p><div><div class=mycell><code><pre>
+@startuml
+
+class Foo&lt;? extends Element&gt; {
+  int size()
+}
+Foo *- Element
+
+@enduml
+</pre></code></div><div class=mycell><img border="2" title="foo" width=288 height=79 class=scale src="//s.plantuml.com/imgw/class-diagram-aju6ahtn.png"/></div></div><p> It is possible to disable this drawing using <code>skinparam genericDisplay old</code> command. <p><a id="16"></a><p>&nbsp;<p>&nbsp; <h2>Specific Spot</h2><p> Usually, a spotted character (C, I, E or A) is used for classes, interface, enum and abstract classes. <p> But you can define your own spot for a class when you define the stereotype, adding a single character and a color, like in this example: <p><div><div class=mycell><code><pre>
+@startuml
+
+class System &lt;&lt; (S,#FF7700) Singleton &gt;&gt;
+class Date &lt;&lt; (D,orchid) &gt;&gt;
+@enduml
+</pre></code></div><div class=mycell><img border="2" title="foo" width=203 height=74 class=scale src="//s.plantuml.com/imgw/class-diagram-ppd0huqa.png"/></div></div><p><a id="17"></a><p>&nbsp;<p>&nbsp; <h2>Packages</h2><p> You can define a package using the <code>package</code> keyword, and optionally declare a background color for your package (Using a html color code or name). <p> Note that package definitions can be nested. <p><div><div class=mycell><code><pre>
+@startuml
+
+package "Classic Collections" #DDDDDD {
+  Object &lt;|-- ArrayList
+}
+
+package net.sourceforge.plantuml {
+  Object &lt;|-- Demo1
+  Demo1 *- Demo2
+}
+
+@enduml
+</pre></code></div><div class=mycell><img border="2" title="foo" width=430 height=243 class=scale src="//s.plantuml.com/imgw/class-diagram-ldn6uwny.png"/></div></div><p><a id="18"></a><p>&nbsp;<p>&nbsp; <h2>Packages style</h2><p><p><p> There are different styles available for packages. <p> You can specify them either by setting a default style with the command : <code>skinparam packageStyle</code>, or by using a stereotype on the package: <p><div><div class=mycell><code><pre>
+@startuml
+scale 750 width
+package foo1 &lt;&lt;Node&gt;&gt; {
+  class Class1
+}
+
+package foo2 &lt;&lt;Rectangle&gt;&gt; {
+  class Class2
+}
+
+package foo3 &lt;&lt;Folder&gt;&gt; {
+  class Class3
+}
+
+package foo4 &lt;&lt;Frame&gt;&gt; {
+  class Class4
+}
+
+package foo5 &lt;&lt;Cloud&gt;&gt; {
+  class Class5
+}
+
+package foo6 &lt;&lt;Database&gt;&gt; {
+  class Class6
+}
+
+@enduml
+</pre></code></div><div class=mycell><img border="2" title="foo" width=728 height=143 class=scale src="//s.plantuml.com/imgw/class-diagram-jow28tgc.png"/></div></div><p><p> You can also define links between packages, like in the following example: <p><div><div class=mycell><code><pre>
+@startuml
+
+skinparam packageStyle rectangle
+
+package foo1.foo2 {
+}
+
+package foo1.foo2.foo3 {
+  class Object
+}
+
+foo1.foo2 +-- foo1.foo2.foo3
+
+@enduml
+</pre></code></div><div class=mycell><img border="2" title="foo" width=186 height=213 class=scale src="//s.plantuml.com/imgw/class-diagram-gbiematq.png"/></div></div><p><a id="19"></a><p>&nbsp;<p>&nbsp; <h2>Namespaces</h2><p> In packages, the name of a class is the unique identifier of this class. It means that you cannot have two classes with the very same name in different packages. <p> In that case, you should use <a href="http://en.wikipedia.org/wiki/Namespace_%28computer_science%29">namespaces</a> instead of packages. <p> You can refer to classes from other namespaces by fully qualify them. Classes from the default namespace are qualified with a starting dot. <p> Note that you don't have to explicitly create namespace : a fully qualified class is automatically put in the right namespace. <p><div><div class=mycell><code><pre>
+@startuml
+
+class BaseClass
+
+namespace net.dummy #DDDDDD {
+	.BaseClass &lt;|-- Person
+	Meeting o-- Person
+	
+	.BaseClass &lt;|- Meeting
+}
+
+namespace net.foo {
+  net.dummy.Person  &lt;|- Person
+  .BaseClass &lt;|-- Person
+
+  net.dummy.Meeting o-- Person
+}
+
+BaseClass &lt;|-- net.unused.Person
+
+@enduml
+</pre></code></div><div class=mycell><img border="2" title="foo" width=407 height=243 class=scale src="//s.plantuml.com/imgw/class-diagram-q1ibmnw4.png"/></div></div><p><a id="20"></a><p>&nbsp;<p>&nbsp; <h2>Automatic namespace creation</h2><p><p><p> You can define another separator (other than the dot) using the command : <code>set namespaceSeparator ???</code>. <p><div><div class=mycell><code><pre>
+@startuml
+
+set namespaceSeparator ::
+class X1::X2::foo {
+  some info
+}
+
+@enduml
+</pre></code></div><div class=mycell><img border="2" title="foo" width=135 height=149 class=scale src="//s.plantuml.com/imgw/class-diagram-rdgj9c9m.png"/></div></div><p> You can disable automatic package creation using the command <code>set namespaceSeparator none</code>. <p><div><div class=mycell><code><pre>
+@startuml
+
+set namespaceSeparator none
+class X1.X2.foo {
+  some info
+}
+
+@enduml
+</pre></code></div><div class=mycell><img border="2" title="foo" width=100 height=78 class=scale src="//s.plantuml.com/imgw/class-diagram-648cffpv.png"/></div></div><p><a id="21"></a><p>&nbsp;<p>&nbsp; <h2>Lollipop interface</h2><p><p> You can also define lollipops interface on classes, using the following syntax: <ul><li><code>bar ()- foo</code></li><li><code>bar ()-- foo</code></li><li><code>foo -() bar</code></li></ul><p><div><div class=mycell><code><pre>
+@startuml
+class foo
+bar ()- foo
+@enduml
+</pre></code></div><div class=mycell><img border="2" title="foo" width=110 height=66 class=scale src="//s.plantuml.com/imgw/class-diagram-zdjeosfy.png"/></div></div><p><a id="22"></a><p>&nbsp;<p>&nbsp; <h2>Changing arrows direction</h2><p> By default, links between classes have two dashes <code>--</code> and are vertically oriented. It is possible to use horizontal link by putting a single dash (or dot) like this: <p><div><div class=mycell><code><pre>
+@startuml
+Room o- Student
+Room *-- Chair
+@enduml
+</pre></code></div><div class=mycell><img border="2" title="foo" width=191 height=174 class=scale src="//s.plantuml.com/imgw/class-diagram-vxynrb16.png"/></div></div><p> You can also change directions by reversing the link: <p><div><div class=mycell><code><pre>
+@startuml
+Student -o Room
+Chair --* Room
+@enduml
+</pre></code></div><div class=mycell><img border="2" title="foo" width=191 height=174 class=scale src="//s.plantuml.com/imgw/class-diagram-tvx7hvma.png"/></div></div><p> It is also possible to change arrow direction by adding <code>left</code>, <code>right</code>, <code>up</code> or <code>down</code> keywords inside the arrow: <p><div><div class=mycell><code><pre>
+@startuml
+foo -left-&gt; dummyLeft 
+foo -right-&gt; dummyRight 
+foo -up-&gt; dummyUp 
+foo -down-&gt; dummyDown
+@enduml
+</pre></code></div><div class=mycell><img border="2" title="foo" width=330 height=282 class=scale src="//s.plantuml.com/imgw/class-diagram-9dj4g4mv.png"/></div></div><p> You can shorten the arrow by using only the first character of the direction (for example, <code>-d-</code> instead of <code>-down-</code>) or the two first characters (<code>-do-</code>). <p> Please note that you should not abuse this functionality : <em>Graphviz</em> gives usually good results without tweaking. <p><a id="23"></a><p>&nbsp;<p>&nbsp; <h2>Association classes</h2><p> You can define <em>association class</em> after that a relation has been defined between two classes, like in this example: <div><div class=mycell><code><pre>
+@startuml
+class Student {
+  Name
+}
+Student "0..*" - "1..*" Course
+(Student, Course) .. Enrollment
+
+class Enrollment {
+  drop()
+  cancel()
+}
+@enduml
+</pre></code></div><div class=mycell><img border="2" title="foo" width=237 height=215 class=scale src="//s.plantuml.com/imgw/class-diagram-wwoqenox.png"/></div></div><p> You can define it in another direction: <p><div><div class=mycell><code><pre>
+@startuml
+class Student {
+  Name
+}
+Student "0..*" -- "1..*" Course
+(Student, Course) . Enrollment
+
+class Enrollment {
+  drop()
+  cancel()
+}
+@enduml
+</pre></code></div><div class=mycell><img border="2" title="foo" width=182 height=324 class=scale src="//s.plantuml.com/imgw/class-diagram-zukesrb1.png"/></div></div><p><a id="24"></a><p>&nbsp;<p>&nbsp; <h2>Skinparam</h2><p><p><p> You can use the <code><a href="skinparam">skinparam</a></code> command to change colors and fonts for the drawing. <p> You can use this command : <ul><li> In the diagram definition, like any other commands,</li><li> In an <a href="preprocessing">included file</a>,</li><li> In a configuration file, provided in the <a href="command-line">command line</a> or the <a href="ant-task">ANT task</a>.</li></ul><p><div><div class=mycell><code><pre>
+@startuml
+
+skinparam class {
+	BackgroundColor PaleGreen
+	ArrowColor SeaGreen
+	BorderColor SpringGreen
+}
+skinparam stereotypeCBackgroundColor YellowGreen
+
+Class01 "1" *-- "many" Class02 : contains
+
+Class03 o-- Class04 : aggregation
+
+@enduml
+</pre></code></div><div class=mycell><img border="2" title="foo" width=246 height=192 class=scale src="//s.plantuml.com/imgw/class-diagram-nybtyzwm.png"/></div></div><p><a id="25"></a><p>&nbsp;<p>&nbsp; <h2>Skinned Stereotypes</h2><p><p> You can define specific color and fonts for stereotyped classes. <p><div><div class=mycell><code><pre>
+@startuml
+
+skinparam class {
+	BackgroundColor PaleGreen
+	ArrowColor SeaGreen
+	BorderColor SpringGreen
+	BackgroundColor&lt;&lt;Foo&gt;&gt; Wheat
+	BorderColor&lt;&lt;Foo&gt;&gt; Tomato
+}
+skinparam stereotypeCBackgroundColor YellowGreen
+skinparam stereotypeCBackgroundColor&lt;&lt; Foo &gt;&gt; DimGray
+
+Class01 &lt;&lt;Foo&gt;&gt;
+Class03 &lt;&lt;Foo&gt;&gt;
+Class01 "1" *-- "many" Class02 : contains
+
+Class03 o-- Class04 : aggregation
+
+@enduml
+</pre></code></div><div class=mycell><img border="2" title="foo" width=246 height=200 class=scale src="//s.plantuml.com/imgw/class-diagram-vhelabtw.png"/></div></div><p><a id="26"></a><p>&nbsp;<p>&nbsp; <h2>Color gradient</h2><p><p> It's possible to declare individual color for classes or note using the # notation. <p> You can use either <a href="color">standard color name</a> or RGB code. <p> You can also use color gradient in background, with the following syntax: two colors names separated either by: <ul><li><code>|</code>,</li><li><code>/</code>,</li><li><code>\</code>,</li><li>or <code>-</code></li></ul> depending the direction of the gradient. <p> For example, you could have: <p><div><div class=mycell><code><pre>
+@startuml
+
+skinparam backgroundcolor AntiqueWhite/Gold
+skinparam classBackgroundColor Wheat|CornflowerBlue
+
+class Foo #red-green
+note left of Foo #blue\9932CC
+  this is my
+  note on this class
+end note
+
+package example #GreenYellow/LightGoldenRodYellow {
+  class Dummy
+}
+
+@enduml
+</pre></code></div><div class=mycell><img border="2" title="foo" width=366 height=135 class=scale src="//s.plantuml.com/imgw/class-diagram-acqieq1g.png"/></div></div><p><a id="27"></a><p>&nbsp;<p>&nbsp; <h2>Help on layout</h2><p><p> Sometimes, the default layout is not perfect... <p> You can use <code>together</code> keyword to group some classes together : the layout engine will try to group them (as if they were in the same package). <p> You can also use <code>hidden</code> links to force the layout. <div><div class=mycell><code><pre>
+@startuml
+
+class Bar1
+class Bar2
+together {
+  class Together1
+  class Together2
+  class Together3
+}
+Together1 - Together2
+Together2 - Together3
+Together2 -[hidden]--&gt; Bar1
+Bar1 -[hidden]&gt; Bar2
+
+
+@enduml
+</pre></code></div><div class=mycell><img border="2" title="foo" width=382 height=267 class=scale src="//s.plantuml.com/imgw/class-diagram-hrrxstbd.png"/></div></div><p><p><p><a id="28"></a><p>&nbsp;<p>&nbsp; <h2>Splitting large files</h2><p> Sometimes, you will get some very large image files. <p> You can use the <code>page (hpages)x(vpages)</code> command to split the generated image into several files : <p><code>hpages</code> is a number that indicated the number of horizontal pages, and <code>vpages</code> is a number that indicated the number of vertical pages. <p> You can also use some specific skinparam settings to put borders on splitted pages (see example). <p><div><div class=mycell><code><pre>
+@startuml
+' Split into 4 pages
+page 2x2
+skinparam pageMargin 10
+skinparam pageExternalColor gray
+skinparam pageBorderColor black
+
+class BaseClass
+
+namespace net.dummy #DDDDDD {
+	.BaseClass &lt;|-- Person
+	Meeting o-- Person
+	
+	.BaseClass &lt;|- Meeting
+
+}
+
+namespace net.foo {
+  net.dummy.Person  &lt;|- Person
+  .BaseClass &lt;|-- Person
+
+  net.dummy.Meeting o-- Person
+}
+
+BaseClass &lt;|-- net.unused.Person
+@enduml
+</pre></code></div><div class=mycell><img border="2" title="foo" width=407 height=243 class=scale src="//s.plantuml.com/imgw/class-diagram-2sq5jiun.png"/></div></div><p><p><p><hr><p><ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-format="fluid" data-ad-layout="in-article" data-ad-client="ca-pub-5770515425712095" data-ad-slot="4513300169"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script><p><footer><table width=100% border=0><tr align=center><td width=20%><iframe src="//s.plantuml.com/ppbtn?190" allowtransparency="true" frameborder="0" scrolling="0" width="115" height="20"></iframe></td><td width=20%><iframe src="//s.plantuml.com/pnbtn?99" allowtransparency="true" frameborder="0" scrolling="0" width="115" height="20"></iframe></td><td width=20%><a href="https://liberapay.com/plantuml/donate"><img width=85 height=20 src="https://img.shields.io/liberapay/patrons/plantuml.svg?logo=liberapay"></a></td><td width=20%><script id="_wau1ft">var _wau=_wau||[];_wau.push(["small","vwt5xirsg4hh","1ft"]);(function(){var a=document.createElement("script");a.async=true;a.src="//widgets.amung.us/small.js";document.getElementsByTagName("head")[0].appendChild(a)})();</script></td><td width=20%><a href=https://www.ej-technologies.com/products/jprofiler/overview.html title="JProfiler"><img width=92 height=26 alt="JProfiler" src=//s.plantuml.com/jprofiler_small.png></a></td></tr></table></footer></div><script>var sc_project=11133780;var sc_invisible=1;var sc_security="3da8bfdb";</script><script src="http://www.statcounter.com/counter/counter.js"></script></body></html>

@@ -1,8 +1,0 @@
-@startuml
-
-object user
-
-user : name = "Dummy"
-user : id = 123
-
-@enduml

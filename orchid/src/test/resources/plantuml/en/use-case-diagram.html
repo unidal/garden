@@ -1,0 +1,213 @@
+<html lang="en"><head><meta name="flattr:id" content="1ew3x0"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "url": "http://plantuml.com",
+  "name": "PlantUML",
+  "sameAs" : ["https://twitter.com/plantuml","https://en.wikipedia.org/wiki/PlantUML","https://www.wikidata.org/wiki/Q18346546", "https://plus.google.com/+PlantumlPublic/"],
+  "logo": "http://plantuml.com/logo3.png",
+  "contactPoint": [{
+    "@type": "ContactPoint",
+    "email": "plantuml@gmail.com",
+    "url": "http://plantuml.com",
+    "contactType": "customer service"
+  }],
+    "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://cse.google.fr/cse/publicurl?cx=002267040093494634259:o59itilhnna&q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+    "@type": "ListItem",
+    "position": 1,
+    "item": {
+      "@id": "http://plantuml.com",
+      "name": "Home"
+    }
+  },{
+    "@type": "ListItem",
+    "position": 2,
+    "item": {
+      "@id": "http://plantuml.com/sitemap-language-specification",
+      "name": "Language specification"
+    }
+  },{
+    "@type": "ListItem",
+    "position": 3,
+    "item": {
+      "@id": "http://plantuml.com/use-case-diagram",
+      "name": "Use Case Diagram"
+  }
+  }]
+}
+</script><link rel="canonical" href="http://plantuml.com/use-case-diagram"/><link rel="alternate" hreflang="x-default" href="http://plantuml.com/use-case-diagram"/><link rel="alternate" hreflang="de" href="http://plantuml.com/de/use-case-diagram"/><link rel="alternate" hreflang="en" href="http://plantuml.com/use-case-diagram"/><link rel="alternate" hreflang="es" href="http://plantuml.com/es/use-case-diagram"/><link rel="alternate" hreflang="fr" href="http://plantuml.com/fr/use-case-diagram"/><link rel="alternate" hreflang="ja" href="http://plantuml.com/ja/use-case-diagram"/><link rel="alternate" hreflang="ru" href="http://plantuml.com/ru/use-case-diagram"/><link rel="alternate" hreflang="ko" href="http://plantuml.com/ko/use-case-diagram"/><link rel="alternate" hreflang="zh" href="http://plantuml.com/zh/use-case-diagram"/><link rel="shortcut icon" href="//s.plantuml.com/favicon.ico"/><link rel="publisher" href="https://plus.google.com/+PlantumlPublic/"/><link rel="alternate" type="application/rss+xml" title="RSS" href="http://plantuml.com/en/use-case-diagram.rss"><title>Use case Diagram syntax and features</title><meta name="description" content="PlantUML use case diagram syntax: You can have use cases, actors, extensions, notes, stereotypes, arrows... Changing fonts and colors is also possible."/><meta property="og:type" content="article"/><meta property="og:title" content="Use case Diagram syntax and features"/><meta property="og:description" content="PlantUML use case diagram syntax: You can have use cases, actors, extensions, notes, stereotypes, arrows... Changing fonts and colors is also possible."/><meta property="og:url" content="http://plantuml.com/use-case-diagram"/><meta property="og:site_name" content="PlantUML.com"/><meta name="twitter:image" content="http://plantuml.com/og-use-case-diagram"/><meta property="og:locale" content="en"/><meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Use case Diagram syntax and features"/><meta name="twitter:description" content="PlantUML use case diagram syntax: You can have use cases, actors, extensions, notes, stereotypes, arrows... Changing fonts and colors is also possible."/><meta name="twitter:site" content="@PlantUML"/><meta name="twitter:creator" content="@PlantUML"/><style media="screen" type="text/css">li{margin:2px}#external li{margin:13px}.mycell{display:inline-block;vertical-align:top;padding:10px}#header{z-index:2;position:fixed;left:205px;right:0;height:40px;top:0;background:#edeff3}#header2{z-index:2;position:fixed;left:205px;right:0;height:10px;top:40px;background:#fefefe}#header3{z-index:3;position:fixed;left:1010px;right:0;height:40px;top:0;background:#edeff3}#root{margin:50px 0 0 220px;background:#fefefe}#side{position:fixed;margin-left:0;margin-top:-50px;height:100%;width:205px;padding-top:0;background:#edeff3;z-index:2}@media screen and (max-width:1190px){#header{left:185px}#header2{left:185px}#root{margin:50px 0 0 200px}#side{width:185px}}@media screen and (max-width:1010px){#side{width:181px;margin-top:0}#root{margin:0 0 0 184px}#header,#header2{visibility:hidden}}body{margin:auto;overflow-x:hidden;background:#fefefe}a{text-decoration:none;color:#0366d6}a:hover{text-decoration:underline}#menu{border:0;font-family:Helvetica,sans-serif;font-size:14px;padding:0;margin:0;width:200%}#menu li{float:left;list-style:none;text-align:center;position:relative;margin:10px 0 0 10px;border:0}#menu li a{padding:0 7px 0 7px;text-decoration:none;color:#637282}#menu a:hover{color:#cbc9c8}#menuside{border:0;font-family:Helvetica,sans-serif;font-size:14px;padding:0;margin:0}#menuside li{list-style:none;text-align:center;position:relative;padding:0;margin:13px 20px 14px 10px;border:0}#menuside li a{display:inline-block;text-decoration:none;color:#637282;width:100%}#menuside a:hover{color:#cbc9c8}#BC{z-index:0;padding-top:5px;top:35px}.breadcrumb{font-family:Helvetica,sans-serif;font-size:14px;text-align:center;display:inline-block;overflow:hidden;border-radius:5px}.breadcrumb a{text-decoration:none;outline:0;display:block;float:left;font-size:12px;line-height:24px;color:#373f49;padding:0 10px 0 35px;background:#f0f1f1;background:linear-gradient(#f0f1f1,#c6d2d2);position:relative}.breadcrumb a:first-child{padding-left:21px;border-radius:5px 0 0 5px}.breadcrumb a:first-child:before{left:14px}.breadcrumb a:last-child{visibility:hidden}.breadcrumb a.active,.breadcrumb a:hover{color:#000;background:#c6d2d2;background:linear-gradient(#e3e4e4,#b8c7c7)}.breadcrumb a.active:after,.breadcrumb a:hover:after{background:#c6d2d2;background:linear-gradient(135deg,#e3e4e4,#b8c7c7)}.breadcrumb a:after{content:'';position:absolute;top:0;right:-12px;width:24px;height:24px;transform:scale(0.707) rotate(45deg);z-index:1;background:#f0f1f1;background:linear-gradient(135deg,#f0f1f1,#c6d2d2);box-shadow:2px -2px 0 2px rgba(0,0,0,0.1),3px -3px 0 2px rgba(255,255,255,0.1);border-radius:0 5px 0 50px}.breadcrumb a:last-child:after{content:none;visibility:hidden}.lga,.lga a,.lgi,.lgi a{font-family:Helvetica,sans-serif;font-size:13px;text-align:center;color:#fff;padding:0 5px;margin:0}.lga,.lga a{background-color:#008}.lgi,.lgi a{background-color:#888}.lga:hover,.lga:hover a{text-decoration:none;color:#BBB}.lgi:hover,.lgi:hover a{text-decoration:none;color:#CCC}</style><script async src="https://www.googletagmanager.com/gtag/js?id=UA-16629806-3"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date());gtag("config","UA-16629806-3");</script><script>(function(){var b=document.createElement("script"),a=document.getElementsByTagName("script")[0];b.type="text/javascript";b.async=true;b.src="http://api.flattr.com/js/0.6/load.js?mode=auto";a.parentNode.insertBefore(b,a)})();var llg="en";</script><script async src="//s.plantuml.com/lg3.js"></script><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script></head><body><nav id=header><ul id="menu"><li><a id=me1 href="sequence-diagram">Sequence</a></li><li><a id=me2 href="use-case-diagram">Use Case</a></li><li><a id=me3 href="class-diagram">Class</a></li><li><a id=me4 href="activity-diagram-legacy">Activity</a></li><li><a id=me5 href="activity-diagram-beta">Activity <img border=0 width=20 height=8 src=//s.plantuml.com/beta-icon.gif></a></li><li><a id=me6 href="component-diagram">Component</a></li><li><a id=me7 href="state-diagram">State</a></li><li><a id=me8 href="object-diagram">Object</a></li><li><a id=me9 href="deployment-diagram">Deployment</a></li><li><a id=me10 href="timing-diagram">Timing</a></li></ul></nav><nav id=header3><ins class="adsbygoogle" style="display:inline-block;width:100%;height:40px" data-ad-client="ca-pub-5770515425712095" data-ad-slot="7824244819" data-ad-format="link" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></nav><nav id=header2></nav><nav id="side"><p><div style="height:185px;"><style>.msd{width:200px;height:185px}@media(max-width:1190px){.msd{width:180px}}</style><ins class="adsbygoogle msd" style="display:inline-block" data-ad-client="ca-pub-5770515425712095" data-ad-slot="6244156563" data-ad-format="link" data-full-width-responsive="false"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div><ul id="menuside"><li><a id=me31 href="index">Home</a></li><li><a id=me32 href="news">What's New ?</a></li><li><a id=me33 href="starting">Getting Started</a></li><li><a id=me34 href="running">Running</a></li><li><a id=me35 href="faq">F.A.Q.</a></li><li><a id=me36 href="dedication">Dedication</a></li><li><a id=me37 href="download">Download</a></li><li><a id=me38 href="https://forum.plantuml.net">Forum</a></li><li><a id=me39 href="preprocessing">Preprocessing</a></li><li><a id=me40 href="commons">Commons</a></li><li><a id=me41 href="stdlib">Standard Library</a></li><li><a id=me42 href="sitemap">Site Map</a></li><li><a id=me43 href="guide">PDF Guide</a></li><li><a id=me44 href="external-links">External Links</a></li></ul><p></nav><div id=root><div id=BC><div class="breadcrumb" style="z-index:1;position: relative;"><a href="sitemap">PlantUML</a><a href="sitemap-language-specification">Language specification</a><a href="use-case-diagram">Use Case Diagram</a><a href="#"></a></div><iframe style="z-index:1;position: relative;" src="//s.plantuml.com/ppbtn?190" allowtransparency="true" frameborder="0" scrolling="0" width="115" height="20"></iframe><iframe style="z-index:1;position: relative;" src="//s.plantuml.com/pnbtn?99" allowtransparency="true" frameborder="0" scrolling="0" width="115" height="20"></iframe><a href="https://liberapay.com/plantuml/donate"><img width=85 height=20 src="https://img.shields.io/liberapay/patrons/plantuml.svg?logo=liberapay"></a><p><style>.lha,.lhi{font-family:Helvetica,sans-serif;font-size:13px;display:inline-block;margin:0 5px 0 0}.lha a,.lhi a{width:70px;display:inline-block;text-align:center;vertical-align:middle;text-decoration:none;padding-top:2px;padding-bottom:2px;margin-top:5px}.lha a{background:#008;color:#fff}.lhi a{background:#888;color:#fff}.lha a:hover{color:#888;background:#22f}.lhi a:hover{color:#888;background:#22f}</style><table border=0 cellspacing=0 cellpadding=0 width=99%><tr><td><a rel="nofollow" href=http://wiki.plantuml.net/site/use-case-diagram>You can contribute on this page by clicking here</a> &nbsp;<a rel="nofollow" href=http://wiki.plantuml.net/site/menu>(Menu)</a></td><td align=right><div class=lha><a href="//plantuml.com/en/use-case-diagram" title="English" id=lgen>English</a></div><div class=lhi><a href="//plantuml.com/de/use-case-diagram" title="Deutsch" id=lgde>Deutsch</a></div><div class=lhi><a href="//plantuml.com/es/use-case-diagram" title="Español" id=lges>Español</a></div><div class=lhi><a href="//plantuml.com/fr/use-case-diagram" title="Français" id=lgfr>Français</a></div><div class=lhi><a href="//plantuml.com/ja/use-case-diagram" title="日本語" id=lgja>日本語</a></div><div class=lhi><a href="//plantuml.com/ko/use-case-diagram" title="한국어" id=lgko>한국어</a></div><div class=lhi><a href="//plantuml.com/ru/use-case-diagram" title="Русский" id=lgru>Русский</a></div><div class=lhi><a href="//plantuml.com/zh/use-case-diagram" title="中文" id=lgzh>中文</a></div></td></tr></table><p></div><p><a id="1"></a><p>&nbsp;<p>&nbsp; <h1>Use Case Diagram</h1><p><p> Let's have few examples : <a id="2"></a><p>&nbsp;<p>&nbsp; <h2>Usecases</h2><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5770515425712095" data-ad-slot="6161423756" data-ad-format="link" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script><p><style>.qsd{float:right;margin:15px 3px;width:336px;height:600px}@media(max-width:1300px){.qsd{width:300px}}@media(max-width:1250px){.qsd{width:160px}}</style><div class=qsd><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5770515425712095" data-ad-slot="8887659449" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div> Use cases are enclosed using between parentheses (because two parentheses looks like an oval). <p> You can also use the <code>usecase</code> keyword to define a usecase. And you can define an alias, using the <code>as</code> keyword. This alias will be used latter, when defining relations. <div><div class=mycell><code><pre>
+@startuml
+
+(First usecase)
+(Another usecase) as (UC2)  
+usecase UC3
+usecase (Last\nusecase) as UC4
+
+@enduml
+</pre></code></div><div class=mycell><img border="2" title="foo" width=322 height=163 class=scale src="//s.plantuml.com/imgw/use-case-diagram-aolntstz.png"/></div></div><p><a id="3"></a><p>&nbsp;<p>&nbsp; <h2>Actors</h2><p> Actor are enclosed using between two points. <p> You can also use the <code>actor</code> keyword to define an actor. And you can define an alias, using the <code>as</code> keyword. This alias will be used latter, when defining relations. <p> We will see later that the actor definitions are optional. <div><div class=mycell><code><pre>
+@startuml
+
+:First Actor:
+:Another\nactor: as Men2  
+actor Men3
+actor :Last actor: as Men4
+
+@enduml
+</pre></code></div><div class=mycell><img border="2" title="foo" width=167 height=264 class=scale src="//s.plantuml.com/imgw/use-case-diagram-wioitsxa.png"/></div></div><p><a id="4"></a><p>&nbsp;<p>&nbsp; <h2>Usecases description</h2><p><p> If you want to have description on several lines, you can use quotes. <p> You can also use the following separators: <code>--</code><code>..</code><code>==</code><code>__</code>. And you can put titles within the separators. <p><div><div class=mycell><code><pre>
+@startuml
+
+usecase UC1 as "You can use
+several lines to define your usecase.
+You can also use separators.
+--
+Several separators are possible.
+==
+And you can add titles:
+..Conclusion..
+This allows large description."
+
+@enduml
+</pre></code></div><div class=mycell><img border="2" title="foo" width=310 height=201 class=scale src="//s.plantuml.com/imgw/use-case-diagram-4bnie7fo.png"/></div></div><p><a id="5"></a><p>&nbsp;<p>&nbsp; <h2>Basic example</h2><p><p> To link actors and use cases, the arrow <code>--&gt;</code> is used. <p> The more dashes <code>-</code> in the arrow, the longer the arrow. You can add a label on the arrow, by adding a <code>:</code> character in the arrow definition. <p> In this example, you see that <em>User</em> has not been defined before, and is used as an actor. <div><div class=mycell><code><pre>
+@startuml
+
+User -&gt; (Start)
+User --&gt; (Use the application) : A small label
+
+:Main Admin: ---&gt; (Use the application) : This is\nyet another\nlabel
+
+@enduml
+</pre></code></div><div class=mycell><img border="2" title="foo" width=270 height=362 class=scale src="//s.plantuml.com/imgw/use-case-diagram-uodxmdlm.png"/></div></div><p><p><a id="6"></a><p>&nbsp;<p>&nbsp; <h2>Extension</h2><p> If one actor/use case extends another one, you can use the symbol <code>&lt;|--</code>. <p><div><div class=mycell><code><pre>
+@startuml
+:Main Admin: as Admin
+(Use the application) as (Use)
+
+User &lt;|-- Admin
+(Start) &lt;|-- (Use)
+
+@enduml
+</pre></code></div><div class=mycell><img border="2" title="foo" width=278 height=247 class=scale src="//s.plantuml.com/imgw/use-case-diagram-8rkbnrdv.png"/></div></div><p><a id="7"></a><p>&nbsp;<p>&nbsp; <h2>Using notes</h2><p> You can use the <code>note left of</code> , <code>note right of</code> , <code>note top of</code> , <code>note bottom of</code> keywords to define notes related to a single object. <p> A note can be also define alone with the <code>note</code> keywords, then linked to other objects using the <code>..</code> symbol. <p><div><div class=mycell><code><pre>
+@startuml
+:Main Admin: as Admin
+(Use the application) as (Use)
+
+User -&gt; (Start)
+User --&gt; (Use)
+
+Admin ---&gt; (Use)
+
+note right of Admin : This is an example.
+
+note right of (Use)
+  A note can also
+  be on several lines
+end note
+
+note "This note is connected\nto several objects." as N2
+(Start) .. N2
+N2 .. (Use)
+@enduml
+</pre></code></div><div class=mycell><img border="2" title="foo" width=482 height=309 class=scale src="//s.plantuml.com/imgw/use-case-diagram-s7c61asi.png"/></div></div><p><a id="8"></a><p>&nbsp;<p>&nbsp; <h2>Stereotypes</h2><p> You can add stereotypes while defining actors and use cases using <code>&lt;&lt;</code> and <code>&gt;&gt;</code>. <p><div><div class=mycell><code><pre>
+@startuml
+User &lt;&lt; Human &gt;&gt;
+:Main Database: as MySql &lt;&lt; Application &gt;&gt;
+(Start) &lt;&lt; One Shot &gt;&gt;
+(Use the application) as (Use) &lt;&lt; Main &gt;&gt;
+
+User -&gt; (Start)
+User --&gt; (Use)
+
+MySql --&gt; (Use)
+
+@enduml
+</pre></code></div><div class=mycell><img border="2" title="foo" width=346 height=230 class=scale src="//s.plantuml.com/imgw/use-case-diagram-bvoiwtto.png"/></div></div><p><a id="9"></a><p>&nbsp;<p>&nbsp; <h2>Changing arrows direction</h2><p> By default, links between classes have two dashes <code>--</code> and are vertically oriented. It is possible to use horizontal link by putting a single dash (or dot) like this: <p><div><div class=mycell><code><pre>
+@startuml
+:user: --&gt; (Use case 1)
+:user: -&gt; (Use case 2)
+@enduml
+</pre></code></div><div class=mycell><img border="2" title="foo" width=223 height=193 class=scale src="//s.plantuml.com/imgw/use-case-diagram-bk6wbbmf.png"/></div></div><p> You can also change directions by reversing the link: <p><div><div class=mycell><code><pre>
+@startuml
+(Use case 1) &lt;.. :user:
+(Use case 2) &lt;- :user:
+@enduml
+</pre></code></div><div class=mycell><img border="2" title="foo" width=223 height=193 class=scale src="//s.plantuml.com/imgw/use-case-diagram-ez1gxpnx.png"/></div></div><p> It is also possible to change arrow direction by adding <code>left</code>, <code>right</code>, <code>up</code> or <code>down</code> keywords inside the arrow: <p><div><div class=mycell><code><pre>
+@startuml
+:user: -left-&gt; (dummyLeft) 
+:user: -right-&gt; (dummyRight) 
+:user: -up-&gt; (dummyUp)
+:user: -down-&gt; (dummyDown)
+@enduml
+</pre></code></div><div class=mycell><img border="2" title="foo" width=336 height=284 class=scale src="//s.plantuml.com/imgw/use-case-diagram-vghwcqsz.png"/></div></div><p> You can shorten the arrow by using only the first character of the direction (for example, <code>-d-</code> instead of <code>-down-</code>) or the two first characters (<code>-do-</code>). <p> Please note that you should not abuse this functionality : <em>Graphviz</em> gives usually good results without tweaking. <p><a id="10"></a><p>&nbsp;<p>&nbsp; <h2>Splitting diagrams</h2><p> The <code>newpage</code> keywords to split your diagram into several pages or images. <div><div class=mycell><code><pre>
+@startuml
+:actor1: --&gt; (Usecase1)
+newpage
+:actor2: --&gt; (Usecase2)
+@enduml
+</pre></code></div><div class=mycell><img border="2" title="foo" width=109 height=193 class=scale src="//s.plantuml.com/imgw/use-case-diagram-fezqu8ni.png"/></div></div><p><a id="11"></a><p>&nbsp;<p>&nbsp; <h2>Left to right direction</h2><p> The general default behavior when building diagram is <strong>top to bottom</strong>. <div><div class=mycell><code><pre>
+@startuml
+'default
+top to bottom direction
+user1 --&gt; (Usecase 1)
+user2 --&gt; (Usecase 2)
+
+@enduml
+</pre></code></div><div class=mycell><img border="2" title="foo" width=249 height=193 class=scale src="//s.plantuml.com/imgw/use-case-diagram-u6eg0qha.png"/></div></div> You may change to <strong>left to right</strong> using the <code>left to right direction</code> command. The result is often better with this direction. <p><div><div class=mycell><code><pre>
+@startuml
+
+left to right direction
+user1 --&gt; (Usecase 1)
+user2 --&gt; (Usecase 2)
+
+@enduml
+</pre></code></div><div class=mycell><img border="2" title="foo" width=211 height=222 class=scale src="//s.plantuml.com/imgw/use-case-diagram-ahp2yo67.png"/></div></div><p><a id="12"></a><p>&nbsp;<p>&nbsp; <h2>Skinparam</h2><p><p> You can use the <code><a href="skinparam">skinparam</a></code> command to change colors and fonts for the drawing. <p> You can use this command : <ul><li> In the diagram definition, like any other commands,</li><li> In an <a href="preprocessing">included file</a>,</li><li> In a configuration file, provided in <a href="command-line">the command line</a> or <a href="ant-task">the ANT task</a>.</li></ul><p> You can define specific color and fonts for stereotyped actors and usecases. <p><div><div class=mycell><code><pre>
+@startuml
+skinparam handwritten true
+
+skinparam usecase {
+	BackgroundColor DarkSeaGreen
+	BorderColor DarkSlateGray
+
+	BackgroundColor&lt;&lt; Main &gt;&gt; YellowGreen
+	BorderColor&lt;&lt; Main &gt;&gt; YellowGreen
+	
+	ArrowColor Olive
+	ActorBorderColor black
+	ActorFontName Courier
+
+	ActorBackgroundColor&lt;&lt; Human &gt;&gt; Gold
+}
+
+User &lt;&lt; Human &gt;&gt;
+:Main Database: as MySql &lt;&lt; Application &gt;&gt;
+(Start) &lt;&lt; One Shot &gt;&gt;
+(Use the application) as (Use) &lt;&lt; Main &gt;&gt;
+
+User -&gt; (Start)
+User --&gt; (Use)
+
+MySql --&gt; (Use)
+
+@enduml
+</pre></code></div><div class=mycell><img border="2" title="foo" width=346 height=230 class=scale src="//s.plantuml.com/imgw/use-case-diagram-0r5yhzf5.png"/></div></div><p><a id="13"></a><p>&nbsp;<p>&nbsp; <h2>Complete example</h2><p><p><div><div class=mycell><code><pre>
+@startuml
+left to right direction
+skinparam packageStyle rectangle
+actor customer
+actor clerk
+rectangle checkout {
+  customer -- (checkout)
+  (checkout) .&gt; (payment) : include
+  (help) .&gt; (checkout) : extends
+  (checkout) -- clerk
+}
+@enduml
+</pre></code></div><div class=mycell><img border="2" title="foo" width=318 height=286 class=scale src="//s.plantuml.com/imgw/use-case-diagram-furcqsme.png"/></div></div><p><hr><p><ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-format="fluid" data-ad-layout="in-article" data-ad-client="ca-pub-5770515425712095" data-ad-slot="4513300169"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script><p><footer><table width=100% border=0><tr align=center><td width=20%><iframe src="//s.plantuml.com/ppbtn?190" allowtransparency="true" frameborder="0" scrolling="0" width="115" height="20"></iframe></td><td width=20%><iframe src="//s.plantuml.com/pnbtn?99" allowtransparency="true" frameborder="0" scrolling="0" width="115" height="20"></iframe></td><td width=20%><a href="https://liberapay.com/plantuml/donate"><img width=85 height=20 src="https://img.shields.io/liberapay/patrons/plantuml.svg?logo=liberapay"></a></td><td width=20%><script id="_wau1ft">var _wau=_wau||[];_wau.push(["small","vwt5xirsg4hh","1ft"]);(function(){var a=document.createElement("script");a.async=true;a.src="//widgets.amung.us/small.js";document.getElementsByTagName("head")[0].appendChild(a)})();</script></td><td width=20%><a href=https://www.ej-technologies.com/products/jprofiler/overview.html title="JProfiler"><img width=92 height=26 alt="JProfiler" src=//s.plantuml.com/jprofiler_small.png></a></td></tr></table></footer></div><script>var sc_project=11133780;var sc_invisible=1;var sc_security="3da8bfdb";</script><script src="http://www.statcounter.com/counter/counter.js"></script></body></html>

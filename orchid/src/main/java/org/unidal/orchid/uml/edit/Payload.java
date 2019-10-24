@@ -63,6 +63,11 @@ public class Payload implements ActionPayload<UmlPage, Action> {
 		return m_page;
 	}
 
+	// used by layout.tag
+	public String getPageName() {
+		return "edit";
+	}
+
 	public List<String> getPathSections() {
 		return m_pathSections;
 	}

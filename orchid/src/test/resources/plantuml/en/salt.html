@@ -1,0 +1,333 @@
+<html lang="en"><head><meta name="flattr:id" content="1ew3x0"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "url": "http://plantuml.com",
+  "name": "PlantUML",
+  "sameAs" : ["https://twitter.com/plantuml","https://en.wikipedia.org/wiki/PlantUML","https://www.wikidata.org/wiki/Q18346546", "https://plus.google.com/+PlantumlPublic/"],
+  "logo": "http://plantuml.com/logo3.png",
+  "contactPoint": [{
+    "@type": "ContactPoint",
+    "email": "plantuml@gmail.com",
+    "url": "http://plantuml.com",
+    "contactType": "customer service"
+  }],
+    "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://cse.google.fr/cse/publicurl?cx=002267040093494634259:o59itilhnna&q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+    "@type": "ListItem",
+    "position": 1,
+    "item": {
+      "@id": "http://plantuml.com",
+      "name": "Home"
+    }
+  },{
+    "@type": "ListItem",
+    "position": 2,
+    "item": {
+      "@id": "http://plantuml.com/sitemap-language-specification",
+      "name": "Language specification"
+    }
+  },{
+    "@type": "ListItem",
+    "position": 3,
+    "item": {
+      "@id": "http://plantuml.com/salt",
+      "name": "Salt"
+  }
+  }]
+}
+</script><link rel="canonical" href="http://plantuml.com/salt"/><link rel="alternate" hreflang="x-default" href="http://plantuml.com/salt"/><link rel="alternate" hreflang="de" href="http://plantuml.com/de/salt"/><link rel="alternate" hreflang="en" href="http://plantuml.com/salt"/><link rel="alternate" hreflang="es" href="http://plantuml.com/es/salt"/><link rel="alternate" hreflang="fr" href="http://plantuml.com/fr/salt"/><link rel="alternate" hreflang="ja" href="http://plantuml.com/ja/salt"/><link rel="alternate" hreflang="ru" href="http://plantuml.com/ru/salt"/><link rel="alternate" hreflang="ko" href="http://plantuml.com/ko/salt"/><link rel="alternate" hreflang="zh" href="http://plantuml.com/zh/salt"/><link rel="shortcut icon" href="//s.plantuml.com/favicon.ico"/><link rel="publisher" href="https://plus.google.com/+PlantumlPublic/"/><link rel="alternate" type="application/rss+xml" title="RSS" href="http://plantuml.com/en/salt.rss"><title>Draw GUI mockup with Salt</title><meta name="description" content="Salt is a subproject included in PlantUML that may help you to design graphical interface. You can define button, radio button, checkbox, window, tree, menu, table…"/><meta property="og:type" content="article"/><meta property="og:title" content="Draw GUI mockup with Salt"/><meta property="og:description" content="Salt is a subproject included in PlantUML that may help you to design graphical interface. You can define button, radio button, checkbox, window, tree, menu, table…"/><meta property="og:url" content="http://plantuml.com/salt"/><meta property="og:site_name" content="PlantUML.com"/><meta name="twitter:image" content="http://plantuml.com/og-salt"/><meta property="og:locale" content="en"/><meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Draw GUI mockup with Salt"/><meta name="twitter:description" content="Salt is a subproject included in PlantUML that may help you to design graphical interface. You can define button, radio button, checkbox, window, tree, menu, table…"/><meta name="twitter:site" content="@PlantUML"/><meta name="twitter:creator" content="@PlantUML"/><style media="screen" type="text/css">li{margin:2px}#external li{margin:13px}.mycell{display:inline-block;vertical-align:top;padding:10px}#header{z-index:2;position:fixed;left:205px;right:0;height:40px;top:0;background:#edeff3}#header2{z-index:2;position:fixed;left:205px;right:0;height:10px;top:40px;background:#fefefe}#header3{z-index:3;position:fixed;left:1010px;right:0;height:40px;top:0;background:#edeff3}#root{margin:50px 0 0 220px;background:#fefefe}#side{position:fixed;margin-left:0;margin-top:-50px;height:100%;width:205px;padding-top:0;background:#edeff3;z-index:2}@media screen and (max-width:1190px){#header{left:185px}#header2{left:185px}#root{margin:50px 0 0 200px}#side{width:185px}}@media screen and (max-width:1010px){#side{width:181px;margin-top:0}#root{margin:0 0 0 184px}#header,#header2{visibility:hidden}}body{margin:auto;overflow-x:hidden;background:#fefefe}a{text-decoration:none;color:#0366d6}a:hover{text-decoration:underline}#menu{border:0;font-family:Helvetica,sans-serif;font-size:14px;padding:0;margin:0;width:200%}#menu li{float:left;list-style:none;text-align:center;position:relative;margin:10px 0 0 10px;border:0}#menu li a{padding:0 7px 0 7px;text-decoration:none;color:#637282}#menu a:hover{color:#cbc9c8}#menuside{border:0;font-family:Helvetica,sans-serif;font-size:14px;padding:0;margin:0}#menuside li{list-style:none;text-align:center;position:relative;padding:0;margin:13px 20px 14px 10px;border:0}#menuside li a{display:inline-block;text-decoration:none;color:#637282;width:100%}#menuside a:hover{color:#cbc9c8}#BC{z-index:0;padding-top:5px;top:35px}.breadcrumb{font-family:Helvetica,sans-serif;font-size:14px;text-align:center;display:inline-block;overflow:hidden;border-radius:5px}.breadcrumb a{text-decoration:none;outline:0;display:block;float:left;font-size:12px;line-height:24px;color:#373f49;padding:0 10px 0 35px;background:#f0f1f1;background:linear-gradient(#f0f1f1,#c6d2d2);position:relative}.breadcrumb a:first-child{padding-left:21px;border-radius:5px 0 0 5px}.breadcrumb a:first-child:before{left:14px}.breadcrumb a:last-child{visibility:hidden}.breadcrumb a.active,.breadcrumb a:hover{color:#000;background:#c6d2d2;background:linear-gradient(#e3e4e4,#b8c7c7)}.breadcrumb a.active:after,.breadcrumb a:hover:after{background:#c6d2d2;background:linear-gradient(135deg,#e3e4e4,#b8c7c7)}.breadcrumb a:after{content:'';position:absolute;top:0;right:-12px;width:24px;height:24px;transform:scale(0.707) rotate(45deg);z-index:1;background:#f0f1f1;background:linear-gradient(135deg,#f0f1f1,#c6d2d2);box-shadow:2px -2px 0 2px rgba(0,0,0,0.1),3px -3px 0 2px rgba(255,255,255,0.1);border-radius:0 5px 0 50px}.breadcrumb a:last-child:after{content:none;visibility:hidden}.lga,.lga a,.lgi,.lgi a{font-family:Helvetica,sans-serif;font-size:13px;text-align:center;color:#fff;padding:0 5px;margin:0}.lga,.lga a{background-color:#008}.lgi,.lgi a{background-color:#888}.lga:hover,.lga:hover a{text-decoration:none;color:#BBB}.lgi:hover,.lgi:hover a{text-decoration:none;color:#CCC}</style><script async src="https://www.googletagmanager.com/gtag/js?id=UA-16629806-3"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date());gtag("config","UA-16629806-3");</script><script>(function(){var b=document.createElement("script"),a=document.getElementsByTagName("script")[0];b.type="text/javascript";b.async=true;b.src="http://api.flattr.com/js/0.6/load.js?mode=auto";a.parentNode.insertBefore(b,a)})();var llg="en";</script><script async src="//s.plantuml.com/lg3.js"></script><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script></head><body><nav id=header><ul id="menu"><li><a id=me1 href="sequence-diagram">Sequence</a></li><li><a id=me2 href="use-case-diagram">Use Case</a></li><li><a id=me3 href="class-diagram">Class</a></li><li><a id=me4 href="activity-diagram-legacy">Activity</a></li><li><a id=me5 href="activity-diagram-beta">Activity <img border=0 width=20 height=8 src=//s.plantuml.com/beta-icon.gif></a></li><li><a id=me6 href="component-diagram">Component</a></li><li><a id=me7 href="state-diagram">State</a></li><li><a id=me8 href="object-diagram">Object</a></li><li><a id=me9 href="deployment-diagram">Deployment</a></li><li><a id=me10 href="timing-diagram">Timing</a></li></ul></nav><nav id=header3><ins class="adsbygoogle" style="display:inline-block;width:100%;height:40px" data-ad-client="ca-pub-5770515425712095" data-ad-slot="7824244819" data-ad-format="link" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></nav><nav id=header2></nav><nav id="side"><p><div style="height:185px;"><style>.msd{width:200px;height:185px}@media(max-width:1190px){.msd{width:180px}}</style><ins class="adsbygoogle msd" style="display:inline-block" data-ad-client="ca-pub-5770515425712095" data-ad-slot="6244156563" data-ad-format="link" data-full-width-responsive="false"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div><ul id="menuside"><li><a id=me31 href="index">Home</a></li><li><a id=me32 href="news">What's New ?</a></li><li><a id=me33 href="starting">Getting Started</a></li><li><a id=me34 href="running">Running</a></li><li><a id=me35 href="faq">F.A.Q.</a></li><li><a id=me36 href="dedication">Dedication</a></li><li><a id=me37 href="download">Download</a></li><li><a id=me38 href="https://forum.plantuml.net">Forum</a></li><li><a id=me39 href="preprocessing">Preprocessing</a></li><li><a id=me40 href="commons">Commons</a></li><li><a id=me41 href="stdlib">Standard Library</a></li><li><a id=me42 href="sitemap">Site Map</a></li><li><a id=me43 href="guide">PDF Guide</a></li><li><a id=me44 href="external-links">External Links</a></li></ul><p></nav><div id=root><div id=BC><div class="breadcrumb" style="z-index:1;position: relative;"><a href="sitemap">PlantUML</a><a href="sitemap-language-specification">Language specification</a><a href="salt">Salt</a><a href="#"></a></div><iframe style="z-index:1;position: relative;" src="//s.plantuml.com/ppbtn?190" allowtransparency="true" frameborder="0" scrolling="0" width="115" height="20"></iframe><iframe style="z-index:1;position: relative;" src="//s.plantuml.com/pnbtn?99" allowtransparency="true" frameborder="0" scrolling="0" width="115" height="20"></iframe><a href="https://liberapay.com/plantuml/donate"><img width=85 height=20 src="https://img.shields.io/liberapay/patrons/plantuml.svg?logo=liberapay"></a><p><style>.lha,.lhi{font-family:Helvetica,sans-serif;font-size:13px;display:inline-block;margin:0 5px 0 0}.lha a,.lhi a{width:70px;display:inline-block;text-align:center;vertical-align:middle;text-decoration:none;padding-top:2px;padding-bottom:2px;margin-top:5px}.lha a{background:#008;color:#fff}.lhi a{background:#888;color:#fff}.lha a:hover{color:#888;background:#22f}.lhi a:hover{color:#888;background:#22f}</style><table border=0 cellspacing=0 cellpadding=0 width=99%><tr><td><a rel="nofollow" href=http://wiki.plantuml.net/site/salt>You can contribute on this page by clicking here</a> &nbsp;<a rel="nofollow" href=http://wiki.plantuml.net/site/menu>(Menu)</a></td><td align=right><div class=lha><a href="//plantuml.com/en/salt" title="English" id=lgen>English</a></div><div class=lhi><a href="//plantuml.com/de/salt" title="Deutsch" id=lgde>Deutsch</a></div><div class=lhi><a href="//plantuml.com/es/salt" title="Español" id=lges>Español</a></div><div class=lhi><a href="//plantuml.com/fr/salt" title="Français" id=lgfr>Français</a></div><div class=lhi><a href="//plantuml.com/ja/salt" title="日本語" id=lgja>日本語</a></div><div class=lhi><a href="//plantuml.com/ko/salt" title="한국어" id=lgko>한국어</a></div><div class=lhi><a href="//plantuml.com/ru/salt" title="Русский" id=lgru>Русский</a></div><div class=lhi><a href="//plantuml.com/zh/salt" title="中文" id=lgzh>中文</a></div></td></tr></table><p></div><p><a id="1"></a><p>&nbsp;<p>&nbsp; <h1>Salt (wireframe)</h1><p><strong>Salt</strong> is a subproject included in PlantUML that may help you to design graphical interface. <p> You can use either <code>@startsalt</code> keyword, or <code>@startuml</code> followed by a line with <code>salt</code> keyword. <p><a id="2"></a><p>&nbsp;<p>&nbsp; <h2>Basic widgets</h2><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5770515425712095" data-ad-slot="6161423756" data-ad-format="link" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script><p><style>.qsd{float:right;margin:15px 3px;width:336px;height:600px}@media(max-width:1300px){.qsd{width:300px}}@media(max-width:1250px){.qsd{width:160px}}</style><div class=qsd><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5770515425712095" data-ad-slot="8887659449" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div><p> A window must start and end with brackets. You can then define: <p><ul><li>Button using <code>[</code> and <code>]</code>.</li><li>Radio button using <code>(</code> and <code>)</code>.</li><li>Checkbox using <code>[</code> and <code>]</code>.</li><li>User text area using <code>"</code>.</li></ul><p><div><div class=mycell><code><pre>
+@startuml
+salt
+{
+  Just plain text
+  [This is my button]
+  ()  Unchecked radio
+  (X) Checked radio
+  []  Unchecked box
+  [X] Checked box
+  "Enter text here   "
+  ^This is a droplist^
+}
+@enduml
+</pre></code></div><div class=mycell><img border="2" title="Basic widgets" width=179 height=160 class=scale src="//s.plantuml.com/imgw/salt-qb1sx3p9.png"/></div></div><p><p><p> The goal of this tool is to discuss about simple and sample windows. <p><a id="3"></a><p>&nbsp;<p>&nbsp; <h2>Using grid</h2><p> A table is automatically created when you use an opening bracket <code>{</code>. And you have to use <code>|</code> to separate columns. <p> For example: <p><div><div class=mycell><code><pre>
+@startsalt
+{
+  Login    | "MyName   "
+  Password | "****     "
+  [Cancel] | [  OK   ]
+}
+@endsalt
+</pre></code></div><div class=mycell><img border="2" title="Using grid" width=147 height=70 class=scale src="//s.plantuml.com/imgw/salt-1slwosfg.png"/></div></div><p> Just after the opening bracket, you can use a character to define if you want to draw lines or columns of the grid : <p><table border=1 cellspacing=0 cellpadding=5><tr><td><b> Symbol </b></td><td><b> Result </b></td></tr><tr><td><code>#</code></td><td> To display all vertical and horizontal lines </td></tr><tr><td><code>!</code></td><td> To display all vertical lines </td></tr><tr><td><code>-</code></td><td> To display all horizontal lines </td></tr><tr><td><code>+</code></td><td> To display external lines </td></tr></table><p><div><div class=mycell><code><pre>
+@startsalt
+{+
+  Login    | "MyName   "
+  Password | "****     "
+  [Cancel] | [  OK   ]
+}
+@endsalt
+</pre></code></div><div class=mycell><img border="2" width=150 height=75 class=scale src="//s.plantuml.com/imgw/salt-suwtehs4.png"/></div></div><p><a id="4"></a><p>&nbsp;<p>&nbsp; <h2>Group box</h2><p><a href="http://forum.plantuml.net/5840/please-allow-to-create-groupboxes-in-salt?show=5840#q5840">more info</a><p><div><div class=mycell><code><pre>
+@startsalt
+{^"My group box"
+  Login    | "MyName   "
+  Password | "****     "
+  [Cancel] | [  OK   ]
+}
+@endsalt
+</pre></code></div><div class=mycell><img border="2" width=150 height=90 class=scale src="//s.plantuml.com/imgw/salt-ycphmwth.png"/></div></div><p><a id="5"></a><p>&nbsp;<p>&nbsp; <h2>Using separator</h2><p> You can use several horizontal lines as separator. <p><div><div class=mycell><code><pre>
+@startsalt
+{
+  Text1
+  ..
+  "Some field"
+  ==
+  Note on usage
+  ~~
+  Another text
+  --
+  [Ok]
+}
+@endsalt
+</pre></code></div><div class=mycell><img border="2" width=99 height=134 class=scale src="//s.plantuml.com/imgw/salt-txwn6cz6.png"/></div></div><p><a id="6"></a><p>&nbsp;<p>&nbsp; <h2>Tree widget</h2><p> To have a Tree, you have to start with <code>{T</code> and to use <code>+</code> to denote hierarchy. <p><div><div class=mycell><code><pre>
+@startsalt
+{
+{T
+ + World
+ ++ America
+ +++ Canada
+ +++ USA
+ ++++ New York
+ ++++ Boston
+ +++ Mexico
+ ++ Europe
+ +++ Italy
+ +++ Germany
+ ++++ Berlin
+ ++ Africa
+}
+}
+@endsalt
+</pre></code></div><div class=mycell><img border="2" width=104 height=191 class=scale src="//s.plantuml.com/imgw/salt-ba2y4rll.png"/></div></div><p><a id="7"></a><p>&nbsp;<p>&nbsp; <h2>Enclosing brackets</h2><p> You can define subelements by opening a new opening bracket. <p><div><div class=mycell><code><pre>
+@startsalt
+{
+Name         | "                 "
+Modifiers:   | { (X) public | () default | () private | () protected
+	            [] abstract | [] final   | [] static }
+Superclass:  | { "java.lang.Object " | [Browse...] }
+}
+@endsalt
+</pre></code></div><div class=mycell><img border="2" width=335 height=88 class=scale src="//s.plantuml.com/imgw/salt-yki9mjat.png"/></div></div><p><a id="8"></a><p>&nbsp;<p>&nbsp; <h2>Adding tabs</h2><p> You can add tabs using <code>{/</code> notation. Note that you can use HTML code to have bold text. <p><div><div class=mycell><code><pre>
+@startsalt
+{+
+{/ &lt;b&gt;General | Fullscreen | Behavior | Saving }
+{
+	{ Open image in: | ^Smart Mode^ }
+	[X] Smooth images when zoomed
+	[X] Confirm image deletion
+	[ ] Show hidden images
+}
+[Close]
+}
+@endsalt
+</pre></code></div><div class=mycell><img border="2" width=260 height=130 class=scale src="//s.plantuml.com/imgw/salt-psxxaq6d.png"/></div></div><p> Tab could also be vertically oriented: <p><div><div class=mycell><code><pre>
+@startsalt
+{+
+{/ &lt;b&gt;General
+Fullscreen
+Behavior
+Saving } |
+{
+	{ Open image in: | ^Smart Mode^ }
+	[X] Smooth images when zoomed
+	[X] Confirm image deletion
+	[ ] Show hidden images 
+	[Close]
+}
+}
+@endsalt
+</pre></code></div><div class=mycell><img border="2" width=263 height=133 class=scale src="//s.plantuml.com/imgw/salt-ln9nya0t.png"/></div></div><p><a id="9"></a><p>&nbsp;<p>&nbsp; <h2>Using menu</h2><p> You can add a menu by using <code>{*</code> notation. <p><div><div class=mycell><code><pre>
+@startsalt
+{+
+{* File | Edit | Source | Refactor }
+{/ General | Fullscreen | Behavior | Saving }
+{
+	{ Open image in: | ^Smart Mode^ }
+	[X] Smooth images when zoomed
+	[X] Confirm image deletion
+	[ ] Show hidden images 
+}
+[Close]
+}
+@endsalt
+</pre></code></div><div class=mycell><img border="2" width=260 height=147 class=scale src="//s.plantuml.com/imgw/salt-usc08k9h.png"/></div></div><p> It is also possible to open a menu: <p><div><div class=mycell><code><pre>
+@startsalt
+{+
+{* File | Edit | Source | Refactor 
+ Refactor | New | Open File | - | Close | Close All }
+{/ General | Fullscreen | Behavior | Saving }
+{
+	{ Open image in: | ^Smart Mode^ }
+	[X] Smooth images when zoomed
+	[X] Confirm image deletion
+	[ ] Show hidden images 
+}
+[Close]
+}
+@endsalt
+</pre></code></div><div class=mycell><img border="2" width=260 height=147 class=scale src="//s.plantuml.com/imgw/salt-ssambzcv.png"/></div></div><p><a id="10"></a><p>&nbsp;<p>&nbsp; <h2>Advanced table</h2><p> You can use two special notations for table : <ul><li><code>*</code> to indicate that a cell with span with left</li><li><code>.</code> to denotate an empty cell</li></ul><p><div><div class=mycell><code><pre>
+@startsalt
+{#
+. | Column 2 | Column 3
+Row header 1 | value 1 | value 2
+Row header 2 | A long cell | *
+}
+@endsalt
+</pre></code></div><div class=mycell><img border="2" width=202 height=62 class=scale src="//s.plantuml.com/imgw/salt-hwp00ekz.png"/></div></div><p><a id="11"></a><p>&nbsp;<p>&nbsp; <h2>OpenIconic</h2><p><a href="https://useiconic.com/open/">OpenIconic</a> is an very nice open source icon set. Those icons have been integrated into the <a href="site:creole">creole parser</a>, so you can use them out-of-the-box. You can use the following syntax: <code>&lt;&ICON_NAME&gt;</code>. <p><div><div class=mycell><code><pre>
+@startsalt
+{
+  Login&lt;&person&gt; | "MyName   "
+  Password&lt;&key&gt; | "****     "
+  [Cancel &lt;&circle-x&gt;] | [OK &lt;&account-login&gt;]
+}
+@endsalt
+</pre></code></div><div class=mycell><img border="2" width=171 height=70 class=scale src="//s.plantuml.com/imgw/salt-6zoko8gt.png"/></div></div><p> The complete list is available on OpenIconic Website, or you can use the following special diagram: <p><code><pre>
+@startuml
+listopeniconic
+@enduml
+</pre></code><p><img border="2" width=919 height=502 class=scale src="//s.plantuml.com/imgw/salt-1nqfowmu.png"/><p><p><a id="12"></a><p>&nbsp;<p>&nbsp; <h2>Include Salt</h2><p> see: http://forum.plantuml.net/2427/salt-with-minimum-flowchat-capabilities?show=2427#q2427 <p><div><div class=mycell><code><pre>
+@startuml
+(*) --&gt; "
+{{
+salt
+{+
+&lt;b&gt;an example
+choose one option
+()one
+()two
+[ok]
+}
+}}
+" as choose
+ 
+choose -right-&gt; "
+{{
+salt
+{+
+&lt;b&gt;please wait
+operation in progress
+&lt;&clock&gt;
+[cancel]
+}
+}}
+" as wait
+wait -right-&gt; "
+{{
+salt
+{+
+&lt;b&gt;success
+congratulations!
+[ok]
+}
+}}
+" as success
+ 
+wait -down-&gt; "
+{{
+salt
+{+
+&lt;b&gt;error
+failed, sorry
+[ok]
+}
+}}
+"
+@enduml
+</pre></code></div><div class=mycell><img border="2" width=463 height=334 class=scale src="//s.plantuml.com/imgw/salt-d6y13gz3.png"/></div></div><p> It can also be combined with <a href="site:preprocessing#macro_definition">define macro</a>. <p><div><div class=mycell><code><pre>
+@startuml
+!unquoted function SALT($x)
+"{{
+salt
+%invoke_void_func("_"+$x)
+}}" as $x
+!endfunction
+
+!function _choose()
+{+
+&lt;b&gt;an example
+choose one option
+()one
+()two
+[ok]
+}
+!endfunction
+
+!function _wait()
+{+
+&lt;b&gt;please wait
+operation in progress
+&lt;&clock&gt;
+[cancel]
+}
+!endfunction
+
+!function _success()
+{+
+&lt;b&gt;success
+congratulations!
+[ok]
+}
+!endfunction
+ 
+!function _error()
+{+
+&lt;b&gt;error
+failed, sorry
+[ok]
+}
+!endfunction
+
+(*) --&gt; SALT(choose)
+-right-&gt; SALT(wait)
+wait -right-&gt; SALT(success)
+wait -down-&gt; SALT(error)
+@enduml
+</pre></code></div><div class=mycell><img border="2" width=463 height=334 class=scale src="//s.plantuml.com/imgw/salt-fgev4byg.png"/></div></div><p><a id="13"></a><p>&nbsp;<p>&nbsp; <h2>Scroll Bars</h2><p> You can use "S" as scroll bar like in following examples: <p><div><div class=mycell><code><pre>
+@startsalt
+{S
+Message
+.
+.
+.
+.
+}
+@endsalt
+</pre></code></div><div class=mycell><img border="2" width=83 height=115 class=scale src="//s.plantuml.com/imgw/salt-ujiddmjn.png"/></div></div><p><div><div class=mycell><code><pre>
+@startsalt
+{SI
+Message
+.
+.
+.
+.
+}
+@endsalt
+</pre></code></div><div class=mycell><img border="2" width=83 height=96 class=scale src="//s.plantuml.com/imgw/salt-6uxpeczy.png"/></div></div><p><div><div class=mycell><code><pre>
+@startsalt
+{S-
+Message
+.
+.
+.
+.
+}
+@endsalt
+</pre></code></div><div class=mycell><img border="2" width=64 height=115 class=scale src="//s.plantuml.com/imgw/salt-ud0iajti.png"/></div></div><p><p><hr><p><ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-format="fluid" data-ad-layout="in-article" data-ad-client="ca-pub-5770515425712095" data-ad-slot="4513300169"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script><p><footer><table width=100% border=0><tr align=center><td width=20%><iframe src="//s.plantuml.com/ppbtn?190" allowtransparency="true" frameborder="0" scrolling="0" width="115" height="20"></iframe></td><td width=20%><iframe src="//s.plantuml.com/pnbtn?99" allowtransparency="true" frameborder="0" scrolling="0" width="115" height="20"></iframe></td><td width=20%><a href="https://liberapay.com/plantuml/donate"><img width=85 height=20 src="https://img.shields.io/liberapay/patrons/plantuml.svg?logo=liberapay"></a></td><td width=20%><script id="_wau1ft">var _wau=_wau||[];_wau.push(["small","vwt5xirsg4hh","1ft"]);(function(){var a=document.createElement("script");a.async=true;a.src="//widgets.amung.us/small.js";document.getElementsByTagName("head")[0].appendChild(a)})();</script></td><td width=20%><a href=https://www.ej-technologies.com/products/jprofiler/overview.html title="JProfiler"><img width=92 height=26 alt="JProfiler" src=//s.plantuml.com/jprofiler_small.png></a></td></tr></table></footer></div><script>var sc_project=11133780;var sc_invisible=1;var sc_security="3da8bfdb";</script><script src="http://www.statcounter.com/counter/counter.js"></script></body></html>

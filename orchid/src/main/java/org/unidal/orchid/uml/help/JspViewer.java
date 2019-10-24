@@ -12,9 +12,10 @@ public class JspViewer extends BaseJspViewer<UmlPage, Action, Context, Model> {
 
 		switch (action) {
 		case VIEW:
+			String language = ctx.getPayload().getLanguage();
 			String pageName = ctx.getPayload().getPageName();
 
-			return String.format("/jsp/help/%s.jsp", pageName);
+			return String.format("/jsp/help/%s/%s.jsp", language, pageName);
 		}
 
 		throw new RuntimeException("Unknown action: " + action);

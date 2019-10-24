@@ -29,9 +29,17 @@ public class Payload implements ActionPayload<UmlPage, Action> {
 		return m_page;
 	}
 
+	public String getLanguage() {
+		if (m_pathSections.length == 1) {
+			return "en";
+		} else {
+			return m_pathSections[1];
+		}
+	}
+
 	public String getPageName() {
 		if (m_pathSections.length == 0) {
-			return "usecase";
+			return "use-case-diagram";
 		} else {
 			return m_pathSections[0];
 		}
@@ -42,9 +50,7 @@ public class Payload implements ActionPayload<UmlPage, Action> {
 	}
 
 	public String getUmlFile() {
-		if (m_pathSections.length <= 1) {
-			return null;
-		} else {
+		if (m_pathSections.length >= 2 && m_pathSections[1].endsWith(".uml")) {
 			StringBuilder sb = new StringBuilder();
 
 			for (int i = 0; i < m_pathSections.length; i++) {
@@ -52,6 +58,8 @@ public class Payload implements ActionPayload<UmlPage, Action> {
 			}
 
 			return CodecFunction.urlDecode(sb.toString());
+		} else {
+			return null;
 		}
 	}
 

@@ -1,0 +1,16 @@
+@startuml
+left to right direction
+frame user1{
+card root
+card sub1
+card sub2
+}
+
+card leaf1
+card leaf2
+
+root-->sub1
+root-->sub2
+sub1-->leaf1
+sub1-->leaf2
+@enduml

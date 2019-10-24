@@ -1,0 +1,3 @@
+@startuml
+component  [Web Server] #Yellow
+@enduml

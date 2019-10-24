@@ -1,0 +1,7 @@
+@startuml
+entity Entity01 {
+   optional attribute
+   **optional bold attribute**
+   * **mandatory bold attribute**
+}
+@enduml
