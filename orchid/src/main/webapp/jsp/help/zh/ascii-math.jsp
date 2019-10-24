@@ -70,7 +70,7 @@ Alice --&gt; Bob: &lt;math&gt;x = (-b+-sqrt(b^2-4ac))/(2a)&lt;/math&gt;
 </p>
 <h2>独立图
 </h2>
-<p>.qsd{float:right;width:336px;height:280px}
+<p>
 </p>
 <p>您也可以用 
 <code>@startmath

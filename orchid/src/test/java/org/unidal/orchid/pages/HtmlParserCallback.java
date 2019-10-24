@@ -132,6 +132,7 @@ class HtmlParserCallback extends HTMLEditorKit.ParserCallback {
 				Object id = attributeSet.getAttribute(Attribute.ID);
 				Object klass = attributeSet.getAttribute(Attribute.CLASS);
 
+				// skip AD banners
 				if ("BC".equals(id)) {
 					m_skipped++;
 				} else if ("qsd".equals(klass)) {
@@ -179,6 +180,11 @@ class HtmlParserCallback extends HTMLEditorKit.ParserCallback {
 	public void handleText(char[] ch, int pos) {
 		if (m_eligible && m_skipped == 0) {
 			String text = new String(ch);
+
+			// fix
+			if (text.startsWith(".qsd{")) {
+				return;
+			}
 
 			m_sb.append(text);
 		}

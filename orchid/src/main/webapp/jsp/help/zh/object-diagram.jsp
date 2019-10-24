@@ -27,7 +27,7 @@
 </p>
 <h2>对象的定义
 </h2>
-<p>.qsd{float:right;margin:15px 3px;width:336px;height:600px}@media(max-width:1300px){.qsd{width:300px}}@media(max-width:1250px){.qsd{width:160px}}
+<p>
 </p>
 <p>使用关键字
 <code>object

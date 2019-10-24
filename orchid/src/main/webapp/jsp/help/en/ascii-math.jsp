@@ -68,7 +68,7 @@ Alice --&gt; Bob: &lt;math&gt;x = (-b+-sqrt(b^2-4ac))/(2a)&lt;/math&gt;
 </p>
 <h2>Standalone diagram
 </h2>
-<p>.qsd{float:right;width:336px;height:280px}
+<p>
 </p>
 <p>You can also use 
 <code>@startmath

@@ -39,7 +39,7 @@
 </p>
 <h2>Basic widgets
 </h2>
-<p>.qsd{float:right;margin:15px 3px;width:336px;height:600px}@media(max-width:1300px){.qsd{width:300px}}@media(max-width:1250px){.qsd{width:160px}}
+<p>
 </p>
 <p>A window must start and end with brackets. You can then define:
 </p>

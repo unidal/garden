@@ -45,7 +45,7 @@
 </p>
 <h2>简单活动图
 </h2>
-<p>.qsd{float:right;margin:15px 3px;width:336px;height:600px}@media(max-width:1300px){.qsd{width:300px}}@media(max-width:1250px){.qsd{width:160px}}
+<p>
 </p>活动标签(activity label)以冒号开始，以分号结束。
 <p>文本格式支持
 <a href="creole">creole wiki

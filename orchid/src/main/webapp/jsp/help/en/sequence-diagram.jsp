@@ -25,7 +25,7 @@
 </p>
 <h2>Basic examples
 </h2>
-<p>.qsd{float:right;margin:15px 3px;width:336px;height:600px}@media(max-width:1300px){.qsd{width:300px}}@media(max-width:1250px){.qsd{width:160px}}
+<p>
 </p>The sequence 
 <code>-&gt;
 </code> is used to draw a message between two participants. Participants do not have to be explicitly declared.

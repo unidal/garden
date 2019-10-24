@@ -39,7 +39,7 @@
 </p>
 <h2>基本部件
 </h2>
-<p>.qsd{float:right;margin:15px 3px;width:336px;height:600px}@media(max-width:1300px){.qsd{width:300px}}@media(max-width:1250px){.qsd{width:160px}}
+<p>
 </p>
 <p>一个窗口必须以中括号开头和结尾。 接着可以这样定义:
 </p>
