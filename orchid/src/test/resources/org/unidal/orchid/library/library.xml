@@ -1,6 +1,0 @@
-<libraries>
-	<library id="CFX" name="Arch.cfx.dll" product="CFX" current-version="1.7.2.6" stable-version="1.7.2.5" min-version="1.4.5"/>
-	<library id="CLog" name="Framework.Logging.V2.API.dll" product="CLog,CAT" current-version="3.0.0.33" stable-version="3.0.0.33" min-version="3.0.0.0" />
-	<library id="CHystrix" name="CHystrix.dll" product="SOA" current-version="1.1.1.0" stable-version="1.1.1.0" min-version="1.0.0.0" />
-	<library id="CHystrix" name="CServiceStack.Extendsions.MobileRequestFilter.dll" product="SOA" current-version="3.0.0.33" stable-version="3.0.0.33" min-version="3.0.0.0" />
-</libraries>

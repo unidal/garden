@@ -59,10 +59,6 @@
 			<implementation>org.unidal.orchid.service.FileStorageService</implementation>
 		</component>
 		<component>
-			<role>org.unidal.orchid.service.LibraryService</role>
-			<implementation>org.unidal.orchid.service.DefaultLibraryService</implementation>
-		</component>
-		<component>
 			<role>org.unidal.dal.jdbc.datasource.DataSourceProvider</role>
 			<implementation>org.unidal.dal.jdbc.datasource.DefaultDataSourceProvider</implementation>
 			<configuration>

@@ -11,7 +11,6 @@ import org.unidal.initialization.ModuleManager;
 import org.unidal.lookup.configuration.Component;
 import org.unidal.orchid.OrchidModule;
 import org.unidal.orchid.service.DefaultDocumentServiceManager;
-import org.unidal.orchid.service.DefaultLibraryService;
 import org.unidal.orchid.service.DefaultUmlService;
 import org.unidal.orchid.service.FileStorageService;
 import org.unidal.orchid.service.LocalDocumentService;
@@ -32,8 +31,6 @@ public class ComponentsConfigurator extends AbstractJdbcResourceConfigurator {
 
 		all.add(A(DefaultUmlService.class));
 		all.add(A(FileStorageService.class));
-
-		all.add(A(DefaultLibraryService.class));
 
 		all.add(C(DataSourceProvider.class, DefaultDataSourceProvider.class) //
 		      .config(E("datasourceFile").value("datasources.xml"), //
