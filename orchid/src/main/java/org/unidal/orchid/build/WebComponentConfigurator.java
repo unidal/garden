@@ -12,7 +12,6 @@ class WebComponentConfigurator extends AbstractResourceConfigurator {
    public List<Component> defineComponents() {
       List<Component> all = new ArrayList<Component>();
 
-
       all.add(A(ModuleRegistry.class).config(E("default-module").value(org.unidal.orchid.uml.UmlModule.class.getName())));
   
       all.add(A(org.unidal.orchid.uml.UmlModule.class));
@@ -25,6 +24,9 @@ class WebComponentConfigurator extends AbstractResourceConfigurator {
 
       all.add(A(org.unidal.orchid.uml.upload.Handler.class));
       all.add(A(org.unidal.orchid.uml.upload.JspViewer.class));
+
+      all.add(A(org.unidal.orchid.uml.view.Handler.class));
+      all.add(A(org.unidal.orchid.uml.view.JspViewer.class));
 
       return all;
    }

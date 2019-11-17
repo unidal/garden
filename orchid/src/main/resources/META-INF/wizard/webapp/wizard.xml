@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <wizard package="org.unidal.orchid">
-   <webapp package="org.unidal.orchid" name="orchid" module="false" webres="false" cat="true" plugin-management="true" jstl="true" layout="bootstrap">
+   <webapp package="org.unidal.orchid" name="orchid" module="false" cat="true" plugin-management="true" jstl="true" layout="bootstrap">
       <module name="uml" path="uml" default="true">
-         <page name="edit" title="Edit" default="true" path="edit" template="default">
+         <page name="edit" title="Edit" default="true" path="edit">
             <description>Edit</description>
          </page>
-         <page name="help" title="Help" path="help" template="default">
+         <page name="help" title="Help" path="help">
             <description>Help</description>
          </page>
-         <page name="upload" title="Upload" path="upload" template="default">
+         <page name="upload" title="Upload" path="upload">
             <description>Upload</description>
+         </page>
+         <page name="view" title="View" path="view">
+            <description>View</description>
          </page>
       </module>
    </webapp>

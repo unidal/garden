@@ -163,5 +163,23 @@
 				</requirement>
 			</requirements>
 		</component>
+		<component>
+			<role>org.unidal.orchid.uml.view.Handler</role>
+			<implementation>org.unidal.orchid.uml.view.Handler</implementation>
+			<requirements>
+				<requirement>
+					<role>org.unidal.orchid.uml.view.JspViewer</role>
+				</requirement>
+			</requirements>
+		</component>
+		<component>
+			<role>org.unidal.orchid.uml.view.JspViewer</role>
+			<implementation>org.unidal.orchid.uml.view.JspViewer</implementation>
+			<requirements>
+				<requirement>
+					<role>org.unidal.web.mvc.view.model.ModelHandler</role>
+				</requirement>
+			</requirements>
+		</component>
 	</components>
 </plexus>

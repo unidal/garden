@@ -15,6 +15,8 @@ org.unidal.orchid.uml.help.Handler.class,
 
 org.unidal.orchid.uml.upload.Handler.class,
 
+org.unidal.orchid.uml.view.Handler.class,
+
 })
 @Named(type = Module.class, value = "org.unidal.orchid.uml.UmlModule")
 public class UmlModule extends AbstractModule {

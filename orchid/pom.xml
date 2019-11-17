@@ -89,9 +89,7 @@
                      <goal>dal-model</goal>
                   </goals>
                   <configuration>
-                     <manifest><![CDATA[
-                        ${basedir}/src/main/resources/META-INF/dal/model/libraries-manifest.xml,
-                     ]]></manifest>
+                     <manifest><![CDATA[${basedir}/src/main/resources/META-INF/dal/model/libraries-manifest.xml,]]></manifest>
                   </configuration>
                </execution>
                <execution>
@@ -101,9 +99,7 @@
                      <goal>dal-jdbc</goal>
                   </goals>
                   <configuration>
-                     <manifest><![CDATA[
-                        ${basedir}/src/main/resources/META-INF/dal/jdbc/uml-manifest.xml,
-                     ]]></manifest>
+                     <manifest><![CDATA[${basedir}/src/main/resources/META-INF/dal/jdbc/uml-manifest.xml,]]></manifest>
                   </configuration>
                </execution>
             </executions>
@@ -125,6 +121,35 @@
             </executions>
          </plugin>
       </plugins>
+      <pluginManagement>
+         <plugins>
+            <plugin>
+               <artifactId>maven-compiler-plugin</artifactId>
+               <version>3.7.0</version>
+               <configuration>
+                  <source>1.6</source>
+                  <target>1.6</target>
+               </configuration>
+            </plugin>
+            <plugin>
+               <artifactId>maven-eclipse-plugin</artifactId>
+               <version>2.10</version>
+               <configuration>
+                  <downloadSources>true</downloadSources>
+                  <ajdtVersion>none</ajdtVersion>
+                  <additionalConfig>
+                     <file>
+                        <name>.settings/org.eclipse.jdt.core.prefs</name>
+                        <content><![CDATA[eclipse.preferences.version=1
+                           org.eclipse.jdt.core.compiler.codegen.targetPlatform=1.6
+                           org.eclipse.jdt.core.compiler.source=1.6
+                           org.eclipse.jdt.core.compiler.compliance=1.6]]></content>
+                     </file>
+                  </additionalConfig>
+               </configuration>
+            </plugin>
+         </plugins>
+      </pluginManagement>
    </build>
 </project>
 
