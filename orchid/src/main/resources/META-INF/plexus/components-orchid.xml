@@ -170,6 +170,12 @@
 				<requirement>
 					<role>org.unidal.orchid.uml.view.JspViewer</role>
 				</requirement>
+				<requirement>
+					<role>org.unidal.orchid.service.DocumentServiceManager</role>
+				</requirement>
+				<requirement>
+					<role>org.unidal.orchid.service.UmlService</role>
+				</requirement>
 			</requirements>
 		</component>
 		<component>
