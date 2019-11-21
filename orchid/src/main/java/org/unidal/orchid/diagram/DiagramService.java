@@ -12,7 +12,9 @@ public interface DiagramService {
 
 	public List<ProductModel> getProducts(DiagramContext ctx);
 
-	public boolean hasDiagram(DiagramContext context, String product, String diagram);
+	public boolean hasDiagram(DiagramContext ctx, String product, String diagram);
 
-	public void updateDiagram(String product, String diagram, String content);
+	public boolean updateDiagram(DiagramContext ctx, String product, String diagram, String content);
+
+	public String watchDiagram(DiagramContext context, String product, String diagram, String checksum, long timeoutInMillis);
 }

@@ -10,8 +10,7 @@ import org.unidal.lookup.annotation.Inject;
 import org.unidal.lookup.annotation.Named;
 import org.unidal.orchid.diagram.DiagramService;
 import org.unidal.orchid.diagram.entity.DiagramModel;
-import org.unidal.orchid.service.DocumentServiceManager;
-import org.unidal.orchid.service.UmlService;
+import org.unidal.orchid.service.DiagramGenerator;
 import org.unidal.orchid.uml.UmlPage;
 import org.unidal.web.mvc.PageHandler;
 import org.unidal.web.mvc.annotation.InboundActionMeta;
@@ -21,10 +20,7 @@ import org.unidal.web.mvc.annotation.PayloadMeta;
 @Named
 public class Handler implements PageHandler<Context> {
 	@Inject
-	private UmlService m_umlService;
-
-	@Inject
-	private DocumentServiceManager m_manager;
+	private DiagramGenerator m_diagramGenerator;
 
 	@Inject
 	private DiagramService m_diagramService;
@@ -62,12 +58,13 @@ public class Handler implements PageHandler<Context> {
 	private void handleWatch(Context ctx, Model model) throws IOException {
 		Payload payload = ctx.getPayload();
 		String product = payload.getProduct();
-		String path = payload.getDiagram();
+		String diagram = payload.getDiagram();
 		String checksum = payload.getChecksum();
 
-		if (path != null && path.length() > 0) {
+		if (diagram != null && diagram.length() > 0) {
 			long timeoutInMillis = 3000;
-			String current = m_manager.getDocumentService().watch(product, path, checksum, timeoutInMillis);
+			String current = m_diagramService.watchDiagram(ctx.getContext(), product, diagram, checksum,
+					timeoutInMillis);
 
 			if (current != null) {
 				ctx.sendPlainText(current);
@@ -90,17 +87,8 @@ public class Handler implements PageHandler<Context> {
 				DiagramModel d = m_diagramService.getDiagram(ctx.getContext(), product, diagram);
 				String content = d.getContent();
 
-				res.setContentType(m_umlService.getContextType(content, type));
-				type = m_umlService.getImageType(type);
-
-				byte[] image = m_umlService.generateImage(content, type);
-
-				if (image != null) {
-					res.setContentLength(image.length);
-					res.getOutputStream().write(image);
-				} else {
-					res.sendError(400, "UML is incompleted!");
-				}
+				m_diagramGenerator.generate(ctx.getHttpServletResponse(), content, type);
+				ctx.stopProcess();
 			} catch (IOException e) {
 				throw e;
 			} catch (Throwable e) {
@@ -109,7 +97,5 @@ public class Handler implements PageHandler<Context> {
 		} else {
 			res.sendError(404, "UML Not Found(" + product + ":" + diagram + ")!");
 		}
-
-		ctx.stopProcess();
 	}
 }

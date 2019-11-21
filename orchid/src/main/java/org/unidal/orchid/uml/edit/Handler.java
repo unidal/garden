@@ -10,8 +10,7 @@ import org.unidal.lookup.annotation.Inject;
 import org.unidal.lookup.annotation.Named;
 import org.unidal.orchid.diagram.DiagramService;
 import org.unidal.orchid.diagram.entity.DiagramModel;
-import org.unidal.orchid.service.DocumentServiceManager;
-import org.unidal.orchid.service.UmlService;
+import org.unidal.orchid.service.DiagramGenerator;
 import org.unidal.orchid.uml.UmlPage;
 import org.unidal.web.mvc.PageHandler;
 import org.unidal.web.mvc.annotation.InboundActionMeta;
@@ -21,10 +20,7 @@ import org.unidal.web.mvc.annotation.PayloadMeta;
 @Named
 public class Handler implements PageHandler<Context> {
 	@Inject
-	private UmlService m_umlService;
-
-	@Inject
-	private DocumentServiceManager m_manager;
+	private DiagramGenerator m_diagramGenerator;
 
 	@Inject
 	private DiagramService m_diagramSerice;
@@ -43,15 +39,14 @@ public class Handler implements PageHandler<Context> {
 			ctx.setMessage(String.format("Diagram(%s) must be ending with '.uml'.", diagram));
 		} else if (!m_diagramSerice.hasDiagram(ctx.getContext(), product, diagram)) {
 			StringBuilder message = new StringBuilder(256);
-			boolean success = m_umlService.updateUml(product, diagram, content, message);
+			boolean success = m_diagramSerice.updateDiagram(ctx.getContext(), product, diagram, content);
 
-			m_diagramSerice.updateDiagram(product, diagram, content);
 			ctx.setError(!success);
 			ctx.setDiagram(diagram);
 			ctx.setMessage(message.toString());
 		} else {
 			ctx.setError(true);
-			ctx.setMessage(String.format("UML File(%s) is already existed! Please use another one.", diagram));
+			ctx.setMessage(String.format("Diagram(%s) is already existed! Please use another one.", diagram));
 		}
 	}
 
@@ -100,9 +95,8 @@ public class Handler implements PageHandler<Context> {
 		String diagram = payload.getDiagram();
 		String content = payload.getContent();
 		StringBuilder message = new StringBuilder();
-		boolean success = m_umlService.updateUml(product, diagram, content, message);
 
-		m_diagramSerice.updateDiagram(product, diagram, content);
+		boolean success = m_diagramSerice.updateDiagram(ctx.getContext(), product, diagram, content);
 		ctx.setError(!success);
 		ctx.setMessage(message.toString());
 	}
@@ -137,7 +131,7 @@ public class Handler implements PageHandler<Context> {
 		}
 
 		if (content != null) {
-			byte[] image = m_umlService.generateImage(content, "svg");
+			byte[] image = m_diagramGenerator.generate(content, "svg");
 
 			if (image != null) {
 				String data = new String(image, "utf-8");
@@ -158,22 +152,10 @@ public class Handler implements PageHandler<Context> {
 		String content = payload.getContent();
 
 		if (diagram != null && diagram.length() > 0) {
-			m_diagramSerice.updateDiagram(product, diagram, content);
+			m_diagramSerice.updateDiagram(ctx.getContext(), product, diagram, content);
 		}
 
-		String type = m_umlService.getImageType("svg");
-		byte[] image = m_umlService.generateImage(content, type);
-		HttpServletResponse res = ctx.getHttpServletResponse();
-
-		res.setContentType(m_umlService.getContextType(content, "text"));
-
-		if (image != null) {
-			res.setContentLength(image.length);
-			res.getOutputStream().write(image);
-		} else {
-			res.sendError(400, "UML Incompleted!");
-		}
-
+		m_diagramGenerator.generate(ctx.getHttpServletResponse(), content, "svg");
 		ctx.stopProcess();
 	}
 }

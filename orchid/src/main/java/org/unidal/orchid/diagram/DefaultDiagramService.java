@@ -50,7 +50,7 @@ public class DefaultDiagramService implements DiagramService {
 	}
 
 	@Override
-	public boolean hasDiagram(DiagramContext context, String product, String diagram) {
+	public boolean hasDiagram(DiagramContext ctx, String product, String diagram) {
 		RootModel model = m_manager.getModel();
 		ProductModel p = model.findProduct(product);
 
@@ -64,7 +64,7 @@ public class DefaultDiagramService implements DiagramService {
 	}
 
 	@Override
-	public void updateDiagram(String product, String diagram, String content) {
+	public boolean updateDiagram(DiagramContext ctx, String product, String diagram, String content) {
 		RootModel model = m_manager.getModel();
 		ProductModel p = model.findProduct(product);
 
@@ -74,6 +74,25 @@ public class DefaultDiagramService implements DiagramService {
 
 			d.setChecksum(checksum);
 			d.setContent(content);
+			return true;
+		} else {
+			return false;
 		}
+	}
+
+	@Override
+	public String watchDiagram(DiagramContext context, String product, String diagram, String checksum, long timeoutInMillis) {
+		RootModel model = m_manager.getModel();
+		ProductModel p = model.findProduct(product);
+
+		if (p != null) {
+			DiagramModel d = p.findDiagram(diagram);
+
+			if (checksum.equals(d.getChecksum())) {
+				return d.getChecksum();
+			}
+		}
+
+		return null;
 	}
 }
