@@ -114,6 +114,9 @@
 			<implementation>org.unidal.orchid.uml.edit.Handler</implementation>
 			<requirements>
 				<requirement>
+					<role>org.unidal.orchid.diagram.DiagramService</role>
+				</requirement>
+				<requirement>
 					<role>org.unidal.orchid.uml.edit.JspViewer</role>
 				</requirement>
 				<requirement>
