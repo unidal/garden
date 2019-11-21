@@ -10,6 +10,8 @@ import org.unidal.initialization.DefaultModuleManager;
 import org.unidal.initialization.ModuleManager;
 import org.unidal.lookup.configuration.Component;
 import org.unidal.orchid.OrchidModule;
+import org.unidal.orchid.diagram.DefaultDiagramManager;
+import org.unidal.orchid.diagram.DefaultDiagramService;
 import org.unidal.orchid.service.DefaultDocumentServiceManager;
 import org.unidal.orchid.service.DefaultUmlService;
 import org.unidal.orchid.service.FileStorageService;
@@ -23,7 +25,10 @@ public class ComponentsConfigurator extends AbstractJdbcResourceConfigurator {
 
 		all.add(A(OrchidModule.class));
 		all.add(C(ModuleManager.class, DefaultModuleManager.class) //
-		      .config(E("topLevelModules").value(OrchidModule.ID)));
+				.config(E("topLevelModules").value(OrchidModule.ID)));
+
+		all.add(A(DefaultDiagramManager.class));
+		all.add(A(DefaultDiagramService.class));
 
 		all.add(A(DefaultDocumentServiceManager.class));
 		all.add(A(LocalDocumentService.class));
@@ -33,8 +38,8 @@ public class ComponentsConfigurator extends AbstractJdbcResourceConfigurator {
 		all.add(A(FileStorageService.class));
 
 		all.add(C(DataSourceProvider.class, DefaultDataSourceProvider.class) //
-		      .config(E("datasourceFile").value("datasources.xml"), //
-		            E("baseDirRef").value("GARDEN_HOME")));
+				.config(E("datasourceFile").value("datasources.xml"), //
+						E("baseDirRef").value("GARDEN_HOME")));
 
 		all.addAll(new GardenDatabaseConfigurator().defineComponents());
 

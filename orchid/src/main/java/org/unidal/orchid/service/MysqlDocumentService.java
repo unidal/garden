@@ -37,17 +37,6 @@ public class MysqlDocumentService implements DocumentService {
 	}
 
 	@Override
-	public boolean hasDocument(String product, String id) throws Exception {
-		try {
-			m_dao.findByProductAndUri(product, id, DocumentEntity.READSET_ID_URI);
-
-			return true;
-		} catch (DalNotFoundException e) {
-			return false;
-		}
-	}
-
-	@Override
 	public List<String> getDocumentIds(String product) throws Exception {
 		List<Document> docs = m_dao.findAllByProduct(product, DocumentEntity.READSET_ID_URI);
 		List<String> ids = new ArrayList<String>(docs.size());
@@ -72,6 +61,17 @@ public class MysqlDocumentService implements DocumentService {
 	}
 
 	@Override
+	public boolean hasDocument(String product, String id) throws Exception {
+		try {
+			m_dao.findByProductAndUri(product, id, DocumentEntity.READSET_ID_URI);
+
+			return true;
+		} catch (DalNotFoundException e) {
+			return false;
+		}
+	}
+
+	@Override
 	public void storeDocument(String product, String id, String content) throws Exception {
 		Document doc = m_dao.createLocal();
 
@@ -80,5 +80,11 @@ public class MysqlDocumentService implements DocumentService {
 		doc.setContent(content.getBytes("utf-8"));
 
 		m_dao.insert(doc);
+	}
+
+	@Override
+	public String watch(String product, String path, String checksum, long timeoutInMillis) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

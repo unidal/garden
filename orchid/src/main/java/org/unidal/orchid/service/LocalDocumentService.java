@@ -99,4 +99,10 @@ public class LocalDocumentService implements DocumentService {
 		file.getParentFile().mkdirs();
 		Files.forIO().writeTo(file, content);
 	}
+
+	@Override
+	public String watch(String product, String path, String checksum, long timeoutInMillis) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

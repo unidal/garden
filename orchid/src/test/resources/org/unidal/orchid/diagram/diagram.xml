@@ -1,0 +1,19 @@
+<root>
+	<product id="default">
+		<diagram id="demo/hello.uml" author="qmwu2000">
+			<content><![CDATA[
+Alice -> Bob: hello
+Bob -> Chris: greeting
+			]]></content>
+			<checksum>ABCDEF</checksum>
+			<permission>
+				<write>alice</write>
+				<write>bob</write>
+				<read>chris</read>
+				<read>douglas</read>
+			</permission>
+		</diagram>
+		<diagram />
+	</product>
+	<product />
+</root>

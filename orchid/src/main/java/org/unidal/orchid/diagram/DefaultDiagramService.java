@@ -1,0 +1,50 @@
+package org.unidal.orchid.diagram;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.unidal.lookup.annotation.Inject;
+import org.unidal.lookup.annotation.Named;
+import org.unidal.orchid.diagram.entity.DiagramModel;
+import org.unidal.orchid.diagram.entity.ProductModel;
+import org.unidal.orchid.diagram.entity.RootModel;
+
+@Named(type = DiagramService.class)
+public class DefaultDiagramService implements DiagramService {
+	@Inject
+	private DiagramManager m_manager;
+
+	@Override
+	public DiagramModel getDiagram(DiagramContext ctx, String product, String id) {
+		RootModel model = m_manager.getModel();
+		ProductModel p = model.findProduct(product);
+
+		if (p != null) {
+			DiagramModel d = p.findDiagram(id);
+
+			return d;
+		}
+
+		return null;
+	}
+
+	@Override
+	public List<DiagramModel> getDiagrams(DiagramContext ctx, String product) {
+		RootModel model = m_manager.getModel();
+		ProductModel p = model.findProduct(product);
+		List<DiagramModel> diagrams = new ArrayList<DiagramModel>();
+
+		if (p != null) {
+			diagrams.addAll(p.getDiagrams());
+		}
+
+		return diagrams;
+	}
+
+	@Override
+	public List<ProductModel> getProducts(DiagramContext ctx) {
+		RootModel model = m_manager.getModel();
+
+		return model.getProducts();
+	}
+}

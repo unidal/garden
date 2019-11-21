@@ -15,6 +15,19 @@
 			</configuration>
 		</component>
 		<component>
+			<role>org.unidal.orchid.diagram.DiagramManager</role>
+			<implementation>org.unidal.orchid.diagram.DefaultDiagramManager</implementation>
+		</component>
+		<component>
+			<role>org.unidal.orchid.diagram.DiagramService</role>
+			<implementation>org.unidal.orchid.diagram.DefaultDiagramService</implementation>
+			<requirements>
+				<requirement>
+					<role>org.unidal.orchid.diagram.DiagramManager</role>
+				</requirement>
+			</requirements>
+		</component>
+		<component>
 			<role>org.unidal.orchid.service.DocumentServiceManager</role>
 			<implementation>org.unidal.orchid.service.DefaultDocumentServiceManager</implementation>
 			<requirements>

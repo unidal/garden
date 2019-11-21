@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wizard package="org.unidal.orchid">
+   <model package="org.unidal.orchid.diagram" name="diagram">
+      <sample-model>src/test/resources/org/unidal/orchid/diagram/diagram.xml</sample-model>
+   </model>
+</wizard>
