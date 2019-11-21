@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletResponse;
 import org.unidal.cat.Cat;
 import org.unidal.lookup.annotation.Inject;
 import org.unidal.lookup.annotation.Named;
+import org.unidal.orchid.diagram.DiagramService;
+import org.unidal.orchid.diagram.entity.DiagramModel;
 import org.unidal.orchid.service.DocumentServiceManager;
 import org.unidal.orchid.service.UmlService;
 import org.unidal.orchid.uml.UmlPage;
@@ -19,10 +21,13 @@ import org.unidal.web.mvc.annotation.PayloadMeta;
 @Named
 public class Handler implements PageHandler<Context> {
 	@Inject
-	private UmlService m_uml;
+	private UmlService m_umlService;
 
 	@Inject
 	private DocumentServiceManager m_manager;
+
+	@Inject
+	private DiagramService m_diagramService;
 
 	@Inject
 	private JspViewer m_jspViewer;
@@ -57,7 +62,7 @@ public class Handler implements PageHandler<Context> {
 	private void handleWatch(Context ctx, Model model) throws IOException {
 		Payload payload = ctx.getPayload();
 		String product = payload.getProduct();
-		String path = payload.getPath();
+		String path = payload.getDiagram();
 		String checksum = payload.getChecksum();
 
 		if (path != null && path.length() > 0) {
@@ -76,18 +81,19 @@ public class Handler implements PageHandler<Context> {
 	private void showImage(Context ctx, Model model) throws IOException {
 		Payload payload = ctx.getPayload();
 		String product = payload.getProduct();
-		String path = payload.getPath();
+		String diagram = payload.getDiagram();
 		String type = payload.getType();
 		HttpServletResponse res = ctx.getHttpServletResponse();
 
-		if (path != null && path.length() > 0) {
+		if (diagram != null && diagram.length() > 0) {
 			try {
-				String uml = m_manager.getDocumentService().getDocument(product, path);
+				DiagramModel d = m_diagramService.getDiagram(ctx.getContext(), product, diagram);
+				String content = d.getContent();
 
-				res.setContentType(m_uml.getContextType(uml, type));
-				type = m_uml.getImageType(type);
+				res.setContentType(m_umlService.getContextType(content, type));
+				type = m_umlService.getImageType(type);
 
-				byte[] image = m_uml.generateImage(uml, type);
+				byte[] image = m_umlService.generateImage(content, type);
 
 				if (image != null) {
 					res.setContentLength(image.length);
@@ -101,7 +107,7 @@ public class Handler implements PageHandler<Context> {
 				Cat.logError(e);
 			}
 		} else {
-			res.sendError(404, "UML Not Found(" + product + ":" + path + ")!");
+			res.sendError(404, "UML Not Found(" + product + ":" + diagram + ")!");
 		}
 
 		ctx.stopProcess();

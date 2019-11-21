@@ -16,13 +16,13 @@
 				<td colspan="4" nowrap>
 					<select id="product" name="product" style="width: 150px">
 						<option value="">--- Select Product ---</option>
-						${w:showOptions(model.products, model.product, null, null)}
+						${w:showOptions(model.products, model.product, "id", "id")}
 					</select>
-					<select id="file" name="file" style="width: 480px">
-						<option value="">--- Select UML or create a new one ---</option>
-						${w:showOptions(model.umlFiles, model.umlFile, null, null)}
+					<select id="diagram" name="diagram" style="width: 480px">
+						<option value="">--- Select Diagram or create a new one ---</option>
+						${w:showOptions(model.diagrams, model.diagram, "id", "id")}
 					</select>
-					<c:if test="${not empty model.umlFile}"><a href="${model.webapp}/uml/view/file/${model.umlFile}" target="_blank">Get Link</a></c:if>
+					<c:if test="${not empty model.diagram}">&nbsp;<a href="${model.webapp}/uml/view/${model.product}/${model.diagram}" target="_blank">PNG Image</a></c:if>
 				</td>
 			</tr>
 			<c:if test="${not empty model.message}">
@@ -37,11 +37,11 @@
 			</c:if>
 			<tr valign="top">
 				<td valign="top">
-					<textarea id="uml" name="uml" style="${model.editStyle}">${w:htmlEncode(model.uml)}</textarea>
+					<textarea id="content" name="content" style="${model.editStyle}">${w:htmlEncode(model.content)}</textarea>
 					<br>
 					<c:choose>
-						<c:when test="${not empty model.umlFile}">
-							<button type="submit" name="update" value="1" class="btn btn-medium btn-primary">Save</button>
+						<c:when test="${not empty model.diagram}">
+							<button id="save" type="submit" name="save" value="1" class="btn btn-medium btn-primary">Save</button>
 						</c:when>
 						<c:otherwise>
 							<input id="newfile" type="hidden" name="newfile">
@@ -61,13 +61,15 @@
 	var changed = false;
 	
 	function refresh() {
-		var uml = $("#uml").val();
-		
 		if (changed) {
+			var product = $('#product').val();
+			var diagram = $('#diagram').val();
+			var content = $("#content").val();
+
 		   $.ajax({
-			  url: '${model.webapp}/uml',
+			  url: '${model.webapp}/uml/edit',
 			  type: 'POST',
-			  data: 'type=text&uml=' + encodeURIComponent(uml),
+			  data: 'update=1&product='+encodeURIComponent(product)+'&diagram='+encodeURIComponent(diagram)+'&content='+encodeURIComponent(content),
 			  async: false,
 			  success: function(data) {
 				// called when successful
@@ -91,12 +93,12 @@
 	}
 	
 	$(document).ready(function () {
-		$('#uml').bind('input propertychange', function() {
+		$('#content').bind('input propertychange', function() {
 			changed = true;
 			dirty = true;
 		});
 		
-		$('#uml').bind('mouseup mousemove', function() {
+		$('#content').bind('mouseup mousemove', function() {
             $('#es').val('height: '+this.style.height+'; width: '+this.style.width);
 		});
 		
@@ -106,18 +108,18 @@
 			window.location.href="?product=" + product;
 		});
 		
-		$('#file').change(function() {
+		$('#diagram').change(function() {
 			var product = $('#product').val();
-			var file = $(this).children('option:selected').val();
+			var diagram = $(this).children('option:selected').val();
 			
-			window.location.href="?product=" + product + "&file=" + encodeURIComponent(file);
+			window.location.href="?product=" + product + "&diagram=" + encodeURIComponent(diagram);
 		});
 		
 		$('#saveAs').bind('click', function() {
-			var path = window.prompt("Please enter new uml file name. i.e. 'myproject/scenario1.uml'","myproject/scenario1.uml");
+			var diagram = window.prompt("Please enter new uml file name. i.e. 'module/scenario1.uml'","module/scenario1.uml");
 			
-			if (path) {
-				$('#newfile').val(path);
+			if (diagram) {
+				$('#newfile').val(diagram);
 				$('#newfile').form.submit();
 			}
 		});

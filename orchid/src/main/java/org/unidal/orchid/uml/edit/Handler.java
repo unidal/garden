@@ -1,55 +1,57 @@
 package org.unidal.orchid.uml.edit;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletResponse;
 
-import org.unidal.helper.Joiners;
+import org.unidal.cat.Cat;
 import org.unidal.lookup.annotation.Inject;
 import org.unidal.lookup.annotation.Named;
-import org.unidal.orchid.service.DocumentService;
+import org.unidal.orchid.diagram.DiagramService;
+import org.unidal.orchid.diagram.entity.DiagramModel;
 import org.unidal.orchid.service.DocumentServiceManager;
 import org.unidal.orchid.service.UmlService;
 import org.unidal.orchid.uml.UmlPage;
-import org.unidal.web.jsp.function.CodecFunction;
 import org.unidal.web.mvc.PageHandler;
 import org.unidal.web.mvc.annotation.InboundActionMeta;
 import org.unidal.web.mvc.annotation.OutboundActionMeta;
 import org.unidal.web.mvc.annotation.PayloadMeta;
 
-import org.unidal.cat.Cat;
-
 @Named
 public class Handler implements PageHandler<Context> {
 	@Inject
-	private UmlService m_uml;
+	private UmlService m_umlService;
 
 	@Inject
 	private DocumentServiceManager m_manager;
 
 	@Inject
+	private DiagramService m_diagramSerice;
+
+	@Inject
 	private JspViewer m_jspViewer;
 
-	private void createUml(Context ctx) throws Exception {
+	private void createDiagram(Context ctx) throws Exception {
 		Payload payload = ctx.getPayload();
-		String uml = payload.getUml();
-		String umlFile = payload.getNewFile();
+		String product = payload.getProduct();
+		String diagram = payload.getDiagram();
+		String content = payload.getContent();
 
-		if (!umlFile.endsWith(".uml")) {
+		if (!diagram.endsWith(".uml")) {
 			ctx.setError(true);
-			ctx.setMessage(String.format("Target UML file(%s) must be ending with '.uml'.", umlFile));
-		} else if (!m_manager.getDocumentService().hasDocument(payload.getProduct(), umlFile)) {
+			ctx.setMessage(String.format("Diagram(%s) must be ending with '.uml'.", diagram));
+		} else if (!m_diagramSerice.hasDiagram(ctx.getContext(), product, diagram)) {
 			StringBuilder message = new StringBuilder(256);
-			boolean success = m_uml.updateUml(payload.getProduct(), umlFile, uml, message);
+			boolean success = m_umlService.updateUml(product, diagram, content, message);
 
+			m_diagramSerice.updateDiagram(product, diagram, content);
 			ctx.setError(!success);
-			ctx.setUmlFile(umlFile);
+			ctx.setDiagram(diagram);
 			ctx.setMessage(message.toString());
 		} else {
 			ctx.setError(true);
-			ctx.setMessage(String.format("UML File(%s) is already existed! Please use another one.", umlFile));
+			ctx.setMessage(String.format("UML File(%s) is already existed! Please use another one.", diagram));
 		}
 	}
 
@@ -58,21 +60,21 @@ public class Handler implements PageHandler<Context> {
 	@InboundActionMeta(name = "edit")
 	public void handleInbound(Context ctx) throws ServletException, IOException {
 		Payload payload = ctx.getPayload();
-		String update = payload.getUpdate();
-		String saveAs = payload.getSaveAs();
 
 		try {
-			if (saveAs != null) {
-				createUml(ctx);
-			}
+			if (payload.isSaveAs()) {
+				createDiagram(ctx);
+			} else if (payload.isSave()) {
+				saveDiagram(ctx);
+			} else if (payload.isUpdate()) {
+				Model model = new Model(ctx);
 
-			if (update != null) {
-				updateUml(ctx);
+				updateDiagram(ctx, model);
 			}
 		} catch (Exception e) {
 			Cat.logError(e);
 
-			ctx.getHttpServletResponse().sendError(HttpServletResponse.SC_NOT_FOUND, e.getMessage());
+			ctx.getHttpServletResponse().sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, e.getMessage());
 			ctx.stopProcess();
 		}
 	}
@@ -81,78 +83,41 @@ public class Handler implements PageHandler<Context> {
 	@OutboundActionMeta(name = "edit")
 	public void handleOutbound(Context ctx) throws ServletException, IOException {
 		Model model = new Model(ctx);
-		Payload payload = ctx.getPayload();
-		List<String> sections = payload.getPathSections();
-		String pathInfo = Joiners.by('/').prefixDelimiter().join(sections);
-		String type = payload.getType();
-
-		try {
-			if (pathInfo.endsWith(".uml")) {
-				String path = CodecFunction.urlDecode(pathInfo);
-
-				showImage(ctx, model, path);
-			} else if (type != null && type.length() > 0) {
-				showImage(ctx, model, null);
-			} else {
-				showPage(ctx, model);
-			}
-		} catch (Exception e) {
-			Cat.logError(e);
-			ctx.addError("document.error", e);
-		}
 
 		model.setAction(Action.VIEW);
 		model.setPage(UmlPage.EDIT);
+
+		showPage(ctx, model);
 
 		if (!ctx.isProcessStopped()) {
 			m_jspViewer.view(ctx, model);
 		}
 	}
 
-	private void showImage(Context ctx, Model model, String path) throws Exception {
+	private void saveDiagram(Context ctx) throws IOException {
 		Payload payload = ctx.getPayload();
-		String type = payload.getType();
-		String uml = payload.getUml();
-		HttpServletResponse res = ctx.getHttpServletResponse();
+		String product = payload.getProduct();
+		String diagram = payload.getDiagram();
+		String content = payload.getContent();
+		StringBuilder message = new StringBuilder();
+		boolean success = m_umlService.updateUml(product, diagram, content, message);
 
-		if (path != null && path.length() > 0) {
-			uml = m_manager.getDocumentService().getDocument(payload.getProduct(), path.substring(1));
-		}
-
-		if (uml != null) {
-			res.setContentType(m_uml.getContextType(uml, type));
-			type = m_uml.getImageType(type);
-
-			byte[] image = m_uml.generateImage(uml, type);
-
-			if (image != null) {
-				res.setContentLength(image.length);
-				res.getOutputStream().write(image);
-			} else {
-				res.sendError(400, "UML Incompleted!");
-			}
-		} else {
-			res.sendError(404, "File Not Found(" + path + ")!");
-		}
-
-		ctx.stopProcess();
+		m_diagramSerice.updateDiagram(product, diagram, content);
+		ctx.setError(!success);
+		ctx.setMessage(message.toString());
 	}
 
-	private void showPage(Context ctx, Model model) throws Exception {
+	private void showPage(Context ctx, Model model) throws IOException {
 		Payload payload = ctx.getPayload();
-		String uml = payload.getUml();
+		String product = payload.getProduct();
+		String diagram = payload.getDiagram();
+		String content = payload.getContent();
 		String editStyle = payload.getEditStyle();
-		String umlFile = payload.getFile();
 
-		if (model.getUmlFile() == null) {
-			model.setUmlFile(umlFile);
-		}
-
-		DocumentService documentService = m_manager.getDocumentService();
-
-		model.setProducts(documentService.getProducts());
-		model.setProduct(payload.getProduct());
-		model.setUmlFiles(documentService.getDocumentIds(payload.getProduct()));
+		model.setProducts(m_diagramSerice.getProducts(ctx.getContext()));
+		model.setProduct(product);
+		model.setDiagrams(m_diagramSerice.getDiagrams(ctx.getContext(), product));
+		model.setDiagram(diagram);
 
 		if (editStyle == null) {
 			model.setEditStyle("height: 500px; width: 320px");
@@ -160,15 +125,19 @@ public class Handler implements PageHandler<Context> {
 			model.setEditStyle(editStyle);
 		}
 
-		if (uml != null && uml.length() > 0) {
-			model.setUml(uml);
-		} else if (umlFile != null && umlFile.length() > 0) {
-			uml = documentService.getDocument(payload.getProduct(), umlFile);
-			model.setUml(uml);
+		if (content != null && content.length() > 0) {
+			model.setContent(content);
+		} else if (diagram != null && diagram.length() > 0) {
+			DiagramModel d = m_diagramSerice.getDiagram(ctx.getContext(), product, diagram);
+
+			if (d != null) {
+				content = d.getContent();
+				model.setContent(content);
+			}
 		}
 
-		if (uml != null) {
-			byte[] image = m_uml.generateImage(uml, "svg");
+		if (content != null) {
+			byte[] image = m_umlService.generateImage(content, "svg");
 
 			if (image != null) {
 				String data = new String(image, "utf-8");
@@ -182,14 +151,29 @@ public class Handler implements PageHandler<Context> {
 		}
 	}
 
-	private void updateUml(Context ctx) throws IOException {
+	private void updateDiagram(Context ctx, Model model) throws Exception {
 		Payload payload = ctx.getPayload();
-		String uml = payload.getUml();
-		String umlFile = payload.getFile();
-		StringBuilder message = new StringBuilder();
-		boolean success = m_uml.updateUml(payload.getProduct(), umlFile, uml, message);
+		String product = payload.getProduct();
+		String diagram = payload.getDiagram();
+		String content = payload.getContent();
 
-		ctx.setError(!success);
-		ctx.setMessage(message.toString());
+		if (diagram != null && diagram.length() > 0) {
+			m_diagramSerice.updateDiagram(product, diagram, content);
+		}
+
+		String type = m_umlService.getImageType("svg");
+		byte[] image = m_umlService.generateImage(content, type);
+		HttpServletResponse res = ctx.getHttpServletResponse();
+
+		res.setContentType(m_umlService.getContextType(content, "text"));
+
+		if (image != null) {
+			res.setContentLength(image.length);
+			res.getOutputStream().write(image);
+		} else {
+			res.sendError(400, "UML Incompleted!");
+		}
+
+		ctx.stopProcess();
 	}
 }

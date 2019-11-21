@@ -2,41 +2,55 @@ package org.unidal.orchid.uml.edit;
 
 import java.util.List;
 
+import org.unidal.orchid.diagram.entity.DiagramModel;
+import org.unidal.orchid.diagram.entity.ProductModel;
 import org.unidal.orchid.uml.UmlPage;
 import org.unidal.web.mvc.ViewModel;
 
 public class Model extends ViewModel<UmlPage, Action, Context> {
-	private String m_uml;
+	private List<ProductModel> m_products;
+
+	private String m_product;
+
+	private List<DiagramModel> m_diagrams;
+
+	private String m_diagram;
+
+	private String m_content;
+
+	private String m_editStyle;
 
 	private String m_svg;
 
 	private String m_src;
 
-	private List<String> m_umlFiles;
-
-	private String m_umlFile;
-
 	private boolean m_error;
 
 	private String m_message;
-
-	private String m_editStyle;
-
-	private List<String> m_products;
-
-	private String m_product;
 
 	public Model(Context ctx) {
 		super(ctx);
 
 		m_error = ctx.isError();
 		m_message = ctx.getMessage();
-		m_umlFile = ctx.getUmlFile();
+		m_diagram = ctx.getDiagram();
+	}
+
+	public String getContent() {
+		return m_content;
 	}
 
 	@Override
 	public Action getDefaultAction() {
 		return Action.VIEW;
+	}
+
+	public String getDiagram() {
+		return m_diagram;
+	}
+
+	public List<DiagramModel> getDiagrams() {
+		return m_diagrams;
 	}
 
 	public String getEditStyle() {
@@ -51,7 +65,7 @@ public class Model extends ViewModel<UmlPage, Action, Context> {
 		return m_product;
 	}
 
-	public List<String> getProducts() {
+	public List<ProductModel> getProducts() {
 		return m_products;
 	}
 
@@ -63,20 +77,20 @@ public class Model extends ViewModel<UmlPage, Action, Context> {
 		return m_svg;
 	}
 
-	public String getUml() {
-		return m_uml;
-	}
-
-	public String getUmlFile() {
-		return m_umlFile;
-	}
-
-	public List<String> getUmlFiles() {
-		return m_umlFiles;
-	}
-
 	public boolean isError() {
 		return m_error;
+	}
+
+	public void setContent(String content) {
+		m_content = content;
+	}
+
+	public void setDiagram(String diagram) {
+		m_diagram = diagram;
+	}
+
+	public void setDiagrams(List<DiagramModel> diagrams) {
+		m_diagrams = diagrams;
 	}
 
 	public void setEditStyle(String editStyle) {
@@ -95,27 +109,15 @@ public class Model extends ViewModel<UmlPage, Action, Context> {
 		m_product = product;
 	}
 
-	public void setProducts(List<String> products) {
+	public void setProducts(List<ProductModel> products) {
 		m_products = products;
 	}
 
-	public void setSrc(String src) {
-		m_src = src;
+	public void setSrc(String img) {
+		m_src = img;
 	}
 
 	public void setSvg(String svg) {
 		m_svg = svg;
-	}
-
-	public void setUml(String uml) {
-		m_uml = uml;
-	}
-
-	public void setUmlFile(String umlFile) {
-		m_umlFile = umlFile;
-	}
-
-	public void setUmlFiles(List<String> umlFiles) {
-		m_umlFiles = umlFiles;
 	}
 }

@@ -6,6 +6,7 @@ import org.unidal.lookup.annotation.Named;
 import org.unidal.lookup.extension.Initializable;
 import org.unidal.lookup.extension.InitializationException;
 import org.unidal.orchid.diagram.entity.RootModel;
+import org.unidal.orchid.diagram.transform.BaseVisitor;
 import org.unidal.orchid.diagram.transform.DefaultSaxParser;
 
 @Named(type = DiagramManager.class)
@@ -26,5 +27,11 @@ public class DefaultDiagramManager implements DiagramManager, Initializable {
 		} catch (Exception e) {
 			throw new InitializationException("Error when loading diagram.xml!", e);
 		}
+
+		m_model.accept(new ModelValidator());
+	}
+
+	public class ModelValidator extends BaseVisitor {
+		// TODO
 	}
 }

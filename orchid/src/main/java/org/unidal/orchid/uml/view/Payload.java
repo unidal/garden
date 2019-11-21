@@ -36,12 +36,7 @@ public class Payload implements ActionPayload<UmlPage, Action> {
 		return m_checksum;
 	}
 
-	@Override
-	public UmlPage getPage() {
-		return m_page;
-	}
-
-	public String getPath() {
+	public String getDiagram() {
 		if (m_path != null && m_path.size() > 1) {
 			String path = Joiners.by('/').join(m_path.subList(1, m_path.size()));
 
@@ -49,6 +44,11 @@ public class Payload implements ActionPayload<UmlPage, Action> {
 		} else {
 			return null;
 		}
+	}
+
+	@Override
+	public UmlPage getPage() {
+		return m_page;
 	}
 
 	public String getProduct() {

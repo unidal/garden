@@ -3,6 +3,7 @@ package org.unidal.orchid.diagram;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.shiro.crypto.hash.Md5Hash;
 import org.unidal.lookup.annotation.Inject;
 import org.unidal.lookup.annotation.Named;
 import org.unidal.orchid.diagram.entity.DiagramModel;
@@ -15,12 +16,12 @@ public class DefaultDiagramService implements DiagramService {
 	private DiagramManager m_manager;
 
 	@Override
-	public DiagramModel getDiagram(DiagramContext ctx, String product, String id) {
+	public DiagramModel getDiagram(DiagramContext ctx, String product, String diagram) {
 		RootModel model = m_manager.getModel();
 		ProductModel p = model.findProduct(product);
 
 		if (p != null) {
-			DiagramModel d = p.findDiagram(id);
+			DiagramModel d = p.findDiagram(diagram);
 
 			return d;
 		}
@@ -46,5 +47,33 @@ public class DefaultDiagramService implements DiagramService {
 		RootModel model = m_manager.getModel();
 
 		return model.getProducts();
+	}
+
+	@Override
+	public boolean hasDiagram(DiagramContext context, String product, String diagram) {
+		RootModel model = m_manager.getModel();
+		ProductModel p = model.findProduct(product);
+
+		if (p != null) {
+			DiagramModel d = p.findDiagram(diagram);
+
+			return d != null;
+		} else {
+			return false;
+		}
+	}
+
+	@Override
+	public void updateDiagram(String product, String diagram, String content) {
+		RootModel model = m_manager.getModel();
+		ProductModel p = model.findProduct(product);
+
+		if (p != null) {
+			DiagramModel d = p.findDiagram(diagram);
+			String checksum = new Md5Hash(content).toHex();
+
+			d.setChecksum(checksum);
+			d.setContent(content);
+		}
 	}
 }

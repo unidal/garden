@@ -1,5 +1,7 @@
 package org.unidal.orchid.uml.edit;
 
+import org.unidal.orchid.diagram.DefaultDiagramContext;
+import org.unidal.orchid.diagram.DiagramContext;
 import org.unidal.orchid.uml.UmlContext;
 
 public class Context extends UmlContext<Payload> {
@@ -7,18 +9,28 @@ public class Context extends UmlContext<Payload> {
 
 	private String m_message;
 
-	private String m_umlFile;
+	private String m_diagram;
+
+	private DiagramContext m_context = new DefaultDiagramContext();
+
+	public DiagramContext getContext() {
+		return m_context;
+	}
+
+	public String getDiagram() {
+		return m_diagram;
+	}
 
 	public String getMessage() {
 		return m_message;
 	}
 
-	public String getUmlFile() {
-		return m_umlFile;
-	}
-
 	public boolean isError() {
 		return m_error;
+	}
+
+	public void setDiagram(String diagram) {
+		m_diagram = diagram;
 	}
 
 	public void setError(boolean error) {
@@ -27,9 +39,5 @@ public class Context extends UmlContext<Payload> {
 
 	public void setMessage(String message) {
 		m_message = message;
-	}
-
-	public void setUmlFile(String umlFile) {
-		m_umlFile = umlFile;
 	}
 }

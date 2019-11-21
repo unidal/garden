@@ -2,6 +2,7 @@ package org.unidal.orchid.uml.edit;
 
 import java.util.List;
 
+import org.unidal.helper.Joiners;
 import org.unidal.orchid.uml.UmlPage;
 import org.unidal.web.mvc.ActionContext;
 import org.unidal.web.mvc.ActionPayload;
@@ -15,47 +16,55 @@ public class Payload implements ActionPayload<UmlPage, Action> {
 	private Action m_action;
 
 	@FieldMeta("update")
-	private String m_update;
+	private boolean m_update;
+
+	@FieldMeta("save")
+	private boolean m_save;
 
 	@FieldMeta("saveAs")
-	private String m_saveAs;
+	private boolean m_saveAs;
 
-	@FieldMeta("type")
-	private String m_type;
-
-	@FieldMeta("uml")
-	private String m_uml;
+	@FieldMeta("content")
+	private String m_content;
 
 	@FieldMeta("es")
 	private String m_editStyle;
 
-	@FieldMeta("file")
-	private String m_file;
-
-	@FieldMeta("newfile")
-	private String m_newFile;
+	@PathMeta("path")
+	private List<String> m_path;
 
 	@FieldMeta("product")
 	private String m_product;
 
-	@PathMeta("pathSections")
-	private List<String> m_pathSections;
+	@FieldMeta("diagram")
+	private String m_diagram;
+
+	@FieldMeta("newfile")
+	private String m_newfile;
 
 	@Override
 	public Action getAction() {
 		return m_action;
 	}
 
+	public String getContent() {
+		return m_content;
+	}
+
+	public String getDiagram() {
+		if (m_saveAs) {
+			return m_newfile;
+		} else if (m_path != null && m_path.size() > 1) {
+			String path = Joiners.by('/').join(m_path.subList(1, m_path.size()));
+
+			return path;
+		} else {
+			return m_diagram;
+		}
+	}
+
 	public String getEditStyle() {
 		return m_editStyle;
-	}
-
-	public String getFile() {
-		return m_file;
-	}
-
-	public String getNewFile() {
-		return m_newFile;
 	}
 
 	@Override
@@ -68,27 +77,25 @@ public class Payload implements ActionPayload<UmlPage, Action> {
 		return "edit";
 	}
 
-	public List<String> getPathSections() {
-		return m_pathSections;
-	}
-
 	public String getProduct() {
-		return m_product;
+		if (m_path != null && m_path.size() > 0) {
+			return m_path.get(0);
+		} else if (m_product != null) {
+			return m_product;
+		} else {
+			return "default";
+		}
 	}
 
-	public String getSaveAs() {
+	public boolean isSave() {
+		return m_save;
+	}
+
+	public boolean isSaveAs() {
 		return m_saveAs;
 	}
 
-	public String getType() {
-		return m_type;
-	}
-
-	public String getUml() {
-		return m_uml;
-	}
-
-	public String getUpdate() {
+	public boolean isUpdate() {
 		return m_update;
 	}
 
@@ -105,10 +112,6 @@ public class Payload implements ActionPayload<UmlPage, Action> {
 	public void validate(ActionContext<?> ctx) {
 		if (m_action == null) {
 			m_action = Action.VIEW;
-		}
-
-		if (m_product == null || m_product.length() == 0) {
-			m_product = "LOCAL";
 		}
 	}
 }

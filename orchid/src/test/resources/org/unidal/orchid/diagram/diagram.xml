@@ -1,5 +1,5 @@
 <root>
-	<product id="default">
+	<product id="default" name="Default Product">
 		<diagram id="demo/hello.uml" author="qmwu2000">
 			<content><![CDATA[
 Alice -> Bob: hello
