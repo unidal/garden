@@ -2,6 +2,7 @@ package org.unidal.orchid.diagram;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import org.apache.shiro.crypto.hash.Md5Hash;
 import org.unidal.lookup.annotation.Inject;
@@ -69,11 +70,14 @@ public class DefaultDiagramService implements DiagramService {
 		ProductModel p = model.findProduct(product);
 
 		if (p != null) {
-			DiagramModel d = p.findDiagram(diagram);
+			DiagramModel d = p.findOrCreateDiagram(diagram);
 			String checksum = new Md5Hash(content).toHex();
 
-			d.setChecksum(checksum);
-			d.setContent(content);
+			synchronized (d) {
+				d.setChecksum(checksum);
+				d.setContent(content);
+			}
+
 			return true;
 		} else {
 			return false;
@@ -81,15 +85,21 @@ public class DefaultDiagramService implements DiagramService {
 	}
 
 	@Override
-	public String watchDiagram(DiagramContext context, String product, String diagram, String checksum, long timeoutInMillis) {
+	public String watchDiagram(DiagramContext context, String product, String diagram, String checksum,
+			long timeoutInMillis) throws InterruptedException {
 		RootModel model = m_manager.getModel();
 		ProductModel p = model.findProduct(product);
 
 		if (p != null) {
+			long start = System.currentTimeMillis();
 			DiagramModel d = p.findDiagram(diagram);
 
-			if (checksum.equals(d.getChecksum())) {
-				return d.getChecksum();
+			while (System.currentTimeMillis() - start < timeoutInMillis) { // not timeout
+				if (!d.getChecksum().equals(checksum)) {
+					return d.getChecksum();
+				}
+
+				TimeUnit.MILLISECONDS.sleep(100);
 			}
 		}
 

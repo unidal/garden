@@ -5,5 +5,16 @@
 <jsp:useBean id="model" type="org.unidal.orchid.uml.view.Model" scope="request"/>
 
 <a:layout>
-   View of view page under uml
+   <jsp:attribute name="navbar">false</jsp:attribute>
+   <jsp:attribute name="head">
+   	 <script src="${model.webapp}/js/uml/watch.js"></script>
+   </jsp:attribute>
+   <jsp:body>
+   	 
+   	 <div id="diagram" data-uri="${model.pageUri}/${payload.product}/${payload.diagram}" data-checksum="${model.checksum}">
+	   	<img id="img" src="${model.src}">
+	   	<span id="svg">${model.svg}</span>
+   	 </div>
+
+   </jsp:body>
 </a:layout>

@@ -1,7 +1,12 @@
 package org.unidal.orchid.uml.view;
 
 public enum Action implements org.unidal.web.mvc.Action {
-	VIEW("view");
+	VIEW("view"),
+
+	WATCH("watch"),
+
+	STATUS("status"),
+	;
 
 	private String m_name;
 

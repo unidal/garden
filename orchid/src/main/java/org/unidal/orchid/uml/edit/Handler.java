@@ -94,11 +94,15 @@ public class Handler implements PageHandler<Context> {
 		String product = payload.getProduct();
 		String diagram = payload.getDiagram();
 		String content = payload.getContent();
-		StringBuilder message = new StringBuilder();
 
 		boolean success = m_diagramSerice.updateDiagram(ctx.getContext(), product, diagram, content);
-		ctx.setError(!success);
-		ctx.setMessage(message.toString());
+
+		if (success) {
+			ctx.setMessage("Diagram has been saved successfully!");
+		} else {
+			ctx.setError(false);
+			ctx.setMessage("Unable to save diagram due to no product found!");
+		}
 	}
 
 	private void showPage(Context ctx, Model model) throws IOException {

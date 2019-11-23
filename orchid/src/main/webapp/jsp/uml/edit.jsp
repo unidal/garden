@@ -22,7 +22,10 @@
 						<option value="">--- Select Diagram or create a new one ---</option>
 						${w:showOptions(model.diagrams, model.diagram, "id", "id")}
 					</select>
-					<c:if test="${not empty model.diagram}">&nbsp;<a href="${model.webapp}/uml/view/${model.product}/${model.diagram}" target="_blank">PNG Image</a></c:if>
+					<c:if test="${not empty model.diagram}">
+						&nbsp;<a href="${model.webapp}/uml/view/${model.product}/${model.diagram}" target="_blank">PNG</a>
+						&nbsp;<a href="${model.webapp}/uml/view/${model.product}/${model.diagram}?op=watch" target="_blank">Watch</a>
+					</c:if>
 				</td>
 			</tr>
 			<c:if test="${not empty model.message}">

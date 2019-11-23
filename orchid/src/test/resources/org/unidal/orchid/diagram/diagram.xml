@@ -3,8 +3,7 @@
 		<diagram id="demo/hello.uml" author="qmwu2000">
 			<content><![CDATA[
 Alice -> Bob: hello
-Bob -> Chris: greeting
-			]]></content>
+Bob -> Chris: greeting]]></content>
 			<checksum>ABCDEF</checksum>
 			<permission>
 				<write>alice</write>
@@ -13,7 +12,50 @@ Bob -> Chris: greeting
 				<read>douglas</read>
 			</permission>
 		</diagram>
-		<diagram />
+		<diagram id="demo/ditta.uml" author="qmwu2000">
+			<content><![CDATA[
+@startditaa
++--------+   +-------+    +-------+
+|        +---+ ditaa +--> |       |
+|  Text  |   +-------+    |diagram|
+|Document|   |!magic!|    |       |
+|     {d}|   |       |    |       |
++---+----+   +-------+    +-------+
+	:                         ^
+	|       Lots of work      |
+	+-------------------------+
+@endditaa]]></content>
+			<checksum>ABCDEF</checksum>
+			<permission>
+				<write>alice</write>
+				<write>bob</write>
+				<read>chris</read>
+				<read>douglas</read>
+			</permission>
+		</diagram>
+		<diagram id="demo/salt.uml" author="qmwu2000">
+			<content><![CDATA[
+@startuml
+salt
+{
+  Just plain text
+  [This is my button]
+  ()  Unchecked radio
+  (X) Checked radio
+  []  Unchecked box
+  [X] Checked box
+  "Enter text here   " 
+  ^This is a droplist^
+}
+@enduml]]></content>
+			<checksum>ABCDEF</checksum>
+			<permission>
+				<write>alice</write>
+				<write>bob</write>
+				<read>chris</read>
+				<read>douglas</read>
+			</permission>
+		</diagram>
 	</product>
 	<product />
 </root>

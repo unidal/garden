@@ -18,9 +18,6 @@ public class Payload implements ActionPayload<UmlPage, Action> {
 	@FieldMeta("type")
 	private String m_type;
 
-	@FieldMeta("watch")
-	private boolean m_watch;
-	
 	@FieldMeta("checksum")
 	private String m_checksum;
 
@@ -61,10 +58,6 @@ public class Payload implements ActionPayload<UmlPage, Action> {
 
 	public String getType() {
 		return m_type;
-	}
-
-	public boolean isWatch() {
-		return m_watch;
 	}
 
 	public void setAction(String action) {
