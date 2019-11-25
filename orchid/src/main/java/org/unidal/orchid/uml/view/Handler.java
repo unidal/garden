@@ -70,7 +70,7 @@ public class Handler implements PageHandler<Context> {
 
 		if (diagram != null && diagram.length() > 0) {
 			try {
-				long timeoutInMillis = 5000;
+				long timeoutInMillis = 30000; // 30 seconds
 				String current = m_diagramService.watchDiagram(ctx.getContext(), product, diagram, checksum,
 						timeoutInMillis);
 

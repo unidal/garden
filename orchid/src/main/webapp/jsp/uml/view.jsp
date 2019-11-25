@@ -7,7 +7,7 @@
 <a:layout>
    <jsp:attribute name="navbar">false</jsp:attribute>
    <jsp:attribute name="head">
-   	 <script src="${model.webapp}/js/uml/watch.js"></script>
+   	 <script src="${model.webapp}/js/uml/view.js"></script>
    </jsp:attribute>
    <jsp:body>
    	 

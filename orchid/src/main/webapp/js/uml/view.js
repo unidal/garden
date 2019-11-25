@@ -9,7 +9,7 @@ function refresh() {
 		  async: false,
 		  success: function(data) {
 			  if (!data) return;
-			  
+
 			  // called when successful
 			  if (data.hasOwnProperty('checksum')) {
 				  checksum=data.checksum;
@@ -27,7 +27,7 @@ function refresh() {
 		  },
 		  error: function(e) {
 			// called when there is an error
-			console.log(e.message);
+			// console.log(e.message);
 		  }
 		});
 	

@@ -155,11 +155,7 @@ public class Handler implements PageHandler<Context> {
 		String diagram = payload.getDiagram();
 		String content = payload.getContent();
 
-		if (diagram != null && diagram.length() > 0) {
-			m_diagramSerice.updateDiagram(ctx.getContext(), product, diagram, content);
-		}
-
-		m_diagramGenerator.generate(ctx.getHttpServletResponse(), content, "svg");
+		m_diagramSerice.updateDiagram(ctx.getContext(), product, diagram, content);
 		ctx.stopProcess();
 	}
 }
