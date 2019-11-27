@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.unidal.helper.Files;
 import org.unidal.lookup.annotation.Inject;
 import org.unidal.lookup.annotation.Named;
-import org.unidal.orchid.service.DiagramGenerator;
+import org.unidal.orchid.diagram.DiagramGenerator;
 import org.unidal.orchid.uml.UmlPage;
 import org.unidal.web.mvc.PageHandler;
 import org.unidal.web.mvc.annotation.InboundActionMeta;

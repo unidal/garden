@@ -4,7 +4,7 @@ import org.unidal.initialization.AbstractModule;
 import org.unidal.initialization.Module;
 import org.unidal.initialization.ModuleContext;
 import org.unidal.lookup.annotation.Named;
-import org.unidal.orchid.service.DiagramGenerator;
+import org.unidal.orchid.diagram.DiagramGenerator;
 
 @Named(type = Module.class, value = OrchidModule.ID)
 public class OrchidModule extends AbstractModule {

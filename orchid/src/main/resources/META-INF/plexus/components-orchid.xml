@@ -43,8 +43,8 @@
 			</requirements>
 		</component>
 		<component>
-			<role>org.unidal.orchid.service.DiagramGenerator</role>
-			<implementation>org.unidal.orchid.service.DefaultDiagramGenerator</implementation>
+			<role>org.unidal.orchid.diagram.DiagramGenerator</role>
+			<implementation>org.unidal.orchid.diagram.DefaultDiagramGenerator</implementation>
 		</component>
 		<component>
 			<role>org.unidal.orchid.service.StorageService</role>
@@ -93,7 +93,7 @@
 			<implementation>org.unidal.orchid.uml.edit.Handler</implementation>
 			<requirements>
 				<requirement>
-					<role>org.unidal.orchid.service.DiagramGenerator</role>
+					<role>org.unidal.orchid.diagram.DiagramGenerator</role>
 				</requirement>
 				<requirement>
 					<role>org.unidal.orchid.diagram.DiagramService</role>
@@ -117,7 +117,7 @@
 			<implementation>org.unidal.orchid.uml.help.Handler</implementation>
 			<requirements>
 				<requirement>
-					<role>org.unidal.orchid.service.DiagramGenerator</role>
+					<role>org.unidal.orchid.diagram.DiagramGenerator</role>
 				</requirement>
 				<requirement>
 					<role>org.unidal.orchid.uml.help.JspViewer</role>
@@ -160,7 +160,7 @@
 			<implementation>org.unidal.orchid.uml.view.Handler</implementation>
 			<requirements>
 				<requirement>
-					<role>org.unidal.orchid.service.DiagramGenerator</role>
+					<role>org.unidal.orchid.diagram.DiagramGenerator</role>
 				</requirement>
 				<requirement>
 					<role>org.unidal.orchid.diagram.DiagramService</role>

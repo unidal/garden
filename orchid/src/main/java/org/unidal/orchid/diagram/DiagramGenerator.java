@@ -1,4 +1,4 @@
-package org.unidal.orchid.service;
+package org.unidal.orchid.diagram;
 
 import java.io.IOException;
 
