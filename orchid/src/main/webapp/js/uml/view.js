@@ -6,7 +6,7 @@ function refresh() {
 	$.ajax({
 		  url: uri + '?op=status&checksum=' + checksum,
 		  type: 'POST',
-		  async: false,
+		  async: true,
 		  success: function(data) {
 			  if (!data) return;
 
@@ -27,7 +27,7 @@ function refresh() {
 		  },
 		  error: function(e) {
 			// called when there is an error
-			// console.log(e.message);
+			console.log(e.message);
 		  }
 		});
 	

@@ -8,22 +8,15 @@ function refresh() {
 		var diagram = $('#diagram').val();
 		var content = $("#content").val();
 
-	   $.ajax({
-		  url: contextpath + '/uml/edit?update=1&product='+product+'&diagram='+diagram+'&content='+encodeURIComponent(content),
-		  type: 'POST',
-		  async: false
-		});
-		$.ajax({
-			  url: contextpath + '/uml/view/'+product+'/'+diagram+'?op=status',
-			  type: 'POST',
-			  async: false,
-			  success: function(data) {
-				  if (!data) return;
+		if (!diagram) {
+			$.ajax({
+				  url: contextpath + '/uml/view?op=render&content='+encodeURIComponent(content),
+				  type: 'POST',
+				  async: false,
+				  success: function(data) {
+					  if (!data) return;
 
-				  // called when successful
-				  if (data.hasOwnProperty('checksum')) {
-					  checksum=data.checksum;
-					  
+					  // called when successful
 					  if (data.hasOwnProperty('svg')) {
 						  $('#svg').html(data.svg);
 						  $('#img').attr('src', '');
@@ -33,13 +26,47 @@ function refresh() {
 						  $('#svg').html('');
 						  $('#img').attr('src', data.src);
 					  }
+				  },
+				  error: function(e) {
+					// called when there is an error
+					console.log(e.message);
 				  }
-			  },
-			  error: function(e) {
-				// called when there is an error
-				// console.log(e.message);
-			  }
 			});
+		} else {
+		    $.ajax({
+			  url: contextpath + '/uml/edit?update=1&product='+product+'&diagram='+diagram+'&content='+encodeURIComponent(content),
+			  type: 'POST',
+			  async: false
+			});
+			$.ajax({
+				  url: contextpath + '/uml/view/'+product+'/'+diagram+'?op=status',
+				  type: 'POST',
+				  async: false,
+				  success: function(data) {
+					  if (!data) return;
+
+					  // called when successful
+					  if (data.hasOwnProperty('checksum')) {
+						  checksum=data.checksum;
+						  
+						  if (data.hasOwnProperty('svg')) {
+							  $('#svg').html(data.svg);
+							  $('#img').attr('src', '');
+						  }
+						  
+						  if (data.hasOwnProperty('src')) {
+							  $('#svg').html('');
+							  $('#img').attr('src', data.src);
+						  }
+					  }
+				  },
+				  error: function(e) {
+					// called when there is an error
+					console.log(e.message);
+				  }
+			});
+		}
+		
 	    changed = false;
 	}
 	

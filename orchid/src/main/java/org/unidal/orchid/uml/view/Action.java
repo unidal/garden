@@ -6,6 +6,9 @@ public enum Action implements org.unidal.web.mvc.Action {
 	WATCH("watch"),
 
 	STATUS("status"),
+
+	REDNER("render"),
+
 	;
 
 	private String m_name;

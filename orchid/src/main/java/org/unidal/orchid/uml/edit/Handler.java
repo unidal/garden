@@ -107,7 +107,7 @@ public class Handler implements PageHandler<Context> {
 
 	private void showPage(Context ctx, Model model) throws IOException {
 		Payload payload = ctx.getPayload();
-		String product = payload.getProduct(); 
+		String product = payload.getProduct();
 		String diagram = payload.getDiagram();
 		String content = payload.getContent();
 		String editStyle = payload.getEditStyle();
@@ -134,7 +134,7 @@ public class Handler implements PageHandler<Context> {
 			}
 		}
 
-		if (content != null) {
+		if (content != null && content.length() > 0) {
 			byte[] image = m_diagramGenerator.generate(content, "svg");
 
 			if (image != null) {

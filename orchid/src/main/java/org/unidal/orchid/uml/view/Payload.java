@@ -21,6 +21,9 @@ public class Payload implements ActionPayload<UmlPage, Action> {
 	@FieldMeta("checksum")
 	private String m_checksum;
 
+	@FieldMeta("content")
+	private String m_content;
+
 	@PathMeta("path")
 	private List<String> m_path;
 
@@ -31,6 +34,10 @@ public class Payload implements ActionPayload<UmlPage, Action> {
 
 	public String getChecksum() {
 		return m_checksum;
+	}
+
+	public String getContent() {
+		return m_content;
 	}
 
 	public String getDiagram() {

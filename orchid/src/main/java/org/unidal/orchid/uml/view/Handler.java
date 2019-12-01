@@ -55,10 +55,29 @@ public class Handler implements PageHandler<Context> {
 		case STATUS:
 			handleStatus(ctx, model);
 			break;
+		case REDNER:
+			handleRender(ctx, model);
+			break;
 		}
 
 		if (!ctx.isProcessStopped()) {
 			m_jspViewer.view(ctx, model);
+		}
+	}
+
+	private void handleRender(Context ctx, Model model) throws IOException {
+		Payload payload = ctx.getPayload();
+		String content = payload.getContent();
+		byte[] data = m_diagramGenerator.generate(content, "svg");
+
+		if (data != null) {
+			String value = new String(data, "utf-8");
+
+			if (value.startsWith("data:")) {
+				ctx.sendJson("src", value);
+			} else {
+				ctx.sendJson("svg", value);
+			}
 		}
 	}
 
@@ -70,7 +89,7 @@ public class Handler implements PageHandler<Context> {
 
 		if (diagram != null && diagram.length() > 0) {
 			try {
-				long timeoutInMillis = 30000; // 30 seconds
+				long timeoutInMillis = 1000; // 1 seconds
 				String current = m_diagramService.watchDiagram(ctx.getContext(), product, diagram, checksum,
 						timeoutInMillis);
 
