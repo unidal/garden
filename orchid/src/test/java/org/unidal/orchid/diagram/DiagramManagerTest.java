@@ -9,6 +9,6 @@ public class DiagramManagerTest extends ComponentTestCase {
 	public void test() {
 		DiagramManager manager = lookup(DiagramManager.class);
 
-		Assert.assertNotNull(manager.getModel());
+		Assert.assertEquals(1, manager.getProducts().size());
 	}
 }

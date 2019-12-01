@@ -5,7 +5,13 @@
   </entity>
   <entity name="product">
     <attribute name="id" value-type="String" key="true" />
+    <attribute name="enabled" value-type="boolean" default-value="true" />
     <entity-ref name="diagram" type="list" names="diagrams" method-find-or-create="true" />
+  </entity>
+  <entity name="repository" dynamic-attributes="true" >
+    <attribute name="type" value-type="String" />
+    <attribute name="base-dir" value-type="String" enabled="false" />
+    <element name="repo" value-type="org.unidal.orchid.diagram.DiagramRepository" render="false" />
   </entity>
   <entity name="diagram">
     <attribute name="id" value-type="String" key="true" />

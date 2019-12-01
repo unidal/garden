@@ -6,7 +6,14 @@
   </entity>
   <entity name="product">
     <attribute name="id" value-type="String" />
+    <attribute name="name" value-type="String" />
+    <attribute name="enabled" value-type="boolean" />
+    <entity-ref name="repository" />
     <entity-ref name="diagram" type="list" names="diagrams" />
+  </entity>
+  <entity name="repository">
+    <attribute name="type" value-type="String" />
+    <attribute name="base-dir" value-type="String" />
   </entity>
   <entity name="diagram">
     <attribute name="id" value-type="String" />
@@ -14,6 +21,7 @@
     <element name="content" value-type="String" />
     <element name="checksum" value-type="String" />
     <entity-ref name="permission" />
+    <entity-ref name="repository" />
   </entity>
   <entity name="permission">
     <element name="write" value-type="String" type="list" names="writes" />

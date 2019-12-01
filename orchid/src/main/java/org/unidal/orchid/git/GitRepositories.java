@@ -14,6 +14,7 @@ import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.MergeResult.MergeStatus;
 import org.eclipse.jgit.api.PullResult;
 import org.eclipse.jgit.api.ResetCommand.ResetType;
+import org.eclipse.jgit.api.Status;
 import org.eclipse.jgit.api.errors.JGitInternalException;
 import org.eclipse.jgit.api.errors.NoHeadException;
 import org.eclipse.jgit.diff.DiffEntry;
@@ -391,6 +392,10 @@ public class GitRepositories {
 			return executeScript("ShellPull", script);
 		}
 
+		public Status status() throws Exception {
+			return m_git.status().call();
+		}
+		
 		public RepositoryHelper tag(String name) throws Exception {
 			m_git.tag().setName(name).setForceUpdate(true).call();
 			return this;

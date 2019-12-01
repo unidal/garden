@@ -1,5 +1,6 @@
 <root>
-	<product id="default" name="Default Product">
+	<product id="default" name="Default Product" enabled="true">
+		<repository type="git" base-dir="doc" />
 		<diagram id="demo/hello.uml" author="qmwu2000">
 			<content><![CDATA[
 Alice -> Bob: hello
@@ -34,7 +35,7 @@ Bob -> Chris: greeting]]></content>
 			</permission>
 		</diagram>
 		<diagram id="demo/salt.uml" author="qmwu2000">
-			<content><![CDATA[
+s			<content><![CDATA[
 @startuml
 salt
 {

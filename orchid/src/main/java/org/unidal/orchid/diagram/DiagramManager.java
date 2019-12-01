@@ -1,7 +1,11 @@
 package org.unidal.orchid.diagram;
 
-import org.unidal.orchid.diagram.entity.RootModel;
+import java.util.List;
+
+import org.unidal.orchid.diagram.entity.ProductModel;
 
 public interface DiagramManager {
-	public RootModel getModel();
+	public ProductModel getProduct(String id);
+
+	public List<ProductModel> getProducts();
 }

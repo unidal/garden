@@ -28,6 +28,12 @@
 			</requirements>
 		</component>
 		<component>
+			<role>org.unidal.orchid.diagram.DiagramRepository</role>
+			<role-hint>git</role-hint>
+			<implementation>org.unidal.orchid.diagram.GitBasedDiagramRepository</implementation>
+			<instantiation-strategy>per-lookup</instantiation-strategy>
+		</component>
+		<component>
 			<role>org.unidal.orchid.service.DocumentService</role>
 			<role-hint>local</role-hint>
 			<implementation>org.unidal.orchid.service.LocalDocumentService</implementation>

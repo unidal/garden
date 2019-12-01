@@ -13,6 +13,7 @@ import org.unidal.orchid.OrchidModule;
 import org.unidal.orchid.diagram.DefaultDiagramGenerator;
 import org.unidal.orchid.diagram.DefaultDiagramManager;
 import org.unidal.orchid.diagram.DefaultDiagramService;
+import org.unidal.orchid.diagram.GitBasedDiagramRepository;
 import org.unidal.orchid.service.FileStorageService;
 import org.unidal.orchid.service.LocalDocumentService;
 import org.unidal.orchid.service.MysqlDocumentService;
@@ -28,6 +29,8 @@ public class ComponentsConfigurator extends AbstractJdbcResourceConfigurator {
 
 		all.add(A(DefaultDiagramManager.class));
 		all.add(A(DefaultDiagramService.class));
+
+		all.add(A(GitBasedDiagramRepository.class));
 
 		all.add(A(LocalDocumentService.class));
 		all.add(A(MysqlDocumentService.class));
