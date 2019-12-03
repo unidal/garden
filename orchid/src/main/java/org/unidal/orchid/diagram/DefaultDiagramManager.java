@@ -1,5 +1,6 @@
 package org.unidal.orchid.diagram;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.util.List;
@@ -19,8 +20,6 @@ import org.unidal.orchid.diagram.transform.DefaultSaxParser;
 
 @Named(type = DiagramManager.class)
 public class DefaultDiagramManager extends ContainerHolder implements DiagramManager, Initializable {
-	private static boolean DEBUG = true;
-
 	private RootModel m_model;
 
 	@Override
@@ -35,7 +34,10 @@ public class DefaultDiagramManager extends ContainerHolder implements DiagramMan
 
 	@Override
 	public void initialize() throws InitializationException {
-		if (DEBUG) {
+		String debug = System.getProperty("debug");
+		String baseDir = System.getProperty("baseDir");
+
+		if ("true".equals(debug)) {
 			try {
 				InputStream in = getClass().getResourceAsStream("diagram.xml");
 
@@ -45,7 +47,11 @@ public class DefaultDiagramManager extends ContainerHolder implements DiagramMan
 			}
 		} else {
 			try {
-				InputStream in = new FileInputStream("diagram.xml");
+				if (baseDir == null) {
+					baseDir = ".";
+				}
+
+				InputStream in = new FileInputStream(new File(baseDir, "diagram.xml"));
 
 				m_model = DefaultSaxParser.parse(in);
 			} catch (Exception e) {
