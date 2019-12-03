@@ -89,16 +89,6 @@
             <artifactId>codegen-maven-plugin</artifactId>
             <executions>
                <execution>
-                  <id>generate dal jdbc model</id>
-                  <phase>generate-sources</phase>
-                  <goals>
-                     <goal>dal-jdbc</goal>
-                  </goals>
-                  <configuration>
-                     <manifest><![CDATA[${basedir}/src/main/resources/META-INF/dal/jdbc/uml-manifest.xml,]]></manifest>
-                  </configuration>
-               </execution>
-               <execution>
                   <id>generate dal model files</id>
                   <phase>generate-sources</phase>
                   <goals>

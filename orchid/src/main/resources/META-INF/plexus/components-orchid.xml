@@ -34,27 +34,8 @@
 			<instantiation-strategy>per-lookup</instantiation-strategy>
 		</component>
 		<component>
-			<role>org.unidal.orchid.service.DocumentService</role>
-			<role-hint>local</role-hint>
-			<implementation>org.unidal.orchid.service.LocalDocumentService</implementation>
-		</component>
-		<component>
-			<role>org.unidal.orchid.service.DocumentService</role>
-			<role-hint>mysql</role-hint>
-			<implementation>org.unidal.orchid.service.MysqlDocumentService</implementation>
-			<requirements>
-				<requirement>
-					<role>org.unidal.orchid.dal.DocumentDao</role>
-				</requirement>
-			</requirements>
-		</component>
-		<component>
 			<role>org.unidal.orchid.diagram.DiagramGenerator</role>
 			<implementation>org.unidal.orchid.diagram.DefaultDiagramGenerator</implementation>
-		</component>
-		<component>
-			<role>org.unidal.orchid.service.StorageService</role>
-			<implementation>org.unidal.orchid.service.FileStorageService</implementation>
 		</component>
 		<component>
 			<role>org.unidal.dal.jdbc.datasource.DataSourceProvider</role>
@@ -63,24 +44,6 @@
 				<datasourceFile>datasources.xml</datasourceFile>
 				<baseDirRef>GARDEN_HOME</baseDirRef>
 			</configuration>
-		</component>
-		<component>
-			<role>org.unidal.dal.jdbc.mapping.TableProvider</role>
-			<role-hint>document</role-hint>
-			<implementation>org.unidal.dal.jdbc.mapping.SimpleTableProvider</implementation>
-			<configuration>
-				<physical-table-name>document</physical-table-name>
-				<data-source-name>garden</data-source-name>
-			</configuration>
-		</component>
-		<component>
-			<role>org.unidal.orchid.dal.DocumentDao</role>
-			<implementation>org.unidal.orchid.dal.DocumentDao</implementation>
-			<requirements>
-				<requirement>
-					<role>org.unidal.dal.jdbc.QueryEngine</role>
-				</requirement>
-			</requirements>
 		</component>
 		<component>
 			<role>org.unidal.web.mvc.model.ModuleRegistry</role>
@@ -133,28 +96,6 @@
 		<component>
 			<role>org.unidal.orchid.uml.help.JspViewer</role>
 			<implementation>org.unidal.orchid.uml.help.JspViewer</implementation>
-			<requirements>
-				<requirement>
-					<role>org.unidal.web.mvc.view.model.ModelHandler</role>
-				</requirement>
-			</requirements>
-		</component>
-		<component>
-			<role>org.unidal.orchid.uml.upload.Handler</role>
-			<implementation>org.unidal.orchid.uml.upload.Handler</implementation>
-			<requirements>
-				<requirement>
-					<role>org.unidal.orchid.service.DocumentService</role>
-					<role-hint>mysql</role-hint>
-				</requirement>
-				<requirement>
-					<role>org.unidal.orchid.uml.upload.JspViewer</role>
-				</requirement>
-			</requirements>
-		</component>
-		<component>
-			<role>org.unidal.orchid.uml.upload.JspViewer</role>
-			<implementation>org.unidal.orchid.uml.upload.JspViewer</implementation>
 			<requirements>
 				<requirement>
 					<role>org.unidal.web.mvc.view.model.ModelHandler</role>

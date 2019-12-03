@@ -13,8 +13,6 @@ org.unidal.orchid.uml.edit.Handler.class,
 
 org.unidal.orchid.uml.help.Handler.class,
 
-org.unidal.orchid.uml.upload.Handler.class,
-
 org.unidal.orchid.uml.view.Handler.class,
 
 })

@@ -8,9 +8,6 @@
          <page name="help" title="Help" path="help">
             <description>Help</description>
          </page>
-         <page name="upload" title="Upload" path="upload">
-            <description>Upload</description>
-         </page>
          <page name="view" title="View" path="view">
             <description>View</description>
          </page>

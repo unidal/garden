@@ -14,9 +14,6 @@ import org.unidal.orchid.diagram.DefaultDiagramGenerator;
 import org.unidal.orchid.diagram.DefaultDiagramManager;
 import org.unidal.orchid.diagram.DefaultDiagramService;
 import org.unidal.orchid.diagram.GitBasedDiagramRepository;
-import org.unidal.orchid.service.FileStorageService;
-import org.unidal.orchid.service.LocalDocumentService;
-import org.unidal.orchid.service.MysqlDocumentService;
 
 public class ComponentsConfigurator extends AbstractJdbcResourceConfigurator {
 	@Override
@@ -32,17 +29,11 @@ public class ComponentsConfigurator extends AbstractJdbcResourceConfigurator {
 
 		all.add(A(GitBasedDiagramRepository.class));
 
-		all.add(A(LocalDocumentService.class));
-		all.add(A(MysqlDocumentService.class));
-
 		all.add(A(DefaultDiagramGenerator.class));
-		all.add(A(FileStorageService.class));
 
 		all.add(C(DataSourceProvider.class, DefaultDataSourceProvider.class) //
 				.config(E("datasourceFile").value("datasources.xml"), //
 						E("baseDirRef").value("GARDEN_HOME")));
-
-		all.addAll(new GardenDatabaseConfigurator().defineComponents());
 
 		// Please keep it as last
 		all.addAll(new WebComponentConfigurator().defineComponents());
