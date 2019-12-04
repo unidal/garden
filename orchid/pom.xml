@@ -29,6 +29,10 @@
          <version>${shiro.version}</version>
       </dependency>
       <dependency>
+         <groupId>org.unidal.garden</groupId>
+         <artifactId>admin-foundation</artifactId>
+      </dependency>
+      <dependency>
          <groupId>org.unidal.framework</groupId>
          <artifactId>web-framework</artifactId>
       </dependency>

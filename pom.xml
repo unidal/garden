@@ -12,6 +12,7 @@
    <name>Garden</name>
    <packaging>pom</packaging>
    <modules>
+      <module>admin-foundation</module>
       <module>rose</module>
       <module>orchid</module>
    </modules>
@@ -23,7 +24,7 @@
       <tag>HEAD</tag>
    </scm>
    <properties>
-      <framework.version>5.0.0</framework.version>
+      <framework.version>5.0.2</framework.version>
       <junit.version>4.12</junit.version>
       <mysql.version>5.1.46</mysql.version>
       <servlet-api.version>3.0.1</servlet-api.version>
@@ -45,13 +46,8 @@
             <scope>import</scope>
          </dependency>
          <dependency>
-            <groupId>org.unidal.tulip</groupId>
-            <artifactId>tulip-model</artifactId>
-            <version>${project.version}</version>
-         </dependency>
-         <dependency>
-            <groupId>org.unidal.tulip</groupId>
-            <artifactId>tulip-service</artifactId>
+            <groupId>org.unidal.garden</groupId>
+            <artifactId>admin-foundation</artifactId>
             <version>${project.version}</version>
          </dependency>
          <dependency>
