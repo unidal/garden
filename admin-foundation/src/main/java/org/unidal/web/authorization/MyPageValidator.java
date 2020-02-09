@@ -1,4 +1,4 @@
-package org.unidal.web.security.authorization;
+package org.unidal.web.authorization;
 
 import java.util.Arrays;
 import java.util.HashSet;
@@ -11,9 +11,9 @@ import org.unidal.web.mvc.ActionContext;
 import org.unidal.web.mvc.Validator;
 
 @Named(type = Validator.class, value = "tulip-page")
-public class TulipPageValidator<T extends ActionContext<?>> implements Validator<T> {
+public class MyPageValidator<T extends ActionContext<?>> implements Validator<T> {
    @Inject
-   private TulipAccessControl m_accessControl;
+   private MyAccessControl m_accessControl;
 
    private Set<String> m_excludedActions = new HashSet<String>(
          Arrays.asList("query", "graphql", "view", "add", "update", "tag", "event"));

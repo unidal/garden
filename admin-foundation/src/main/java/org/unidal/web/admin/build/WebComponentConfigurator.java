@@ -19,6 +19,11 @@ class WebComponentConfigurator extends AbstractResourceConfigurator {
       all.add(A(org.unidal.web.admin.user.login.Handler.class));
       all.add(A(org.unidal.web.admin.user.login.JspViewer.class));
 
+      all.add(A(org.unidal.web.admin.config.ConfigModule.class));
+
+      all.add(A(org.unidal.web.admin.config.home.Handler.class));
+      all.add(A(org.unidal.web.admin.config.home.JspViewer.class));
+
       return all;
    }
 }

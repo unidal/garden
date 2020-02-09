@@ -10,6 +10,7 @@ import org.unidal.initialization.DefaultModuleManager;
 import org.unidal.initialization.ModuleManager;
 import org.unidal.lookup.configuration.Component;
 import org.unidal.orchid.OrchidModule;
+import org.unidal.orchid.WebPageValidator;
 import org.unidal.orchid.diagram.DefaultDiagramGenerator;
 import org.unidal.orchid.diagram.DefaultDiagramManager;
 import org.unidal.orchid.diagram.DefaultDiagramService;
@@ -30,6 +31,8 @@ public class ComponentsConfigurator extends AbstractJdbcResourceConfigurator {
 		all.add(A(GitBasedDiagramRepository.class));
 
 		all.add(A(DefaultDiagramGenerator.class));
+		
+		all.add(A(WebPageValidator.class));
 
 		all.add(C(DataSourceProvider.class, DefaultDataSourceProvider.class) //
 				.config(E("datasourceFile").value("datasources.xml"), //

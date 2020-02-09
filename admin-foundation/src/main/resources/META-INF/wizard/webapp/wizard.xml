@@ -6,5 +6,10 @@
             <description>Login</description>
          </page>
       </module>
+      <module name="config" path="config" default="false" package="org.unidal.web.admin.config">
+         <page name="home" title="Home" default="true" package="org.unidal.web.admin.config.home" path="home">
+            <description>Home</description>
+         </page>
+      </module>
    </webapp>
 </wizard>

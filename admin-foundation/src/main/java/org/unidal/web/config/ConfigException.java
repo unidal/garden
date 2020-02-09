@@ -1,6 +1,6 @@
-package org.unidal.web.admin.configuration;
+package org.unidal.web.config;
 
-public class ConfigException extends Exception {
+public class ConfigException extends RuntimeException {
    private static final long serialVersionUID = 1L;
 
    public ConfigException(String message) {

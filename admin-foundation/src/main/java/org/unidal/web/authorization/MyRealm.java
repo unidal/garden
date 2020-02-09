@@ -1,4 +1,4 @@
-package org.unidal.web.security.authorization;
+package org.unidal.web.authorization;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -23,15 +23,15 @@ import org.unidal.lookup.annotation.Inject;
 import org.unidal.lookup.annotation.Named;
 
 @Named
-public class TulipRealm extends AuthorizingRealm {
+public class MyRealm extends AuthorizingRealm {
    @Inject
-   private TulipAuthorization m_authorization;
+   private MyAuthorization m_authorization;
 
    @Inject
-   private TulipApplication m_application;
+   private MyApplication m_application;
 
    @Inject
-   private TulipUser m_user;
+   private MyUser m_user;
 
    private Map<String, TulipWildcardPermission> m_cache = new HashMap<String, TulipWildcardPermission>();
 

@@ -38,6 +38,16 @@
 			<implementation>org.unidal.orchid.diagram.DefaultDiagramGenerator</implementation>
 		</component>
 		<component>
+			<role>org.unidal.web.mvc.Validator</role>
+			<role-hint>tulip-page</role-hint>
+			<implementation>org.unidal.orchid.WebPageValidator</implementation>
+			<requirements>
+				<requirement>
+					<role>org.unidal.web.authorization.MyAccessControl</role>
+				</requirement>
+			</requirements>
+		</component>
+		<component>
 			<role>org.unidal.dal.jdbc.datasource.DataSourceProvider</role>
 			<implementation>org.unidal.dal.jdbc.datasource.DefaultDataSourceProvider</implementation>
 			<configuration>

@@ -1,4 +1,4 @@
-package org.unidal.web.security.authorization;
+package org.unidal.web.authorization;
 
 import java.io.IOException;
 

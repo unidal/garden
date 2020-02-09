@@ -11,10 +11,10 @@ import org.junit.Test;
 import org.unidal.lookup.ComponentTestCase;
 import org.unidal.lookup.annotation.Named;
 import org.unidal.lookup.extension.InitializationException;
-import org.unidal.web.security.authorization.ApplicationAuthenticationToken;
-import org.unidal.web.security.authorization.TulipApplication;
-import org.unidal.web.security.authorization.TulipAuthorization;
-import org.unidal.web.security.authorization.TulipRealm;
+import org.unidal.web.authorization.ApplicationAuthenticationToken;
+import org.unidal.web.authorization.MyApplication;
+import org.unidal.web.authorization.MyAuthorization;
+import org.unidal.web.authorization.MyRealm;
 import org.unidal.web.security.authorization.transform.DefaultSaxParser;
 
 public class TulipRealmTest extends ComponentTestCase {
@@ -26,7 +26,7 @@ public class TulipRealmTest extends ComponentTestCase {
 
    @Test
    public void test() {
-      TulipRealm realm = lookup(TulipRealm.class);
+      MyRealm realm = lookup(MyRealm.class);
       SecurityUtils.setSecurityManager(new DefaultSecurityManager(realm));
       Subject subject = SecurityUtils.getSubject();
 
@@ -40,7 +40,7 @@ public class TulipRealmTest extends ComponentTestCase {
 
    @Test
    public void test2() {
-      TulipRealm realm = lookup(TulipRealm.class);
+      MyRealm realm = lookup(MyRealm.class);
       SecurityUtils.setSecurityManager(new DefaultSecurityManager(realm));
       Subject subject = SecurityUtils.getSubject();
 
@@ -52,7 +52,7 @@ public class TulipRealmTest extends ComponentTestCase {
    
    @Test
    public void test3() {
-      TulipRealm realm = lookup(TulipRealm.class);
+      MyRealm realm = lookup(MyRealm.class);
       SecurityUtils.setSecurityManager(new DefaultSecurityManager(realm));
       Subject subject = SecurityUtils.getSubject();
       
@@ -62,8 +62,8 @@ public class TulipRealmTest extends ComponentTestCase {
       Assert.assertEquals(true, subject.isPermitted("graphql:org_for_cat"));
    }
 
-   @Named(type = TulipAuthorization.class)
-   public static class MockTulipAuthorization extends TulipAuthorization {
+   @Named(type = MyAuthorization.class)
+   public static class MockTulipAuthorization extends MyAuthorization {
       @Override
       public void initialize() throws InitializationException {
          try {
@@ -77,8 +77,8 @@ public class TulipRealmTest extends ComponentTestCase {
       }
    }
 
-   @Named(type = TulipApplication.class)
-   public static class MockTulipApplication extends TulipApplication {
+   @Named(type = MyApplication.class)
+   public static class MockTulipApplication extends MyApplication {
       @Override
       public void initialize() throws InitializationException {
          try {

@@ -18,6 +18,10 @@
          <artifactId>web-framework</artifactId>
       </dependency>
       <dependency>
+         <groupId>org.unidal.framework</groupId>
+         <artifactId>dal-jdbc</artifactId>
+      </dependency>
+      <dependency>
          <groupId>org.apache.shiro</groupId>
          <artifactId>shiro-core</artifactId>
          <version>${shiro.version}</version>
@@ -69,6 +73,18 @@
                   <configuration>
                      <manifest><![CDATA[
                         ${basedir}/src/main/resources/META-INF/dal/model/authorization-manifest.xml,
+                     ]]></manifest>
+                  </configuration>
+               </execution>
+               <execution>
+                  <id>generate dal jdbc files</id>
+                  <phase>generate-sources</phase>
+                  <goals>
+                     <goal>dal-jdbc</goal>
+                  </goals>
+                  <configuration>
+                     <manifest><![CDATA[
+                     		${basedir}/src/main/resources/META-INF/dal/jdbc/config-manifest.xml,
                      ]]></manifest>
                   </configuration>
                </execution>

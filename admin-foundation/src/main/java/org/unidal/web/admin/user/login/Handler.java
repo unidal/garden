@@ -12,13 +12,13 @@ import org.unidal.cat.Cat;
 import org.unidal.lookup.annotation.Inject;
 import org.unidal.lookup.annotation.Named;
 import org.unidal.web.admin.user.UserPage;
+import org.unidal.web.authorization.AccessContext;
+import org.unidal.web.authorization.MyAccessControl;
+import org.unidal.web.authorization.UserAuthenticationToken;
 import org.unidal.web.mvc.PageHandler;
 import org.unidal.web.mvc.annotation.InboundActionMeta;
 import org.unidal.web.mvc.annotation.OutboundActionMeta;
 import org.unidal.web.mvc.annotation.PayloadMeta;
-import org.unidal.web.security.authorization.AccessContext;
-import org.unidal.web.security.authorization.TulipAccessControl;
-import org.unidal.web.security.authorization.UserAuthenticationToken;
 
 @Named
 public class Handler implements PageHandler<Context> {
@@ -26,7 +26,7 @@ public class Handler implements PageHandler<Context> {
    private JspViewer m_jspViewer;
 
    @Inject
-   private TulipAccessControl m_accessControl;
+   private MyAccessControl m_accessControl;
 
    private void dropCookie(Context ctx, String username, String password) throws IOException {
       String value = m_accessControl.encryptToken(username, password);
