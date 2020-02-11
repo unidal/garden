@@ -1,12 +1,12 @@
 <%@ page contentType="text/html; charset=utf-8" isELIgnored="false" trimDirectiveWhitespaces="true" %>
-<%@ taglib prefix="a" uri="/WEB-INF/app.tld" %>
+<%@ taglib prefix="a" uri="/WEB-INF/config.tld" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="w" uri="http://www.unidal.org/web/core" %>
 <jsp:useBean id="ctx" type="org.unidal.web.admin.config.home.Context" scope="request"/>
 <jsp:useBean id="payload" type="org.unidal.web.admin.config.home.Payload" scope="request"/>
 <jsp:useBean id="model" type="org.unidal.web.admin.config.home.Model" scope="request"/>
 
-<a:layout>
+<a:config>
 	<jsp:attribute name="head">
 		<script src="${model.webapp}/js/admin/config.js"></script>
 	</jsp:attribute>
@@ -70,4 +70,4 @@
 		</table>
 
 	</jsp:body>
-</a:layout>
+</a:config>

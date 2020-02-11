@@ -1,6 +1,6 @@
 package org.unidal.web.authorization;
 
-import static org.unidal.web.config.ConfigService.*;
+import static org.unidal.web.config.ConfigService.CATEGORY_SECURITY;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -22,6 +22,7 @@ import org.unidal.lookup.annotation.Named;
 import org.unidal.lookup.extension.Initializable;
 import org.unidal.lookup.extension.InitializationException;
 import org.unidal.tuple.Pair;
+import org.unidal.web.admin.user.login.Payload;
 import org.unidal.web.config.ConfigEvent;
 import org.unidal.web.config.ConfigEventListener;
 import org.unidal.web.config.ConfigException;
@@ -117,29 +118,39 @@ public class MyAccessControl implements Initializable {
 		}
 
 		Subject subject = SecurityUtils.getSubject();
-		AccessContext ac = new DefaultAccessContext(ctx);
+		DefaultAccessContext ac = new DefaultAccessContext(ctx);
+		Payload payload = ac.getPayload();
 		String user = null;
 		String password = null;
 
-		try {
-			Pair<String, String> pair = decryptToken(ac.getUserToken());
+		if (payload != null) {
+			if (payload.isSubmit()) {
+				user = payload.getUsername();
+				password = payload.getPassword();
+			} else {
+				return true;
+			}
+		} else {
+			try {
+				Pair<String, String> pair = decryptToken(ac.getUserToken());
 
-			user = pair.getKey();
-			password = pair.getValue();
-		} catch (Exception e) {
-			// ignore it
-		}
+				user = pair.getKey();
+				password = pair.getValue();
+			} catch (Exception e) {
+				// ignore it
+			}
 
-		if (user == null) {
-			ac.gotoLogin();
-			return false;
+			if (user == null) {
+				ac.gotoLogin();
+				return true;
+			}
 		}
 
 		try {
 			subject.login(new UserAuthenticationToken(user, password));
 		} catch (Exception e) {
-			Cat.logEvent("Access.User", user, "NoAccess", "");
-			ac.error(HttpServletResponse.SC_FORBIDDEN, "No access allowed for user(%s)!", user);
+			Cat.logEvent("Access.User", user, "BadCredential", "");
+			ac.gotoLogin();
 			return false;
 		}
 

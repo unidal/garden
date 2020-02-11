@@ -22,11 +22,12 @@ public class WebPageValidator<T extends ActionContext<?>> implements Validator<T
 	public void validate(T ctx) throws Exception {
 		UrlMapping mapping = ctx.getRequestContext().getUrlMapping();
 		String module = mapping.getModule();
+		String page = mapping.getAction();
+		String path = mapping.getPathInfo();
 
-		if ("config".equals(module) || "user".equals(module)) {
-			String page = mapping.getAction();
-			String path = mapping.getPathInfo();
-
+		if ("user".equals(module)) {
+			m_accessControl.forPage(ctx, module, page, path);
+		} else if ("config".equals(module)) {
 			m_accessControl.forPage(ctx, module, page, path);
 		} else if ("uml".equals(module)) {
 			String action = mapping.getRawAction();
@@ -34,9 +35,6 @@ public class WebPageValidator<T extends ActionContext<?>> implements Validator<T
 			if (m_excludedActions.contains(action)) {
 				// no access control
 			} else {
-				String page = mapping.getAction();
-				String path = mapping.getPathInfo();
-
 				m_accessControl.forPage(ctx, module, page, path);
 			}
 		}
