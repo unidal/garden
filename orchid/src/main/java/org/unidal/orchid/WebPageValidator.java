@@ -11,7 +11,7 @@ import org.unidal.web.lifecycle.UrlMapping;
 import org.unidal.web.mvc.ActionContext;
 import org.unidal.web.mvc.Validator;
 
-@Named(type = Validator.class, value = "tulip-page")
+@Named(type = Validator.class, value = "page")
 public class WebPageValidator<T extends ActionContext<?>> implements Validator<T> {
 	@Inject
 	private MyAccessControl m_accessControl;

@@ -24,6 +24,10 @@ public class DefaultConfigService implements ConfigService, Initializable {
 
 	private ConcurrentMap<String, String> m_cached = new ConcurrentHashMap<String, String>();
 
+	private List<ConfigEventListener> m_listeners = new ArrayList<ConfigEventListener>();
+
+	private ConfigEventDispatcher m_dispatcher = new ConfigEventDispatcher();
+
 	@Override
 	public List<String> findCategories() throws ConfigException {
 		List<String> categories = new ArrayList<String>();
@@ -112,11 +116,13 @@ public class DefaultConfigService implements ConfigService, Initializable {
 
 	@Override
 	public void initialize() throws InitializationException {
-		register(new ConfigChangeListener());
+		m_listeners.add(new RemoteCacheRefreshListener());
 	}
 
 	public void register(ConfigEventListener listener) {
-		// m_dispatcher.register(listener);
+		if (!m_listeners.contains(listener)) {
+			m_listeners.add(listener);
+		}
 	}
 
 	private byte[] toBytes(String str) {
@@ -148,18 +154,37 @@ public class DefaultConfigService implements ConfigService, Initializable {
 		try {
 			m_configDao.upsert(c); // update or insert
 
+			String key = category + ":" + name;
 			ConfigEvent event = new ConfigEvent(new Config(c));
 
-			// m_eventManager.produce(event);
+			m_cached.put(key, value);
+			m_dispatcher.dispatch(event);
 		} catch (DalException e) {
 			throw new ConfigException("Error when updating config to MySQL!" + e, e);
 		}
 	}
 
-	private class ConfigChangeListener implements ConfigEventListener {
+	private class ConfigEventDispatcher {
+		public void dispatch(ConfigEvent event) {
+			List<ConfigEventListener> listeners = new ArrayList<ConfigEventListener>(m_listeners);
+
+			// make sure put it in the last since it takes time to complete
+			listeners.add(new RemoteCacheRefreshListener());
+
+			for (ConfigEventListener listener : m_listeners) {
+				try {
+					listener.onEvent(event);
+				} catch (Exception e) {
+					Cat.logError(e);
+				}
+			}
+		}
+	}
+
+	private class RemoteCacheRefreshListener implements ConfigEventListener {
 		@Override
 		public void onEvent(ConfigEvent event) {
-
+			
 		}
 	}
 }
