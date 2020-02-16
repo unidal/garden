@@ -11,6 +11,8 @@ import org.unidal.web.mvc.annotation.ModulePagesMeta;
 
 org.unidal.web.admin.config.home.Handler.class,
 
+org.unidal.web.admin.config.refresh.Handler.class,
+
 })
 @Named(type = Module.class, value = "org.unidal.web.admin.config.ConfigModule")
 public class ConfigModule extends AbstractModule {

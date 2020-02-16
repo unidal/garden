@@ -5,7 +5,9 @@ import org.unidal.web.mvc.annotation.ModuleMeta;
 
 public enum ConfigPage implements Page {
 
-   HOME("home", "home", "Home", "Home", true);
+   HOME("home", "home", "Home", "Home", true),
+
+   REFRESH("refresh", "refresh", "Refresh", "Refresh", true);
 
    private String m_name;
 

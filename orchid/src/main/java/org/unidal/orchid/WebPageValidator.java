@@ -28,6 +28,10 @@ public class WebPageValidator<T extends ActionContext<?>> implements Validator<T
 		if ("user".equals(module)) {
 			m_accessControl.forPage(ctx, module, page, path);
 		} else if ("config".equals(module)) {
+			if ("refresh".equals(page)) {
+				return;
+			}
+
 			m_accessControl.forPage(ctx, module, page, path);
 		} else if ("uml".equals(module)) {
 			String action = mapping.getRawAction();
