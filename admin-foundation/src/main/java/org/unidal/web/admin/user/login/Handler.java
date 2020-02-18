@@ -30,7 +30,7 @@ public class Handler implements PageHandler<Context> {
 
    private void dropCookie(Context ctx, String username, String password) throws IOException {
       String value = m_accessControl.encryptToken(username, password);
-      Cookie cookie = new Cookie(AccessContext.COOKIE_TULIP, value);
+      Cookie cookie = new Cookie(AccessContext.COOKIE_TOKEN, value);
 
       cookie.setPath("/");
       cookie.setHttpOnly(true);

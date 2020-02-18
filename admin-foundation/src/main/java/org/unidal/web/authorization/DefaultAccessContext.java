@@ -71,7 +71,7 @@ public class DefaultAccessContext implements AccessContext {
 
 	@Override
 	public String getUserToken() {
-		Cookie cookie = m_ctx.getCookie(COOKIE_TULIP);
+		Cookie cookie = m_ctx.getCookie(COOKIE_TOKEN);
 
 		if (cookie != null) {
 			return cookie.getValue();

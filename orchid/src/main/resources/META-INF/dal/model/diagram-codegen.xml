@@ -20,8 +20,8 @@
     <attribute name="author" value-type="String" />
     <element name="content" value-type="String" />
     <element name="checksum" value-type="String" />
+    <element name="text" value-type="String" text="true" />
     <entity-ref name="permission" />
-    <entity-ref name="repository" />
   </entity>
   <entity name="permission">
     <element name="write" value-type="String" type="list" names="writes" />

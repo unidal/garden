@@ -2,7 +2,9 @@ package org.unidal.orchid.diagram;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.shiro.crypto.hash.Md5Hash;
@@ -12,6 +14,7 @@ import org.unidal.lookup.extension.Initializable;
 import org.unidal.lookup.extension.InitializationException;
 import org.unidal.orchid.diagram.DiagramRepository.Properties;
 import org.unidal.orchid.diagram.entity.DiagramModel;
+import org.unidal.orchid.diagram.entity.PermissionModel;
 import org.unidal.orchid.diagram.entity.ProductModel;
 import org.unidal.orchid.diagram.entity.RepositoryModel;
 import org.unidal.orchid.diagram.entity.RootModel;
@@ -20,177 +23,305 @@ import org.unidal.orchid.diagram.transform.DefaultSaxParser;
 
 @Named(type = DiagramManager.class)
 public class DefaultDiagramManager extends ContainerHolder implements DiagramManager, Initializable {
-	private RootModel m_model;
+   private RootModel m_model;
 
-	@Override
-	public ProductModel getProduct(String id) {
-		return m_model.findProduct(id);
-	}
+   @Override
+   public List<DiagramModel> getDiagrams(DiagramContext ctx, String product) {
+      List<DiagramModel> diagrams = new ArrayList<DiagramModel>();
+      ProductModel p = m_model.findProduct(product);
+      String user = ctx.getUser();
 
-	@Override
-	public List<ProductModel> getProducts() {
-		return m_model.getProducts();
-	}
+      if (p != null) {
+         if (user != null) {
+            p.accept(new DiagramsCollector(diagrams, user));
+         } else {
+            diagrams.addAll(p.getDiagrams());
+         }
+      }
 
-	@Override
-	public void initialize() throws InitializationException {
-		String debug = System.getProperty("debug");
-		String baseDir = System.getProperty("baseDir");
+      return diagrams;
+   }
 
-		if ("true".equals(debug)) {
-			try {
-				InputStream in = getClass().getResourceAsStream("diagram.xml");
+   protected InputStream getDiagramSource() throws IOException {
+      String baseDir = System.getProperty("baseDir");
 
-				m_model = DefaultSaxParser.parse(in);
-			} catch (Exception e) {
-				throw new InitializationException("Error when loading diagram.xml!", e);
-			}
-		} else {
-			try {
-				if (baseDir == null) {
-					baseDir = ".";
-				}
+      if (baseDir == null) {
+         baseDir = ".";
+      }
 
-				InputStream in = new FileInputStream(new File(baseDir, "diagram.xml"));
+      return new FileInputStream(new File(baseDir, "diagram.xml"));
+   }
 
-				m_model = DefaultSaxParser.parse(in);
-			} catch (Exception e) {
-				throw new InitializationException("Error when loading diagram.xml!", e);
-			}
-		}
+   @Override
+   public ProductModel getProduct(DiagramContext ctx, String id) {
+      ProductModel product = m_model.findProduct(id);
+      List<ProductModel> products = new ArrayList<ProductModel>();
+      String user = ctx.getUser();
 
-		m_model.accept(new ModelNormalizer());
-	}
+      if (user != null) {
+         product.accept(new ProductsCollector(products, user));
+      } else {
+         products.add(product);
+      }
 
-	private class ModelNormalizer extends BaseVisitor {
-		private ProductModel m_product;
+      return products.get(0);
+   }
 
-		@Override
-		public void visitDiagram(DiagramModel diagram) {
-			String checksum = new Md5Hash(diagram.getContent()).toHex();
+   @Override
+   public List<ProductModel> getProducts(DiagramContext ctx) {
+      List<ProductModel> products = new ArrayList<ProductModel>();
+      String user = ctx.getUser();
 
-			diagram.setChecksum(checksum);
-			super.visitDiagram(diagram);
-		}
+      if (user != null) {
+         m_model.accept(new ProductsCollector(products, user));
+      } else {
+         products.addAll(m_model.getProducts());
+      }
 
-		@Override
-		public void visitProduct(ProductModel product) {
-			List<DiagramModel> diagrams = product.getDiagrams();
+      return products;
+   }
 
-			for (int i = diagrams.size() - 1; i >= 0; i--) {
-				DiagramModel diagram = diagrams.get(i);
+   @Override
+   public void initialize() throws InitializationException {
+      try {
+         InputStream in = getDiagramSource();
 
-				if (diagram.getId() == null) {
-					diagrams.remove(i); // no empty diagram
-				}
-			}
+         m_model = DefaultSaxParser.parse(in);
+      } catch (Exception e) {
+         throw new InitializationException("Error when loading diagram.xml!", e);
+      }
 
-			if (product.isEnabled()) {
-				m_product = product;
+      m_model.accept(new ModelNormalizer());
+   }
 
-				try {
-					if (product.getRepository() != null) {
-						visitRepository(product.getRepository());
-					}
+   private static class DiagramsCollector extends BaseVisitor {
+      private List<DiagramModel> m_result;
 
-					for (DiagramModel diagram : product.getDiagrams()) {
-						visitDiagram(diagram);
-					}
-				} catch (Throwable e) {
-					product.setEnabled(false); // disable the bad product
-				}
-			}
-		}
+      private String m_user;
 
-		@Override
-		public void visitRepository(RepositoryModel repository) {
-			String type = repository.getType();
-			DiagramRepository repo = lookup(DiagramRepository.class, type);
+      private DiagramModel m_diagram;
 
-			repo.setup(m_product.getId(), new RepositoryProperties(repository));
-			repository.setRepo(repo);
+      public DiagramsCollector(List<DiagramModel> result, String user) {
+         m_result = result;
+         m_user = user;
+      }
 
-			try {
-				m_product.getDiagrams().addAll(repo.getDiagrams());
-			} catch (Exception e) {
-				throw new RuntimeException(String.format("Error when loading diagrams from repository for product(%s)!",
-						m_product.getId()), e);
-			}
-		}
+      private boolean collectForUser(String user) {
+         if (m_user.equals(user)) {
+            if (!m_result.contains(m_diagram)) {
+               m_result.add(m_diagram);
+               return true;
+            }
+         }
 
-		@Override
-		public void visitRoot(RootModel root) {
-			List<ProductModel> products = root.getProducts();
+         return false;
+      }
 
-			for (int i = products.size() - 1; i >= 0; i--) {
-				ProductModel product = products.get(i);
+      @Override
+      public void visitDiagram(DiagramModel diagram) {
+         m_diagram = diagram;
 
-				if (product.getId() == null) {
-					products.remove(i); // no empty product
-				}
-			}
+         if (!collectForUser(diagram.getAuthor())) {
+            super.visitDiagram(diagram);
+         }
+      }
 
-			super.visitRoot(root);
-		}
-	}
+      @Override
+      public void visitPermission(PermissionModel permission) {
+         List<String> writes = permission.getWrites();
+         List<String> reads = permission.getReads();
 
-	private static class RepositoryProperties implements Properties {
-		private RepositoryModel m_repository;
+         for (String write : writes) {
+            collectForUser(write);
+         }
 
-		public RepositoryProperties(RepositoryModel repository) {
-			m_repository = repository;
-		}
+         for (String read : reads) {
+            collectForUser(read);
+         }
+      }
+   }
 
-		@Override
-		public boolean getBooleanProperty(String name, boolean defaultValue) {
-			String value = getStringProperty(name, null);
+   private class ModelNormalizer extends BaseVisitor {
+      private ProductModel m_product;
 
-			if (value != null) {
-				return Boolean.valueOf(value);
-			} else {
-				return defaultValue;
-			}
-		}
+      @Override
+      public void visitDiagram(DiagramModel diagram) {
+         String checksum = new Md5Hash(diagram.getContent()).toHex();
 
-		@Override
-		public long getIntProperty(String name, int defaultValue) {
-			String value = getStringProperty(name, null);
+         diagram.setChecksum(checksum);
+         super.visitDiagram(diagram);
+      }
 
-			if (value != null) {
-				try {
-					return Integer.parseInt(value);
-				} catch (NumberFormatException e) {
-					// ignore it
-				}
-			}
+      @Override
+      public void visitProduct(ProductModel product) {
+         List<DiagramModel> diagrams = product.getDiagrams();
 
-			return defaultValue;
-		}
+         for (int i = diagrams.size() - 1; i >= 0; i--) {
+            DiagramModel diagram = diagrams.get(i);
 
-		@Override
-		public long getLongProperty(String name, long defaultValue) {
-			String value = getStringProperty(name, null);
+            if (diagram.getId() == null) {
+               diagrams.remove(i); // no empty diagram
+            }
+         }
 
-			if (value != null) {
-				try {
-					return Long.parseLong(value);
-				} catch (NumberFormatException e) {
-					// ignore it
-				}
-			}
+         if (product.isEnabled()) {
+            m_product = product;
 
-			return defaultValue;
-		}
+            try {
+               if (product.getRepository() != null) {
+                  visitRepository(product.getRepository());
+               }
 
-		@Override
-		public String getStringProperty(String name, String defaultValue) {
-			String value = m_repository.getDynamicAttribute(name);
+               for (DiagramModel diagram : product.getDiagrams()) {
+                  visitDiagram(diagram);
+               }
+            } catch (Throwable e) {
+               product.setEnabled(false); // disable the bad product
+            }
+         }
+      }
 
-			if (value != null) {
-				return value;
-			} else {
-				return defaultValue;
-			}
-		}
-	}
+      @Override
+      public void visitRepository(RepositoryModel repository) {
+         String type = repository.getType();
+         DiagramRepository repo = lookup(DiagramRepository.class, type);
+
+         repo.setup(m_product.getId(), new RepositoryProperties(repository));
+         repository.setRepo(repo);
+
+         try {
+            m_product.getDiagrams().addAll(repo.getDiagrams());
+         } catch (Exception e) {
+            throw new RuntimeException(
+                  String.format("Error when loading diagrams from repository for product(%s)!", m_product.getId()), e);
+         }
+      }
+
+      @Override
+      public void visitRoot(RootModel root) {
+         List<ProductModel> products = root.getProducts();
+
+         for (int i = products.size() - 1; i >= 0; i--) {
+            ProductModel product = products.get(i);
+
+            if (product.getId() == null) {
+               products.remove(i); // no empty product
+            }
+         }
+
+         super.visitRoot(root);
+      }
+   }
+
+   private static class ProductsCollector extends BaseVisitor {
+      private List<ProductModel> m_result;
+
+      private String m_user;
+
+      private ProductModel m_product;
+
+      public ProductsCollector(List<ProductModel> result, String user) {
+         m_result = result;
+         m_user = user;
+      }
+
+      private boolean collectForUser(String user) {
+         if (m_user.equals(user)) {
+            if (!m_result.contains(m_product)) {
+               m_result.add(m_product);
+               return true;
+            }
+         }
+
+         return false;
+      }
+
+      @Override
+      public void visitDiagram(DiagramModel diagram) {
+         if (!collectForUser(diagram.getAuthor())) {
+            super.visitDiagram(diagram);
+         }
+      }
+
+      @Override
+      public void visitPermission(PermissionModel permission) {
+         List<String> writes = permission.getWrites();
+         List<String> reads = permission.getReads();
+
+         for (String write : writes) {
+            collectForUser(write);
+         }
+
+         for (String read : reads) {
+            collectForUser(read);
+         }
+      }
+
+      @Override
+      public void visitProduct(ProductModel product) {
+         m_product = product;
+
+         super.visitProduct(product);
+      }
+   }
+
+   private static class RepositoryProperties implements Properties {
+      private RepositoryModel m_repository;
+
+      public RepositoryProperties(RepositoryModel repository) {
+         m_repository = repository;
+      }
+
+      @Override
+      public boolean getBooleanProperty(String name, boolean defaultValue) {
+         String value = getStringProperty(name, null);
+
+         if (value != null) {
+            return Boolean.valueOf(value);
+         } else {
+            return defaultValue;
+         }
+      }
+
+      @Override
+      public long getIntProperty(String name, int defaultValue) {
+         String value = getStringProperty(name, null);
+
+         if (value != null) {
+            try {
+               return Integer.parseInt(value);
+            } catch (NumberFormatException e) {
+               // ignore it
+            }
+         }
+
+         return defaultValue;
+      }
+
+      @Override
+      public long getLongProperty(String name, long defaultValue) {
+         String value = getStringProperty(name, null);
+
+         if (value != null) {
+            try {
+               return Long.parseLong(value);
+            } catch (NumberFormatException e) {
+               // ignore it
+            }
+         }
+
+         return defaultValue;
+      }
+
+      @Override
+      public String getStringProperty(String name, String defaultValue) {
+         String value = m_repository.getDynamicAttribute(name);
+
+         if (value != null) {
+            return value;
+         } else {
+            return defaultValue;
+         }
+      }
+   }
 }

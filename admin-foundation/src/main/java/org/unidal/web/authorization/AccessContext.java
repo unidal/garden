@@ -3,7 +3,7 @@ package org.unidal.web.authorization;
 import java.io.IOException;
 
 public interface AccessContext {
-   public String COOKIE_TULIP = "tulip";
+   public String COOKIE_TOKEN = "ut";
 
    public void appendToCatPageURI(String scenario);
 

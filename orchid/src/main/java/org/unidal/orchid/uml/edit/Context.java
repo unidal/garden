@@ -11,7 +11,7 @@ public class Context extends UmlContext<Payload> {
 
 	private String m_diagram;
 
-	private DiagramContext m_context = new DefaultDiagramContext();
+	private DiagramContext m_context = new DefaultDiagramContext(this);
 
 	public DiagramContext getContext() {
 		return m_context;

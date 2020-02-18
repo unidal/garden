@@ -1,0 +1,62 @@
+<root>
+	<product id="alpha" name="Alpha Product" enabled="true">
+		<repository type="git" base-dir="doc" />
+		<diagram id="a" author="qmwu2000">
+			<content>a-a</content>
+			<permission>
+				<write>alice</write>
+				<write>bob</write>
+				<read>chris</read>
+				<read>douglas</read>
+				<read>emma</read>
+				<read>frankie</read>
+			</permission>
+		</diagram>
+		<diagram id="b" author="qmwu2000">
+			<content>a-b</content>
+			<permission>
+				<write>alice</write>
+				<write>bob</write>
+				<read>emma</read>
+				<read>frankie</read>
+			</permission>
+		</diagram>
+		<diagram id="c" author="qmwu2000">
+			<content>b-c</content>
+			<permission>
+				<write>chris</write>
+				<write>douglas</write>
+			</permission>
+		</diagram>
+	</product>
+	<product id="beta" name="Beta Product" enabled="false">
+		<repository type="git" base-dir="doc" />
+		<diagram id="x" author="qmwu2000">
+			<content>x-y</content>
+			<permission>
+				<write>alice</write>
+				<write>bob</write>
+				<read>chris</read>
+				<read>douglas</read>
+				<read>emma</read>
+				<read>frankie</read>
+			</permission>
+		</diagram>
+		<diagram id="y" author="qmwu2000">
+			<content>y-y</content>
+			<permission>
+				<write>alice</write>
+				<write>bob</write>
+				<read>emma</read>
+				<read>frankie</read>
+			</permission>
+		</diagram>
+		<diagram id="z" author="qmwu2000">
+			<content>y-z</content>
+			<permission>
+				<write>chris</write>
+				<write>douglas</write>
+			</permission>
+		</diagram>
+	</product>
+</root>

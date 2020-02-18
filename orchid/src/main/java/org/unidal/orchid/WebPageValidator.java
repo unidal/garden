@@ -16,7 +16,7 @@ public class WebPageValidator<T extends ActionContext<?>> implements Validator<T
 	@Inject
 	private MyAccessControl m_accessControl;
 
-	private Set<String> m_excludedActions = new HashSet<String>(Arrays.asList("view"));
+	private Set<String> m_excludedActions = new HashSet<String>(Arrays.asList("help"));
 
 	@Override
 	public void validate(T ctx) throws Exception {

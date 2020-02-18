@@ -13,123 +13,125 @@ import org.unidal.orchid.diagram.entity.ProductModel;
 
 @Named(type = DiagramService.class)
 public class DefaultDiagramService implements DiagramService {
-	@Inject
-	private DiagramManager m_manager;
+   @Inject
+   private DiagramManager m_manager;
 
-	@Override
-	public DiagramModel getDiagram(DiagramContext ctx, String product, String diagram) {
-		ProductModel p = m_manager.getProduct(product);
+   @Override
+   public DiagramModel getDiagram(DiagramContext ctx, String product, String diagram) {
+      ProductModel p = m_manager.getProduct(ctx, product);
 
-		if (p != null && p.isEnabled()) {
-			DiagramModel d = p.findDiagram(diagram);
+      if (p != null && p.isEnabled()) {
+         DiagramModel d = p.findDiagram(diagram);
 
-			return d;
-		}
+         return d;
+      }
 
-		return null;
-	}
+      return null;
+   }
 
-	@Override
-	public List<DiagramModel> getDiagrams(DiagramContext ctx, String product) {
-		ProductModel p = m_manager.getProduct(product);
-		List<DiagramModel> diagrams = new ArrayList<DiagramModel>();
+   @Override
+   public List<DiagramModel> getDiagrams(DiagramContext ctx, String product) {
+      List<DiagramModel> diagrams = new ArrayList<DiagramModel>();
+      ProductModel p = m_manager.getProduct(ctx, product);
 
-		if (p != null && p.isEnabled()) {
-			diagrams.addAll(p.getDiagrams());
-		}
+      if (p != null && p.isEnabled()) {
+         for (DiagramModel diagram : m_manager.getDiagrams(ctx, product)) {
+            diagrams.add(diagram);
+         }
+      }
 
-		return diagrams;
-	}
+      return diagrams;
+   }
 
-	@Override
-	public List<ProductModel> getProducts(DiagramContext ctx) {
-		List<ProductModel> products = new ArrayList<ProductModel>();
+   @Override
+   public List<ProductModel> getProducts(DiagramContext ctx) {
+      List<ProductModel> products = new ArrayList<ProductModel>();
 
-		for (ProductModel product : m_manager.getProducts()) {
-			if (product.isEnabled()) {
-				products.add(product);
-			}
-		}
+      for (ProductModel product : m_manager.getProducts(ctx)) {
+         if (product.isEnabled()) {
+            products.add(product);
+         }
+      }
 
-		return products;
-	}
+      return products;
+   }
 
-	@Override
-	public boolean hasDiagram(DiagramContext ctx, String product, String diagram) {
-		ProductModel p = m_manager.getProduct(product);
+   @Override
+   public boolean hasDiagram(DiagramContext ctx, String product, String diagram) {
+      ProductModel p = m_manager.getProduct(ctx, product);
 
-		if (p != null) {
-			DiagramModel d = p.findDiagram(diagram);
+      if (p != null) {
+         DiagramModel d = p.findDiagram(diagram);
 
-			return d != null;
-		} else {
-			return false;
-		}
-	}
+         return d != null;
+      } else {
+         return false;
+      }
+   }
 
-	@Override
-	public boolean saveDiagram(DiagramContext ctx, String product, String diagram, String content) {
-		ProductModel p = m_manager.getProduct(product);
+   @Override
+   public boolean saveDiagram(DiagramContext ctx, String product, String diagram, String content) {
+      ProductModel p = m_manager.getProduct(ctx, product);
 
-		if (p != null && p.isEnabled()) {
-			DiagramModel d = p.findOrCreateDiagram(diagram);
-			String checksum = new Md5Hash(content).toHex();
+      if (p != null && p.isEnabled()) {
+         DiagramModel d = p.findOrCreateDiagram(diagram);
+         String checksum = new Md5Hash(content).toHex();
 
-			synchronized (d) {
-				d.setChecksum(checksum);
-				d.setContent(content);
-			}
+         synchronized (d) {
+            d.setChecksum(checksum);
+            d.setContent(content);
+         }
 
-			try {
-				p.getRepository().getRepo().updateDiagram(d);
-				return true;
-			} catch (Exception e) {
-				Cat.logError(e);
-			}
-		}
+         try {
+            p.getRepository().getRepo().updateDiagram(d);
+            return true;
+         } catch (Exception e) {
+            Cat.logError(e);
+         }
+      }
 
-		return false;
-	}
+      return false;
+   }
 
-	@Override
-	public boolean updateDiagram(DiagramContext ctx, String product, String diagram, String content) {
-		ProductModel p = m_manager.getProduct(product);
+   @Override
+   public boolean updateDiagram(DiagramContext ctx, String product, String diagram, String content) {
+      ProductModel p = m_manager.getProduct(ctx, product);
 
-		if (p != null && p.isEnabled()) {
-			DiagramModel d = p.findOrCreateDiagram(diagram);
-			String checksum = new Md5Hash(content).toHex();
+      if (p != null && p.isEnabled()) {
+         DiagramModel d = p.findOrCreateDiagram(diagram);
+         String checksum = new Md5Hash(content).toHex();
 
-			synchronized (d) {
-				d.setChecksum(checksum);
-				d.setContent(content);
-			}
+         synchronized (d) {
+            d.setChecksum(checksum);
+            d.setContent(content);
+         }
 
-			return true;
-		} else {
-			return false;
-		}
-	}
+         return true;
+      } else {
+         return false;
+      }
+   }
 
-	@Override
-	public String watchDiagram(DiagramContext context, String product, String diagram, String checksum,
-			long timeoutInMillis) throws InterruptedException {
-		ProductModel p = m_manager.getProduct(product);
+   @Override
+   public String watchDiagram(DiagramContext ctx, String product, String diagram, String checksum, long timeoutInMillis)
+         throws InterruptedException {
+      ProductModel p = m_manager.getProduct(ctx, product);
 
-		if (p != null && p.isEnabled()) {
-			long start = System.currentTimeMillis();
-			DiagramModel d = p.findDiagram(diagram);
+      if (p != null && p.isEnabled()) {
+         long start = System.currentTimeMillis();
+         DiagramModel d = p.findDiagram(diagram);
 
-			while (System.currentTimeMillis() - start < timeoutInMillis) { // not timeout
-				synchronized (d) {
-					if (!d.getChecksum().equals(checksum)) {
-						return d.getChecksum();
-					}
-				}
+         while (System.currentTimeMillis() - start < timeoutInMillis) { // not timeout
+            synchronized (d) {
+               if (!d.getChecksum().equals(checksum)) {
+                  return d.getChecksum();
+               }
+            }
 
-				TimeUnit.MILLISECONDS.sleep(100);
-			}
-		}
+            TimeUnit.MILLISECONDS.sleep(100);
+         }
+      }
 
-		return null;
-	}
+      return null;
+   }
 }

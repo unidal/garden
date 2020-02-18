@@ -172,6 +172,9 @@ public class MyAccessControl implements Initializable {
 			Cat.logEvent("Access.User", user);
 		}
 
+		ctx.setAttribute("access.user", user);
+		ctx.setAttribute("access.permission", permission);
+		
 		subject.logout();
 		return true;
 	}
