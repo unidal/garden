@@ -1,5 +1,5 @@
 <root>
-	<product id="default" name="Default Product" enabled="true">
+	<product id="default" name="Default Product" owners="qmwu2000" enabled="true">
 		<repository type="git" base-dir="doc" />
 		<diagram id="demo/hello.uml" author="qmwu2000">
 			<content><![CDATA[

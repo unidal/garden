@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import org.apache.shiro.crypto.hash.Md5Hash;
 import org.unidal.cat.Cat;
 import org.unidal.lookup.annotation.Inject;
 import org.unidal.lookup.annotation.Named;
@@ -15,6 +14,23 @@ import org.unidal.orchid.diagram.entity.ProductModel;
 public class DefaultDiagramService implements DiagramService {
    @Inject
    private DiagramManager m_manager;
+
+   @Override
+   public boolean createDiagram(DiagramContext ctx, String product, String diagram, String content) {
+      ProductModel p = m_manager.getProduct(ctx, product);
+
+      if (p != null && p.isEnabled()) {
+         try {
+            m_manager.setDiagram(ctx, product, diagram, content, true);
+
+            return true;
+         } catch (Exception e) {
+            Cat.logError(e);
+         }
+      }
+
+      return false;
+   }
 
    @Override
    public DiagramModel getDiagram(DiagramContext ctx, String product, String diagram) {
@@ -70,20 +86,13 @@ public class DefaultDiagramService implements DiagramService {
    }
 
    @Override
-   public boolean saveDiagram(DiagramContext ctx, String product, String diagram, String content) {
+   public boolean updateDiagram(DiagramContext ctx, String product, String diagram, String content) {
       ProductModel p = m_manager.getProduct(ctx, product);
 
       if (p != null && p.isEnabled()) {
-         DiagramModel d = p.findOrCreateDiagram(diagram);
-         String checksum = new Md5Hash(content).toHex();
-
-         synchronized (d) {
-            d.setChecksum(checksum);
-            d.setContent(content);
-         }
-
          try {
-            p.getRepository().getRepo().updateDiagram(d);
+            m_manager.setDiagram(ctx, product, diagram, content, false);
+
             return true;
          } catch (Exception e) {
             Cat.logError(e);
@@ -91,25 +100,6 @@ public class DefaultDiagramService implements DiagramService {
       }
 
       return false;
-   }
-
-   @Override
-   public boolean updateDiagram(DiagramContext ctx, String product, String diagram, String content) {
-      ProductModel p = m_manager.getProduct(ctx, product);
-
-      if (p != null && p.isEnabled()) {
-         DiagramModel d = p.findOrCreateDiagram(diagram);
-         String checksum = new Md5Hash(content).toHex();
-
-         synchronized (d) {
-            d.setChecksum(checksum);
-            d.setContent(content);
-         }
-
-         return true;
-      } else {
-         return false;
-      }
    }
 
    @Override

@@ -39,7 +39,7 @@ public class Handler implements PageHandler<Context> {
 			ctx.setMessage(String.format("Diagram(%s) must be ending with '.uml'.", diagram));
 		} else if (!m_diagramSerice.hasDiagram(ctx.getContext(), product, diagram)) {
 			StringBuilder message = new StringBuilder(256);
-			boolean success = m_diagramSerice.saveDiagram(ctx.getContext(), product, diagram, content);
+			boolean success = m_diagramSerice.createDiagram(ctx.getContext(), product, diagram, content);
 
 			ctx.setError(!success);
 			ctx.setDiagram(diagram);
@@ -95,7 +95,7 @@ public class Handler implements PageHandler<Context> {
 		String diagram = payload.getDiagram();
 		String content = payload.getContent();
 
-		boolean success = m_diagramSerice.saveDiagram(ctx.getContext(), product, diagram, content);
+		boolean success = m_diagramSerice.createDiagram(ctx.getContext(), product, diagram, content);
 
 		if (success) {
 			ctx.setMessage("Diagram has been saved successfully!");

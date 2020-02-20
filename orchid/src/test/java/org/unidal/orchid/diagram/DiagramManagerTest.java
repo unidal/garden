@@ -1,6 +1,5 @@
 package org.unidal.orchid.diagram;
 
-import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -13,6 +12,8 @@ import org.unidal.lookup.ComponentTestCase;
 import org.unidal.lookup.annotation.Named;
 import org.unidal.orchid.diagram.entity.DiagramModel;
 import org.unidal.orchid.diagram.entity.ProductModel;
+import org.unidal.orchid.diagram.entity.RootModel;
+import org.unidal.orchid.diagram.transform.DefaultSaxParser;
 
 public class DiagramManagerTest extends ComponentTestCase {
    @Before
@@ -89,8 +90,10 @@ public class DiagramManagerTest extends ComponentTestCase {
    @Named(type = DiagramManager.class)
    public static class MockDiagramManager extends DefaultDiagramManager {
       @Override
-      protected InputStream getDiagramSource() throws IOException {
-         return getClass().getResourceAsStream("sample.xml");
+      protected RootModel loadModel() throws Exception {
+         InputStream in = getClass().getResourceAsStream("sample.xml");
+
+         return DefaultSaxParser.parse(in);
       }
    }
 }

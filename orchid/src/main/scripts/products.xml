@@ -1,0 +1,5 @@
+<root>
+	<product id="default" name="Default Product" owners="*">
+		<repository type="git" base-dir="doc/default" />
+	</product>
+</root>

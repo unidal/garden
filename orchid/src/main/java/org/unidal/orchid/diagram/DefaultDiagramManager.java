@@ -1,18 +1,17 @@
 package org.unidal.orchid.diagram;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
+import static org.unidal.web.config.ConfigService.CATEGORY_CONFIG;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.shiro.crypto.hash.Md5Hash;
+import org.unidal.cat.Cat;
+import org.unidal.helper.Splitters;
 import org.unidal.lookup.ContainerHolder;
 import org.unidal.lookup.annotation.Named;
 import org.unidal.lookup.extension.Initializable;
 import org.unidal.lookup.extension.InitializationException;
-import org.unidal.orchid.diagram.DiagramRepository.Properties;
 import org.unidal.orchid.diagram.entity.DiagramModel;
 import org.unidal.orchid.diagram.entity.PermissionModel;
 import org.unidal.orchid.diagram.entity.ProductModel;
@@ -20,10 +19,16 @@ import org.unidal.orchid.diagram.entity.RepositoryModel;
 import org.unidal.orchid.diagram.entity.RootModel;
 import org.unidal.orchid.diagram.transform.BaseVisitor;
 import org.unidal.orchid.diagram.transform.DefaultSaxParser;
+import org.unidal.web.config.ConfigEvent;
+import org.unidal.web.config.ConfigEventListener;
+import org.unidal.web.config.ConfigException;
+import org.unidal.web.config.ConfigService;
 
 @Named(type = DiagramManager.class)
 public class DefaultDiagramManager extends ContainerHolder implements DiagramManager, Initializable {
    private RootModel m_model;
+
+   private ConfigChangeListener m_listener = new ConfigChangeListener();
 
    @Override
    public List<DiagramModel> getDiagrams(DiagramContext ctx, String product) {
@@ -33,7 +38,7 @@ public class DefaultDiagramManager extends ContainerHolder implements DiagramMan
 
       if (p != null) {
          if (user != null) {
-            p.accept(new DiagramsCollector(diagrams, user));
+            p.accept(new DiagramsFilter(diagrams, user));
          } else {
             diagrams.addAll(p.getDiagrams());
          }
@@ -42,29 +47,26 @@ public class DefaultDiagramManager extends ContainerHolder implements DiagramMan
       return diagrams;
    }
 
-   protected InputStream getDiagramSource() throws IOException {
-      String baseDir = System.getProperty("baseDir");
-
-      if (baseDir == null) {
-         baseDir = ".";
-      }
-
-      return new FileInputStream(new File(baseDir, "diagram.xml"));
-   }
-
    @Override
    public ProductModel getProduct(DiagramContext ctx, String id) {
       ProductModel product = m_model.findProduct(id);
-      List<ProductModel> products = new ArrayList<ProductModel>();
-      String user = ctx.getUser();
 
-      if (user != null) {
-         product.accept(new ProductsCollector(products, user));
-      } else {
-         products.add(product);
+      if (product != null) {
+         List<ProductModel> products = new ArrayList<ProductModel>();
+         String user = ctx.getUser();
+
+         if (user != null) {
+            product.accept(new ProductsFilter(products, user));
+         } else {
+            products.add(product);
+         }
+
+         if (!products.isEmpty()) {
+            return products.get(0);
+         }
       }
 
-      return products.get(0);
+      return null;
    }
 
    @Override
@@ -73,7 +75,7 @@ public class DefaultDiagramManager extends ContainerHolder implements DiagramMan
       String user = ctx.getUser();
 
       if (user != null) {
-         m_model.accept(new ProductsCollector(products, user));
+         m_model.accept(new ProductsFilter(products, user));
       } else {
          products.addAll(m_model.getProducts());
       }
@@ -84,24 +86,62 @@ public class DefaultDiagramManager extends ContainerHolder implements DiagramMan
    @Override
    public void initialize() throws InitializationException {
       try {
-         InputStream in = getDiagramSource();
-
-         m_model = DefaultSaxParser.parse(in);
+         m_model = loadModel();
       } catch (Exception e) {
-         throw new InitializationException("Error when loading diagram.xml!", e);
+         throw new InitializationException("Error when loading diagram model!", e);
       }
-
-      m_model.accept(new ModelNormalizer());
    }
 
-   private static class DiagramsCollector extends BaseVisitor {
+   protected RootModel loadModel() throws Exception {
+      RootModel model = new RootModel();
+
+      model.accept(new ProductModelBuilder());
+      return model;
+   }
+
+   @Override
+   public DiagramModel setDiagram(DiagramContext ctx, String product, String id, String content, boolean createOrUpdate) {
+      ProductModel p = getProduct(ctx, product);
+      DiagramModel d = p.findOrCreateDiagram(id);
+      String checksum = new Md5Hash(content).toHex();
+
+      d.setChecksum(checksum);
+      d.setContent(content);
+
+      if (createOrUpdate) {
+         d.setAuthor(ctx.getUser());
+      }
+
+      try {
+         p.getRepository().getRepo().updateDiagram(d);
+
+         return d;
+      } catch (Exception e) {
+         throw new RuntimeException("Unable to save diagram due to " + e, e);
+      }
+   }
+
+   private class ConfigChangeListener implements ConfigEventListener {
+      @Override
+      public void onEvent(ConfigEvent event) throws ConfigException {
+         if (event.isEligible(CATEGORY_CONFIG, "products.xml")) {
+            try {
+               m_model = loadModel();
+            } catch (Exception e) {
+               Cat.logError(e);
+            }
+         }
+      }
+   }
+
+   private static class DiagramsFilter extends BaseVisitor {
       private List<DiagramModel> m_result;
 
       private String m_user;
 
       private DiagramModel m_diagram;
 
-      public DiagramsCollector(List<DiagramModel> result, String user) {
+      public DiagramsFilter(List<DiagramModel> result, String user) {
          m_result = result;
          m_user = user;
       }
@@ -141,7 +181,7 @@ public class DefaultDiagramManager extends ContainerHolder implements DiagramMan
       }
    }
 
-   private class ModelNormalizer extends BaseVisitor {
+   private class ProductModelBuilder extends BaseVisitor {
       private ProductModel m_product;
 
       @Override
@@ -154,86 +194,83 @@ public class DefaultDiagramManager extends ContainerHolder implements DiagramMan
 
       @Override
       public void visitProduct(ProductModel product) {
-         List<DiagramModel> diagrams = product.getDiagrams();
+         m_product = product;
 
-         for (int i = diagrams.size() - 1; i >= 0; i--) {
-            DiagramModel diagram = diagrams.get(i);
-
-            if (diagram.getId() == null) {
-               diagrams.remove(i); // no empty diagram
-            }
-         }
-
-         if (product.isEnabled()) {
-            m_product = product;
-
-            try {
-               if (product.getRepository() != null) {
-                  visitRepository(product.getRepository());
-               }
-
-               for (DiagramModel diagram : product.getDiagrams()) {
-                  visitDiagram(diagram);
-               }
-            } catch (Throwable e) {
-               product.setEnabled(false); // disable the bad product
-            }
-         }
-      }
-
-      @Override
-      public void visitRepository(RepositoryModel repository) {
-         String type = repository.getType();
-         DiagramRepository repo = lookup(DiagramRepository.class, type);
-
-         repo.setup(m_product.getId(), new RepositoryProperties(repository));
-         repository.setRepo(repo);
+         RepositoryModel repository = product.getRepository();
+         DiagramRepository repo = lookup(DiagramRepository.class, repository.getType());
 
          try {
-            m_product.getDiagrams().addAll(repo.getDiagrams());
+            repo.setup(m_product.getId(), new RepositoryProperties(repository));
+            repo.loadDiagrams(product);
+            repository.setRepo(repo);
          } catch (Exception e) {
-            throw new RuntimeException(
-                  String.format("Error when loading diagrams from repository for product(%s)!", m_product.getId()), e);
+            throw new RuntimeException("Error when loading diagrams from repo " + repo, e);
          }
+
+         super.visitProduct(product);
       }
 
       @Override
       public void visitRoot(RootModel root) {
-         List<ProductModel> products = root.getProducts();
+         ConfigService configService = lookup(ConfigService.class); // on demand lookup
 
-         for (int i = products.size() - 1; i >= 0; i--) {
-            ProductModel product = products.get(i);
+         configService.register(m_listener);
 
-            if (product.getId() == null) {
-               products.remove(i); // no empty product
+         try {
+            String xml = configService.getString(CATEGORY_CONFIG, "products.xml", "");
+
+            if (xml.length() == 0) {
+               return;
             }
+
+            RootModel model = DefaultSaxParser.parse(xml);
+
+            for (ProductModel product : model.getProducts()) {
+               String id = product.getId();
+
+               if (id == null || !product.isEnabled()) {
+                  continue;
+               } else if (product.getRepository() == null) {
+                  continue;
+               }
+
+               ProductModel p = new ProductModel(id);
+
+               p.mergeAttributes(product);
+               p.setRepository(product.getRepository());
+
+               root.addProduct(p);
+            }
+         } catch (Exception e) {
+            throw new RuntimeException("Unable to load products.xml! " + e, e);
          }
 
          super.visitRoot(root);
       }
    }
 
-   private static class ProductsCollector extends BaseVisitor {
+   private static class ProductsFilter extends BaseVisitor {
       private List<ProductModel> m_result;
 
       private String m_user;
 
       private ProductModel m_product;
 
-      public ProductsCollector(List<ProductModel> result, String user) {
+      public ProductsFilter(List<ProductModel> result, String user) {
          m_result = result;
          m_user = user;
       }
 
       private boolean collectForUser(String user) {
-         if (m_user.equals(user)) {
+         if ("*".equals(user) || m_user.equals(user)) {
             if (!m_result.contains(m_product)) {
                m_result.add(m_product);
-               return true;
             }
-         }
 
-         return false;
+            return true;
+         } else {
+            return false;
+         }
       }
 
       @Override
@@ -259,68 +296,16 @@ public class DefaultDiagramManager extends ContainerHolder implements DiagramMan
 
       @Override
       public void visitProduct(ProductModel product) {
-         m_product = product;
+         List<String> owners = Splitters.by(',').noEmptyItem().trim().split(product.getOwners());
 
-         super.visitProduct(product);
-      }
-   }
-
-   private static class RepositoryProperties implements Properties {
-      private RepositoryModel m_repository;
-
-      public RepositoryProperties(RepositoryModel repository) {
-         m_repository = repository;
-      }
-
-      @Override
-      public boolean getBooleanProperty(String name, boolean defaultValue) {
-         String value = getStringProperty(name, null);
-
-         if (value != null) {
-            return Boolean.valueOf(value);
-         } else {
-            return defaultValue;
-         }
-      }
-
-      @Override
-      public long getIntProperty(String name, int defaultValue) {
-         String value = getStringProperty(name, null);
-
-         if (value != null) {
-            try {
-               return Integer.parseInt(value);
-            } catch (NumberFormatException e) {
-               // ignore it
+         if (owners.contains("*") || owners.contains(m_user)) {
+            if (!m_result.contains(m_product)) {
+               m_result.add(product);
             }
-         }
-
-         return defaultValue;
-      }
-
-      @Override
-      public long getLongProperty(String name, long defaultValue) {
-         String value = getStringProperty(name, null);
-
-         if (value != null) {
-            try {
-               return Long.parseLong(value);
-            } catch (NumberFormatException e) {
-               // ignore it
-            }
-         }
-
-         return defaultValue;
-      }
-
-      @Override
-      public String getStringProperty(String name, String defaultValue) {
-         String value = m_repository.getDynamicAttribute(name);
-
-         if (value != null) {
-            return value;
          } else {
-            return defaultValue;
+            m_product = product;
+
+            super.visitProduct(product);
          }
       }
    }
