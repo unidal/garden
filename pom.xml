@@ -12,7 +12,7 @@
    <name>Garden</name>
    <packaging>pom</packaging>
    <modules>
-      <module>admin-foundation</module>
+      <module>web-extension</module>
       <module>rose</module>
       <module>orchid</module>
    </modules>
