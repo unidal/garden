@@ -107,6 +107,7 @@ public class DefaultDiagramManager extends ContainerHolder implements DiagramMan
 
       d.setChecksum(checksum);
       d.setContent(content);
+      d.setAuthor(ctx.getUser());
 
       if (createOrUpdate) {
          d.setAuthor(ctx.getUser());

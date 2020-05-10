@@ -2,7 +2,7 @@
 	<product id="default" name="Default Product" enabled="true">
 		<repository type="git" base-dir="doc" />
 		<diagram id="demo/hello.uml" author="qmwu2000">
-			<content><![CDATA[
+			<content><![CDATA[ 
 Alice -> Bob: hello
 Bob -> Chris: greeting]]></content>
 			<checksum>ABCDEF</checksum>
@@ -32,10 +32,11 @@ Bob -> Chris: greeting]]></content>
 				<write>bob</write>
 				<read>chris</read>
 				<read>douglas</read>
+				<read>wuqimin703</read>
 			</permission>
 		</diagram>
 		<diagram id="demo/salt.uml" author="qmwu2000">
-s			<content><![CDATA[
+			<content><![CDATA[
 @startuml
 salt
 {
@@ -51,6 +52,7 @@ salt
 @enduml]]></content>
 			<checksum>ABCDEF</checksum>
 			<permission>
+				<write>wuqimin703</write>
 				<write>alice</write>
 				<write>bob</write>
 				<read>chris</read>

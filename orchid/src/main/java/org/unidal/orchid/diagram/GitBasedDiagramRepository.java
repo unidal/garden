@@ -49,7 +49,7 @@ public class GitBasedDiagramRepository implements DiagramRepository, LogEnabled 
                files.add(path);
             }
 
-            return Direction.NEXT;
+            return Direction.DOWN;
          }
       });
 
