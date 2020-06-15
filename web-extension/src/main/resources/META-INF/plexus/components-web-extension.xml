@@ -3,54 +3,30 @@
 <plexus>
 	<components>
 		<component>
-			<role>org.unidal.web.security.auth.MyAccessControl</role>
-			<implementation>org.unidal.web.security.auth.MyAccessControl</implementation>
+			<role>org.unidal.web.config.ConfigService</role>
+			<implementation>org.unidal.web.config.DefaultConfigService</implementation>
 			<requirements>
 				<requirement>
-					<role>org.unidal.web.config.ConfigService</role>
-				</requirement>
-				<requirement>
-					<role>org.unidal.web.security.auth.MyRealm</role>
+					<role>org.unidal.web.dal.config.ConfigDao</role>
 				</requirement>
 			</requirements>
 		</component>
 		<component>
-			<role>org.unidal.web.security.auth.MyRealm</role>
-			<implementation>org.unidal.web.security.auth.MyRealm</implementation>
+			<role>org.unidal.web.security.AuthService</role>
+			<implementation>org.unidal.web.security.DefaultAuthService</implementation>
 			<requirements>
 				<requirement>
-					<role>org.unidal.web.security.auth.MyApplication</role>
-				</requirement>
-				<requirement>
-					<role>org.unidal.web.security.auth.MyAuthorization</role>
-				</requirement>
-				<requirement>
-					<role>org.unidal.web.security.auth.MyUser</role>
+					<role>org.unidal.web.security.internals.MyRealm</role>
 				</requirement>
 			</requirements>
 		</component>
 		<component>
-			<role>org.unidal.web.security.auth.MyAuthorization</role>
-			<implementation>org.unidal.web.security.auth.MyAuthorization</implementation>
+			<role>org.unidal.web.security.internals.MyAccessControl</role>
+			<implementation>org.unidal.web.security.internals.MyAccessControl</implementation>
 			<requirements>
 				<requirement>
-					<role>org.unidal.web.config.ConfigService</role>
+					<role>org.unidal.web.security.AuthService</role>
 				</requirement>
-			</requirements>
-		</component>
-		<component>
-			<role>org.unidal.web.security.auth.MyApplication</role>
-			<implementation>org.unidal.web.security.auth.MyApplication</implementation>
-			<requirements>
-				<requirement>
-					<role>org.unidal.web.config.ConfigService</role>
-				</requirement>
-			</requirements>
-		</component>
-		<component>
-			<role>org.unidal.web.security.auth.MyUser</role>
-			<implementation>org.unidal.web.security.auth.MyUser</implementation>
-			<requirements>
 				<requirement>
 					<role>org.unidal.web.config.ConfigService</role>
 				</requirement>
@@ -58,20 +34,48 @@
 		</component>
 		<component>
 			<role>org.unidal.web.mvc.Validator</role>
-			<role-hint>tulip-page</role-hint>
-			<implementation>org.unidal.web.security.auth.MyPageValidator</implementation>
+			<role-hint>my</role-hint>
+			<implementation>org.unidal.web.security.internals.MyPageValidator</implementation>
 			<requirements>
 				<requirement>
-					<role>org.unidal.web.security.auth.MyAccessControl</role>
+					<role>org.unidal.web.security.internals.MyAccessControl</role>
 				</requirement>
 			</requirements>
 		</component>
 		<component>
-			<role>org.unidal.web.config.ConfigService</role>
-			<implementation>org.unidal.web.config.DefaultConfigService</implementation>
+			<role>org.unidal.web.security.internals.MyRealm</role>
+			<implementation>org.unidal.web.security.internals.MyRealm</implementation>
 			<requirements>
 				<requirement>
-					<role>org.unidal.web.dal.config.ConfigDao</role>
+					<role>org.unidal.web.security.spi.Authentication</role>
+				</requirement>
+				<requirement>
+					<role>org.unidal.web.security.spi.Authorization</role>
+				</requirement>
+			</requirements>
+		</component>
+		<component>
+			<role>org.unidal.web.security.spi.Authentication</role>
+			<implementation>org.unidal.web.security.internals.MyAuthentication</implementation>
+		</component>
+		<component>
+			<role>org.unidal.web.security.spi.Authorization</role>
+			<implementation>org.unidal.web.security.internals.MyAuthorization</implementation>
+			<requirements>
+				<requirement>
+					<role>org.unidal.web.config.ConfigService</role>
+				</requirement>
+				<requirement>
+					<role>org.unidal.web.security.internals.MyPermissionProvider</role>
+				</requirement>
+			</requirements>
+		</component>
+		<component>
+			<role>org.unidal.web.security.internals.MyPermissionProvider</role>
+			<implementation>org.unidal.web.security.internals.MyPermissionProvider</implementation>
+			<requirements>
+				<requirement>
+					<role>org.unidal.web.config.ConfigService</role>
 				</requirement>
 			</requirements>
 		</component>
@@ -110,7 +114,10 @@
 			<implementation>org.unidal.web.user.login.Handler</implementation>
 			<requirements>
 				<requirement>
-					<role>org.unidal.web.security.auth.MyAccessControl</role>
+					<role>org.unidal.web.security.AuthService</role>
+				</requirement>
+				<requirement>
+					<role>org.unidal.web.config.ConfigService</role>
 				</requirement>
 				<requirement>
 					<role>org.unidal.web.user.login.JspViewer</role>

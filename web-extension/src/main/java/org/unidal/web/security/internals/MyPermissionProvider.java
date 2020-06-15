@@ -1,4 +1,4 @@
-package org.unidal.web.security.auth;
+package org.unidal.web.security.internals;
 
 import static org.unidal.web.config.ConfigService.CATEGORY_SECURITY;
 
@@ -25,7 +25,7 @@ import org.unidal.web.security.auth.transform.DefaultSaxParser;
 import org.xml.sax.SAXException;
 
 @Named
-public class MyAuthorization implements Initializable {
+public class MyPermissionProvider implements Initializable {
    private static final String AUTHORIZATION_XML = "authorization.xml";
 
    @Inject
@@ -123,7 +123,7 @@ public class MyAuthorization implements Initializable {
       }
    }
 
-   public static class Verification extends BaseVisitor {
+   protected static class Verification extends BaseVisitor {
       private AuthorizationModel m_authorization;
 
       @Override

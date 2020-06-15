@@ -3,12 +3,12 @@ package org.unidal.web;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
-import org.unidal.web.security.auth.TulipRealmTest;
+import org.unidal.web.security.AuthServiceTest;
 
 @RunWith(Suite.class)
 @SuiteClasses({
 
-      TulipRealmTest.class,
+      AuthServiceTest.class,
 
 })
 public class AllTests {

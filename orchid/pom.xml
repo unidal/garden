@@ -30,7 +30,7 @@
       </dependency>
       <dependency>
          <groupId>org.unidal.garden</groupId>
-         <artifactId>admin-foundation</artifactId>
+         <artifactId>web-extension</artifactId>
       </dependency>
       <dependency>
          <groupId>org.unidal.framework</groupId>

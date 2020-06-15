@@ -39,11 +39,11 @@
 		</component>
 		<component>
 			<role>org.unidal.web.mvc.Validator</role>
-			<role-hint>page</role-hint>
+			<role-hint>web</role-hint>
 			<implementation>org.unidal.orchid.WebPageValidator</implementation>
 			<requirements>
 				<requirement>
-					<role>org.unidal.web.authorization.MyAccessControl</role>
+					<role>org.unidal.web.security.internals.MyAccessControl</role>
 				</requirement>
 			</requirements>
 		</component>

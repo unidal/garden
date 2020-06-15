@@ -1,4 +1,4 @@
-package org.unidal.web.security.auth;
+package org.unidal.web.security.internals;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -7,104 +7,59 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import org.apache.shiro.authc.AuthenticationException;
-import org.apache.shiro.authc.AuthenticationInfo;
-import org.apache.shiro.authc.AuthenticationToken;
-import org.apache.shiro.authc.SimpleAuthenticationInfo;
-import org.apache.shiro.authz.AuthorizationException;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.Permission;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
-import org.apache.shiro.authz.permission.WildcardPermission;
-import org.apache.shiro.realm.AuthorizingRealm;
-import org.apache.shiro.subject.PrincipalCollection;
 import org.unidal.helper.Splitters;
 import org.unidal.lookup.annotation.Inject;
 import org.unidal.lookup.annotation.Named;
+import org.unidal.web.config.ConfigService;
+import org.unidal.web.security.spi.Authorization;
 
-@Named
-public class MyRealm extends AuthorizingRealm {
+@Named(type = Authorization.class)
+public class MyAuthorization implements Authorization {
    @Inject
-   private MyAuthorization m_authorization;
+   private MyPermissionProvider m_permission;
 
    @Inject
-   private MyApplication m_application;
+   private ConfigService m_configService;
 
-   @Inject
-   private MyUser m_user;
-
-   private Map<String, TulipWildcardPermission> m_cache = new HashMap<String, TulipWildcardPermission>();
+   private Map<String, MyWildcardPermission> m_cache = new HashMap<String, MyWildcardPermission>();
 
    @Override
-   protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
-      if (token instanceof ApplicationAuthenticationToken) {
-         String appId = (String) token.getPrincipal();
-         String host = (String) token.getCredentials();
-
-         if (m_application.isMatched(appId, host)) {
-            return new SimpleAuthenticationInfo(appId, host, getName());
-         }
-      } else if (token instanceof UserAuthenticationToken) {
-         String username = (String) token.getPrincipal();
-         String password = (String) token.getCredentials();
-
-         if (m_user.isMatched(username, password)) {
-            return new SimpleAuthenticationInfo(username, password, getName());
-         }
-      }
-
-      return null;
-   }
-
-   @Override
-   protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
-      if (principals == null) {
-         throw new AuthorizationException("No principals specified.");
-      }
-
-      String principal = (String) getAvailablePrincipal(principals);
-      Set<String> permissions = m_authorization.findPermissionsForApp(principal);
+   public AuthorizationInfo build(String principal) {
+      SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
       Set<Permission> objects = new HashSet<Permission>();
 
+      Set<String> permissions = m_permission.findPermissionsForApp(principal);
+
       if (permissions.isEmpty()) {
-         permissions = m_authorization.findPermissionsForUser(principal);
+         permissions = m_permission.findPermissionsForUser(principal);
       }
 
       for (String permission : permissions) {
          objects.add(findOrCreatePermission(permission));
       }
 
-      SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
-
       info.setObjectPermissions(objects);
       return info;
    }
 
-   private TulipWildcardPermission findOrCreatePermission(String permission) {
-      TulipWildcardPermission perm = m_cache.get(permission);
+   private MyWildcardPermission findOrCreatePermission(String permission) {
+      MyWildcardPermission perm = m_cache.get(permission);
 
       if (perm == null) {
-         perm = new TulipWildcardPermission(permission);
+         perm = new MyWildcardPermission(permission);
          m_cache.put(permission, perm);
       }
 
       return perm;
    }
 
-   @Override
-   public boolean supports(AuthenticationToken token) {
-      return token instanceof ApplicationAuthenticationToken || token instanceof UserAuthenticationToken;
-   }
-
-   @Override
-   public String toString() {
-      return getClass().getSimpleName();
-   }
-
-   private class TulipWildcardPermission implements Permission {
+   private class MyWildcardPermission implements Permission {
       private List<List<String>> m_parts = new ArrayList<List<String>>();
 
-      public TulipWildcardPermission(String permission) {
+      public MyWildcardPermission(String permission) {
          List<String> sections = Splitters.by(':').trim().noEmptyItem().split(permission.toLowerCase());
 
          for (String section : sections) {
@@ -117,11 +72,11 @@ public class MyRealm extends AuthorizingRealm {
       @Override
       public boolean implies(Permission p) {
          // By default only supports comparisons with other MyWildcardPermission
-         if (!(p instanceof WildcardPermission)) {
+         if (!(p instanceof MyWildcardPermission)) {
             return false;
          }
 
-         TulipWildcardPermission wp = findOrCreatePermission(p.toString());
+         MyWildcardPermission wp = findOrCreatePermission(p.toString());
          List<List<String>> otherParts = wp.m_parts;
          int i = 0;
 

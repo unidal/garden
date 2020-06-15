@@ -2,9 +2,9 @@
 <%@ taglib prefix="a" uri="/WEB-INF/app.tld" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="w" uri="http://www.unidal.org/web/core" %>
-<jsp:useBean id="ctx" type="org.unidal.web.admin.user.login.Context" scope="request"/>
-<jsp:useBean id="payload" type="org.unidal.web.admin.user.login.Payload" scope="request"/>
-<jsp:useBean id="model" type="org.unidal.web.admin.user.login.Model" scope="request"/>
+<jsp:useBean id="ctx" type="org.unidal.web.user.login.Context" scope="request"/>
+<jsp:useBean id="payload" type="org.unidal.web.user.login.Payload" scope="request"/>
+<jsp:useBean id="model" type="org.unidal.web.user.login.Model" scope="request"/>
 
 <a:layout>
 	<jsp:attribute name="navbar">false</jsp:attribute>

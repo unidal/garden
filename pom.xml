@@ -47,7 +47,7 @@
          </dependency>
          <dependency>
             <groupId>org.unidal.garden</groupId>
-            <artifactId>admin-foundation</artifactId>
+            <artifactId>web-extension</artifactId>
             <version>${project.version}</version>
          </dependency>
          <dependency>

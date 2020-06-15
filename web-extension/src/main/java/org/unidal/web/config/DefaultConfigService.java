@@ -110,6 +110,14 @@ public class DefaultConfigService implements ConfigService, Initializable, LogEn
       }
    }
 
+   @Override
+   public String getCipherKey() {
+      String key = getString(CATEGORY_SECURITY, "cipher.key", "");
+
+      key = (key + "0123456789abcdef").substring(0, 16);
+      return key;
+   }
+
    public String getString(String category, String name, String defaultValue) {
       CacheKey key = new CacheKey(category, name);
       String value = m_cached.get(key);
