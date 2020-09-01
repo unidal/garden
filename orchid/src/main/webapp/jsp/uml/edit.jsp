@@ -27,8 +27,8 @@
 							${w:showOptions(model.diagrams, model.diagram, "id", "id")}
 						</select>
 						<c:if test="${not empty model.diagram}">
-							&nbsp;<a href="${model.webapp}/uml/view/${model.product}/${model.diagram}" target="_blank">PNG</a>
-							&nbsp;<a href="${model.webapp}/uml/view/${model.product}/${model.diagram}?op=watch" target="_blank">Watch</a>
+							&nbsp;<a href="${model.webapp}/uml/view/${model.product}/${w:urlEncode(model.diagram)}" target="_blank">PNG</a>
+							&nbsp;<a href="${model.webapp}/uml/view/${model.product}/${w:urlEncode(model.diagram)}?op=watch" target="_blank">Watch</a>
 						</c:if>
 					</td>
 				</tr>

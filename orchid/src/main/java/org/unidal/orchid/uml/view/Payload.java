@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.unidal.helper.Joiners;
 import org.unidal.orchid.uml.UmlPage;
+import org.unidal.web.jsp.function.CodecFunction;
 import org.unidal.web.mvc.ActionContext;
 import org.unidal.web.mvc.ActionPayload;
 import org.unidal.web.mvc.payload.annotation.FieldMeta;
@@ -44,7 +45,7 @@ public class Payload implements ActionPayload<UmlPage, Action> {
 		if (m_path != null && m_path.size() > 1) {
 			String path = Joiners.by('/').join(m_path.subList(1, m_path.size()));
 
-			return path;
+			return CodecFunction.urlDecode(path);
 		} else {
 			return null;
 		}
