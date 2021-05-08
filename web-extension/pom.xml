@@ -10,7 +10,7 @@
    <artifactId>web-extension</artifactId>
    <name>Web Extension</name>
    <properties>
-      <shiro.version>1.4.2</shiro.version>
+      <shiro.version>1.6.0</shiro.version>
    </properties>
    <dependencies>
       <dependency>
