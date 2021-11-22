@@ -34,12 +34,12 @@ function refresh() {
 			});
 		} else {
 		    $.ajax({
-			  url: contextpath + '/uml/edit?update=1&product='+encodeURIComponent(product)+'&diagram='+encodeURIComponent(diagram)+'&content='+encodeURIComponent(content),
+			  url: contextpath + '/uml/edit?update=1&product='+product+'&diagram='+diagram+'&content='+encodeURIComponent(content),
 			  type: 'POST',
 			  async: false
 			});
 			$.ajax({
-				  url: contextpath + '/uml/view/'+encodeURIComponent(product)+'/'+encodeURIComponent(diagram)+'?op=status',
+				  url: contextpath + '/uml/view/'+product+'/'+diagram+'?op=status',
 				  type: 'POST',
 				  async: false,
 				  success: function(data) {
@@ -85,14 +85,14 @@ $(document).ready(function () {
 	$('#product').change(function() {
 		var product = $(this).children('option:selected').val();
 		
-		window.location.href="?product=" + encodeURIComponent(product);
+		window.location.href="?product=" + product;
 	});
 	
 	$('#diagram').change(function() {
 		var product = $('#product').val();
 		var diagram = $(this).children('option:selected').val();
 		
-		window.location.href="?product=" + encodeURIComponent(product) + "&diagram=" + encodeURIComponent(diagram);
+		window.location.href="?product=" + product + "&diagram=" + encodeURIComponent(diagram);
 	});
 	
 	$('#saveAs').bind('click', function() {

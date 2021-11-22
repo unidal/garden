@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<!-- saved from url=(0025)http://localhost:8650/uml -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>UML editor based on PlantUML</title>
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="UML online editor">
+	<link href="./UML editor based on PlantUML_files/bootstrap.css" type="text/css" rel="stylesheet">
+	<link href="./UML editor based on PlantUML_files/bootstrap-responsive.css" type="text/css" rel="stylesheet">
+	<style media="screen" type="text/css">
+		.nav > li.selected > a{
+			color: white
+		}
+		
+		.mycell {
+			display: inline-block;
+			vertical-align: top;
+			padding: 10px
+		}
+	</style>
+	<script src="./UML editor based on PlantUML_files/jquery-1.8.3.min.js" type="text/javascript"></script>
+	<script type="text/javascript">var contextpath = "";</script>
+	<script src="./UML editor based on PlantUML_files/edit.js"></script>
+</head>
+
+<body data-spy="scroll" data-target=".subnav" data-offset="50">
+	
+		<div class="navbar navbar-inverse navbar-fixed-top">
+			<div class="navbar-inner">
+				<div class="container-fluid">
+					<div class="nav-collapse collapse">
+						<ul class="nav">
+							<li class="selected"><a href="http://localhost:8650/uml">Edit</a></li>
+							<li class=""><a href="http://localhost:8650/uml/help/use-case-diagram">Use Case</a></li>
+							<li class=""><a href="http://localhost:8650/uml/help/sequence-diagram">Sequence</a></li>
+							<li class=""><a href="http://localhost:8650/uml/help/class-diagram">Class</a></li>
+							<li class=""><a href="http://localhost:8650/uml/help/activity-diagram-beta">Activity</a></li>
+							<li class=""><a href="http://localhost:8650/uml/help/component-diagram">Component</a></li>
+							<li class=""><a href="http://localhost:8650/uml/help/state-diagram">State</a></li>
+							<li class=""><a href="http://localhost:8650/uml/help/deployment-diagram">Deployment</a></li>
+							<li class=""><a href="http://localhost:8650/uml/help/ie-diagram">E-R</a></li>
+							<li class=""><a href="http://localhost:8650/uml/help/gantt-diagram">Gantt</a></li>
+							<li class=""><a href="http://localhost:8650/uml/help/mindmap-diagram">Mind Map</a></li>
+							<li class=""><a href="http://localhost:8650/uml/help/wbs-diagram">WBS</a></li>
+							<li class=""><a href="http://localhost:8650/uml/help/timing-diagram">Timing</a></li>
+							<li class=""><a href="http://localhost:8650/uml/help/archimate-diagram">Architecture</a></li>
+							<li class=""><a href="http://localhost:8650/uml/help/object-diagram">Object</a></li>
+							<li class=""><a href="http://localhost:8650/uml/help/salt">Salt</a></li>
+							<li class=""><a href="http://localhost:8650/uml/help/ditaa">Ditaa</a></li>
+	
+	 					</ul>
+					</div>
+					<!--/.nav-collapse -->
+				</div>
+			</div>
+		</div>
+	
+
+	<div class="container-fluid" style="min-height:524px;">
+		<div class="row-fluid">
+			<div class="span12">
+				<br><br>
+				
+
+		<br>
+		<form action="http://localhost:8650/uml" method="post">
+			<input type="hidden" name="es" id="es" value="height: 500px; width: 320px">
+			<table>
+				<tbody><tr>
+					<td colspan="4" nowrap="">
+						<select id="product" name="product" style="width: 150px">
+							<option value="">--- Select Product ---</option>
+							<option value="alpha" selected="">alpha</option>
+<option value="beta">beta</option>
+
+						</select>
+						<select id="diagram" name="diagram" style="width: 480px">
+							<option value="">--- Select Diagram or create a new one ---</option>
+							<option value="kiwi/model class.uml">kiwi/model class.uml</option>
+<option value="x.uml">x.uml</option>
+<option value="a.uml">a.uml</option>
+<option value="kiwi/sdk model.uml" selected="">kiwi/sdk model.uml</option>
+
+						</select>
+						
+							&nbsp;<a href="http://localhost:8650/uml/view/alpha/kiwi%2fsdk+model.uml" target="_blank">PNG</a>
+							&nbsp;<a href="http://localhost:8650/uml/view/alpha/kiwi%2fsdk+model.uml?op=watch" target="_blank">Watch</a>
+						
+					</td>
+				</tr>
+				
+					<tr>
+						<td colspan="4">
+							<span class="text-success">Diagram has been saved successfully!</span>
+						</td>
+					</tr>
+				
+				<tr valign="top">
+					<td valign="top">
+						<textarea id="content" name="content" style="height: 500px; width: 320px">interface AppletService {
++ void install(String uri)
++ void open(String uri)
++ void uninstall(String uri)
+}
+
+interface AppletManager {
+- List&lt;Applet&gt; m_applets
++ Applet find(String id)
+}
+</textarea>
+						<br>
+						
+								<button id="save" type="submit" name="save" value="1" class="btn btn-medium btn-primary">Save</button>
+							
+					</td>
+					<td width="10"></td>
+					<td valign="top" colspan="2"><img id="img" src="http://localhost:8650/uml"><span id="svg"><!--?xml version="1.0" encoding="UTF-8" standalone="no"?--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentscripttype="application/ecmascript" contentstyletype="text/css" height="265px" preserveAspectRatio="none" style="width:364px;height:265px;" version="1.1" viewBox="0 0 364 265" width="364px" zoomAndPan="magnify"><defs><filter height="300%" id="fqmlo7vuibfkm" width="300%" x="-1" y="-1"><fegaussianblur result="blurOut" stdDeviation="2.0"></fegaussianblur><fecolormatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"></fecolormatrix><feoffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"></feoffset><feblend in="SourceGraphic" in2="blurOut3" mode="normal"></feblend></filter></defs><g><!--MD5=[93266e525bbe620d2224063ad5b9bb00]
+class AppletService--><rect fill="#FEFECE" filter="url(#fqmlo7vuibfkm)" height="86.8652" id="AppletService" style="stroke: #A80036; stroke-width: 1.5;" width="156" x="6" y="8"></rect><ellipse cx="41.7" cy="24" fill="#B4A7E5" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"></ellipse><path d="M37.6277,19.7651 L37.6277,17.6069 L45.0071,17.6069 L45.0071,19.7651 L42.5418,19.7651 L42.5418,27.8418 L45.0071,27.8418 L45.0071,30 L37.6277,30 L37.6277,27.8418 L40.0931,27.8418 L40.0931,19.7651 Z "></path><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="78" x="60.3" y="28.5352">AppletService</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="7" x2="161" y1="40" y2="40"></line><line style="stroke: #A80036; stroke-width: 1.5;" x1="7" x2="161" y1="48" y2="48"></line><ellipse cx="17" cy="59" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"></ellipse><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="116" x="26" y="62.6348">void install(String uri)</text><ellipse cx="17" cy="71.9551" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"></ellipse><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="111" x="26" y="75.5898">void open(String uri)</text><ellipse cx="17" cy="84.9102" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"></ellipse><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="130" x="26" y="88.5449">void uninstall(String uri)</text><!--MD5=[ecdb96fbdc79579b6bedf0d7a1b42f25]
+class AppletManager--><rect fill="#FEFECE" filter="url(#fqmlo7vuibfkm)" height="73.9102" id="AppletManager" style="stroke: #A80036; stroke-width: 1.5;" width="156" x="197" y="14.5"></rect><ellipse cx="228.2" cy="30.5" fill="#B4A7E5" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"></ellipse><path d="M224.1277,26.2651 L224.1277,24.1069 L231.5071,24.1069 L231.5071,26.2651 L229.0418,26.2651 L229.0418,34.3418 L231.5071,34.3418 L231.5071,36.5 L224.1277,36.5 L224.1277,34.3418 L226.5931,34.3418 L226.5931,26.2651 Z "></path><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="88" x="245.8" y="35.0352">AppletManager</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="198" x2="352" y1="46.5" y2="46.5"></line><rect fill="none" height="6" style="stroke: #C82930; stroke-width: 1.0;" width="6" x="205" y="54.5"></rect><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="130" x="217" y="61.1348">List&lt;Applet&gt; m_applets</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="198" x2="352" y1="67.4551" y2="67.4551"></line><ellipse cx="208" cy="78.4551" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"></ellipse><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="112" x="217" y="82.0898">Applet find(String id)</text><!--MD5=[707e60a4e99f54e5748669cfd1ef2b16]
+class AppletContainer--><rect fill="#FEFECE" filter="url(#fqmlo7vuibfkm)" height="99.8203" id="AppletContainer" style="stroke: #A80036; stroke-width: 1.5;" width="125" x="21.5" y="155"></rect><ellipse cx="36.5" cy="171" fill="#B4A7E5" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"></ellipse><path d="M32.4277,166.7651 L32.4277,164.6069 L39.8071,164.6069 L39.8071,166.7651 L37.3418,166.7651 L37.3418,174.8418 L39.8071,174.8418 L39.8071,177 L32.4277,177 L32.4277,174.8418 L34.8931,174.8418 L34.8931,166.7651 Z "></path><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="93" x="50.5" y="175.5352">AppletContainer</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="22.5" x2="145.5" y1="187" y2="187"></line><line style="stroke: #A80036; stroke-width: 1.5;" x1="22.5" x2="145.5" y1="195" y2="195"></line><ellipse cx="32.5" cy="206" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"></ellipse><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="83" x="41.5" y="209.6348">void onCreate()</text><ellipse cx="32.5" cy="218.9551" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"></ellipse><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="90" x="41.5" y="222.5898">void onResume()</text><ellipse cx="32.5" cy="231.9102" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"></ellipse><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="72" x="41.5" y="235.5449">void onStop()</text><ellipse cx="32.5" cy="244.8652" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"></ellipse><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="89" x="41.5" y="248.5">vois onDestroy()</text><!--MD5=[4af3f2861c278178bee223804abac232]
+class PageContainer--><rect fill="#FEFECE" filter="url(#fqmlo7vuibfkm)" height="48" id="PageContainer" style="stroke: #A80036; stroke-width: 1.5;" width="115" x="181.5" y="181"></rect><ellipse cx="196.5" cy="197" fill="#B4A7E5" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"></ellipse><path d="M192.4277,192.7651 L192.4277,190.6069 L199.8071,190.6069 L199.8071,192.7651 L197.3418,192.7651 L197.3418,200.8418 L199.8071,200.8418 L199.8071,203 L192.4277,203 L192.4277,200.8418 L194.8931,200.8418 L194.8931,192.7651 Z "></path><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="83" x="210.5" y="201.5352">PageContainer</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="182.5" x2="295.5" y1="213" y2="213"></line><line style="stroke: #A80036; stroke-width: 1.5;" x1="182.5" x2="295.5" y1="221" y2="221"></line><!--MD5=[22824602627f7b65e2b9cb1c0b0d1224]
+link AppletService to AppletManager--><!--MD5=[41fb952df68312e04190a8b32716877e]
+link AppletService to AppletContainer--><!--MD5=[7d383fa34c2d3d47c8756c81342b7fe4]
+link AppletContainer to PageContainer--><!--MD5=[78dc4a15c992584e8ddbce2fd229e9f1]
+@startuml
+interface AppletService {
++ void install(String uri)
++ void open(String uri)
++ void uninstall(String uri)
+}
+
+interface AppletManager {
+- List<Applet> m_applets
++ Applet find(String id)
+}
+
+
+
+interface AppletContainer{
++void onCreate()
++void onResume()
++void onStop()
++vois onDestroy()
+}
+
+
+interface PageContainer{
+
+}
+@enduml
+
+PlantUML version 1.2019.11(Sun Sep 22 18:02:15 CST 2019)
+(GPL source distribution)
+Java Runtime: Java(TM) SE Runtime Environment
+JVM: Java HotSpot(TM) 64-Bit Server VM
+Java Version: 1.8.0_65-b17
+Operating System: Mac OS X
+Default Encoding: UTF-8
+Language: zh
+Country: CN
+--></g></svg></span></td>
+				</tr>
+			</tbody></table>
+		</form>
+
+	
+			</div>
+		</div>
+	</div>
+	<!--/.fluid-container-->
+
+	<script src="./UML editor based on PlantUML_files/bootstrap.js" type="text/javascript"></script>
+
+
+</body></html>

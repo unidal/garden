@@ -41,7 +41,7 @@
          <artifactId>dal-jdbc</artifactId>
       </dependency>
       <dependency>
-         <groupId>org.unidal.framework</groupId>
+         <groupId>org.unidal.test</groupId>
          <artifactId>test-framework</artifactId>
          <scope>test</scope>
       </dependency>
